@@ -1,6 +1,6 @@
 <?php
 
-class minisalgadosController extends controller{
+class vendascomercialController extends controller{
 
 
  public function __construct(){
@@ -15,7 +15,7 @@ class minisalgadosController extends controller{
            $dados['telefone']=$t->fixo();
            $dados['celular']=$t->celular();
            $dados['email']=$t->email();
-        $this->loadTemplate('minisalgados', $dados);
+        $this->loadTemplate('vendascomercial', $dados);
     }
     
     

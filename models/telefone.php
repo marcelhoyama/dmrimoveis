@@ -5,15 +5,15 @@ class telefone extends model{
     
     public function fixo (){
         
-        return $fixo = "(11)4409-2610";
+        return $fixo = "(11)xxxx-xxxx";
     }
       public function celular (){
         
-        return $celular = "(11) 9.9982-6771";
+        return $celular = "(11) x.xxxx-xxxxx";
     }
      public function email (){
         
-        return $email = "salgadosakio@gmail.com";
+        return $email = "imoveisemcabreuva@modelo.com";
     }
     
     

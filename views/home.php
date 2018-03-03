@@ -1,8 +1,8 @@
 
 <title>Negócios Imobiliários em Cabreúva</title>
-<meta property="og:url" content="http://www.dmrimoveis.com.br" />
+<meta property="og:url" content="http://www.dmrimoveisemcabreuva.com.br" />
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="DMR Imoveis em Cabreúva"/>
+<meta property="og:title" content="DaniloMarcelRony Imoveis em Cabreúva"/>
 <meta property="og:description" content="Corretores de Imóveis ! Venda, Compra, Troca e Administra!  Nas Regiões de: Cabreúva, Jacaré, Salto, Itu, Jundiaí"/>
 <META NAME="Robots" CONTENT="INDEX,FOLLOW">
 <meta name="distribution" content="Global">
@@ -10,23 +10,27 @@
 <meta name="revisit-after" content="2">
 <meta name="classification" content="imobiliaria , imoveis">
 
-<meta name="description" content="Imobiliária em Cabreúva - Procurando por um imóvel em Cabreúva? Encontre ótimas oportunidades de imóveis para venda ou locação em nosso site. Clique e confira!">
-<meta name="keywords" content="Imóveis, Imobiliária, Cabreúva, Compra, Venda, Aluguel, Locacao, Apartamento, Casas, Casas em Condomínio, Terrenos, Comerciais, Chácara, Sítios, Fazendas, galpao, area industrial, areas, terreno, areas">
-<meta name="author" content="MMH">
-<meta name="google-site-verification" content="" />
+<meta name="description" content="Imóveis em Cabreúva - Procurando por um imóvel em Cabreúva? Encontre ótimas oportunidades de imóveis para venda ou locação em nosso site. Clique e confira!">
+<meta name="keywords" content="Imóveis, Imobiliária, Cabreúva, Compra, Venda, Aluguel, Locacao, Apartamento, Casas, Casas em Condomínio, Terrenos, Comerciais, Chácara, Sítios, Fazendas, galpão, area industrial, areas, terreno, areas">
+<meta name="author" content="Marcel Hoyama">
+<meta name="google-site-verification" content="http://www.dmrimoveisemcabreuva.com.br" />
 
 
-<meta property="og:description" content="Imobiliária em Itupeva - Procurando por um imóvel em Itupeva? Encontre ótimas oportunidades de imóveis para venda ou locação em nosso site. Clique e confira!" />
+<meta property="og:description" content="Imóveis em Cabreúva - Procurando por um imóvel em Cabreúva? Encontre ótimas oportunidades de imóveis para venda ou Locação em nosso site. Confira!" />
 <meta property="og:image" content="" />
 <div class="container-fluid">
-<div class="bannerweb">
-               
-    <img src="<?php BASE_URL; ?>assets/images/logo.jpeg" width="800" height="400"class="  img-responsive"/>
-</div>  
+    
+    <img src="<?php BASE_URL; ?>assets/images/banner.png" width="100%" alt="dmr-imoveis-em-cabreuva " height="100%"/>
+    <figcaption id="texto1">Danilo </figcaption>
+    <figcaption id="texto2">Marcel </figcaption>
+    <figcaption id="texto3">Rony </figcaption>
+       <figcaption> </figcaption>
+    
 <div class="bannerwebcelular">
                
-    <img src="<?php BASE_URL; ?>assets/images/banneratualcelular.png" class="  img-responsive"/>
+  
 </div> 
+
 
 
 <div class="row" >
