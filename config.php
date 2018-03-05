@@ -15,11 +15,11 @@ if (ENVIRONMENT == 'development') {
 }
 else{
 
-		//define("BASE_URL", "http://negociosimobiliarios.com.br/ronyImoveis");
-        $config['dbname']='dmrimoveis_db';
+		define("BASE_URL", "http://devmg.pe.hu/ronyImoveis/");
+        $config['dbname']='u708362941_dmr';
 	$config['host']='localhost';
-	$config['dbuser']='root';
-	$config['dbpass']='';
+	$config['dbuser']='u708362941_dmr';
+	$config['dbpass']='dmrimoveis';
 }
 
 

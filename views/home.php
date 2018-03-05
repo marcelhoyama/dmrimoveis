@@ -1,5 +1,5 @@
 
-<title>Negócios Imobiliários em Cabreúva</title>
+<title>Imóveis em Cabreúva</title>
 <meta property="og:url" content="http://www.dmrimoveisemcabreuva.com.br" />
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="DaniloMarcelRony Imoveis em Cabreúva"/>

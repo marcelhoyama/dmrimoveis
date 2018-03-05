@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name= "viewport" content= "width=device-width, user-scalable=no" />
         <!-- As 3 meta tags acima *devem* vir em primeiro lugar dentro do `head`; qualquer outro conteúdo deve vir *após* essas tags -->
-        <link rel="canonical" href="http://negociosimobiliario.com.br/" />
+        <link rel="canonical" href="http://dmrimoveisemcabreuva.com.br/" />
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/bootstrap.css"/>
