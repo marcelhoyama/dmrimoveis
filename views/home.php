@@ -36,39 +36,39 @@
 <div class="row" >
     <div class="col-xs-12 col-sm-3">
         <div class="thumbnail ">
-            <a  href="<?php BASE_URL; ?>minisalgados">    <img src="<?php BASE_URL ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid"></a>
+            <a  href="<?php BASE_URL; ?>todos">    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid"></a>
         <div class="caption">
         <h3>Galpão</h3>
         <p><h3>Aluga</h3> </p>
-        <p><a  href="<?php BASE_URL; ?>minisalgados" class="btn btn-default" role="button"> Ver mais...</a></p>
+        <p><a  href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button"> Ver mais...</a></p>
       </div>
            
     </div>
         </div>
     <div class="col-xs-12 col-sm-3">
         <div class="thumbnail">
-            <a href="<?php BASE_URL; ?>salgados">  <img src="<?php BASE_URL ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"></a>
+            <a href="<?php BASE_URL; ?>todos">  <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"></a>
     <div class="caption">
         <h3>Apartamento</h3>
         <p><h3>Venda</h3> </p>
-        <p><a href="<?php BASE_URL; ?>salgados" class="btn btn-default" role="button">Ver mais...</a></p>
+        <p><a href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button">Ver mais...</a></p>
       </div>
         </div>
     </div>
     <div class="col-xs-12 col-sm-3">
         <div class="thumbnail">
-            <a href="<?php BASE_URL; ?>pasteis">     <img src="<?php BASE_URL ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"> </a>
+            <a href="<?php BASE_URL; ?>todos">     <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"> </a>
         <div class="caption">
         <h3>Casa no Condominio</h3>
         <p><h3>Aluguel</h3> </p>
-        <p> <a href="<?php BASE_URL; ?>pasteis" class="btn btn-default" role="button">Ver mais...</a></p>
+        <p> <a href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button">Ver mais...</a></p>
       </div>
         </div>
         </div>
     
     <div class="col-xs-12 col-sm-3">
         <div class="thumbnail">
-            <a href="<?php BASE_URL; ?>minipasteis"><img src="<?php BASE_URL ?>assets/images/sem-imagem.gif"class="img-rounded img-fluid"></a>
+            <a href="<?php BASE_URL; ?>minipasteis"><img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif"class="img-rounded img-fluid"></a>
     <div class="caption">
         <h3>Casa</h3>
         <p><h3>Venda</h3> </p>

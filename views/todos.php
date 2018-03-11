@@ -1,106 +1,113 @@
 <title> Todos os Imóveis - DMR Imóveis em Cabreúva</title>
 <div class="container-fluid">
-    <center><h2>Todos os Produtos</h2></center>
+    <center><h2>Todos os Imóveis</h2></center>
     <table class="table table-striped">
         <thead>
 
             <tr>
-                <th>Pastéis (Somente Atacado)</th>
+                <th>Imagem</th>
+                <th>Casa</th>
+                <th>Descrição</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Carne</td>
+                <td>
+                    
+    <a href="#">
+        <img class="media-object" src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" alt="..." width="128" height="128">
+    </a>
+  
+                    </td>
+                <td>Casa1 mmmmmmmmmmmmmmmmmmmmmmmmm</td>
+                <td>tem tudo isso.....</td>
             </tr>
+        
             <tr>
 
-                <td>Queijo</td>
+                <td>casa2</td>
             </tr>
             <tr>
-                <td>Pizza</td>
+                <td>casa3</td>
             </tr>
             <tr>
-                <td>Calabresa</td>
+                <td>Casa4</td>
             </tr>
             <tr>
-                <td>Frango com Requeijão</td>
+                <td>casa5</td>
             </tr>
             <tr>
-                <td>4 Queijos</td>
+                <td>casa6</td>
 
             </tr>
+          
+        </tbody>
+         <thead>
+         <tbody>
             <tr>
-                <td>Especial de Carne</td>
+                <th>Apartamentos</th>
+            </tr>
+        </thead>
+         <tr>
+                <td>Apartamentos1</td>
             </tr>
             <tr>
-                <td>Massa para Pastel</td>
+                <td>apartamento2</td>
             </tr>
         </tbody>
+        
         <thead>
-        <th>Mini-Pastéis (Venda Atacado e Varejo)</th>
+        <th>Galpões</th>
         </thead>
         <tbody>
             <tr>
-                <td>Carne</td>
+                <td>galpao1</td>
             </tr>
             <tr>
-                <td>Queijo</td>
+                <td>galpao2</td>
             </tr>
             <tr>
-                <td>Pizza</li></td>
+                <td>galpao3</td>
             </tr>
         </tbody>
         <thead>
-        <th>Mini-Salgados ( Venda Atacado e varejo)</th>
+        <th>Terreno</th>
         </thead>
         <tbody>
             <tr>
-                <td>Coxinha de Frango</td>
+                <td>terreno1</td>
             </tr>
             <tr>
-                <td>Bolinho de queijo</td>
+                <td>terreno2</td>
             </tr>
             <tr>
-                <td>Bolinho de Presunto e queijo</td>
+                <td>terreno3</td>
             </tr>
             <tr>
-                <td>Kibe</td>
+                <td>terreno4</td>
             </tr>
+           
             <tr>
-                <td>Kibe com Requeijão</td>
-            </tr>
-            <tr>
-                <td>Croquete de carne</td>
-            </tr>
-            <tr>
-                <td>Almofadinha de Calabresa - Novidade!</td>
+                <td>terreno- Novidade!</td>
             </tr>
         </tbody>
         <thead>
-        <th>Salgados de Bar 150gr (Somente Atacado)</th>
+        <th>Chacarás</th>
         </thead>
         <tbody>
             <tr>
-                <td>Coxinha de Frango</td>
+                <td>Characa1</td>
             </tr>
             <tr>
-                <td>Bolinho de Ovo com Carne</td>
+                <td>sitio</td>
             </tr>
             <tr>
-                <td>Enroladinho de Presunto e Queijo</td>
+                <td>fazenda</td>
             </tr>
             <tr>
-                <td>Enroladinho de Salsicha</td>
+                <td></td>
             </tr>
-            <tr>
-                <td>Risole de Carne</td>
-            </tr>
-            <tr>
-                <td>Risole de Frango com Requeijão</td>
-            </tr>
-            <tr>
-                <td>Risole de Palmito - Novidade!</td>
-            </tr>
+          
         </tbody>
     </table>
 </div>

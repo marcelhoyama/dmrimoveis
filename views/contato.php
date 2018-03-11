@@ -40,10 +40,10 @@
     <div class="form-group">
         <address class="text-info address">
             <h2>Onde nos encontrar?</h2>    
-           <span class="glyphicon glyphicon-hand-right"></span> Endereço: Rua Fulano, nºsei la - Bairro Jacaré - Distrito Jacaré - Cabreúva/SP.</br>
-           <span class="glyphicon glyphicon-earphone"></span> Telefone fixo:   <?php echo $value = $viewData['telefone']; ?></br>
-            <span class="glyphicon glyphicon-phone-alt"></span>Celular: <?php echo $value = $viewData['celular']; ?></br>
-           <span class="glyphicon glyphicon-envelope"></span> Email: <?php echo $value = $viewData['email']; ?></br>
+            Endereço: Rua Fulano, nºsei la - Bairro Jacaré - Distrito Jacaré - Cabreúva/SP.</br>
+            Telefone fixo:   <?php echo $value = $viewData['telefone']; ?></br>
+            Celular: <?php echo $value = $viewData['celular']; ?></br>
+            Email: <?php echo $value = $viewData['email']; ?></br>
         </address>
         <hr/>
         <img src="<?php BASE_URL ?>assets/images/logo.jpeg" width="400" height="400" class="img-rounded img-responsive">

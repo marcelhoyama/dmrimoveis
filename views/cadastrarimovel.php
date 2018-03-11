@@ -1,24 +1,136 @@
 
 <title>Cadastrar Imóvel - DMR Imóveis - Negócios Imobiliários em Cabreúva</title>
 <div class="container-fluid">
-    <h2 class="text-center">Dados</h2></br>
+    <h2 class="text-center">Cadastrar Imóvel</h2></br>
 
     <form class="form-group-sm" method="POST">
+          <div class="form-group">
+            <label for="cpf">CPF do Cliente*:</label>
+            <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros">
+        </div>
+        
         <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input name="nome" type="text" class="form-control" id="nome" placeholder="digite seu nome completo">
+            <label for="nome">Quantidade de Dormitórios:</label>
+            <select name="qtddormitorio" class="form-control">
+                  <option></option>
+                <option>1</option>
+                  <option>2</option>
+                    <option>3</option>
+                      <option>4</option>
+            </select>
         </div>
         <div class="form-group">
-            <label for="fone">Telefone:</label>
-            <input name="telefone" type="text" class="form-control" id="fone" placeholder="digite seu telefone de contato">
-        </div>
+            <label for="fone">Quantidade de Suites:</label>
+       <select name="qtddormitorio" class="form-control">
+                  <option></option>
+                <option>1</option>
+                  <option>2</option>
+                    <option>3</option>
+                      <option>4</option>
+            </select> </div>
 
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input name="email" type="email" class="form-control" id="email" placeholder="digite seu email">
+            <label for="email">Quantidade de Garagem:</label>
+         <select name="qtddormitorio" class="form-control">
+                  <option></option>
+                <option>1</option>
+                  <option>2</option>
+                    <option>3</option>
+                      <option>4</option>
+            </select></div>
+         <div class="form-group">
+            <label for="email">Quantidade de Banheiros:</label>
+       <select name="qtddormitorio" class="form-control">
+                  <option></option>
+                <option>1</option>
+                  <option>2</option>
+                    <option>3</option>
+                      <option>4</option>
+            </select> </div>
+         <div class="form-group">
+            <label for="endereco">Endereço do Imóvel:</label>
+            <input name="endereco" type="text" class="form-control" id="endereco" placeholder="">
         </div>
-
-
+        <div class="form-group">
+            <div class="form-group">
+            <label for="numero">Numero:</label>
+            <input name="numero" type="text" class="form-control" id="endereco" placeholder="">
+        </div>
+            <div class="form-group">
+            <label for="complemento">Complemento:</label>
+            <input name="complemento" type="text" class="form-control" id="endereco" placeholder="">
+        </div>
+            <label for="bairro">Bairro:</label>
+            <input name="bairro" type="text" class="form-control" id="endereco" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="cidade">Cidade:</label>
+            <input name="cidade" type="text" class="form-control" id="endereco" placeholder="">
+        </div>
+         <div class="form-group">
+            <label for="estado">Estado:</label>
+            <input name="estado" type="text" class="form-control" id="endereco" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="cep">CEP:</label>
+            <input name="cep" type="text" class="form-control" id="endereco" placeholder="somente numeros">
+        </div>
+         <div class="form-group">
+            <label for="opcoes">Outras Opções:</label>
+          <div class="checkbox-inline">
+  <label><input type="checkbox" value="">Piscina</label>
+</div>
+<div class="checkbox-inline">
+  <label><input type="checkbox" value="">Churrasqueira</label>
+</div>
+            <div class="checkbox-inline">
+  <label><input type="checkbox" value="">Energia Solar</label>
+</div>
+            <div class="checkbox-inline">
+  <label><input type="checkbox" value="">Luz</label>
+</div>
+            <div class="checkbox-inline">
+  <label><input type="checkbox" value="">Água</label>
+</div>
+<div class="checkbox disabled">
+  <label><input type="checkbox" value="" disabled></label>
+</div>
+        </div>
+        <div class="form-group">
+            <label for="tipoimovel">Tipo de Imóvel:</label>
+        <select name="tipoimovel" class="form-control">
+                  <option></option>
+                <option>Casa</option>
+                  <option>Apartamento</option>
+                    <option>Germinada</option>
+                      <option>Kitnet</option>
+                      <option>Galpão</option>
+                      <option>Terreno</option>
+            </select> </div>
+        <div class="form-group">
+            <label for="areaconstruida">Area Construida:</label>
+            <input name="areaconstruida" type="text" class="form-control" id="endereco" placeholder="">
+        </div>
+        <div class="form-group">
+            <label for="areatotal">Area Total:</label>
+            <input name="areatotal" type="text" class="form-control" id="endereco" placeholder="">
+        </div>
+<div class="form-group">
+            <label for="valorimovel">Valor do Imóvel:</label>
+            <input name="valorimovel" type="text" class="form-control" id="endereco" placeholder="">
+        </div>
+      <div class="form-group">
+            <label for="formapgto">Forma de Pagamento:</label>
+          <div class="checkbox">
+  <label><input type="checkbox" value="">Mensal</label>
+</div>
+<div class="checkbox">
+  <label><input type="checkbox" value="">Financiamento</label>
+</div>
+<div class="checkbox disabled">
+  <label><input type="checkbox" value="" disabled></label>
+</div>
+        </div>
 
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Cadastrar">
@@ -36,16 +148,5 @@
             <?php endif; ?>
         </div>
     </form>
-
-    <div class="form-group">
-        <address class="text-info address">
-            <h2>Onde nos encontrar?</h2>    
-           <span class="glyphicon glyphicon-hand-right"></span> Endereço: Rua Fulano, nºsei la - Bairro Jacaré - Distrito Jacaré - Cabreúva/SP.</br>
-           <span class="glyphicon glyphicon-earphone"></span> Telefone fixo:   <?php echo $value = $viewData['telefone']; ?></br>
-            <span class="glyphicon glyphicon-phone-alt"></span>Celular: <?php echo $value = $viewData['celular']; ?></br>
-           <span class="glyphicon glyphicon-envelope"></span> Email: <?php echo $value = $viewData['email']; ?></br>
-        </address>
-       
-     
 
 </div>
