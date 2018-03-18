@@ -46,6 +46,7 @@
 
                         <li><a href="<?php BASE_URL; ?>home">HOME</a></li>
                         <li><a href="<?php BASE_URL; ?>sobre">SOBRE</a></li>
+                            <li><a href="<?php BASE_URL; ?>nossosservicos">SERVIÇOS</a></li>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">IMÓVEIS<span class="caret"></span></a>
@@ -204,6 +205,7 @@ function pedido(){
 
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/validarcampos.js"></script>
 
 
     </body>

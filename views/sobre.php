@@ -5,7 +5,7 @@
 <hr/>
     <article >
 
-        
+        Conte uma história de voces , como surgiu !  a visao, a missao de voces!! 
           <img  src="<?php BASE_URL; ?>assets/images/sem-imagem.gif " width="200" height="270" alt="DMR Imóveis em Cabreúva" title="Danilo"/>
       <h3> <p><u>Danilo</u></p>
          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam urna quam, elementum nec urna at, dignissim aliquam nulla. Proin tempor egestas leo, id porta leo maximus et. Mauris semper, mauris nec ultrices posuere, diam ante tincidunt elit, sed tempus eros arcu ut odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus rhoncus sit amet ligula dictum consectetur. Donec congue varius nibh. Donec ac lorem elit. Etiam orci risus, tempus id dictum vitae, porta sed quam. In dolor sem, volutpat sit amet augue in, euismod faucibus felis. Nunc mi urna, consequat vitae magna vel, hendrerit feugiat arcu.</p>

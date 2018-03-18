@@ -1,5 +1,5 @@
 
-<title>Cadastrar Clientes - DMR Imóveis - Negócios Imobiliários em Cabreúva</title>
+<title>Cadastrar Clientes</title>
 <div class="container-fluid">
     <h2 class="text-center">Cadastro de Clientes</h2></br>
 

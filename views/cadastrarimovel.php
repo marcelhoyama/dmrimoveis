@@ -1,5 +1,5 @@
 
-<title>Cadastrar Imóvel - DMR Imóveis - Negócios Imobiliários em Cabreúva</title>
+<title>Cadastrar Imóvel</title>
 <div class="container-fluid">
     <h2 class="text-center">Cadastrar Imóvel</h2></br>
 

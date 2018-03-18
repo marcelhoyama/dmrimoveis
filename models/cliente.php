@@ -3,22 +3,26 @@
 
 class cliente extends model {
     
-    public function cadastroCliente ($nome, $email, $telefone, $cpf){
-        
-       $sql = "INSERT INTO clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."',cpf='".$cpf."' ";
+    public function cadastroCliente($cpf, $nome, $email, $telefone){
+         $sql = "INSERT INTO clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."',cpf='".$cpf."' ";
        
        $sql = $this->db->query($sql);
-        $id = $this->db->lastInsertId();
+        $_SESSION['id'] = $this->db->lastInsertId();
        
-          if ($sql->rowCount() > 0) {
+          if ($sql->rowCount()>0) {
             
-              return "Cadastrado com sucesso!";
-                        
+             
+                    header("Location:" .BASE_URL. "menuprincipal"); 
+               return "Cadastrado com sucesso!";
           }else{
-              return "Preencha todos os campos!";
+              return "Não foi possivel fazer o cadastro! Veja se todos os campos estão Preenchidos corretamente!";
           }
-        }
-          public function editarCliente ($id,$nome, $email, $telefone){
+           
+             exit;
+    }
+
+
+    public function editarCliente ($id,$nome, $email, $telefone){
         
        $sql = "UPDATE FROM clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."' WHERE id='".$id."'";
        
@@ -35,25 +39,25 @@ class cliente extends model {
         }
         
         public function verificarExistente ($cpf){
-            $sql ="SELECT * FROM clientes WHERE cpf == '".$cpf."' ";
+           try{
+                  $sql ="SELECT * FROM clientes WHERE cpf = '".$cpf."' ";
             $sql = $this->db->query($sql);
             if($sql->rowCount()>0){
-                return "Cliente Já existe!!";
+               
+               $dados = $sql->fetch();
+               $_SESSION['id'] = $dados['id'];
+               $_SESSION['nome'] = $dados['nome'];
+                return "Cliente ".$_SESSION['nome']." Já existe!!";
             }else{
-                  $sql = "INSERT INTO clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."',cpf='".$cpf."' ";
-       
-       $sql = $this->db->query($sql);
-        $id = $this->db->lastInsertId();
-       
-          if ($sql->rowCount() > 0) {
-            
-              return "Cadastrado com sucesso!";
-                        
-          }
-           header("Location:" .BASE_URL. "menu");
-             exit;
-                
+                return "Preencha todos os campos!";
             }
+                 
+               exit; 
+            
+           } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+           }
+        
         }
         
          public function getListCliente ($pesquisa){
