@@ -22,20 +22,25 @@ class cliente extends model {
     }
 
 
-    public function editarCliente ($id,$nome, $email, $telefone){
-        
-       $sql = "UPDATE FROM clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."' WHERE id='".$id."'";
+    public function editarCliente ($nome, $telefone, $email, $id){
+       try{
+             $sql = "UPDATE clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."' WHERE id='".$id."'";
        
        $sql = $this->db->query($sql);
         
        
           if ($sql->rowCount() > 0) {
             
-              return "Alterado com sucesso!";
+              header("Location:".BASE_URL."pesquisarclientes");
                         
           }else{
               return "Preencha todos os campos!";
           }
+       } catch (Exception $ex) {
+echo "Falhou".$ex->getMessage();
+       }
+        
+    
         }
         
         public function verificarExistente ($cpf){
@@ -70,6 +75,22 @@ echo "Falhou:".$ex->getMessage();
                
             }
              return $array;
+        }
+    }
+    
+    public function getDados($id){
+        $array = array();
+        if(!empty($id)){
+            $sql = "SELECT * FROM clientes WHERE id ='".$id."'";
+            $sql = $this->db->query($sql);
+            if($sql->rowCount() >0){
+                $array = $sql->FETCH();
+                
+            }else{
+                header("Location:".BASE_URL."pesquisarclientes");
+            }
+            
+            return $array;
         }
     }
     }

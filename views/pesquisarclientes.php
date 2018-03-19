@@ -1,11 +1,11 @@
-<title> Pesquisar Clientes - DMR Imóveis em Cabreúva</title>
+<title> Pesquisar Clientes </title>
 <div class="container-fluid">
     <center><h2>Pesquisar Clientes</h2></center>
     <form method="GET" >
     <div class="input-group">
         <input type="search" class="form-control" name="pesquisar" >
         <span class="input-group-btn">
-            <button class="btn btn-primary" type="button">
+            <button class="btn btn-primary" type="submit">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>Pesquisar
             </button>
         </span>
@@ -24,18 +24,36 @@
             </tr>
         </thead>
         <tbody>
+            
+             <?php
+             
+              
+         if($viewData['lista'] == ''){ 
+             
+         }else{
+         
+               foreach ($viewData['lista'] as $value): {
+        
+   ?>
+                
+            
             <tr>
                 <td>
-             <?php echo 'fulano dfsdfsdfsdfdsfsdfdfdfds'?>
+             <?php echo $value['nome'];?>
                     </td>
-                <td><?php echo'66666666666' ?></td>
-                <td><?php echo 'fulano@hotmail.com' ?></td>
-                <td><a href="<?php BASE_URL;?>editarclientes"><button class="btn btn-success">Editar</button></a>
-                <a><button class="btn btn-danger">Bloquear</button></a></td>
+                <td><?php echo $value['telefone'] ?></td>
+                <td><?php echo $value['email'] ?></td>
+                <td><a href="<?php BASE_URL;?>editarclientes?id=<?php echo $value['id'];?> "><button class="btn btn-warning">Editar</button></a>
+                    <a href="<?php BASE_URL; ?>menuprincipal?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Menu</button></a>
+              
+                </td>
             </tr>
          
-          
-        
+      
+               <?php }
+         
+         endforeach;
+         } ?>
        
         </tbody>
     </table>
