@@ -12,24 +12,11 @@ and open the template in the editor.
 */
 
 
-.bannerweb{
-    width: auto;
-   height: 300px;
-   padding: 0px;
-   
-   background-color: #efece3;
-   
-   
-}
-
-
-.container-fluid figcaption1{
+.container-fluid #texto4{
     position: absolute;
-    top:150px;
-    text-align: center;
-    font-size: 40px;
-    color: black;
-    text-shadow:0px 0px 5px ;
+    top:355px;
+   background-color: black;
+
 }
 .container-fluid #texto1{
     position: absolute;
@@ -55,23 +42,31 @@ and open the template in the editor.
     color: black;
     text-shadow:0px 0px 5px ;
 }
+.container-fluid #texto4{
+    position: absolute;
+    top:450px;
+    left: auto;
+    background-color: transparent;
+
+
+}
 .bannerdentro{
     width: 100%;
     height: 100%;
     position: absolute;
     padding: 0px;
-    
+
 }
 
 .rodape{
-    
+position: relative;
     background-color: #353535;
     height: 50px;
     text-align: center;
     line-height: 50px;
     color:#FFFFFF;
     margin-top: 40px;
-    
+
 }
 
 .address{
@@ -81,154 +76,234 @@ and open the template in the editor.
     font-size: 18px;
 }
 .mapa{
-    
+
     width: auto;
     height: 400px;
-    
-   }
-   .mapamobile{
-       display:none;
-   }
-     .mapamobile2{
-       display:none;
-   }
-     .mapamobile3{
-       display:none;
-   }
-   
-  
-   .containerbutton{
-       width: auto;
-       float: left;
-       margin-top: 0px;
-       padding-top: 0px;
-       
-       font-size: 28px;
-       padding-bottom: 1px;
-       margin-right: 20px;
-   }
 
+}
+.mapamobile{
+    display:none;
+}
+.mapamobile2{
+    display:none;
+}
+.mapamobile3{
+    display:none;
+}
+
+
+.containerbutton{
+    width: auto;
+    float: left;
+    margin-top: 0px;
+    padding-top: 0px;
+
+    font-size: 28px;
+    padding-bottom: 1px;
+    margin-right: 20px;
+}
+
+.row .col-sm-1{
+    display: none;
+}
+#celular{
+    display: none;
+}
 
 /* Smartphones (portrait and landscape) ———– */
 @media only screen and (min-width:320px) and (max-width:520px) {
 
-  
 
 
-.bannerweb{
-    display: none;
-}
-.bannerwebcelular{
-    display: block;
-    width: auto;
-    height: auto;
-}
-.rodape{
-    
-    background-color: #222;
-    height: auto;
-    text-align: center;
-    color:#FFFFFF;
-    
+
+    .bannerweb{
+        display: none;
     }
-    
+    .bannerwebcelular{
+        display: block;
+        width: auto;
+        height: auto;
+    }
+    .rodape{
+
+        background-color: #222;
+        height: auto;
+        text-align: center;
+        color:#FFFFFF;
+
+    }
+
     .address{
-        
-     float: left;
-    width: auto;
-    height: auto;
+
+        float: left;
+        width: auto;
+        height: auto;
         font-size: 12px;
     }
     .mapa{
         display: none;
-         
-    
-    
+
+
+
     }
     .mapamobile{
         display: block;
-          width: auto;
-         margin: 5px 5px 5px 5px;
-       
+        width: auto;
+        margin: 5px 5px 5px 5px;
+
     }
     .mapamobile2{
         display: none;
     }
-    
-    
-}
+
+    #buscanavbar{
+        display:none;
+    }
+     #busca{
+        background-color: transparent;
+    }
+    .container-fluid #texto1{
+        display:none;
+    }
+    .container-fluid #texto2{
+        display:none;
+    }
+    .container-fluid #texto3{
+        display:none;
+    }
+    .container-fluid #texto4{
+        position:relative;
+top:auto;
+        background-color: transparent;
 
 
-
-@media only screen and (min-width:525px) and (max-width:700px) {
-
-  
-
-
-.bannerweb{
-    display: none;
-}
-.bannerwebcelular{
-    display: block;
-    width: auto;
-    height: auto;
-}
-.rodape{
-    
-    background-color: #353535;
-    height: auto;
-    text-align: center;
-    color:#FFFFFF;
-    
     }
     
-    .address{
+    .row .col-xs-12{
         
-     float: left;
-    width: auto;
-    height: auto;
+        display:none;
+        
+    }
+    #my-pics {
+        display: none;
+    }
+    #celular{
+        display: block;
+    }
+}
+
+
+
+@media only screen and (min-width:525px) and (max-width:767px) {
+
+
+
+
+    .bannerweb{
+        display: none;
+    }
+    .bannerwebcelular{
+        display: block;
+        width: auto;
+        height: auto;
+    }
+    .rodape{
+
+        background-color: #353535;
+        height: auto;
+        text-align: center;
+        color:#FFFFFF;
+
+    }
+
+    .address{
+
+        float: left;
+        width: auto;
+        height: auto;
         font-size: 12px;
     }
     .mapa{
         display: none;
-         
-    
-    
+
+
+
     }
-     .mapamobile{
+    .mapamobile{
         display: none;
-         
+
     }
     .mapamobile2{
         display: block;
-         width: auto;
-         margin: 10px 10px 10px 10px;
+        width: auto;
+        margin: 10px 10px 10px 10px;
     }
-    @media only screen and(min-width:701) and(max-width:846){
-     
-        
-            .mapa{
+     .container-fluid #texto1{
+        display:none;
+    }
+    .container-fluid #texto2{
+        display:none;
+    }
+    .container-fluid #texto3{
+        display:none;
+    }
+    .container-fluid #texto4{
+        position: absolute;
+        top:250px;
+        background-color: transparent;
+
+
+    }
+    #my-pics {
         display: none;
-         
     }
-      .mapamobile{
-       display:none;
-   }
-            .mapamobile2{
-        display: none;
-         
-    }
-        .mapamobile3{
+    #celular{
         display: block;
-         width: auto;
-         height: 350px;
-         padding-top: 10px;
-         margin: 10px 10px 10px 10px;
     }
-    }
-    
-   
 }
+
+    @media only screen and(min-width:768) and(max-width:846){
+
+
+        .mapa{
+            display: none;
+
+        }
+        .mapamobile{
+            display:none;
+        }
+        .mapamobile2{
+            display: none;
+
+        }
+        .mapamobile3{
+            display: block;
+            width: auto;
+            height: 350px;
+            padding-top: 10px;
+            margin: 10px 10px 10px 10px;
+        }
+         .container-fluid #texto1{
+        display:none;
+    }
+    .container-fluid #texto2{
+        display:none;
+    }
+    .container-fluid #texto3{
+        display:none;
+    }
+    .container-fluid #texto4{
+        position: absolute;
+top:250px;
+        background-color: transparent;
+
+
+    }
+
+    }
+
+
+
 
 
 

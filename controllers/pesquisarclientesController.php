@@ -16,19 +16,25 @@ class pesquisarclientesController extends controller{
             
             $pesquisa = addslashes($_GET['pesquisar']);
           $dados['lista']= $c->getListCliente($pesquisa);
+           foreach ($dados['lista'] as $value) {
+            $id=$value['id'];
+            
+        }
+        $dados['total_imovel']=$c->totalImovel($id);
+        
         }else{
               $c = new cliente();
               $pesquisa='';
-        $dados['lista']=$c->getListCliente($pesquisa);  
-      
+        $dados['lista']=$c->getListCliente($pesquisa);
+       
+       
+        
+     
         }
        
 
         
-         $t=new telefone();
-           $dados['telefone']=$t->fixo();
-           $dados['celular']=$t->celular();
-           $dados['email']=$t->email();
+        
            
          
            

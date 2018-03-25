@@ -1,6 +1,7 @@
 
 <title>Cadastrar Clientes</title>
 <div class="container-fluid">
+    <a class="btn btn-default" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
     <h2 class="text-center">Cadastro de Clientes</h2></br>
 
     <form class="form-group-sm" method="POST">
@@ -12,9 +13,16 @@
             <label for="nome">Nome:</label>
             <input name="nome" type="text" class="form-control" id="nome" placeholder="digite seu nome completo">
         </div>
-        <div class="form-group">
-            <label for="fone">Telefone:</label>
-            <input name="telefone" type="text" class="form-control" id="fone" placeholder="digite seu telefone de contato">
+        <div class="row" > 
+        <div class="form-group col-sm-6">
+            
+            <label for="fone">Telefone1:</label>
+            <input name="telefone" type="text" class="form-control" id="fone" placeholder="telefone de contato 1">
+        </div>
+          <div class="form-group col-sm-6">
+            <label for="fone">Telefone2:</label>
+            <input name="telefone2" type="text" class="form-control" id="fone" placeholder="telefone de contato 2">
+        </div>
         </div>
 
         <div class="form-group">

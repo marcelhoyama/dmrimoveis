@@ -33,7 +33,7 @@
                     <a href="./" class="navbar-brand"> Imóveis em Cabreúva</a>
                     <a href="https://www.facebook.com/negociosemcabreuva/" class="navbar-nav"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="32" height="32" style="margin-top: 8px"/></a>
 
-                    <form class="navbar-form navbar-right" role="search">
+                    <form class="navbar-form navbar-right" role="search" id="buscanavbar">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="casa,apto,galpão">
                         </div>
@@ -47,6 +47,7 @@
                         <li><a href="<?php BASE_URL; ?>home">HOME</a></li>
                         <li><a href="<?php BASE_URL; ?>sobre">SOBRE</a></li>
                             <li><a href="<?php BASE_URL; ?>nossosservicos">SERVIÇOS</a></li>
+                             <li><a href="<?php BASE_URL; ?>menuprincipal">MENU</a></li>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">IMÓVEIS<span class="caret"></span></a>
@@ -209,7 +210,7 @@ function pedido(){
 
 
     </body>
-
+    <br>
     <footer>
         <div class="rodape">
             IMOVEISEMCABREUVA © <?php echo date('Y'); ?> Todos Direitos Reservados. Desenvolvido por Marcel Hoyama

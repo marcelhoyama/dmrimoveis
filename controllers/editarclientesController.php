@@ -25,10 +25,15 @@ $id = 0;
                              
                 $nome = addslashes($_POST['nome']);
                 $telefone = addslashes($_POST['telefone']);
+                $telefone2 = addslashes($_POST['telefone2']);
                 $email = addslashes($_POST['email']);
 
-                $dados['ok'] = $c->editarCliente($nome, $telefone, $email, $id);
+                $dados['ok'] = $c->editarCliente($nome, $telefone, $telefone2, $email, $id);
            
+        }
+        
+        if(isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])){
+            $dados['pesquisa'] = $_GET['pesquisar'];
         }
         $dados['dadosCliente'] = $c->getDados($id);
         $this->loadTemplate('editarclientes', $dados);

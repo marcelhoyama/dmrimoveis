@@ -14,11 +14,16 @@
             <label for="nome">Nome:</label>
             <input name="nome" type="text" class="form-control" id="nome" value="<?php echo $value['nome']; ?>">
         </div>
-        <div class="form-group">
+        <div class="row">
+        <div class="form-group col-sm-6">
             <label for="fone">Telefone:</label>
             <input name="telefone" type="text" class="form-control" id="fone" value="<?php echo $value['telefone']; ?>">
         </div>
-
+        <div class="form-group col-sm-6">
+            <label for="fone">Telefone:</label>
+            <input name="telefone2" type="text" class="form-control" id="fone" value="<?php echo $value['telefone2']; ?>">
+        </div>
+        </div>
         <div class="form-group">
             <label for="email">Email:</label>
             <input name="email" type="email" class="form-control" id="email" value="<?php echo $value['email']; ?>">
@@ -32,8 +37,7 @@
 
 
        
-             <input type="reset" class="btn btn-warning" value="Cancelar">
-
+            <a class="btn btn-warning" href="<?php BASE_URL; ?>pesquisarclientes"> Voltar</a>
 
         </div>
         <div class="danger">

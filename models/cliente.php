@@ -3,8 +3,8 @@
 
 class cliente extends model {
     
-    public function cadastroCliente($cpf, $nome, $email, $telefone){
-         $sql = "INSERT INTO clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."',cpf='".$cpf."' ";
+    public function cadastroCliente($cpf, $nome, $email, $telefone, $telefone2){
+         $sql = "INSERT INTO clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."',telefone2='".$telefone2."',cpf='".$cpf."' ";
        
        $sql = $this->db->query($sql);
         $_SESSION['id'] = $this->db->lastInsertId();
@@ -22,9 +22,9 @@ class cliente extends model {
     }
 
 
-    public function editarCliente ($nome, $telefone, $email, $id){
+    public function editarCliente ($nome, $telefone, $telefone2, $email, $id){
        try{
-             $sql = "UPDATE clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."' WHERE id='".$id."'";
+             $sql = "UPDATE clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."', telefone2='".$telefone2."' WHERE id='".$id."'";
        
        $sql = $this->db->query($sql);
         
@@ -42,6 +42,11 @@ echo "Falhou".$ex->getMessage();
         
     
         }
+        
+   
+            
+      
+      
         
         public function verificarExistente ($cpf){
            try{
@@ -64,21 +69,56 @@ echo "Falhou:".$ex->getMessage();
            }
         
         }
+        // nao resolvido a contagem
+        public function totalImovel($id){
         
+                 $row = array();
+                 $sql = "SELECT COUNT(*)as total FROM clientes c JOIN imoveis i on c.id = i.id_cliente WHERE id_cliente='".$id."'";
+                
+                $sql= $this->db->query($sql);
+                    if($sql->rowCount() > 0){
+                  
+                     $row=["total"];   
+                     
+                      
+                                    return $row;
+                    }
+                  
+                  
+                    
+        }
          public function getListCliente ($pesquisa){
         $array=array();
+        
         if(!empty($pesquisa)){
             $sql = "SELECT * FROM clientes WHERE nome LIKE'%".$pesquisa."%' OR email LIKE'%".$pesquisa."%' ";
             $sql = $this->db->query($sql);
             if($sql->rowCount() > 0){
                 $array = $sql->fetchAll();
-               
+        
+            
+                  
             }
+            
              return $array;
         }
-    }
+         }
     
-    public function getDados($id){
+         public function getNome($id){
+           $nome=array();
+             if(!empty($id)){
+            $sql = "SELECT * FROM clientes WHERE id ='".$id."'";
+            $sql = $this->db->query($sql);
+            if($sql->rowCount() > 0){
+               $nome = $sql->fetchAll();
+               
+              
+            }   
+            return $nome;
+         }
+         }
+
+         public function getDados($id){
         $array = array();
         if(!empty($id)){
             $sql = "SELECT * FROM clientes WHERE id ='".$id."'";

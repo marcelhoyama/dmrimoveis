@@ -9,27 +9,40 @@ class cadastrarimovelController extends controller{
  }
     
     public function index() {
-      
+     
+      $c = new cliente();
            
           $dados = array('erro'=> '','ok'=>'');
          
-           $t=new telefone();
-           $dados['telefone']=$t->fixo();
-           $dados['celular']=$t->celular();
-           $dados['email']=$t->email();
+           $id=0;
+           if(isset($_GET['id'])&& !empty($_GET)){
+               $id = addslashes($_GET['id']);
+               
+           }
           
   if(isset($_POST['email']) && !empty($_POST['email'])){
               $nome= addslashes($_POST['nome']);
              $telefone= addslashes($_POST['telefone']);
             $email= addslashes($_POST['email']);
           
-       $c = new cliente();
-     $dados['ok']=  $c->cadastroCliente($nome, $telefone ,$email);
+       
+    
        
   }
+  
+  if(isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])){
+     
+                    $extensao = strtolower(substr($_FILES['arquivo']['name'], -4));
+                    $novo_nome = md5(time()).$extensao;
+                    $diretorio = "upload/";
+                    move_uploaded_file($_FILES['arquivo']['tmp_nome'], $diretorio.$novo_nome);
+      $i->enviarArquivo($id,$id_imovel, $proximidade);
+  }
    
-   
-    
+   $dados['cliente']=$c->getDados($id);
+  
+  $i = new imovel();
+    $dados['listaendereco']=$i->endereco($id);
      $this->loadTemplate('cadastrarimovel', $dados);
 }
 }
