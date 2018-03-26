@@ -1,6 +1,8 @@
 <title> Pesquisar Imóvel(is) do Cliente </title>
 <div class="container-fluid">
-    <center><h2>Pesquisar Imóvel(is) do Cliente: <?php foreach ( $viewData['nome'] as $value){echo $value['nome'];};?> </h2></center>
+    
+    <a class="btn btn-default" href="<?php BASE_URL; ?>cadastrarimovel?id=<?php foreach ($viewData['nome'] as $value){ echo $value['id'];};?>">Cadastrar Imóvel</a>
+    <center><h2 class="h2 label-info">Imóvel(is) do Cliente: <?php foreach ( $viewData['nome'] as $value){echo $value['nome'];};?> </h2></center>
     <form method="GET" >
    
     

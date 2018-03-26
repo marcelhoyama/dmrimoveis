@@ -5,7 +5,7 @@ class imovel extends model {
     
     public function cadastrarImovel ($tipo_imovel, $dormitorio, $suite, $garagem,$id_endereco, $id){
       
-        $array = array();
+        
         $sql = "SELECT * FROM clientes WHERE id'".$id."'";
         $sql = $this->db->query($sql);
         if ($sql->rowCount()>0){
@@ -21,7 +21,7 @@ class imovel extends model {
        
           if ($sql->rowCount() > 0) {
             
-              return "Cadastrado com sucesso!";
+              return $id;
                         
           }else{
               return "Preencha todos os campos!";
@@ -66,18 +66,18 @@ class imovel extends model {
             
         }
         
-        public function enviarArquivo ($id_imovel,$proximidade ){
+        public function enviarUrlImagem ($id_imovel,$url_imagem ){
             try{
-                $array = array();
                 
-               $sql = "INSERT INTO fotos (id_imovel, imovel, proximidade ) VALUES('".$id_imovel."', '".$novo_nome."', '".$proximidade."' )";
+                
+               $sql = "INSERT INTO fotos (id_imovel,url_imagem ) VALUES('".$id_imovel."', '".$url_imagem."' )";
                $sql = $this->db->query($sql);  
                if($sql->rowCount()>0){
-                   $array = true;
-                   return $array;
+                   return "Enviado com Sucesso!";
+                   
                }else{
-                   $array = false;
-                   return $array;
+                   
+                   return false ;
                }
                
                     

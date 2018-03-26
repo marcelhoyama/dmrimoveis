@@ -1,12 +1,13 @@
 
 <title>Editar Clientes - DMR Imóveis - Negócios Imobiliários em Cabreúva</title>
 <div class="container-fluid">
-    <h2 class="text-center">Editar Dados de Clientes</h2></br>
+    <?php     $value = $viewData['dadosCliente']; ?> 
+    <h2 class="text-center h2 label-info">Editar Dados do Cliente: <?php echo $value['nome'];?></h2></br>
 
     <form class="form-group-sm" method="POST">
           <div class="form-group">
               
-              <?php     $value = $viewData['dadosCliente']; ?> 
+              
             <label for="cpf">CPF*:</label>
             <input name="cpf" type="text" class="form-control" value="<?php echo $value['cpf']; ?>" disabled="">
         </div>
