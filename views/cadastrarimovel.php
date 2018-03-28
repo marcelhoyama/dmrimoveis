@@ -18,7 +18,7 @@
         
             <div class="form-group col-sm-6">
                 <label for="endereco">Verifique Endereço se Existe*:</label>
-            <select class="form-control" name="endereco" id="valor">
+            <select class="form-control" name="endereco2" id="valor">
             <option value="" ></option>
             <?php foreach ($viewData['enderecos'] as $value) { ?>
                 <option value='<?php echo $value['endereco']; ?>'><?php echo $value['endereco']; ?></option>
@@ -49,7 +49,7 @@
             </div>
                 <div class="form-group col-sm-6">
                 <label for="bairro">Verifique se Bairro Existe*:</label>
-            <select class="form-control" name="endereco" id="valor">
+            <select class="form-control" name="bairro2" id="valor">
             <option value="" ></option>
             <?php foreach ($viewData['bairros'] as $value) { ?>
                 <option value='<?php echo $value['nome']; ?>'><?php echo $value['nome']; ?></option>
@@ -65,7 +65,7 @@
             </div>
                 <div class="form-group col-sm-6">
                 <label for="endereco">Verifique se Cidade Existe*:</label>
-            <select class="form-control" name="cidade" id="valor">
+            <select class="form-control" name="cidade2" id="valor">
             <option value="" ></option>
             <?php foreach ($viewData['cidades'] as $value) { ?>
                 <option value='<?php echo $value['nome']; ?>'><?php echo $value['nome']; ?></option>
@@ -82,7 +82,7 @@
             </div>
     <div class="form-group col-sm-6">
                 <label for="estado">Verifique se Estado Existe*:</label>
-            <select class="form-control" name="estado" id="valor">
+            <select class="form-control" name="estado2" id="valor">
             <option value="" ></option>
             <?php foreach ($viewData['estados'] as $value) { ?>
                 <option value='<?php echo $value['nome']; ?>'><?php echo $value['nome']; ?></option>
@@ -211,13 +211,13 @@
             <div class="control-group">
                 <label class="control-label" for="formapgto">Forma de Pagamento:</label>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="1">À vista</label>
+                    <label><input type="checkbox" value="1" disabled="">À vista</label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="2">Financiamento Caixa</label>
+                    <label><input type="checkbox" value="2" disabled="">Financiamento Caixa</label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="3">Financiamento Particular</label>
+                    <label><input type="checkbox" value="3" disabled="">Financiamento Particular</label>
                 </div>
 
             </div>
@@ -236,10 +236,10 @@
             <div class="control-group">
                 <label class="control-label" for="formapgto">Forma de Pagamento:</label>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="1">Deposito</label>
+                    <label><input type="checkbox" value="1" disabled="">Deposito</label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="2">Pessoalmente</label>
+                    <label><input type="checkbox" value="2" disabled="">Pessoalmente</label>
                 </div>
 
             </div>
@@ -253,7 +253,7 @@
 
 
         <div class="form-group">
-            <label for="arquivo">Adicionar Fotos do Imóvel:</label>
+            <label for="arquivo">OPCIONAL - Adicionar Fotos do Imóvel:</label>
             <input name="arquivo[]" type="file"  multiple="">
 
         </div>

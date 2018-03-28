@@ -7,13 +7,13 @@ class estado extends model {
         
         public function verificarEstado( $nome){
             try {
-                   $array=array();
+                
           $sql = "SELECT * FROM estados WHERE  nome='".$nome."'";
        
          $sql= $this->db->query($sql);
         if($sql->rowCount()>0){
-            $array=$sql->fetch();
-            
+           $sql->fetch();
+           return $id=['id'];
            
         }else{
            $sql = "INSERT INTO estados SET nome='".$nome."' ";
@@ -23,7 +23,7 @@ class estado extends model {
             return $id;
         }
         }
-         return $array;
+         
             } catch (Exception $ex) {
                 echo "Falhou:".$ex->getMessage();
             }

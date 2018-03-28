@@ -3,18 +3,19 @@
 
 class imovel extends model {
     
-    public function cadastrarImovel ($tipo_imovel, $dormitorio, $suite, $garagem,$id_endereco, $id){
+    public function cadastrarImovel ($id_cliente,$tipo_imovel, $dormitorio, $suite, $garagem, $id_endereco,$numero,$complemento,$cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal,$valorimovel){
       
         
-        $sql = "SELECT * FROM clientes WHERE id'".$id."'";
+       $sql = "SELECT * FROM clientes WHERE id='".$id_cliente."'";
         $sql = $this->db->query($sql);
         if ($sql->rowCount()>0){
           $dados = $sql->fetch();  
-        $id=$dados['id'];
+      $id=$dados['id'];
         
-        
+        /*
        $sql = "INSERT INTO imoveis SET tipo_imovel='".$tipo_imovel."', dormitorio='".$dormitorio."',suite='".$suite."',"
-               . "garagem='".$garagem."',id_endereco='".$id_endereco."' ";
+               . "garagem='".$garagem."',id_endereco='".$id_endereco."', numero='".$numero."', complemento='".$complemento."', cep='".$cep."',valor_aluguel='".$valoraguel."',"
+         * "area_construida='".$areaconstruida."', banheiro='".$banheiro."',area_total='".$areatotal."', valor_imovel='".$valorimovel."'";
        
        $sql = $this->db->query($sql);
         $id = $this->db->lastInsertId();
@@ -22,10 +23,11 @@ class imovel extends model {
           if ($sql->rowCount() > 0) {
             
               return $id;
-                        
+                      
           }else{
               return "Preencha todos os campos!";
-          }
+          }  */
+        
     }
         }
         

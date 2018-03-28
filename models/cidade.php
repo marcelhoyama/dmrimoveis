@@ -1,54 +1,47 @@
 <?php
 
-
 class cidade extends model {
-    
-    
-        
-        public function verificarCidade($id_estado,$nome){
-            try {
-                   $array=array();
-          $sql = "SELECT * FROM cidades WHERE nome='".$nome."'";
-       
-         $sql= $this->db->query($sql);
-        if($sql->rowCount()>0){
-            $array=$sql->fetch();
-            
-           
-        }else{
-            $sql= "INSERT INTO cidades SET nome='".$nome."', id_estado='".$id_estado."' ";
-             $sql= $this->db->query($sql);
-             $id = $this->db->lastInsertId();
-        if($sql->rowCount()>0){
-            return $id;
-        }
-        }
-         return $array;
-            } catch (Exception $ex) {
-                echo "Falhou:".$ex->getMessage();
+
+    public function verificarCidade($id_estado, $cidade) {
+        try {
+
+            $sql2 = "SELECT c.id FROM cidades c JOIN estados e ON c.id_estado = e.id WHERE c.nome='" . $cidade . "' AND c.id_estado='" . $id_estado . "'";
+
+            $sql2 = $this->db->query($sql2);
+            if ($sql2->rowCount() > 0) {
+                $sql2->fetch();
+                return $id = ['id'];
+            } else {
+                $sql3 = "INSERT INTO cidades SET nome='" . $cidade . "', id_estado='" . $id_estado . "' ";
+                $sql3 = $this->db->query($sql3);
+                $id_cidade = $this->db->lastInsertId();
+                if ($sql3->rowCount() > 0) {
+
+                    $sql3 = "INSERT INTO bairro_tem_cidade SET id_cidade='" . $id_cidade . "'";
+                    $sql3 = $this->db->query($sql3);
+                    $id = $this->db->lastInsertId();
+                    if ($sql3->rowCount() > 0) {
+                        return $id = ['id'];
+                    }
+                }
             }
-         
+        } catch (Exception $ex) {
+            echo "Falhou:" . $ex->getMessage();
         }
-        
-        
-        public function listCidade(){
-            try{
-                $array=array();
-                 $sql = "SELECT * FROM cidades ";
+    }
+
+    public function listCidade() {
+        try {
+            $array = array();
+            $sql = "SELECT * FROM cidades ";
             $sql = $this->db->query($sql);
-            if($sql->rowCount() > 0){
+            if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
             }
             return $array;
-            } catch (Exception $ex) {
-                echo 'Falhou:'.$ex->getMessage();
-                        
-            }
-           
-        
-       
+        } catch (Exception $ex) {
+            echo 'Falhou:' . $ex->getMessage();
+        }
     }
-       
+
 }
-
-
