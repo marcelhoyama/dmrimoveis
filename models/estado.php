@@ -8,15 +8,17 @@ class estado extends model {
         public function verificarEstado( $nome){
             try {
                 
-          $sql = "SELECT * FROM estados WHERE  nome='".$nome."'";
+         $sql = "SELECT * FROM estados WHERE  nome='$nome'";
        
          $sql= $this->db->query($sql);
         if($sql->rowCount()>0){
-           $sql->fetch();
-           return $id=['id'];
+           $sql=$sql->fetch();
+            
+           return $sql['id'];
            
+                     
         }else{
-           $sql = "INSERT INTO estados SET nome='".$nome."' ";
+          $sql = "INSERT INTO estados SET nome='".$nome."' ";
             $sql= $this->db->query($sql);
             $id = $this->db->lastInsertId();
         if($sql->rowCount()>0){

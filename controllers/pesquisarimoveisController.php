@@ -17,8 +17,12 @@ class pesquisarimoveisController extends controller{
              
             
             
-            $tipo = addslashes($_GET['pesquisar']);
-          $dados['lista']= $i->listarImoveis($tipo);
+            $nome = addslashes($_GET['pesquisar']);
+          $dados['lista']= $i->pesquisarImovelClienteNome($nome);
+          foreach ($dados['lista'] as $value) {
+              $id_imovel=$value['id_imovel'];
+          }
+          echo $id_imovel;
         }else{
               
               $pesquisa='';

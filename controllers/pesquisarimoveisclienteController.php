@@ -16,6 +16,9 @@ class pesquisarimoveisclienteController extends controller{
              $id= addslashes($_GET['id']);
              $dados['nome']=$c->getNome($id);
              $dados['imoveis'] =$i->pesquisarImovelCliente($id);
+             
+             
+              $dados['item'] =$i->itemImovel($id);
             
          }
         if (isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])){

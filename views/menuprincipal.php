@@ -19,7 +19,7 @@
     <div class="col-sm-2">
         <div class="thumbnail">
            <a href="<?php BASE_URL; ?>pesquisarclientes">
-        <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/editarusuario.png" alt="editar cliente imoveis em cabreuva" width="128" height="128">
+        <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/pesquisarusuario.png" alt="editar cliente imoveis em cabreuva" width="128" height="128">
     </a>
         </div>
     </div>
