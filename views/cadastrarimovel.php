@@ -187,6 +187,7 @@
                 <option>Kitnet</option>
                 <option>Galpão</option>
                 <option>Terreno</option>
+                
             </select> 
         </div>
         <div class="form-group col-sm-4">
@@ -214,7 +215,7 @@
                     <label><input type="checkbox" value="1" disabled="">À vista</label>
                 </div>
                 <div class="checkbox">
-                    <label><input type="checkbox" value="2" disabled="">Financiamento Caixa</label>
+                    <label><input type="checkbox" value="2" disabled="">Financiamento Banco</label>
                 </div>
                 <div class="checkbox">
                     <label><input type="checkbox" value="3" disabled="">Financiamento Particular</label>
@@ -246,8 +247,9 @@
         </div>
         <div class="panel panel-info">
             <div class="panel-heading"> <h1 class="panel-title text-center">Documentação do Imóvel</h1></div>
+            
             <div class="panel-body">
-                
+                <textarea class="form-control" type="text" name="documentacaoimovel"></textarea>
             </div>
         </div>
 

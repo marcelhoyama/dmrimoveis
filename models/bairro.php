@@ -40,7 +40,7 @@ class bairro extends model {
     public function listBairro() {
         try {
             $array = array();
-            $sql = "SELECT * FROM bairros ";
+            $sql = "SELECT nome FROM bairros ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();

@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <a class="btn btn-default" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
     <center><h2>Procurar Clientes para suas Ações:</h2></center>
-    *Somente quem tem o imovel cadastrado no sistema
+    
     <form method="GET" >
     <div class="input-group">
         <input type="search" class="form-control" name="pesquisar" >

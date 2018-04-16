@@ -2,7 +2,7 @@
 
 class imovel extends model {
 
-    public function cadastrarImovel($id_cliente, $tipo_imovel, $dormitorio, $suite, $garagem, $id_endereco, $numero, $complemento, $cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal, $valorimovel) {
+    public function cadastrarImovel($id_cliente, $tipo_imovel, $dormitorio, $suite, $garagem, $id_endereco, $numero, $complemento, $cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal, $valorimovel, $documentacao) {
 
 
         $sql = "SELECT * FROM clientes WHERE id='" . $id_cliente . "'";
@@ -23,7 +23,8 @@ class imovel extends model {
                     . "area_construida='" . $areaconstruida . "',"
                     . "banheiro='" . $banheiro . "',"
                     . "area_total='" . $areatotal . "',"
-                    . "valor_imovel='" . $valorimovel . "'";
+                    . "valor_imovel='" . $valorimovel . "'"
+                    . "documentacao='".$documentacao."'";
 
             $sql = $this->db->query($sql);
             $id = $this->db->lastInsertId();
@@ -156,14 +157,131 @@ class imovel extends model {
         }
     }
 
+    
+    // busca publica do site-----------------
      public function buscarImovel($tipo_imovel, $dormitorio, $suite, $garagem, $valor, $area_construida, $bairro, $cidade) {
         try {
+            $array=array();
             $sql = "SELECT * FROM imoveis endereco WHERE tipo_imovel and dormitorio and suite and garagem and valor and area_construida";
-        } catch (Exception $ex) {
-            
+       $sql= $this->db->query($sql);
+       if($sql->rowCount()>0){
+           $array=$sql->fetchAll();
+       }else{
+           return "Nada encontrado!";
+       }
+            } catch (Exception $ex) {
+            echo "Falhou:".$ex->getMessage();
         }
-    }
+     }
+       
+        public function listDormitorio(){
+            try{
+                $array=array();
+                $sql="SELECT dormitorio FROM imoveis";
+                $sql = $this->db->query($sql);
+                if($sql->rowCount() >0){
+                    $array =$sql->fetchAll();
+                }
+                return $array;
+            } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+            }
+        }
+                
     
+    public function listSuite(){
+            try{
+                $array=array();
+                $sql="SELECT suite FROM imoveis";
+                $sql = $this->db->query($sql);
+                if($sql->rowCount() >0){
+                    $array =$sql->fetchAll();
+                    
+                }
+                return $array;
+            } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+            }
+        }
+          public function listBanheiro(){
+            try{
+                $array=array();
+                $sql="SELECT banheiro FROM imoveis";
+                $sql = $this->db->query($sql);
+                if($sql->rowCount() >0){
+                    $array =$sql->fetchAll();
+                }
+                return $array;
+            } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+            }
+        }
     
+     public function listGaragem(){
+            try{
+                $array=array();
+                $sql="SELECT garagem FROM imoveis";
+                $sql = $this->db->query($sql);
+                if($sql->rowCount() >0){
+                    $array =$sql->fetchAll();
+                }
+                return $array;
+            } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+            }
+        }
    
+         public function listTotal(){
+            try{
+                $array=array();
+                $sql="SELECT area_total FROM imoveis";
+                $sql = $this->db->query($sql);
+                if($sql->rowCount() >0){
+                    $array =$sql->fetchAll();
+                }
+                return $array;
+            } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+            }
+        }
+         public function listAreaconstruida(){
+            try{
+                $array=array();
+                $sql="SELECT area_construida FROM imoveis";
+                $sql = $this->db->query($sql);
+                if($sql->rowCount() >0){
+                    $array =$sql->fetchAll();
+                }
+                return $array;
+            } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+            }
+        }
+         public function listValorimovel(){
+            try{
+                $array=array();
+                $sql="SELECT valor_imovel FROM imoveis";
+                $sql = $this->db->query($sql);
+                if($sql->rowCount() >0){
+                    $array =$sql->fetchAll();
+                }
+                return $array;
+            } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+            }
+        }
+        
+         public function listAluguel(){
+            try{
+                $array=array();
+                $sql="SELECT valor_aluguel FROM imoveis";
+                $sql = $this->db->query($sql);
+                if($sql->rowCount() >0){
+                    $array =$sql->fetchAll();
+                }
+                return $array;
+            } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+            }
+        }
 }

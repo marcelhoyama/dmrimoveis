@@ -19,205 +19,238 @@
 <meta property="og:description" content="Imóveis em Cabreúva - Procurando por um imóvel em Cabreúva? Encontre ótimas oportunidades de imóveis para venda ou Locação em nosso site. Confira!" />
 <meta property="og:image" content="" />
 <div class="container-fluid">
-    
+
     <img src="<?php BASE_URL; ?>assets/images/banner.png" width="100%" alt="dmr-imoveis-em-cabreuva " height="100%"/>
     <figcaption id="texto1">Danilo </figcaption>
     <figcaption id="texto2">Marcel </figcaption>
     <figcaption id="texto3">Rony </figcaption>
-       <figcaption id="texto4"> 
-           <div id="busca">
-           <div class="row">
-                        <div class="col-sm-3">
-                            <div class="input-group">
-                                <div class="input-group-btn">
-                
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Cidade
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-   
-    <li><a href="#">Cabreúva</a></li>
-    <li><a href="#">Itupeva</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
+    <figcaption id="texto4"> 
+        <div id="busca">
+            <div class="row">
+                <div class="col-sm-4">
 
-                                    </div>
-                                <input type="text" class="form-control" arial-label="...">
-                                </div>
-                            </div>
+
+
+                    <label class="label label-info">Cidade</label>
+
+                    <select class="form-control" name="cidade">
+                        <option></option>
+                     <?php foreach ($viewData['listCidade'] as $value): { ?>
+                             <option value="<?php echo $value['nome']?>"> <?php echo $value['nome'] ?></option>
                         
-                    
-                 
-                    
-                        <div class="col-sm-3">
-                            <div class="input-group">
-                                <div class="input-group-btn">
-                
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Bairro
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-       <li><a href="#">Jacaré</a></li>
-    <li><a href="#">Centro</a></li>
-    <li><a href="#">Bonfim</a></li>
-    <li><a href="#">Novo Bonfim</a></li>
-     <li><a href="#">Colina</a></li>
-      <li><a href="#">Vilarejo</a></li>
-       <li><a href="#">Pinhal</a></li>
-        <li><a href="#">Parque Santo Antonio</a></li>
-         <li><a href="#">Vale Verde</a></li>
-          <li><a href="#">Bananal</a></li>
-           <li><a href="#">Cai</a></li>
-            <li><a href="#">Jardim Alice</a></li>
-             <li><a href="#">Cururu</a></li>
-  </ul>
-  </ul>
+                      <?php  } endforeach;?>
+                       
 
-                                    </div>
-                                <input type="text" class="form-control" arial-label="...">
-                                </div>
-                            </div>
+
+                    </select>
+
+
+
+
+                </div>
+
+
+
+
+                <div class="col-sm-4">
+
+
+                    <label class = "label label-info">Bairro</label>
+
+                    <select class="form-control" name="bairro">
+                        <option value="#"></option>
+                        <?php foreach ($viewData['listBairro'] as $value): { ?>
+                             <option value="<?php echo $value['nome']?>"> <?php echo $value['nome'] ?></option>
                         
-                    
-                 
-                  
-                        <div class="col-sm-3">
-                            <div class="input-group">
-                                <div class="input-group-btn">
-                
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Dormitório
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a value="01 Dormitórios">01 Dormitórios</a></li>
-    <li><a href="#">02 Dormitórios</a></li>
-    <li><a href="#">03 Dormitórios</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">04 ou Mais Dormitórios</a></li>
-  </ul>
+                      <?php  } endforeach;?>
+                    </select>
 
-                                    </div>
-                                <input type="text" class="form-control" arial-label="..." value="01">
-                                </div>
-                            </div>
+
+                </div>
+
+
+
+
+                <div class="col-sm-4">
+
+
+
+                    <label class="label label-info">Dormitório</label>
+                    <select class="form-control" name="dormitorio">
+                        <option></option>
+                      <?php foreach ($viewData['listDormitorio'] as $value): { ?>
+                             <option value="<?php echo $value['dormitorio']?>"> <?php echo $value['dormitorio'] ?></option>
                         
-                        <div class="col-sm-3">
-                            <div class="input-group">
-                                <div class="input-group-btn">
-                
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Suites
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a href="#">01 Suite</a></li>
-    <li><a href="#">02 Suites</a></li>
-    <li><a href="#">03 Suites</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">04 ou mais Suites</a></li>
-  </ul>
+                      <?php  } endforeach;?>
+                    </select>
 
-                                    </div>
-                                <input type="text" class="form-control" arial-label="...">
-                                </div>
-                            </div>
-                        </div>
-                <br>
-                
-                           <div class="row">
-                        <div class="col-sm-3">
-                            <div class="input-group">
-                                <div class="input-group-btn">
-                
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Garagem
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-   
-    <li><a href="#">01 vaga</a></li>
-    <li><a href="#">02 vagas</a></li>
-    <li><a href="#">03 vagas</a></li>
-    <li role="separator" class="divider"></li>
-    <li><a href="#">04 ou mais vagas</a></li>
-  </ul>
 
-                                    </div>
-                                <input type="text" class="form-control" arial-label="...">
-                                </div>
-                            </div>
+
+
+                </div>
+
+                <div class="col-sm-4">
+
+
+
+                    <label class='label label-info'>Suite</label>
+                    <select class="form-control" name="suite">
+                        <option></option>
+                         <?php foreach ($viewData['listSuite'] as $value): { ?>
+                             <option value="<?php echo $value['suite']?>"> <?php echo $value['suite'] ?></option>
                         
-                    
-                 
-                    
-                        <div class="col-sm-3">
-                            <div class="input-group">
-                                <div class="input-group-btn">
-                
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Area Construida
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-       <li><a href="#">menos de 125m²</a></li>
-    <li><a href="#">125m²</a></li>
-    <li><a href="#">200m²</a></li>
-    <li><a href="#">300m²</a></li>
-    <li role="separador" class="divider"></li>
-     <li><a href="#">500m² ou mais</a></li>
-      
-  </ul>
+                      <?php  } endforeach;?>
+                    </select>
 
-                                    </div>
-                                <input type="text" class="form-control" arial-label="...">
-                                </div>
-                            </div>
+
+
+
+                </div>
+
+
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-sm-4">
+
+
+
+                    <label class='label label-info'>Banheiro</label>
+                    <select class="form-control" name="banheiro">
+                        <option></option>
+              <?php foreach ($viewData['listBanheiro'] as  $value): { ?>
+                             <option value="<?php echo $value['banheiro']?>"> <?php echo $value['banheiro'] ?></option>
                         
-                    
-                 
-                  
-                        <div class="col-sm-3">
-                            <div class="input-group">
-                                <div class="input-group-btn">
-                
-  <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Corretor
-    <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu">
-    <li><a value="01 Dormitórios">01 </a></li>
-    <li><a href="#">02</a></li>
-    <li><a href="#">03</a></li>
-   
-  </ul>
+                      <?php  } endforeach;?>   </select>
 
-                                    </div>
-                                <input type="text" class="form-control" arial-label="..." value="">
-                                </div>
-                            </div>
+
+
+
+                </div>
+                <div class="col-sm-4">
+
+
+
+                    <label class="label label-info">Garagem</label>
+                    <select class="form-control" name="garagem">
+                        <option></option>
+               <?php foreach ($viewData['listGaragem'] as  $value): { ?>
+                             <option value="<?php echo $value['garagem']?>"> <?php echo $value['garagem'] ?></option>
                         
-                        <div class="col-sm-3">
-                           
-                
-  <button class="btn btn-success" type="button">
-    Buscar
-  
-  </button>
-  
+                      <?php  } endforeach;?> 
+                    </select>
 
-                                    
-                            </div>
-                        </div>
-                
-                  </figcaption>
+
+                </div>
+
+
+
+
+                <div class="col-sm-4">
+
+
+
+
+
+
+                    <label class="label label-info">Area Construida</label>
+                    <select class="form-control" name="area_construida">
+                        <option></option>
+                        <?php foreach ($viewData['listAreaConstruida'] as  $value): { ?>
+                             <option value="<?php echo $value['area_construida']?>"> <?php echo $value['area_construida'].'m²' ?></option>
+                        
+                      <?php  } endforeach;?> 
+
+                    </select>
+
+                </div>
+
+
+
+
+                <div class="col-sm-4">
+
+
+
+                    <label class="label label-info" >
+                        Area Total
+
+                    </label>
+
+
+                    <select class="form-control" name="areatotal">
+                        <option ></option>
+                         <?php foreach ($viewData['listTotal'] as  $value): { ?>
+                             <option value="<?php echo $value['area_total']?>"> <?php echo $value['area_total'].' m²' ?></option>
+                        
+                      <?php  } endforeach;?> 
+
+                    </select>
+
+                </div>
+
+ <div class="col-sm-4">
+
+
+
+                    <label class="label label-info" >
+                        Valor de Aluguel
+
+                    </label>
+
+
+                    <select class="form-control" name="valor">
+                        <option> </option>
+                        <?php foreach ($viewData['listAluguel'] as  $value): { ?>
+                             <option value="<?php echo $value['valor_aluguel']?>"> <?php echo 'R$'.$value['valor_aluguel'] ?></option>
+                        
+                      <?php  } endforeach;?> 
+                    </select>
+
+                </div>
+
+                <div class="col-sm-4">
+
+
+
+                    <label class="label label-info" >
+                        Valor do Imovel
+
+                    </label>
+
+
+                    <select class="form-control" name="valor">
+                        <option> </option>
+                        <?php foreach ($viewData['listValorimovel'] as  $value): { ?>
+                             <option value="<?php echo $value['valor_imovel']?>"> <?php echo 'R$'.$value['valor_imovel'] ?></option>
+                        
+                      <?php  } endforeach;?> 
+                    </select>
+
+                </div>
+
+            </div>
+            </div>
+            
+            <br>
+            <div class="col-sm-3">
+
+
+                <button class="btn btn-default" type="button">
+                    Buscar
+
+                </button>
+
+
+
+            </div>
+
+    </figcaption>
 </div>
 </div>
-     
-    
+
+
 <br>
 
 <div  id="my-pics" class="carousel slide" data-ride="carousel">
@@ -225,138 +258,138 @@
         <li data-target="my-pics" data-slide-to="0" class="active"></li>
         <li data-target="my-pics" data-slide-to="1"></li>
         <li data-target="my-pics" data-slide-to="2"></li>
-     </ol>
-<div class="carousel-inner" role="listbox">
-    <div class="item active">
-    <div class="row" >
-    <div class="col-xs-12 col-sm-3">
-        <div class="thumbnail ">
-            <a  href="<?php BASE_URL; ?>todos">    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid"></a>
-        <div class="caption">
-        <h3>Galpão</h3>
-        <p><h3>Aluga</h3> </p>
-        <p><a  href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button"> Ver mais...</a></p>
-      </div>
-           
-    </div>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active">
+            <div class="row" >
+                <div class="col-xs-12 col-sm-3">
+                    <div class="thumbnail ">
+                        <a  href="<?php BASE_URL; ?>todos">    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid"></a>
+                        <div class="caption">
+                            <h3>Galpão</h3>
+                            <p><h3>Aluga</h3> </p>
+                            <p><a  href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button"> Ver mais...</a></p>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="thumbnail">
+                        <a href="<?php BASE_URL; ?>todos">  <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"></a>
+                        <div class="caption">
+                            <h3>Apartamento</h3>
+                            <p><h3>Venda</h3> </p>
+                            <p><a href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button">Ver mais...</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-3">
+                    <div class="thumbnail">
+                        <a href="<?php BASE_URL; ?>todos">     <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"> </a>
+                        <div class="caption">
+                            <h3>Casa no Condominio</h3>
+                            <p><h3>Aluguel</h3> </p>
+                            <p> <a href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button">Ver mais...</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-3">
+                    <div class="thumbnail">
+                        <a href="<?php BASE_URL; ?>minipasteis"><img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif"class="img-rounded img-fluid"></a>
+                        <div class="caption">
+                            <h3>Casa</h3>
+                            <p><h3>Venda</h3> </p>
+                            <p><a href="<?php BASE_URL; ?>minipasteis" class="btn btn-default" role="button">Ver mais...</a></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    <div class="col-xs-12 col-sm-3">
-        <div class="thumbnail">
-            <a href="<?php BASE_URL; ?>todos">  <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"></a>
-    <div class="caption">
-        <h3>Apartamento</h3>
-        <p><h3>Venda</h3> </p>
-        <p><a href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button">Ver mais...</a></p>
-      </div>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-3">
-        <div class="thumbnail">
-            <a href="<?php BASE_URL; ?>todos">     <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"> </a>
-        <div class="caption">
-        <h3>Casa no Condominio</h3>
-        <p><h3>Aluguel</h3> </p>
-        <p> <a href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button">Ver mais...</a></p>
-      </div>
-        </div>
-        </div>
-    
-    <div class="col-xs-12 col-sm-3">
-        <div class="thumbnail">
-            <a href="<?php BASE_URL; ?>minipasteis"><img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif"class="img-rounded img-fluid"></a>
-    <div class="caption">
-        <h3>Casa</h3>
-        <p><h3>Venda</h3> </p>
-        <p><a href="<?php BASE_URL; ?>minipasteis" class="btn btn-default" role="button">Ver mais...</a></p>
-      </div>
+        <div class="item ">
+
+            <div class="col-xs-12 col-sm-3">
+                <div class="thumbnail ">
+                    <a  href="<?php BASE_URL; ?>todos">    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid"></a>
+                    <div class="caption">
+                        <h3>Galpão</h3>
+                        <p><h3>Aluga</h3> </p>
+                        <p><a  href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button"> Ver mais...</a></p>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
 
-    </div>
-    </div>
-      <div class="item ">
-    
-    <div class="col-xs-12 col-sm-3">
-        <div class="thumbnail ">
-            <a  href="<?php BASE_URL; ?>todos">    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid"></a>
-        <div class="caption">
-        <h3>Galpão</h3>
-        <p><h3>Aluga</h3> </p>
-        <p><a  href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button"> Ver mais...</a></p>
-      </div>
-           
-    </div>
-        </div>
-    </div>
-    </div>
 
-    
-<a class="left carousel-control" href="#my-pics" role="button" data-slide="prev">
-    <span class="icon-prev" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-</a>
-<a class="right carousel-control" href="#my-pics" role="button" data-slide="next">
-    <span class="icon-next" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-</a>
-    </div>
-    
+    <a class="left carousel-control" href="#my-pics" role="button" data-slide="prev">
+        <span class="icon-prev" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#my-pics" role="button" data-slide="next">
+        <span class="icon-next" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
 <div class="row" >
     <div class="col-sm-1">
         <div class="thumbnail ">
             <a  href="<?php BASE_URL; ?>todos">    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid"></a>
-        <div class="caption">
-        <h3>Galpão</h3>
-        <p><h3>Aluga</h3> </p>
-        <p><a  href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button"> Ver mais...</a></p>
-      </div>
-           
-    </div>
+            <div class="caption">
+                <h3>Galpão</h3>
+                <p><h3>Aluga</h3> </p>
+                <p><a  href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button"> Ver mais...</a></p>
+            </div>
+
         </div>
-    </div> 
+    </div>
+</div> 
 <div class="row" id="celular" >
     <div class="col-xs-12 col-sm-3">
         <div class="thumbnail ">
             <a  href="<?php BASE_URL; ?>todos">    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid"></a>
-        <div class="caption">
-        <h3>Galpão</h3>
-        <p><h3>Aluga</h3> </p>
-        <p><a  href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button"> Ver mais...</a></p>
-      </div>
-           
-    </div>
+            <div class="caption">
+                <h3>Galpão</h3>
+                <p><h3>Aluga</h3> </p>
+                <p><a  href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button"> Ver mais...</a></p>
+            </div>
+
         </div>
+    </div>
     <div class="col-xs-12 col-sm-3">
         <div class="thumbnail">
             <a href="<?php BASE_URL; ?>todos">  <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"></a>
-    <div class="caption">
-        <h3>Apartamento</h3>
-        <p><h3>Venda</h3> </p>
-        <p><a href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button">Ver mais...</a></p>
-      </div>
+            <div class="caption">
+                <h3>Apartamento</h3>
+                <p><h3>Venda</h3> </p>
+                <p><a href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button">Ver mais...</a></p>
+            </div>
         </div>
     </div>
     <div class="col-xs-12 col-sm-3">
         <div class="thumbnail">
             <a href="<?php BASE_URL; ?>todos">     <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"> </a>
-        <div class="caption">
-        <h3>Casa no Condominio</h3>
-        <p><h3>Aluguel</h3> </p>
-        <p> <a href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button">Ver mais...</a></p>
-      </div>
-        </div>
-        </div>
-    
-    <div class="col-xs-12 col-sm-3">
-        <div class="thumbnail">
-            <a href="<?php BASE_URL; ?>minipasteis"><img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif"class="img-rounded img-fluid"></a>
-    <div class="caption">
-        <h3>Casa</h3>
-        <p><h3>Venda</h3> </p>
-        <p><a href="<?php BASE_URL; ?>minipasteis" class="btn btn-default" role="button">Ver mais...</a></p>
-      </div>
+            <div class="caption">
+                <h3>Casa no Condominio</h3>
+                <p><h3>Aluguel</h3> </p>
+                <p> <a href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button">Ver mais...</a></p>
+            </div>
         </div>
     </div>
 
+    <div class="col-xs-12 col-sm-3">
+        <div class="thumbnail">
+            <a href="<?php BASE_URL; ?>minipasteis"><img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif"class="img-rounded img-fluid"></a>
+            <div class="caption">
+                <h3>Casa</h3>
+                <p><h3>Venda</h3> </p>
+                <p><a href="<?php BASE_URL; ?>minipasteis" class="btn btn-default" role="button">Ver mais...</a></p>
+            </div>
+        </div>
     </div>
+
+</div>
 

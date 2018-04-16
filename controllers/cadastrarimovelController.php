@@ -72,8 +72,9 @@ class cadastrarimovelController extends controller {
             $areatotal = addslashes($_POST['areatotal']);
             $valorimovel = addslashes($_POST['valorimovel']);
             $valoraluguel = addslashes($_POST['valoraluguel']);
+            $documentacao = addslashes($_POST['documentacaoimovel']);
 
-            $id_imovel = $i->cadastrarImovel($id_cliente, $tipoimovel, $dormitorio, $suite, $garagem, $id_endereco, $numero, $complemento, $cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal, $valorimovel);
+            $id_imovel = $i->cadastrarImovel($id_cliente, $tipoimovel, $dormitorio, $suite, $garagem, $id_endereco, $numero, $complemento, $cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal, $valorimovel, $documentacao);
         }
 
         if (isset($_POST['descricao']) && !empty($_POST['descricao'])) {
