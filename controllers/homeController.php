@@ -12,8 +12,10 @@ class homeController extends controller{
         $dados = array('erro'=>'');
 $i = new imovel();
         if(isset($_POST['cidade']) && !empty($_POST['cidade'])){
-           
-        $i->buscarImovel($tipo_imovel, $dormitorio, $suite, $garagem, $valor, $area_construida, $areatotal, $bairro, $cidade);
+           $dormitorio= addslashes($_POST['dormitorio']);
+          echo  $cidade= addslashes($_POST['cidade']);
+        exit;
+          $i->buscarImovel($tipo_imovel, $dormitorio, $suite, $garagem, $valor, $area_construida, $areatotal, $bairro, $cidade);
             
         }
         

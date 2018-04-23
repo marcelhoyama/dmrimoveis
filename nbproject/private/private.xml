@@ -3,20 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/menuprincipalController.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/views/pesquisarimoveiscliente.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/cadastrarimovelController.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/models/imovel.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/views/menuprincipal.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/views/pesquisarimoveis.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/models/cliente.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/views/pesquisarclientes.php</file>
             <file>file:/C:/xampp/htdocs/ronyImoveis/views/home.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/pesquisarimoveisclienteController.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/views/vendasresidencial.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/cadastrarimovelController.php</file>
             <file>file:/C:/xampp/htdocs/ronyImoveis/views/cadastrarimovel.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/views/todos.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/assets/css/style.css</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/models/imovel.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/models/bairro.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/homeController.php</file>
         </group>
     </open-files>
 </project-private>

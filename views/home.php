@@ -236,11 +236,9 @@
             <br>
             <div class="col-sm-3">
 
+ <input type="submit" class="btn btn-primary" value="Buscar">
 
-                <button class="btn btn-default" type="button">
-                    Buscar
-
-                </button>
+             
 
 
 

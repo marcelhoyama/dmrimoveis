@@ -2,7 +2,8 @@
 
 class imovel extends model {
 
-    public function cadastrarImovel($id_cliente, $tipo_imovel, $dormitorio, $suite, $garagem, $id_endereco, $numero, $complemento, $cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal, $valorimovel, $documentacao) {
+    public function cadastrarImovel($id_cliente, $tipo_imovel, $dormitorio, $suite, $garagem,
+            $id_endereco, $numero, $complemento, $cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal, $valorimovel, $documentacao) {
 
 
         $sql = "SELECT * FROM clientes WHERE id='" . $id_cliente . "'";
@@ -23,7 +24,7 @@ class imovel extends model {
                     . "area_construida='" . $areaconstruida . "',"
                     . "banheiro='" . $banheiro . "',"
                     . "area_total='" . $areatotal . "',"
-                    . "valor_imovel='" . $valorimovel . "'"
+                    . "valor_imovel='" . $valorimovel . "',"
                     . "documentacao='".$documentacao."'";
 
             $sql = $this->db->query($sql);
@@ -162,7 +163,7 @@ class imovel extends model {
      public function buscarImovel($tipo_imovel, $dormitorio, $suite, $garagem, $valor, $area_construida, $bairro, $cidade) {
         try {
             $array=array();
-            $sql = "SELECT * FROM imoveis endereco WHERE tipo_imovel and dormitorio and suite and garagem and valor and area_construida";
+            $sql = "SELECT * FROM imoveis endereco WHERE tipo_imovel='$tipo_imovel' OR dormitorio='$dormitorio' OR suite='$suite' OR garagem='$garagem' OR valor='$valor' OR area_construida='$area_construida' OR cidade='$cidade'";
        $sql= $this->db->query($sql);
        if($sql->rowCount()>0){
            $array=$sql->fetchAll();
