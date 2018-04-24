@@ -1,6 +1,6 @@
 <?php
 
-class menuprincipallogadoController extends controller{
+class menuprincipalclienteController extends controller{
 
 
  public function __construct(){
@@ -22,7 +22,7 @@ class menuprincipallogadoController extends controller{
          
          
            
-        $this->loadTemplate('menuprincipallogado', $dados);
+        $this->loadTemplate('menuprincipalcliente', $dados);
     }
     
     

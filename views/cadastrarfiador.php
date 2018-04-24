@@ -1,8 +1,8 @@
 
-<title>Cadastrar Inquilino</title>
+<title>Cadastrar Fiador</title>
 <div class="container-fluid">
     <a class="btn btn-default" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
-    <h2 class="text-center">Cadastro de Inquilino</h2></br>
+    <h2 class="text-center">Cadastro de Fiador</h2></br>
 
     <form class="form-group-sm" method="POST">
           <div class="form-group">

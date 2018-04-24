@@ -48,7 +48,7 @@
                 <td><?php echo $value['email'] ?></td>
                 <td><span class="badge"><?php echo $value['totalimovel'] ?></span></td>
                 <td><a href="<?php BASE_URL;?>editarclientes?id=<?php echo $value['id'];?> "><button class="btn btn-warning">Editar</button></a>
-                    <a href="<?php BASE_URL; ?>menuprincipallogado?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Menu do Cliente</button></a>
+                    <a href="<?php BASE_URL; ?>menuprincipalcliente?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Menu do Cliente</button></a>
                <a href="<?php BASE_URL; ?>cadastrarimovel?id=<?php echo $value['id'];?>"><button class="btn btn-primary">+ Imóvel</button></a>
               
                 </td>

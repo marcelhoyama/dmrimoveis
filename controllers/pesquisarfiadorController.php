@@ -1,6 +1,6 @@
 <?php
 
-class pesquisarinquilinoController extends controller{
+class pesquisarfiadorController extends controller{
 
 
  public function __construct(){
@@ -12,10 +12,10 @@ class pesquisarinquilinoController extends controller{
          $dados = array('erro'=>'');
         if (isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])){
              
-            $i = new inquilino();
+            $i = new fiador();
             
             $pesquisa = addslashes($_GET['pesquisar']);
-          $dados['lista']= $i->getListInquilino($pesquisa);
+          $dados['lista']= $i->getListFiador($pesquisa);
            foreach ($dados['lista'] as $value) {
             $id=$value['id'];
             
@@ -23,9 +23,9 @@ class pesquisarinquilinoController extends controller{
         $dados['total_imovel']=$i->totalImovel($id);
         
         }else{
-              $i = new inquilino();
+              $i = new fiador();
               $pesquisa='';
-        $dados['lista']=$i->getListInquilino($pesquisa);
+        $dados['lista']=$i->getListFiador($pesquisa);
        
        
         
@@ -38,7 +38,7 @@ class pesquisarinquilinoController extends controller{
            
          
            
-        $this->loadTemplate('pesquisarinquilino', $dados);
+        $this->loadTemplate('pesquisarfiador', $dados);
     }
     
     

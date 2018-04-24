@@ -1,9 +1,9 @@
 <?php
 
-class inquilino extends model {
+class fiador extends model {
 
-public function cadastroInquilino( $rg, $cpf, $nome, $email, $telefone, $telefone2){
-$sql = "INSERT INTO inquilinos SET nome='".$nome."', email='".$email."',telefone='".$telefone."',telefone2='".$telefone2."',cpf='".$cpf."',rg='$rg' ";
+public function cadastroFiador( $rg, $cpf, $nome, $email, $telefone, $telefone2){
+$sql = "INSERT INTO fiadores SET nome='".$nome."', email='".$email."',telefone='".$telefone."',telefone2='".$telefone2."',cpf='".$cpf."',rg='$rg' ";
 
 $sql = $this->db->query($sql);
 $_SESSION['id'] = $this->db->lastInsertId();
@@ -21,16 +21,16 @@ exit;
 }
 
 
-public function editarInquilino ($nome, $telefone, $telefone2, $email, $id){
+public function editarFiador ($nome, $telefone, $telefone2, $email, $id){
 try{
-$sql = "UPDATE inquilinos SET nome='".$nome."', email='".$email."',telefone='".$telefone."', telefone2='".$telefone2."' WHERE id='".$id."'";
+$sql = "UPDATE fiadores SET nome='".$nome."', email='".$email."',telefone='".$telefone."', telefone2='".$telefone2."' WHERE id='".$id."'";
 
 $sql = $this->db->query($sql);
 
 
 if ($sql->rowCount() > 0) {
 
-header("Location:".BASE_URL."pesquisarinquilino");
+header("Location:".BASE_URL."pesquisarfiador");
 
 }else{
 return "Preencha todos os campos!";
@@ -49,7 +49,7 @@ echo "Falhou".$ex->getMessage();
 
 public function verificarExistente ($cpf){
 try{
-$sql = "SELECT * FROM clientes WHERE cpf = '".$cpf."' ";
+$sql = "SELECT * FROM fiadores WHERE cpf = '".$cpf."' ";
 $sql = $this->db->query($sql);
 if($sql->rowCount()>0){
 
@@ -86,11 +86,11 @@ return $row;
 
 
 }
-public function getListInquilino ($pesquisa){
+public function getListFiador ($pesquisa){
 $array = array();
 
 if(!empty($pesquisa)){
-$sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel,d.item FROM inquilino c "
+$sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel,d.item FROM fiadores c "
 
     ."LEFT JOIN imoveis i "
 
@@ -114,7 +114,7 @@ $sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COU
          public function getNome($id){
            $nome=array();
              if(!empty($id)){
-            $sql = "SELECT * FROM clientes WHERE id ='".$id."'";
+            $sql = "SELECT * FROM fiadores WHERE id ='".$id."'";
             $sql = $this->db->query($sql);
             if($sql->rowCount() > 0){
                $nome = $sql->fetchAll();
