@@ -10,7 +10,7 @@
             <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros">
         </div>
         <div class="form-group">
-            <label for="nome">RG:</label>
+            <label for="rg">RG:</label>
             <input name="rg" type="text" class="form-control" id="nome" placeholder="digite seu RG">
         </div>
         <div class="form-group">

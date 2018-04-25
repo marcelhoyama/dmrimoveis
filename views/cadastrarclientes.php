@@ -10,13 +10,13 @@
             <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros">
         </div>
         <div class="form-group">
-            <label for="nome">Nome:</label>
+            <label for="nome">Nome*:</label>
             <input name="nome" type="text" class="form-control" id="nome" placeholder="digite seu nome completo">
         </div>
         <div class="row" > 
         <div class="form-group col-sm-6">
             
-            <label for="fone">Telefone1:</label>
+            <label for="fone">Telefone1*:</label>
             <input name="telefone" type="text" class="form-control" id="fone" placeholder="telefone de contato 1">
         </div>
           <div class="form-group col-sm-6">

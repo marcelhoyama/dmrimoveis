@@ -20,7 +20,7 @@ class pesquisarfiadorController extends controller{
             $id=$value['id'];
             
         }
-        $dados['total_imovel']=$i->totalImovel($id);
+        
         
         }else{
               $i = new fiador();

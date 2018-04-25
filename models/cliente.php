@@ -90,7 +90,7 @@ public function getListCliente ($pesquisa){
 $array = array();
 
 if(!empty($pesquisa)){
-$sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel,d.item FROM clientes c "
+$sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel,d.* FROM clientes c "
 
     ."LEFT JOIN imoveis i "
 

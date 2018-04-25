@@ -1,5 +1,5 @@
 
-<title>Editar Fiador - DMR Imóveis - Negócios Imobiliários em Cabreúva</title>
+<title>Editar Fiador </title>
 <div class="container-fluid">
     <?php     $value = $viewData['dadosFiador']; ?> 
     <h2 class="text-center h2 label-info">Editar Dados do Fiador: <?php echo $value['nome'];?></h2></br>
@@ -14,21 +14,23 @@
          <div class="form-group">
               
               
-            <label for="rg">RG*:</label>
-            <input name="rg" type="text" class="form-control" value="<?php echo $value['rg']; ?>" disabled="">
+            <label for="rg">RG:</label>
+            <input name="rg" type="text" class="form-control" value="<?php echo $value['rg']; ?>" >
         </div>
         <div class="form-group">
-            <label for="nome">Nome:</label>
+            <label for="nome">Nome:</label><label class="text-danger"> campo obrigatório!</label>
+
             <input name="nome" type="text" class="form-control" id="nome" value="<?php echo $value['nome']; ?>">
         </div>
         <div class="row">
         <div class="form-group col-sm-6">
-            <label for="fone">Telefone:</label>
-            <input name="telefone" type="text" class="form-control" id="fone" value="<?php echo $value['telefone']; ?>">
+            <label for="fone">Telefone:</label><label class="text-danger"> campo obrigatório!</label>
+
+            <input name="telefone" type="tel" class="form-control" id="fone" value="<?php echo $value['telefone']; ?>">
         </div>
         <div class="form-group col-sm-6">
             <label for="fone">Telefone:</label>
-            <input name="telefone2" type="text" class="form-control" id="fone" value="<?php echo $value['telefone2']; ?>">
+            <input name="telefone2" type="tel" class="form-control" id="fone" value="<?php echo $value['telefone2']; ?>">
         </div>
         </div>
         <div class="form-group">
@@ -44,7 +46,7 @@
 
 
        
-            <a class="btn btn-warning" href="<?php BASE_URL; ?>pesquisarinquilino"> Voltar</a>
+            <a class="btn btn-warning" href="<?php BASE_URL; ?>menuprincipalfiador"> Voltar</a>
 
         </div>
         <div class="danger">

@@ -11,8 +11,8 @@ $_SESSION['id'] = $this->db->lastInsertId();
 if ($sql->rowCount()>0) {
 
 
-header("Location:" .BASE_URL. "menuprincipal");
-return "Cadastrado com sucesso!";
+header("Location:" .BASE_URL. "menuprincipalinquilino?id=".$_SESSION['id']);
+//return "Cadastrado com sucesso!";
 }else{
 return "Não foi possivel fazer o cadastro! Veja se todos os campos estão Preenchidos corretamente!";
 }
@@ -21,9 +21,9 @@ exit;
 }
 
 
-public function editarInquilino ($nome, $telefone, $telefone2, $email, $id){
+public function editarInquilino ($rg, $nome, $telefone, $telefone2, $email, $id){
 try{
-$sql = "UPDATE inquilinos SET nome='".$nome."', email='".$email."',telefone='".$telefone."', telefone2='".$telefone2."' WHERE id='".$id."'";
+$sql = "UPDATE inquilinos SET rg= '".$rg."', nome='".$nome."', email='".$email."',telefone='".$telefone."', telefone2='".$telefone2."' WHERE id='".$id."'";
 
 $sql = $this->db->query($sql);
 
@@ -49,7 +49,7 @@ echo "Falhou".$ex->getMessage();
 
 public function verificarExistente ($cpf){
 try{
-$sql = "SELECT * FROM clientes WHERE cpf = '".$cpf."' ";
+$sql = "SELECT * FROM inquilinos WHERE cpf = '".$cpf."' ";
 $sql = $this->db->query($sql);
 if($sql->rowCount()>0){
 
@@ -72,7 +72,7 @@ echo "Falhou:".$ex->getMessage();
 public function estanoImovel($id){
 
 $row = array();
-$sql = "SELECT COUNT(*)as total FROM inquilinos c JOIN imoveis i on c.id = i.id_inquilino WHERE id_inquilino='".$id."'";
+$sql = "SELECT COUNT(id_imovel)as total FROM inquilinos_imoveis WHERE id_inquilino='".$id."'";
 
 $sql = $this->db->query($sql);
 if($sql->rowCount() > 0){
@@ -90,14 +90,7 @@ public function getListInquilino ($pesquisa){
 $array = array();
 
 if(!empty($pesquisa)){
-$sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel,d.item FROM inquilino c "
-
-    ."LEFT JOIN imoveis i "
-
-    ."ON c.id = i.id_cliente "
-
-    ."LEFT JOIN descricoes d "
-    ."ON i.id = d.id_imovel WHERE nome LIKE'".$pesquisa."%'";
+$sql = "SELECT * FROM inquilinos WHERE nome LIKE'$pesquisa%'";
        
             $sql = $this->db->query($sql);
             if($sql->rowCount() > 0){
@@ -114,7 +107,7 @@ $sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COU
          public function getNome($id){
            $nome=array();
              if(!empty($id)){
-            $sql = "SELECT * FROM clientes WHERE id ='".$id."'";
+            $sql = "SELECT * FROM inquilinos WHERE id ='".$id."'";
             $sql = $this->db->query($sql);
             if($sql->rowCount() > 0){
                $nome = $sql->fetchAll();
@@ -128,17 +121,34 @@ $sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COU
          public function getDados($id){
         $array = array();
         if(!empty($id)){
-            $sql = "SELECT * FROM clientes WHERE id ='".$id."'";
+            $sql = "SELECT * FROM inquilinos WHERE id ='".$id."'";
             $sql = $this->db->query($sql);
             if($sql->rowCount() >0){
                 $array = $sql->FETCH();
                 
             }else{
-                header("Location:".BASE_URL."pesquisarclientes");
+                header("Location:".BASE_URL."menuprincipalinquilino");
             }
             
             return $array;
         }
+    }
+    
+    
+    public function getFiador($id) {
+        $array=array();
+        if(!empty($id)){
+            $sql= "SELECT f.nome FROM inquilinos i JOIN fiadores f ON f.id=f.fiador  WHERE i.id='$id'";
+        $sql=$this->db->query($sql);
+        if ($sql->rowCount() >0){
+            $array=$sql->fetchAll();
+        }else{
+            return "Não tem fiador";
+        }
+            
+        }
+        
+        
     }
     }
 

@@ -20,7 +20,8 @@ class pesquisarinquilinoController extends controller{
             $id=$value['id'];
             
         }
-        $dados['total_imovel']=$i->totalImovel($id);
+        $dados['total_imovel']=$i->estanoImovel($id);
+        //$dados['seufiador']=$i->getFiador($id);
         
         }else{
               $i = new inquilino();

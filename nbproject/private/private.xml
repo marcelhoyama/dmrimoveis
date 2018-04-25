@@ -3,12 +3,34 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/views/home.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/template.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/editarfiadorController.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/models/fiador.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/cadastrarfiadorController.php</file>
             <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/cadastrarimovelController.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/cadastrarfiador.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/menuprincipalfiador.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/menuprincipalinquilinoController.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/menuprincipal.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/models/inquilino.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/pesquisarinquilinoController.php</file>
             <file>file:/C:/xampp/htdocs/ronyImoveis/views/cadastrarimovel.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/editarinquilinoController.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/editarfiador.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/menuprincipalfiadorController.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/cadastrarinquilinoController.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/cadastrarinquilino.php</file>
             <file>file:/C:/xampp/htdocs/ronyImoveis/models/imovel.php</file>
-            <file>file:/C:/xampp/htdocs/ronyImoveis/models/bairro.php</file>
             <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/homeController.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/controllers/pesquisarfiadorController.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/pesquisarinquilino.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/menuprincipalinquilino.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/models/cliente.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/home.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/contato.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/menuprincipalcliente.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/models/bairro.php</file>
+            <file>file:/C:/xampp/htdocs/ronyImoveis/views/editarinquilino.php</file>
         </group>
     </open-files>
 </project-private>

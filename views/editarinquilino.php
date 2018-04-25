@@ -14,8 +14,8 @@
          <div class="form-group">
               
               
-            <label for="rg">RG*:</label>
-            <input name="rg" type="text" class="form-control" value="<?php echo $value['rg']; ?>" disabled="">
+            <label for="rg">RG:</label>
+            <input name="rg" type="text" class="form-control" value="<?php echo $value['rg']; ?>" >
         </div>
         <div class="form-group">
             <label for="nome">Nome:</label>

@@ -22,20 +22,20 @@ $id = 0;
         if (isset($_POST['nome']) && !empty($_POST['nome'])) {
 
                
-                             
+                $rg= addslashes($_POST['rg']);             
                 $nome = addslashes($_POST['nome']);
                 $telefone = addslashes($_POST['telefone']);
                 $telefone2 = addslashes($_POST['telefone2']);
                 $email = addslashes($_POST['email']);
 
-                $dados['ok'] = $i->editarInquilino($nome, $telefone, $telefone2, $email, $id);
+                $dados['ok'] = $i->editarInquilino($rg, $nome, $telefone, $telefone2, $email, $id);
            
         }
         
         if(isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])){
             $dados['pesquisa'] = $_GET['pesquisar'];
         }
-        $dados['dadosInquilino'] = $c->getDados($id);
+        $dados['dadosInquilino'] = $i->getDados($id);
         $this->loadTemplate('editarinquilino', $dados);
     
 

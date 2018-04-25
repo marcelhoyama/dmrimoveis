@@ -13,7 +13,7 @@ class cadastrarclientesController extends controller {
 
         $c = new cliente();
 
-        if (isset($_POST['cpf']) && !empty($_POST['cpf'])) {
+        if (isset($_POST['cpf']) && !empty($_POST['cpf']) ) {
 
             $cpf = addslashes($_POST['cpf']);
 

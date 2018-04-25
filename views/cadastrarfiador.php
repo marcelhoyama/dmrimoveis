@@ -3,29 +3,30 @@
 <div class="container-fluid">
     <a class="btn btn-default" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
     <h2 class="text-center">Cadastro de Fiador</h2></br>
-
+    
     <form class="form-group-sm" method="POST">
           <div class="form-group">
-            <label for="cpf">CPF*:</label>
-            <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros">
+              <label for="cpf">CPF*: </label><label class="text-danger"> (campo obrigatório!)</label>
+            <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros" max="11">
         </div>
         <div class="form-group">
             <label for="nome">RG:</label>
             <input name="rg" type="text" class="form-control" id="nome" placeholder="digite seu RG">
         </div>
         <div class="form-group">
-            <label for="nome">Nome:</label>
+            <label for="nome">Nome*: </label><label class="text-danger "> (campo obrigatório!)</label>
+
             <input name="nome" type="text" class="form-control" id="nome" placeholder="digite seu nome completo">
         </div>
         <div class="row" > 
         <div class="form-group col-sm-6">
             
-            <label for="fone">Telefone1:</label>
-            <input name="telefone" type="text" class="form-control" id="fone" placeholder="telefone de contato 1">
+            <label for="fone">Telefone1*: </label><label class="text-danger"> (campo obrigatório!)</label>
+            <input name="telefone" type="tel" class="form-control" id="fone" placeholder="telefone de contato 1">
         </div>
           <div class="form-group col-sm-6">
             <label for="fone">Telefone2:</label>
-            <input name="telefone2" type="text" class="form-control" id="fone" placeholder="telefone de contato 2">
+            <input name="telefone2" type="tel" class="form-control" id="fone" placeholder="telefone de contato 2">
         </div>
         </div>
 
