@@ -6,7 +6,7 @@
    
    <?php  $value = $viewData['cliente'];  ?>
         
-    <h1 class="h1 label-info">Informações do Cliente:<?php echo $value['nome']; ?></h1>
+    <h1 class="h1 label-info text-center">Informações do Cliente: <?php echo $value['nome']; ?></h1>
 
 <div class="row" >
   

@@ -44,5 +44,6 @@ class endereco extends model {
             echo 'Falhou:' . $ex->getMessage();
         }
     }
-
+    
+   
 }

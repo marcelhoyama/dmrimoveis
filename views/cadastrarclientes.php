@@ -6,22 +6,22 @@
 
     <form class="form-group-sm" method="POST">
           <div class="form-group">
-            <label for="cpf">CPF*:</label>
-            <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros">
+              <label for="cpf">CPF*: </label> <label class="text-danger"> campo obrigatorio!</label>
+            <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros" required="">
         </div>
         <div class="form-group">
-            <label for="nome">Nome*:</label>
-            <input name="nome" type="text" class="form-control" id="nome" placeholder="digite seu nome completo">
+            <label for="nome">Nome*:</label> <label class="text-danger"> campo obrigatorio!</label>
+            <input name="nome" type="text" class="form-control" id="nome" placeholder="digite seu nome completo" required="">
         </div>
         <div class="row" > 
         <div class="form-group col-sm-6">
             
-            <label for="fone">Telefone1*:</label>
-            <input name="telefone" type="text" class="form-control" id="fone" placeholder="telefone de contato 1">
+            <label for="fone">Telefone1* (Formato XX-XXXX-XXXX):</label> <label class="text-danger"> campo obrigatorio!</label>
+            <input name="telefone" pattern="^\d{2}-\d{5}-\d{4}$"  type="tel" class="form-control" id="fone" placeholder="telefone de contato 1" required="">
         </div>
           <div class="form-group col-sm-6">
             <label for="fone">Telefone2:</label>
-            <input name="telefone2" type="text" class="form-control" id="fone" placeholder="telefone de contato 2">
+            <input name="telefone2" pattern="^\d{2}-\d{5}-\d{4}$" type="tel" class="form-control" id="fone" placeholder="telefone de contato 2">
         </div>
         </div>
 

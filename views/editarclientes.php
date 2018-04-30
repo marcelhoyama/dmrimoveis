@@ -1,7 +1,10 @@
 
-<title>Editar Clientes - DMR Imóveis - Negócios Imobiliários em Cabreúva</title>
+<title>Editar Clientes</title>
 <div class="container-fluid">
+      
+ 
     <?php     $value = $viewData['dadosCliente']; ?> 
+     <a class="btn btn-default" href="<?php BASE_URL ?>menuprincipalcliente?id= <?php echo $value['id'];?>"> Voltar p/Menu Principal</a>
     <h2 class="text-center h2 label-info">Editar Dados do Cliente: <?php echo $value['nome'];?></h2></br>
 
     <form class="form-group-sm" method="POST">
@@ -12,16 +15,16 @@
             <input name="cpf" type="text" class="form-control" value="<?php echo $value['cpf']; ?>" disabled="">
         </div>
         <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input name="nome" type="text" class="form-control" id="nome" value="<?php echo $value['nome']; ?>">
+            <label for="nome">Nome*:</label> <label class="text-danger">campo obrigatorio*</label>
+            <input name="nome" type="text" class="form-control" id="nome" value="<?php echo $value['nome']; ?>" required="">
         </div>
         <div class="row">
         <div class="form-group col-sm-6">
-            <label for="fone">Telefone:</label>
+            <label for="fone">Telefone*:</label> <label class="text-danger">campo obrigatorio*</label>
             <input name="telefone" type="text" class="form-control" id="fone" value="<?php echo $value['telefone']; ?>">
         </div>
         <div class="form-group col-sm-6">
-            <label for="fone">Telefone:</label>
+            <label for="fone">Telefone 2:</label>
             <input name="telefone2" type="text" class="form-control" id="fone" value="<?php echo $value['telefone2']; ?>">
         </div>
         </div>

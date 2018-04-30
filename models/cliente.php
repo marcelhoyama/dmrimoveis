@@ -2,8 +2,8 @@
 
 class cliente extends model {
 
-public function cadastroCliente($cpf, $nome, $email, $telefone, $telefone2){
-$sql = "INSERT INTO clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."',telefone2='".$telefone2."',cpf='".$cpf."' ";
+public function cadastroCliente($nome, $email, $telefone, $telefone2, $cpf){
+$sql = "INSERT INTO clientes SET nome='".$nome."', email='".$email."',telefone='".$telefone."', telefone2='".$telefone2."', cpf='".$cpf."' ";
 
 $sql = $this->db->query($sql);
 $_SESSION['id'] = $this->db->lastInsertId();
@@ -11,8 +11,8 @@ $_SESSION['id'] = $this->db->lastInsertId();
 if ($sql->rowCount()>0) {
 
 
-header("Location:" .BASE_URL. "menuprincipal");
-return "Cadastrado com sucesso!";
+header("Location:" .BASE_URL. "menuprincipalcliente?id=".$_SESSION['id']);
+
 }else{
 return "Não foi possivel fazer o cadastro! Veja se todos os campos estão Preenchidos corretamente!";
 }
@@ -90,14 +90,10 @@ public function getListCliente ($pesquisa){
 $array = array();
 
 if(!empty($pesquisa)){
-$sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel,d.* FROM clientes c "
-
+$sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel FROM clientes c "
     ."LEFT JOIN imoveis i "
-
     ."ON c.id = i.id_cliente "
-
-    ."LEFT JOIN descricoes d "
-    ."ON i.id = d.id_imovel WHERE nome LIKE'".$pesquisa."%'";
+."WHERE nome LIKE '$pesquisa%'";
        
             $sql = $this->db->query($sql);
             if($sql->rowCount() > 0){

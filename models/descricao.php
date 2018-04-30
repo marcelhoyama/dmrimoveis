@@ -17,22 +17,20 @@ class descricao extends model {
         }
     }
 
-    public function cadastrarDescricao($id_imovel, $descricao) {
+    public function cadastrarDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro) {
         try {
-            foreach ($descricao as $key => $value) {
 
-
-                $value;
-
-                $sql = "INSERT INTO descricoes SET id_imovel='" . $id_imovel . "', item='" . $value . "'";
-                $sql = $this->db->query($sql);
-            }
+            $sql = "INSERT INTO descricoes SET garagem='$garagem', dormitorio='$dormitorio', banheiro='$banheiro', suite='$suite'";
+            $sql = $this->db->query($sql);
+            $id_descricoes = $this->db->insertLastId();
             if ($sql->rowCount() > 0) {
-
-                return "Cadastrado com sucesso!";
-            }
-           
+                $sql = "INSERT INTO imoveis_decricoes id_imovel='$id_imovel', id_descricao='$id_descricoes'";
+                $sql = $this->db->query($sql);
+                if ($sql->rowCount() > 0) {
+                    
+                }
                 
+            }
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
         }

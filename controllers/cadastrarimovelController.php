@@ -10,6 +10,7 @@ class cadastrarimovelController extends controller {
 
         $c = new cliente();
         $e = new endereco();
+        $tp = new tipovia();
         $i = new imovel();
         $b = new bairro();
         $ci = new cidade();
@@ -17,18 +18,15 @@ class cadastrarimovelController extends controller {
         $dados = array('erro' => '', 'ok' => '');
 
         $dados['enderecos'] = $e->listEndereco();
-        $dados['bairros'] = $b->listBairro();
-        $dados['cidades'] = $ci->listCidade();
-        $dados['estados'] = $es->listEstado();
+     
+        // recebe o valor do campo e verifica se valor existe no banco de dados : se sim retorna o id do valoe existente se nao cadastra no banco e retorna o ultimo id
         $id = 0;
         if (isset($_GET['id']) && !empty($_GET)) {
             $id_cliente = addslashes($_GET['id']);
             $dados['cliente'] = $c->getDados($id_cliente);
-        }else{
-            header("Location:".BASE_URL."menuprincipallogado");
-        }
-
-        if (isset($_POST['estado']) && !empty($_POST['estado'])) {
+            
+            
+              if (isset($_POST['estado']) && !empty($_POST['estado'])) {
 
             $estado = addslashes($_POST['estado']);
 
@@ -55,6 +53,10 @@ class cadastrarimovelController extends controller {
             $endereco = addslashes($_POST['endereco']);
             $id_endereco = $e->verificarEndereco($id_cliente, $id_bairro, $endereco);
         }
+         if (isset($_POST['tipovia']) && !empty($_POST['tipovia'])) {
+            $tipovia = addslashes($_POST['tipovia']);
+            $id_tipo_via = $tp->verificarTipovia($tipovia);
+        }
 
 
         if (isset($_POST['numero']) && !empty($_POST['numero'])) {
@@ -62,11 +64,7 @@ class cadastrarimovelController extends controller {
             $numero = addslashes($_POST['numero']);
             $complemento = addslashes($_POST['complemento']);
             $cep = addslashes($_POST['cep']);
-            $dormitorio = addslashes($_POST['dormitorio']);
-            $suite = addslashes($_POST['suite']);
-            $garagem = addslashes($_POST['garagem']);
-
-            $banheiro = addslashes($_POST['banheiro']);
+           
             $tipoimovel = addslashes($_POST['tipoimovel']);
             $areaconstruida = addslashes($_POST['areaconstruida']);
             $areatotal = addslashes($_POST['areatotal']);
@@ -74,17 +72,24 @@ class cadastrarimovelController extends controller {
             $valoraluguel = addslashes($_POST['valoraluguel']);
             $documentacao = addslashes($_POST['documentacaoimovel']);
 
-            $id_imovel = $i->cadastrarImovel($id_cliente, $tipoimovel, $dormitorio, $suite, $garagem, $id_endereco, $numero, $complemento, $cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal, $valorimovel, $documentacao);
+            $id_imovel = $i->cadastrarImovel($id_cliente, $tipoimovel, $dormitorio, $suite, $garagem, $id_tipo_via, $id_endereco, $numero, $complemento, $cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal, $valorimovel, $documentacao);
         }
 
-        if (isset($_POST['descricao']) && !empty($_POST['descricao'])) {
+        if (isset($_POST['dormitorio']) && !empty($_POST['dormitorio']) || isset($_POST['suite']) && !empty($_POST['suite']) || isset($_POST['garagem']) && !empty($_POST['garagem']) || isset($_POST['banheiro']) && !empty($_POST['banheiro'])) {
+            $dormitorio = addslashes($_POST['dormitorio']);
+            $suite = addslashes($_POST['suite']);
+            $garagem = addslashes($_POST['garagem']);
+            $banheiro = addslashes($_POST['banheiro']);
             $d = new descricao();
-            $descricao = array();
-            $descricao = $_POST['descricao'];
+            
+            
 
-            $dados['ok'] = $d->cadastrarDescricao($id_imovel, $descricao);
+            $dados['ok'] = $d->cadastrarDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro);
         }
 
+        //aqui eh tratar o nome das fotos enviados
+        //se contagem as fotos for maior de 0 faça que o nome do arquivo seja mudado com o tempo(relogio) crie criptografia randomica
+        // e salve no diretorio upload   com o comando especifico do PHP
         if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])) {
             if (count($_FILES['arquivo']['tmp_name']) > 0) {
                 for ($q = 0; $q < count($_FILES['arquivo']['tmp_name']); $q++) {
@@ -96,6 +101,11 @@ class cadastrarimovelController extends controller {
                 }
                
             }
+        }else{
+            header("Location:".BASE_URL."menuprincipal");
+        }
+
+      
            
         }
             

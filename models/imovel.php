@@ -2,7 +2,7 @@
 
 class imovel extends model {
 
-    public function cadastrarImovel($id_cliente, $tipo_imovel, $dormitorio, $suite, $garagem,
+    public function cadastrarImovel($id_cliente, $tipo_imovel, $dormitorio, $suite, $garagem, $id_tipo_via,
             $id_endereco, $numero, $complemento, $cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal, $valorimovel, $documentacao) {
 
 
@@ -15,6 +15,7 @@ class imovel extends model {
                     . "dormitorio='" . $dormitorio . "',"
                     . "suite='" . $suite . "',"
                     . "garagem='" . $garagem . "',"
+                    . "tipovia='".$id_tipo_via ."',"
                     . "id_cliente='$id_cliente',"
                     . "id_endereco='" . $id_endereco . "',"
                     . "numero='" . $numero . "', "
@@ -42,7 +43,7 @@ class imovel extends model {
         try {
 
 
-            $sql = "INSERT INTO fotos (id_imovel,url_imagem ) VALUES('" . $id_imovel . "', '" . $url_imagem . "' )";
+            $sql = "INSERT INTO fotos (id, url ) VALUES('" . $id_imovel . "', '" . $url_imagem . "' )";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 return "Enviado com Sucesso!";
@@ -178,7 +179,7 @@ class imovel extends model {
         public function listDormitorio(){
             try{
                 $array=array();
-                $sql="SELECT dormitorio FROM imoveis";
+                $sql="SELECT dormitorio FROM descricoes";
                 $sql = $this->db->query($sql);
                 if($sql->rowCount() >0){
                     $array =$sql->fetchAll();
@@ -193,7 +194,7 @@ echo "Falhou:".$ex->getMessage();
     public function listSuite(){
             try{
                 $array=array();
-                $sql="SELECT suite FROM imoveis";
+                $sql="SELECT suite FROM descricoes";
                 $sql = $this->db->query($sql);
                 if($sql->rowCount() >0){
                     $array =$sql->fetchAll();
@@ -207,7 +208,7 @@ echo "Falhou:".$ex->getMessage();
           public function listBanheiro(){
             try{
                 $array=array();
-                $sql="SELECT banheiro FROM imoveis";
+                $sql="SELECT banheiro FROM descricoes";
                 $sql = $this->db->query($sql);
                 if($sql->rowCount() >0){
                     $array =$sql->fetchAll();
@@ -221,7 +222,7 @@ echo "Falhou:".$ex->getMessage();
      public function listGaragem(){
             try{
                 $array=array();
-                $sql="SELECT garagem FROM imoveis";
+                $sql="SELECT garagem FROM descricoes";
                 $sql = $this->db->query($sql);
                 if($sql->rowCount() >0){
                     $array =$sql->fetchAll();
@@ -261,7 +262,7 @@ echo "Falhou:".$ex->getMessage();
          public function listValorimovel(){
             try{
                 $array=array();
-                $sql="SELECT valor_imovel FROM imoveis";
+                $sql="SELECT valor FROM venda";
                 $sql = $this->db->query($sql);
                 if($sql->rowCount() >0){
                     $array =$sql->fetchAll();
@@ -275,7 +276,7 @@ echo "Falhou:".$ex->getMessage();
          public function listAluguel(){
             try{
                 $array=array();
-                $sql="SELECT valor_aluguel FROM imoveis";
+                $sql="SELECT valor FROM aluguel";
                 $sql = $this->db->query($sql);
                 if($sql->rowCount() >0){
                     $array =$sql->fetchAll();
