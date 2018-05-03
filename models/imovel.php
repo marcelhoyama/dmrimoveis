@@ -2,8 +2,7 @@
 
 class imovel extends model {
 
-    public function cadastrarImovel($id_cliente, $tipo_imovel, $dormitorio, $suite, $garagem, $id_tipo_via,
-            $id_endereco, $numero, $complemento, $cep, $valoraluguel, $areaconstruida, $banheiro, $areatotal, $valorimovel, $documentacao) {
+    public function cadastrarImovel($id_cliente, $tipo_imovel, $id_endereco, $numero, $complemento, $areaconstruida, $areatotal, $documentacao) {
 
 
         $sql = "SELECT * FROM clientes WHERE id='" . $id_cliente . "'";
@@ -12,20 +11,12 @@ class imovel extends model {
 
 
             $sql = "INSERT INTO imoveis SET tipo_imovel='" . $tipo_imovel . "',"
-                    . "dormitorio='" . $dormitorio . "',"
-                    . "suite='" . $suite . "',"
-                    . "garagem='" . $garagem . "',"
-                    . "tipovia='".$id_tipo_via ."',"
                     . "id_cliente='$id_cliente',"
                     . "id_endereco='" . $id_endereco . "',"
-                    . "numero='" . $numero . "', "
+                    . "numero='" . $numero . "',"
                     . "complemento='" . $complemento . "',"
-                    . "cep='" . $cep . "',"
-                    . "valor_aluguel='" . $valoraluguel . "',"
                     . "area_construida='" . $areaconstruida . "',"
-                    . "banheiro='" . $banheiro . "',"
                     . "area_total='" . $areatotal . "',"
-                    . "valor_imovel='" . $valorimovel . "',"
                     . "documentacao='".$documentacao."'";
 
             $sql = $this->db->query($sql);
@@ -39,22 +30,7 @@ class imovel extends model {
             }
         }
     }
-    public function enviarUrlImagem($id_imovel, $url_imagem) {
-        try {
-
-
-            $sql = "INSERT INTO fotos (id, url ) VALUES('" . $id_imovel . "', '" . $url_imagem . "' )";
-            $sql = $this->db->query($sql);
-            if ($sql->rowCount() > 0) {
-                return "Enviado com Sucesso!";
-            } else {
-
-                return false;
-            }
-        } catch (Exception $ex) {
-            echo "Falhou:" . $ex->getMessage();
-        }
-    }
+ 
 
 
     public function endereco($id) {
@@ -285,5 +261,34 @@ echo "Falhou:".$ex->getMessage();
             } catch (Exception $ex) {
 echo "Falhou:".$ex->getMessage();
             }
+        }
+        
+        
+        public function listTipoImovel($id_imovel){
+            try{
+                $array=array();
+                $sql="SELECT * FROM imoveis WHERE id = '$id_imovel'";
+                $sql= $this->db->query($sql);
+                if($sql->rowCount() >0){
+                   return $array = $sql->fetch();
+                }
+            } catch (Exception $ex) {
+                echo "Falhou:".$ex->getMessage();
+            }
+            
+        }
+            
+           public function listTipoVenda($id_venda){
+            try{
+                $array=array();
+                $sql="SELECT * FROM imoveis i  RIGHT JOIN venda v ON i.id_venda=v.id WHERE i.id_venda = '$id_venda'";
+                $sql= $this->db->query($sql);
+                if($sql->rowCount() >0){
+                   return $array = $sql->fetch();
+                }
+            } catch (Exception $ex) {
+                echo "Falhou:".$ex->getMessage();
+            }
+            
         }
 }

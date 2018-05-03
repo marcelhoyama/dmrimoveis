@@ -260,18 +260,22 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <div class="row" >
+              <?php foreach ($viewData['listfotoprincipal'] as $value): {  ?>
+                    
+             
                 <div class="col-xs-12 col-sm-3">
                     <div class="thumbnail ">
-                        <a  href="<?php BASE_URL; ?>todos">    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid"></a>
+                        <a  href="<?php BASE_URL; ?>todos">    <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_principal'];?>" class=" img-rounded img-fluid"></a>
                         <div class="caption">
-                            <h3>Galpão</h3>
-                            <p><h3>Aluga</h3> </p>
-                            <p><a  href="<?php BASE_URL; ?>todos" class="btn btn-default" role="button"> Ver mais...</a></p>
+                            <h3><?php $value=$viewData['tipo_imovel']; echo $value['tipo_imovel']; ?></h3>
+                            <p><h3><?php $value = $viewData['listvenda']; echo $value['valor'];//if( $value['valor'] == ''){echo 'Aluga'; }else{     echo 'Venda';}?></h3> </p>
+                            <p><a  href="<?php BASE_URL; ?>todos?id=<?php echo $value['id_imovel']?>" class="btn btn-default" role="button"> Ver mais...</a></p>
                         </div>
 
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-3">
+                <?php   } endforeach;?>
+               <!--<div class="col-xs-12 col-sm-3">
                     <div class="thumbnail">
                         <a href="<?php BASE_URL; ?>todos">  <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-rounded img-fluid"></a>
                         <div class="caption">
@@ -317,7 +321,7 @@
                     </div>
 
                 </div>
-            </div>
+            </div>  -->
         </div>
     </div>
 

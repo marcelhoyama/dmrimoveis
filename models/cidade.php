@@ -10,18 +10,19 @@ class cidade extends model {
             $sql2 = $this->db->query($sql2);
             if ($sql2->rowCount() > 0) {
                 $sql2 = $sql2->fetch();
-
-                return $sql2['id'];
+              return $id=$sql2['id'];
+ 
+                
             } else {
-                echo $sql3 = "INSERT INTO cidades SET nome='$cidade', id_estado='$id_estado' ";
+                $sql3 = "INSERT INTO cidades SET nome='$cidade', id_estado='$id_estado' ";
                 $sql3 = $this->db->query($sql3);
                 $id_cidade = $this->db->lastInsertId();
                 if ($sql3->rowCount() > 0) {
 
-                    $sql3 = "INSERT INTO bairro_tem_cidade SET id_cidade='" . $id_cidade . "'";
-                    $sql3 = $this->db->query($sql3);
+                 $sql4 = "INSERT INTO cidades_bairros SET id_cidade='" . $id_cidade . "'";
+                    $sql4 = $this->db->query($sql4);
                     $id = $this->db->lastInsertId();
-                    if ($sql3->rowCount() > 0) {
+                    if ($sql4->rowCount() > 0) {
                         return $id;
                     }
                 }

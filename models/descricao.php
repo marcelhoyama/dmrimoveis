@@ -22,11 +22,11 @@ class descricao extends model {
 
             $sql = "INSERT INTO descricoes SET garagem='$garagem', dormitorio='$dormitorio', banheiro='$banheiro', suite='$suite'";
             $sql = $this->db->query($sql);
-            $id_descricoes = $this->db->insertLastId();
+            $id_descricoes = $this->db->lastInsertId();
             if ($sql->rowCount() > 0) {
-                $sql = "INSERT INTO imoveis_decricoes id_imovel='$id_imovel', id_descricao='$id_descricoes'";
-                $sql = $this->db->query($sql);
-                if ($sql->rowCount() > 0) {
+                $sql1 = "INSERT INTO imoveis_descricoes SET id_imovel='$id_imovel', id_descricao='$id_descricoes'";
+                $sql1 = $this->db->query($sql1);
+                if ($sql1->rowCount() > 0) {
                     
                 }
                 

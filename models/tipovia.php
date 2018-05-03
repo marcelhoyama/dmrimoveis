@@ -22,7 +22,7 @@ class tipovia extends model {
        public function verificarTipovia( $tipovia){
             try {
                 
-         $sql = "SELECT nome FROM tipos_vias WHERE  nome='$nome'";
+         $sql = "SELECT * FROM tipos_vias WHERE  nome='$nome'";
        
          $sql= $this->db->query($sql);
         if($sql->rowCount()>0){

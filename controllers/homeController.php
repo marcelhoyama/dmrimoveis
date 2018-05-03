@@ -36,6 +36,16 @@ $i = new imovel();
          $dados['listAluguel']=$i->listAluguel(); 
          $dados['listValorimovel']=$i->listValorimovel();
         
+         
+         $f=new foto();
+         $dados['listfotoprincipal']=$f->listFotosPrincipal();
+  $id_imovel['id_imovel']=$dados['listfotoprincipal'];
+    
+         $dados['tipo_imovel']=$i->listTipoImovel($id_imovel);
+       echo 'id-venda'. $id_venda['id_venda']=$dados['tipo_imovel'];
+         
+         $dados['listvenda']=$i->listTipoVenda($id_venda);
+         
         $this->loadTemplate('home', $dados);
     }
     

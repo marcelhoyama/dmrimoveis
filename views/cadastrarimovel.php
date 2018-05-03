@@ -15,8 +15,14 @@
         <div class="row">
             <div class="form-group col-sm-4">
                 <label for="endereco">Tipo de Via:(Exemplo: Rua,Avenida)</label> <label class="text-danger">campo obrigatorio*</label>
-                <input class="form-control" name="tipovia" id="valor" required="">
                 
+                <select name="tipovia" class="form-control" required="">
+                    <option></option>
+                <?php foreach ($viewData['listvia'] as $value) { ?>
+                        <option value="<?php echo $value['id']?>"><?php echo $value['nome']?></option>        
+                      <?php      } ?>
+                    
+                                 </select>
             </div>
             <div class="form-group col-lg-8" >
 
@@ -63,10 +69,14 @@
             </div>
            
         </div>
+        <div class="well">
+         <div class="form-group">
+            <label for="arquivo1">OPCIONAL - Adicionar uma Foto Principal do Imóvel:</label>
+            <input name="arquivo1" type="file" >
 
+        </div>
        
-       
-
+</div>
         <div class="row">
             <div class=' form-group col-sm-3'>
 
@@ -154,6 +164,7 @@
                     <option value="Apartamento">Apartamento</option>
                     <option value="Germinada">Germinada</option>
                     <option value="Kitnet">Kitnet</option>
+                     <option value="Chacara">Chacara</option>
                     <option value="Galpão">Galpão</option>
                     <option value="Terreno">Terreno</option>
 
@@ -174,7 +185,7 @@
             <div class="form-group col-sm-4 input-group">
 
                 <span class="input-group-addon">R$</span>
-                <input name="valorimovel" type="text" class="form-control" id="endereco" placeholder="">
+                <input name="valorimovel" type="text" class="form-control" id="endereco" placeholder="" disabled="">
             </div>
 
 

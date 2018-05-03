@@ -2,15 +2,15 @@
 
 class endereco extends model {
 
-    public function verificarEndereco($id_cliente, $id_bairro, $endereco) {
+    public function verificarEndereco($id_cliente, $id_bairro, $endereco, $id_tipo_via) {
         try {
 
-            $sql = "SELECT c.nome, e.* FROM enderecos e "
+         $sql = "SELECT c.nome, e.* FROM enderecos e "
                     . "JOIN clientes c "
                     . "ON c.id=e.id_cliente "
                     . "JOIN bairros b "
                     . "ON b.id=e.id_bairro "
-                    . "WHERE e.id_cliente='" . $id_cliente . "' AND e.endereco='" . $endereco . "' AND e.id_bairro='" . $id_bairro . "'";
+                    . "WHERE e.id_cliente='" . $id_cliente . "' AND e.endereco='" . $endereco . "' AND e.id_bairro='" . $id_bairro . "' ";
 
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
@@ -18,11 +18,11 @@ class endereco extends model {
 
                 return $sql['id'];
             } else {
-                $sql = "INSERT INTO enderecos SET endereco='" . $endereco . "', id_bairro='" . $id_bairro . "', id_cliente='" . $id_cliente . "' ";
-                $sql = $this->db->query($sql);
+                $sql1 = "INSERT INTO enderecos SET endereco='" . $endereco . "', id_bairro='" . $id_bairro . "', id_cliente='" . $id_cliente . "', id_tipo_via='$id_tipo_via' ";
+                $sql1 = $this->db->query($sql1);
                 $id = $this->db->lastInsertId();
 
-                if ($sql->rowCount() > 0) {
+                if ($sql1->rowCount() > 0) {
                     return $id;
                 }
             }
