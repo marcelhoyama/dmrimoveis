@@ -36,6 +36,7 @@ $id = 0;
             $dados['pesquisa'] = $_GET['pesquisar'];
         }
         $dados['dadosCliente'] = $c->getDados($id);
+        
         $this->loadTemplate('editarclientes', $dados);
     
 

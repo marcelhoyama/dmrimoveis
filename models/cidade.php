@@ -32,6 +32,22 @@ class cidade extends model {
         }
     }
 
+    public function updateCidade($id_cidade, $cidade) {
+        try {
+
+          
+                $sql3 = "UPDATE cidades SET nome='$cidade' WHERE id_cidade='$id_cidade' ";
+                $sql3 = $this->db->query($sql3);
+                $id_cidade = $this->db->lastInsertId();
+                if ($sql3->rowCount() > 0) {
+
+                }
+            
+        } catch (Exception $ex) {
+            echo "Falhou:" . $ex->getMessage();
+        }
+    }
+    
     public function listCidade() {
         try {
             $array = array();

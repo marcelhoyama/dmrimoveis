@@ -31,24 +31,33 @@ class imovel extends model {
         }
     }
  
+ public function updateImovel($tipo_imovel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao) {
 
 
-    public function endereco($id) {
-        try {
-            $array = array();
-            $sql = "SELECT * FROM enderecos WHERE id_cliente='" . $id . "'";
+       
+
+            $sql = "UPDATE imoveis SET tipo_imovel='" . $tipo_imovel . "',"
+                    . "numero='" . $numero . "',"
+                    . "complemento='" . $complemento . "',"
+                    . "area_construida='" . $areaconstruida . "',"
+                    . "area_total='" . $areatotal . "',"
+                    . "documentacao='".$documentacao."',"
+                    
+                    . "WHERE id ='$id_imovel'";
 
             $sql = $this->db->query($sql);
+            
+
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetchAll();
+
+                return $id;
             } else {
-                return $array = 'nao foi';
+                return "Preencha todos os campos!";
             }
-            return $array;
-        } catch (Exception $ex) {
-            echo "Falhou:" . $ex->getMessage();
         }
-    }
+    
+
+
     // busca interna (proprietarios).............................
 
     public function pesquisarImovelCliente($id) {
@@ -72,7 +81,7 @@ class imovel extends model {
     }
     
     
-    public function itemImovel($id) {
+   /* public function itemImovel($id) {
         
                     $array = array();
                     $sql = "SELECT DISTINCT d.item FROM clientes c "
@@ -87,7 +96,7 @@ class imovel extends model {
                     }
                     return $array;
     }
-
+*/
 
     public function pesquisarImovelClienteNome($cliente) {
         $array = array();
@@ -102,6 +111,39 @@ class imovel extends model {
             return $array = $sql->fetchAll();
         }
     }
+    
+    
+    public function getDadosImovel($id_imovel){
+      try{
+          $array=array();
+          $sql="SELECT *,i.id_cliente cliente ,a.valor aluguel, v.valor venda FROM imoveis i "
+                  . "LEFT JOIN venda v ON i.id_venda=v.id "
+                  . "LEFT JOIN aluguel a ON i.id_aluguel=a.id "
+                  . "LEFT JOIN enderecos e ON e.id_cliente=i.id_endereco "
+                  . "left join imoveis_descricoes b on b.id_imovel=i.id "
+                  . "left join descricoes d on d.id=b.id_descricao "
+                  . "WHERE i.id='$id_imovel' ";
+          $sql= $this->db->query($sql);
+          if($sql->rowCount() >0){
+            //  $array=$sql->fetch(PDO::FETCH_ASSOC);
+             $array=$sql->fetch();
+                       
+          }
+           return $array;
+      } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+      }  
+    }
+
+    public function fotoPrincipal($id_imovel){
+        try{
+            
+        } catch (Exception $ex) {
+
+        }
+        
+    }
+
 //fim busca interna.........................
 
  
@@ -278,17 +320,5 @@ echo "Falhou:".$ex->getMessage();
             
         }
             
-           public function listTipoVenda($id_venda){
-            try{
-                $array=array();
-                $sql="SELECT * FROM imoveis i  RIGHT JOIN venda v ON i.id_venda=v.id WHERE i.id_venda = '$id_venda'";
-                $sql= $this->db->query($sql);
-                if($sql->rowCount() >0){
-                   return $array = $sql->fetch();
-                }
-            } catch (Exception $ex) {
-                echo "Falhou:".$ex->getMessage();
-            }
-            
-        }
+           
 }

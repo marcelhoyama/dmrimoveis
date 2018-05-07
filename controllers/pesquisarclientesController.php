@@ -11,24 +11,22 @@ class pesquisarclientesController extends controller{
     public function index() {
          $dados = array('erro'=>'');
          $pesquisa='';
+         $c = new cliente();
         if (isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])){
              
-            $c = new cliente();
+            
             
             $pesquisa = addslashes($_GET['pesquisar']);
-        $dados['lista1']= $c->getListCliente($pesquisa);
-           foreach ($dados['lista1'] as $value) {
-            $id=$value['id'];
-            $nome=$value['nome'];
+        $dados['lista']= $c->getListCliente($pesquisa);
+          
+        } else {
+               
+            $dados['lista']= $c->getListCliente($pesquisa);
         }
-         if($nome == ''){
-              $dados['erro']="Nada encontrado!";
-        $dados['lista']='';
-              }else{
-                   $dados['lista']= $c->getListCliente($pesquisa);
-        $dados['total_imovel']=$c->totalImovel($id);
+               
+       
         
-        }
+        
              
        
         
@@ -37,7 +35,7 @@ class pesquisarclientesController extends controller{
        
 
         
-        }
+         
            
          
            

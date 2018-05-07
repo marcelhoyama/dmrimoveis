@@ -41,6 +41,22 @@ class bairro extends model {
         }
     }
 
+      public function updateBairro($id_bairro, $nome) {
+        try {
+
+        
+                $sql = "UPDATE bairros SET nome='" . $nome . "' WHERE id='$id_bairro' ";
+                $sql = $this->db->query($sql);
+                
+                if ($sql->rowCount() > 0) {
+
+                }
+            
+        } catch (Exception $ex) {
+            echo "Falhou:" . $ex->getMessage();
+        }
+    }
+    
     public function listBairro() {
         try {
             $array = array();

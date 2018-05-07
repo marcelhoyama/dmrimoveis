@@ -17,10 +17,12 @@ class descricao extends model {
         }
     }
 
-    public function cadastrarDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro) {
+    public function cadastrarDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro, $piscina, $churrasqueira, $agua, $luz, $internet, $gas) {
+
         try {
 
-            $sql = "INSERT INTO descricoes SET garagem='$garagem', dormitorio='$dormitorio', banheiro='$banheiro', suite='$suite'";
+            $sql = "INSERT INTO descricoes SET dormitorio='$dormitorio',suite='$suite',garagem='$garagem',banheiro='$banheiro',"
+                    . "piscina='$piscina', churrasqueira='$churrasqueira',agua='$agua',luz='$luz',internet='$internet',gas='$gas'";
             $sql = $this->db->query($sql);
             $id_descricoes = $this->db->lastInsertId();
             if ($sql->rowCount() > 0) {
@@ -29,7 +31,23 @@ class descricao extends model {
                 if ($sql1->rowCount() > 0) {
                     
                 }
-                
+            }
+        } catch (Exception $ex) {
+            echo 'Falhou:' . $ex->getMessage();
+        }
+    }
+
+    public function updateDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro, $piscina, $churrasqueira, $agua, $luz, $internet, $gas) {
+
+        try {
+
+            $sql = "UPDATE descricoes SET dormitorio='$dormitorio',suite='$suite',garagem='$garagem',banheiro='$banheiro',"
+                    . "piscina='$piscina', churrasqueira='$churrasqueira',agua='$agua',luz='$luz',internet='$internet',gas='$gas'";
+            $sql = $this->db->query($sql);
+
+            if ($sql->rowCount() > 0) {
+
+                return true;
             }
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();

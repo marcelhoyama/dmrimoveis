@@ -107,8 +107,9 @@ class cliente extends model {
     public function getDados($id) {
         $array = array();
         if (!empty($id)) {
-            $sql = "SELECT * FROM clientes WHERE id ='" . $id . "'";
-            $sql = $this->db->query($sql);
+           $sql = "SELECT * FROM clientes WHERE id ='" . $id . "'";
+            
+         $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->FETCH();
             } else {

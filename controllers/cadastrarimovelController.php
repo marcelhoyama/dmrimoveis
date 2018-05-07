@@ -16,6 +16,7 @@ class cadastrarimovelController extends controller {
         $ci = new cidade();
         $es = new estado();
         $f = new foto();
+         $d = new descricao();
         $dados = array('erro' => '', 'ok' => '');
 
         $dados['enderecos'] = $e->listEndereco();
@@ -31,7 +32,7 @@ class cadastrarimovelController extends controller {
 
                 $estado = addslashes($_POST['estado']);
 
-                $id_estado = $es->verificarEstado($estado);
+               $id_estado = $es->verificarEstado($estado);
             }
 
 
@@ -52,7 +53,7 @@ class cadastrarimovelController extends controller {
 
               if (isset($_POST['tipovia']) && !empty($_POST['tipovia'])) {
                 $id_tipo_via = addslashes($_POST['tipovia']);
-               // $id_tipo_via = $tp->verificarTipovia($tipovia);
+                $id_tipo_via = $tp->verificarTipovia($tipovia);
             }
             if (isset($_POST['endereco']) && !empty($_POST['endereco'])) {
                 $endereco = addslashes($_POST['endereco']);
@@ -66,43 +67,58 @@ class cadastrarimovelController extends controller {
 
                 $numero = addslashes($_POST['numero']);
                 $complemento = addslashes($_POST['complemento']);
-               // $cep = addslashes($_POST['cep']);
+                $cep = addslashes($_POST['cep']);
                 $tipoimovel = addslashes($_POST['tipoimovel']);
                 $areaconstruida = addslashes($_POST['areaconstruida']);
                 $areatotal = addslashes($_POST['areatotal']);
-                //$valorimovel = addslashes($_POST['valorimovel']);
-               // $valoraluguel = addslashes($_POST['valoraluguel']);
+                $valorimovel = addslashes($_POST['valorimovel']);
+                $valoraluguel = addslashes($_POST['valoraluguel']);
                 $documentacao = addslashes($_POST['documentacaoimovel']);
 
-                $id_imovel = $i->cadastrarImovel($id_cliente, $tipoimovel, $id_endereco, $numero, $complemento, $areaconstruida, $areatotal, $documentacao);
+               $id_imovel = $i->cadastrarImovel($id_cliente, $tipoimovel, $id_endereco, $numero, $complemento, $areaconstruida, $areatotal, $documentacao);
          
                    //aqui eh tratar o nome das fotos enviados
             //se contagem as fotos for maior de 0 faça que o nome do arquivo seja mudado com o tempo(relogio) crie criptografia randomica
             // e salve no diretorio upload   com o comando especifico do PHP
-            if (isset($_FILES['arquivo1']) && !empty($_FILES['arquivo1'])) {
-                if (count($_FILES['arquivo1']['tmp_name']) > 0) {
-                    for ($q = 0; $q < count($_FILES['arquivo1']['tmp_name']); $q++) {
-                        $novo_nome = md5($_FILES['arquivo1']['name'][$q] . time() . rand(0, 999)) . '.jpg';
-                        $diretorio = "upload/fotos_principais/";
-                        move_uploaded_file($_FILES['arquivo1']['tmp_name'][$q], $diretorio . $novo_nome);
-
-                        $f->enviarUrlPrincipalImagem($id_imovel, $novo_nome);
+                // tem proteçao de permiçao de extensao de imagens 
+               if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo']['tmp_name'])) {
+                
+              
+                if (count($_FILES['arquivo']['tmp_name']) > 0) {
+                    for ($q = 0; $q < count($_FILES['arquivo']['tmp_name']); $q++) {
+                          $permitidos=array('image/jpeg', 'image/jpg', 'image/png');
+                        if(in_array($_FILES['arquivo']['type'].$permitidos)){
+                        $novo_nome = md5($_FILES['arquivo']['name'][$q] . time() . rand(0, 999)) . '.jpg';
+                        $diretorio = "upload/";
+                       move_uploaded_file($_FILES['arquivo']['tmp_name'][$q], $diretorio . $novo_nome);
+                        }
+                        $f->enviarUrlImagem($id_imovel, $novo_nome);
                        
                     }
                 }
             }
                 }
 
-            if (isset($_POST['dormitorio']) && !empty($_POST['dormitorio']) || isset($_POST['suite']) && !empty($_POST['suite']) || isset($_POST['garagem']) && !empty($_POST['garagem']) || isset($_POST['banheiro']) && !empty($_POST['banheiro'])) {
+            if (isset($_POST['dormitorio']) && !empty($_POST['dormitorio']) || isset($_POST['suite']) && !empty($_POST['suite']) || isset($_POST['garagem']) && !empty($_POST['garagem']) || isset($_POST['banheiro']) && !empty($_POST['banheiro'])|| isset($_POST['piscina']) && !empty($_POST['piscina'])|| isset($_POST['churrasqueira']) && !empty($_POST['churrasqueira'])|| isset($_POST['agua']) && !empty($_POST['agua'])|| isset($_POST['luz']) && !empty($_POST['luz'])|| isset($_POST['energiasolar']) && !empty($_POST['energiasolar'])|| isset($_POST['gas']) && !empty($_POST['gas'])|| isset($_POST['internet']) && !empty($_POST['internet'])) {
                 $dormitorio = addslashes($_POST['dormitorio']);
                 $suite = addslashes($_POST['suite']);
                 $garagem = addslashes($_POST['garagem']);
                 $banheiro = addslashes($_POST['banheiro']);
-                $d = new descricao();
+                
+                $piscina= addslashes($_POST['piscina']);
+                $churrasqueira= addslashes($_POST['churrasqueira']);
+                $agua= addslashes($_POST['agua']);
+                $luz= addslashes($_POST['luz']);
+                $internet= addslashes($_POST['internet']);
+                $gas= addslashes($_POST['gas']);
+                
+                    
+                
+               
 
 
 
-                $dados['ok'] = $d->cadastrarDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro);
+                $dados['ok'] = $d->cadastrarDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro,$piscina,$churrasqueira,$agua,$luz,$internet,$gas);
             }
 
             //aqui eh tratar o nome das fotos enviados
@@ -115,7 +131,7 @@ class cadastrarimovelController extends controller {
                         $diretorio = "upload/";
                         move_uploaded_file($_FILES['arquivo']['tmp_name'][$q], $diretorio . $novo_nome);
 
-                        $f->enviarUrlImagem($id_imovel, $novo_nome);
+                       $f->enviarUrlImagem($id_imovel, $novo_nome);
                        
                     }
                 }
@@ -126,7 +142,7 @@ class cadastrarimovelController extends controller {
 
 
 
-
+$dados['listvia']=$tp->listTipovia();
 
 
         $this->loadTemplate('cadastrarimovel', $dados);

@@ -1,6 +1,6 @@
 <title> Pesquisar Imóvel(is) do Cliente </title>
 <div class="container-fluid">
-    <a class="btn btn-default" href="<?php BASE_URL; ?>menuprincipallogado?id=<?php foreach ($viewData['nome'] as $value) {
+    <a class="btn btn-default" href="<?php BASE_URL; ?>menuprincipalcliente?id=<?php foreach ($viewData['nome'] as $value) {
     echo $value['id'];
 }; ?>">Voltar p/Menu</a>
 
@@ -44,26 +44,24 @@
                                         <?php echo $value['tipo_imovel']; ?>
                                     </td>
                                     <td>
-                                        <?php echo $value['valor_imovel'];
-                                    } endforeach; ?> 
+                                        <?php// echo $value['valor_imovel'];
+                                     ?> 
                             </td>
                             <td>
-                            <?php foreach ($viewData['item'] as $value): {
-                                    echo $value['item'] . ",";
-                                } endforeach;
-                            ?>
+                          
                             </td>
 
-    <?php foreach ($viewData['imoveis'] as $value): { ?>
+  
                                     <td>
                                         <a href="<?php BASE_URL; ?>editarimovel?id=<?php echo $value['id_imovel']; ?> "><button class="btn btn-warning">Editar</button></a>
-                                        <a href="<?php BASE_URL; ?>#?id=<?php echo $value['id']; ?>"><button class="btn btn-primary">+ Fotos</button></a>
-        <?php } endforeach; ?>
+                                        <a href="<?php BASE_URL; ?>adicionarfoto?id=<?php echo $value['id']; ?>"><button class="btn btn-primary">+ Fotos</button></a>
+       
 
                         </td>
                     </tr>
 
-                    <?PHP }?>
+                    <?php } endforeach;
+                    }?>
 
 
                 </tbody>

@@ -19,10 +19,10 @@ class tipovia extends model {
         
     }
     
-       public function verificarTipovia( $tipovia){
+       public function verificarTipovia( $via){
             try {
                 
-         $sql = "SELECT * FROM tipos_vias WHERE  nome='$nome'";
+         $sql = "SELECT * FROM tipos_vias WHERE  id='$via'";
        
          $sql= $this->db->query($sql);
         if($sql->rowCount()>0){
@@ -31,14 +31,14 @@ class tipovia extends model {
            return $sql['id'];
            
                      
-        }else{
+        }/*else{
           $sql = "INSERT INTO tipos_vias SET nome='".$nome."' ";
             $sql= $this->db->query($sql);
             $id = $this->db->lastInsertId();
         if($sql->rowCount()>0){
             return $id;
         }
-        }
+        }*/
          
             } catch (Exception $ex) {
                 echo "Falhou:".$ex->getMessage();
