@@ -38,12 +38,12 @@ $i = new imovel();
         
          
          $f=new foto();
-         $dados['listfotoprincipal']=$f->listFotosPrincipal();
-  $id_imovel['id_imovel']=$dados['listfotoprincipal'];
+         //$dados['listfotoprincipal']=$f->listFotosPrincipal();
+  //$id_imovel['id_imovel']=$dados['listfotoprincipal'];
     
        
          
-         $dados['listImovel']=$i->getDadosImovel($id_imovel);
+       //  $dados['listImovel']=$i->getDadosImovel($id_imovel);
          
         $this->loadTemplate('home', $dados);
     }

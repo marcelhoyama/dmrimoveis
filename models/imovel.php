@@ -64,11 +64,13 @@ class imovel extends model {
         try {
             $array = array();
             if (isset($id)) {
-               $sql = "SELECT c.nome, i.*, i.id as id_imovel FROM clientes c "
-                        . "JOIN imoveis i "
-                        . "ON c.id = i.id_cliente "
-                        . "WHERE id_cliente = '" . $id . "'"
-                        . "GROUP BY c.nome ";
+               $sql = " SELECT c.nome,c.id,c.telefone,c.telefone2,i.tipo_imovel,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel,d.id as id_descricao, d.* FROM imoveis i"
+                . " JOIN clientes c "
+                . "ON c.id = i.id_cliente "
+                . "JOIN imoveis_descricoes im "
+                . "ON im.id_imovel= i.id "
+                . "JOIN descricoes d "
+                . "ON d.id = im.id_descricao WHERE c.id='$id' ";
                 $sql = $this->db->query($sql);
                 if ($sql->rowCount() > 0) {
   $array = $sql->fetchAll();
@@ -112,7 +114,21 @@ class imovel extends model {
         }
     }
     
-    
+    public function getDescricaoImovelCliente($cliente){
+       $array = array();
+        $sql = " SELECT * FROM descricoes d "
+                . "JOIN clientes c "
+                . "ON c.id = i.id_cliente "
+                . "JOIN clientes d "
+                . "ON i.id = d.id_imovel WHERE c.nome LIKE '%$cliente%' ";
+        $sql = $this->db->query($sql);
+
+        if ($sql->rowCount() > 0) {
+            return $array = $sql->fetchAll();
+        }
+        
+        
+    }
     public function getDadosImovel($id_imovel){
       try{
           $array=array();
