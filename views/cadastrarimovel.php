@@ -69,11 +69,15 @@
             </div>
            
         </div>
+        
+        <div class="form-group">
+            <label for="proximidades">Proximidades do Imóvel</label>
+            <textarea name="proximidades" type="text" id="proximidades" class="form-control" placeholder="" ></textarea>
+        </div>
         <div class="well">
          <div class="form-group">
             <label for="arquivo1">OPCIONAL - Adicionar uma Foto Principal do Imóvel:</label>
             <input name="arquivo1" type="file" >
-
         </div>
       
 </div>
@@ -153,7 +157,7 @@
                     <label><input type="checkbox" name="internet "value="Internet" >Internet</label>
                 </div>
                  <div class="checkbox-inline">
-                    <label><input type="checkbox" name="gas "value="Internet" >Gás</label>
+                    <label><input type="checkbox" name="gas "value="Gás" >Gás</label>
                 </div>
             </div>
         </div>

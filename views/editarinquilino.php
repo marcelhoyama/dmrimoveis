@@ -18,12 +18,12 @@
             <input name="rg" type="text" class="form-control" value="<?php echo $value['rg']; ?>" >
         </div>
         <div class="form-group">
-            <label for="nome">Nome:</label>
+            <label for="nome">Nome: </label> <label class="text-danger" > * campo Obrigatorio</label>
             <input name="nome" type="text" class="form-control" id="nome" value="<?php echo $value['nome']; ?>">
         </div>
         <div class="row">
         <div class="form-group col-sm-6">
-            <label for="fone">Telefone:</label>
+            <label for="fone">Telefone: </label> <label class="text-danger"> * campo Obrigatorio</label>
             <input name="telefone" type="text" class="form-control" id="fone" value="<?php echo $value['telefone']; ?>">
         </div>
         <div class="form-group col-sm-6">

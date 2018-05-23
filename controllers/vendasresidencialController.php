@@ -10,10 +10,12 @@ class vendasresidencialController extends controller{
     
     public function index() {
         $dados = array('erro'=>'');
-$t=new telefone();
-           $dados['telefone']=$t->fixo();
-           $dados['celular']=$t->celular();
-           $dados['email']=$t->email();
+
+        
+        
+         $f = new foto();
+        $dados['listfotoprincipal'] = $f->listFotosPrincipalVendas();
+
        
         $this->loadTemplate('vendasresidencial', $dados);
     }

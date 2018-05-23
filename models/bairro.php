@@ -27,7 +27,7 @@ class bairro extends model {
                 $id_bairro = $this->db->lastInsertId();
                 if ($sql6->rowCount() > 0) {
 
-                    $sql7 = "INSERT INTO cidades_bairros SET id_bairro='" . $id_bairro . "',id_cidade='$id_bairro_cidade' ";
+                    $sql7 = "INSERT INTO cidades_bairros SET id_bairro='" . $id_bairro . "',id_cidade='$id_cidade' ";
                     $sql7 = $this->db->query($sql7);
 
                     if ($sql7->rowCount() > 0) {
@@ -49,7 +49,8 @@ class bairro extends model {
                 $sql = $this->db->query($sql);
                 
                 if ($sql->rowCount() > 0) {
-
+//$sql=$sql->fetch();
+//return $sql['id'];
                 }
             
         } catch (Exception $ex) {

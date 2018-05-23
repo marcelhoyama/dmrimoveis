@@ -40,14 +40,19 @@ class descricao extends model {
     public function updateDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro, $piscina, $churrasqueira, $agua, $luz, $internet, $gas) {
 
         try {
-
+$sql="SELECT * FROM imoveis_descricoes WHERE id_imovel='$id_imovel'";
+$sql= $this->db->query($sql);
+if($sql->rowCount()>0){
+    $sql=$sql->fetch();
+    $id_descricao=$sql['id_descricao'];
+}
             $sql = "UPDATE descricoes SET dormitorio='$dormitorio',suite='$suite',garagem='$garagem',banheiro='$banheiro',"
-                    . "piscina='$piscina', churrasqueira='$churrasqueira',agua='$agua',luz='$luz',internet='$internet',gas='$gas'";
+                    . "piscina='$piscina', churrasqueira='$churrasqueira',agua='$agua',luz='$luz',internet='$internet',gas='$gas' WHERE id='$id_descricao'";
             $sql = $this->db->query($sql);
 
             if ($sql->rowCount() > 0) {
 
-                return true;
+             
             }
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();

@@ -6,7 +6,7 @@ class tipovia extends model {
     public function listTipovia() {
          try{
                 $array=array();
-                 $sql = "SELECT nome FROM tipos_vias ";
+                 $sql = "SELECT * FROM tipos_vias ";
             $sql = $this->db->query($sql);
             if($sql->rowCount() > 0){
                 $array = $sql->fetchAll();
@@ -45,7 +45,8 @@ class tipovia extends model {
             }
          
         }
-
+        
+        
 
 
 }

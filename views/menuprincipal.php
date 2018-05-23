@@ -4,9 +4,6 @@
 <div class="container-fluid">
     
    
-        
-    
-
 <div class="row" >
     <div class="col-sm-2">
         <div class="thumbnail ">
@@ -68,7 +65,7 @@
          <div class="col-sm-2">
         <div class="thumbnail">
            <a href="<?php BASE_URL; ?>pesquisarcomprador">
-        <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/pesquisarcomprador.png" alt="pesquisar comprador" width="128" height="128">
+        <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/pesquisarcomprador.png" alt="pesquisar comprador" width="128" height="128" >
     </a>
         </div>
     </div>
@@ -79,10 +76,16 @@
     </a>
         </div>
         </div>
+           <div class="col-sm-2">
+        <div class="thumbnail">
+       <a href="<?php BASE_URL;?>pesquisarinteressados">
+        <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/pesquisarinteressado.png" alt="pesquisar interessados" width="128" height="128">
+    </a>
+        </div>
+        </div>
     </div>
    
     
 </div>
-    
-    </div> 
+  
 

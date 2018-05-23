@@ -16,6 +16,7 @@
     <center><h2 class="h2 label-info">Imóvel(is) do Cliente: <?php
            
                     echo $nome['nome'];
+                    
                 } endforeach;
     ?> </h2></center>
 
@@ -29,7 +30,7 @@
                     <th>Dono do Imóvel</th>
                     <th>Tipo do Imóvel</th>
                     <th> Principais Descrição</th>
-                    <th></th>
+                    <th> </th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -50,15 +51,24 @@
                                 </td>
                                 
                                 <td>
+                                    <?php if(!empty($value['garagem'])):{ ?>
             <li>  <span class="badge"><?php echo $value['garagem']; ?> Garagem </span></li>
-                           <li>            <span class="badge"><?php echo $value['dormitorio']; ?> Dormitório </span></li>
-                           <li>            <span class="badge"> <?php echo $value['banheiro']; ?> Banheiro</span></li>
+            <?php }else: endif;?>
+              <?php if(!empty($value['dormitorio'])):{ ?>              
+            <li>            <span class="badge"><?php echo $value['dormitorio']; ?> Dormitório </span></li>
+            <?php }else: endif;?>   
+            <?php if(!empty($value['banheiro'])):{ ?> 
+            <li>            <span class="badge"> <?php echo $value['banheiro']; ?> Banheiro</span></li>
+             <?php }else: endif;?> 
+            <?php if(!empty($value['suite'])):{ ?> 
                              <li>          <span class="badge"><?php echo $value['suite']; ?> Suite </span></li>
+                              <?php }else: endif;?> 
                                  
         </td>
+        <td>
    <?php 
                                     if( $value['piscina']=='Piscina' ){
-                                        ?>  <td><li>  <span class="badge"><?php echo $value['piscina']; ?></span>  </li> 
+                                        ?>  <li>  <span class="badge"><?php echo $value['piscina']; ?></span>  </li> 
                                      <?php   }
                                     ?>
  <?php 

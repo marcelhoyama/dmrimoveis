@@ -41,7 +41,9 @@ class estado extends model {
             $sql= $this->db->query($sql);
             
         if($sql->rowCount()>0){
-            return $id;
+          //  $sql=$sql->fetch();
+          //  return $sql=$sql['id'];
+            
         }
         
          

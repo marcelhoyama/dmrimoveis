@@ -18,7 +18,7 @@
     <body>
 
         <nav class="navbar navbar-inverse ">
-            <div class="container-fluid">
+            
 
 
                 <div class="navbar-header">
@@ -30,15 +30,15 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a href="./" class="navbar-brand"> Imóveis em Cabreúva</a>
+                    <a href="./" class="navbar-brand"> Imóveis em Cabreúva aqui </a>
                     <a href="https://www.facebook.com/negociosemcabreuva/" class="navbar-nav"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="32" height="32" style="margin-top: 8px"/></a>
 
-                    <form class="navbar-form navbar-right" role="search" id="buscanavbar">
+                 <!--   <form class="navbar-form navbar-right" role="search" id="buscanavbar">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="casa,apto,galpão">
                         </div>
                         <button type="submit" class="btn btn-default">Procurar</button>
-                    </form>
+                    </form>-->
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -49,10 +49,10 @@
                             <li><a href="<?php BASE_URL; ?>nossosservicos">SERVIÇOS</a></li>
                              <li><a href="<?php BASE_URL; ?>menuprincipal">MENU</a></li>
 
-                        <li class="dropdown">
+                       <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">IMÓVEIS<span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
-                                <li class="disabled"><a href="<?php BASE_URL; ?>">Todas Casas</a></li>
+                         <!--       <li class="disabled"><a href="<?php BASE_URL; ?>">Todas Casas</a></li>
                                 <li class="disabled"><a href="<?php BASE_URL; ?>">Todos Comercial</a></li>
                                 <li class="disabled"><a href="<?php BASE_URL; ?>">Todos Apartamentos</a></li>
                                 <li class="disabled"><a href="<?php BASE_URL; ?>">Todos Terrenos</a></li>
@@ -60,7 +60,7 @@
 
 
 <!--vendas-->
-                                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">Venda<span class="caret"></span></a>
+                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">Venda<span class="caret"></span></a>
 
                                     <ul class="dropdown-submenu-right" role="menu" >    
                                         <li><a href="<?php BASE_URL; ?>vendasresidencial">Casas</a></li>
@@ -102,101 +102,9 @@
 
 
                 </div>
-            </div>
+            
         </nav>
-        <!--      <?php
-        $pagina = "pagina";
-        if ($pagina == "pagina") {
-            ?>
-                                  <script>
-                      
-                                      $(document).ready(function () {
-                                          $('#myModal').modal('show');
-                                      });
-                      
-                                  </script>
-                      
-        <?php }
-        ?>
-        <!-- Modal --> 
-        <!--    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 class="modal-title" id="myModalLabel">  <p class="text-center text-danger">Novidades! Por tempo limitado...</p></h4>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-xs-6 col-sm-6">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <p class="text-center">Salgados de Bar</p>
-                                            <hr>
-                                            <p class="text-xl-left">Risole de Palmito </p>
-                                            <hr>
-                                            <p class="text-left">Encomende já...</p>
-    
-    
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-6 col-sm-6">
-                                    <div class="thumbnail">
-                                        <div class="caption">
-                                            <p class="text-center">Mini Salgados</p>
-                                            <hr>
-                                            <p class="text-xl-left">Mini Almofadinha de Calabresa </p>
-                                            <hr>
-                                            <p class="text-left">Encomende já...</p>
-    
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- row --> 
-        <!--   </div>
-           <div class="modal-footer">
-               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-               <a href="javascript:;" onclick="pedido()"> <button type="button" class="btn btn-primary">Fazer Pedido</button></a>
-           </div>
-       </div>
-   </div>
-</div>
-
-
-   <script>
-function pedido(){
-
-           $('#myModalpedido').modal('show');
-       $('#myModal').modal('hide');
-
-}
-     
-   </script>
-
-
-        <!-- Modal -->
-        <!--      <div class="modal fade" id="myModalpedido" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                  <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                          <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                              <h4 class="modal-title" id="myModalLabel"><p class="text-danger text-center">Nossos Contatos</p></h4>
-                          </div>
-                          <div class="modal-body">
-                              Endereço: Avenida São Paulo, nº828 - Bairro Jacaré - Distrito Jacaré - Cabreúva/SP.
-                              <p> Ao lado da Pastelaria Akio!</p></br>
-      Telefone fixo:   <?php echo $value = $viewData['telefone']; ?></br>
-      Celular: <?php echo $value = $viewData['celular']; ?></br>
-      Email: <?php echo $value = $viewData['email']; ?></br>
-                          </div>
-                          <div class="modal-footer">
-                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                         </div>
-                      </div>
-                  </div>
-              </div>
-        -->
+       
 
         <!--  aqui onde vai o corpo das paginas do sistema -->
         <?php $this->loadViewInTemplate($viewName, $viewData); ?>

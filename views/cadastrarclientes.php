@@ -16,7 +16,7 @@
         <div class="row" > 
         <div class="form-group col-sm-6">
             
-            <label for="fone">Telefone1* (Formato XX-XXXX-XXXX):</label> <label class="text-danger"> campo obrigatorio!</label>
+            <label for="fone">Telefone1* (Formato XX-XXXXX-XXXX):</label> <label class="text-danger"> campo obrigatorio!</label>
             <input name="telefone" pattern="^\d{2}-\d{5}-\d{4}$"  type="tel" class="form-control" id="fone" placeholder="telefone de contato 1" required="">
         </div>
           <div class="form-group col-sm-6">

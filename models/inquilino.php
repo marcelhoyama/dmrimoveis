@@ -2,7 +2,7 @@
 
 class inquilino extends model {
 
-public function cadastroInquilino( $rg, $cpf, $nome, $email, $telefone, $telefone2){
+public function cadastroInquilino( $nome, $telefone, $telefone2, $email, $cpf, $rg){
 $sql = "INSERT INTO inquilinos SET nome='".$nome."', email='".$email."',telefone='".$telefone."',telefone2='".$telefone2."',cpf='".$cpf."',rg='$rg' ";
 
 $sql = $this->db->query($sql);
@@ -30,11 +30,12 @@ $sql = $this->db->query($sql);
 
 if ($sql->rowCount() > 0) {
 
-header("Location:".BASE_URL."pesquisarinquilino");
+header("Location:" .BASE_URL. "menuprincipalinquilino?id=".$id);
 
 }else{
 return "Preencha todos os campos!";
 }
+exit;
 } catch (Exception $ex) {
 echo "Falhou".$ex->getMessage();
 }
@@ -101,6 +102,9 @@ $sql = "SELECT * FROM inquilinos WHERE nome LIKE'$pesquisa%'";
             }
             
              return $array;
+        }
+        else{
+            return false;
         }
          }
     

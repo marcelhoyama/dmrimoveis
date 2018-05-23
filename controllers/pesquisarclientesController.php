@@ -20,7 +20,7 @@ class pesquisarclientesController extends controller{
         $dados['lista']= $c->getListCliente($pesquisa);
           
         } else {
-               
+            
             $dados['lista']= $c->getListCliente($pesquisa);
         }
                

@@ -19,7 +19,10 @@ $id = 0;
          
                        
         }
-        if (isset($_POST['nome']) && !empty($_POST['nome'])) {
+         
+        $dados['dadosInquilino'] = $i->getDados($id);
+        
+        if (isset($_POST['nome']) && !empty($_POST['nome'])|| isset($_POST['telefone']) && !empty($_POST['telefone'])) {
 
                
                 $rg= addslashes($_POST['rg']);             
@@ -28,14 +31,21 @@ $id = 0;
                 $telefone2 = addslashes($_POST['telefone2']);
                 $email = addslashes($_POST['email']);
 
-                $dados['ok'] = $i->editarInquilino($rg, $nome, $telefone, $telefone2, $email, $id);
+                $dados['erro'] = $i->editarInquilino($rg, $nome, $telefone, $telefone2, $email, $id);
            
+        } 
+        if (empty($_POST['nome'])|| empty($_POST['telefone'])) {
+            
+      
+            $dados['erro']="Prencher Todos os campos obrigatórios! Por favor!";
+        }else{
+            $dados['erro']='';
         }
         
-        if(isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])){
-            $dados['pesquisa'] = $_GET['pesquisar'];
-        }
-        $dados['dadosInquilino'] = $i->getDados($id);
+     
+        
+        
+        
         $this->loadTemplate('editarinquilino', $dados);
     
 

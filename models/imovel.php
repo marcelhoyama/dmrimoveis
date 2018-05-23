@@ -31,26 +31,26 @@ class imovel extends model {
         }
     }
  
- public function updateImovel($tipo_imovel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao) {
+ public function updateImovel($id_imovel, $tipo_imovel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao) {
 
 
        
 
-            $sql = "UPDATE imoveis SET tipo_imovel='" . $tipo_imovel . "',"
-                    . "numero='" . $numero . "',"
-                    . "complemento='" . $complemento . "',"
-                    . "area_construida='" . $areaconstruida . "',"
-                    . "area_total='" . $areatotal . "',"
-                    . "documentacao='".$documentacao."',"
-                    
+            $sql = "UPDATE imoveis SET tipo_imovel='$tipo_imovel',"
+                    . "numero='$numero',"
+                    . "complemento='$complemento',"
+                    . "area_construida='$areaconstruida',"
+                    . "area_total='$areatotal',"
+                    . "documentacao='$documentacao'"
                     . "WHERE id ='$id_imovel'";
 
             $sql = $this->db->query($sql);
             
 
             if ($sql->rowCount() > 0) {
-
-                return $id;
+  
+             
+                
             } else {
                 return "Preencha todos os campos!";
             }
@@ -64,7 +64,7 @@ class imovel extends model {
         try {
             $array = array();
             if (isset($id)) {
-               $sql = " SELECT c.nome,c.id,c.telefone,c.telefone2,i.tipo_imovel,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel,d.id as id_descricao, d.* FROM imoveis i"
+               $sql = " SELECT c.nome,c.id,c.telefone,c.telefone2,i.tipo_imovel,i.id as id_imovel,d.id as id_descricao, d.* FROM imoveis i"
                 . " JOIN clientes c "
                 . "ON c.id = i.id_cliente "
                 . "JOIN imoveis_descricoes im "
@@ -141,8 +141,8 @@ class imovel extends model {
                   . "WHERE i.id='$id_imovel' ";
           $sql= $this->db->query($sql);
           if($sql->rowCount() >0){
-            //  $array=$sql->fetch(PDO::FETCH_ASSOC);
-             $array=$sql->fetch();
+              $array=$sql->fetch(PDO::FETCH_ASSOC);
+            
                        
           }
            return $array;
@@ -151,13 +151,18 @@ echo "Falhou:".$ex->getMessage();
       }  
     }
 
-    public function fotoPrincipal($id_imovel){
-        try{
-            
-        } catch (Exception $ex) {
-
+   public function ListDadosImovel() {
+        try {
+            $array = array();
+            $sql = "SELECT * FROM imoveis   ";
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                $array = $sql->fetchAll();
+            }
+            return $array;
+        } catch (Exception $e) {
+            echo "Falhou:" . $e->getMessage();
         }
-        
     }
 
 //fim busca interna.........................
@@ -195,10 +200,47 @@ echo "Falhou:".$ex->getMessage();
 
     
     // busca publica do site-----------------
-     public function buscarImovel($tipo_imovel, $dormitorio, $suite, $garagem, $valor, $area_construida, $bairro, $cidade) {
+     public function buscarImovel($filtros) {
         try {
             $array=array();
-            $sql = "SELECT * FROM imoveis endereco WHERE tipo_imovel='$tipo_imovel' OR dormitorio='$dormitorio' OR suite='$suite' OR garagem='$garagem' OR valor='$valor' OR area_construida='$area_construida' OR cidade='$cidade'";
+            
+            $filtrostring=array('1=1');
+            if(!empty($filtros['cidade'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            if(!empty($filtros['bairro'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            if(!empty($filtros['dormitorio'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            if(!empty($filtros['suite'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            if(!empty($filtros['tipoimovel'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            if(!empty($filtros['banheiro'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            if(!empty($filtros['garagem'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            if(!empty($filtros['areaconstruida'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            if(!empty($filtros['areatotal'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            if(!empty($filtros['valoraluguel'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            if(!empty($filtros['valorimovel'])){
+                $filtrostring[]='c.nome=i.cidade';
+            }
+            $sql = "SELECT * FROM imoveis i"
+                    . "JOIN enderecos e ON i.id_endereco=e.id"
+                    . "JOIN bairro WHERE ". implode('AND',$filtrostring)."";
        $sql= $this->db->query($sql);
        if($sql->rowCount()>0){
            $array=$sql->fetchAll();
@@ -329,6 +371,19 @@ echo "Falhou:".$ex->getMessage();
                 $sql= $this->db->query($sql);
                 if($sql->rowCount() >0){
                    return $array = $sql->fetch();
+                }
+            } catch (Exception $ex) {
+                echo "Falhou:".$ex->getMessage();
+            }
+            
+        }
+        public function listUrlPrincipal($id_imovel){
+            try{
+                $array=array();
+                $sql="SELECT url_foto_principais FROM imoveis WHERE id = '$id_imovel'";
+                $sql= $this->db->query($sql);
+                if($sql->rowCount() >0){
+                   return $array = $sql->fetchAll();
                 }
             } catch (Exception $ex) {
                 echo "Falhou:".$ex->getMessage();

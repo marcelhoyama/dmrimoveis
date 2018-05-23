@@ -31,22 +31,22 @@ class endereco extends model {
         }
     }
 
-     public function updateEndereco($endereco,$cep, $proximidades, $id_endereco) {
+    public function updateEndereco($endereco, $cep, $proximidades, $id_endereco, $id_bairro, $id_tipovia) {
         try {
 
-                $sql1 = "UPDATE enderecos SET endereco='$endereco', cep='$cep', proximidades='$proximidades',"
-                                         . "WHERE id='$id_endereco' ";
-                $sql1 = $this->db->query($sql1);
-                $id = $this->db->lastInsertId();
+            $sql = "UPDATE enderecos SET endereco='$endereco', cep='$cep', proximidades='$proximidades', id_bairro='$id_bairro',id_tipo_via='$id_tipovia'"
+                    . "WHERE id='$id_endereco' ";
+            $sql = $this->db->query($sql);
 
-                if ($sql1->rowCount() > 0) {
-                    return $id;
-                }
-            
+
+            if ($sql->rowCount() > 0) {
+                
+            }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
     }
+
     public function listEndereco() {
         try {
             $array = array();
@@ -64,7 +64,7 @@ class endereco extends model {
     public function getEndereco($id_endereco) {
         try {
             $array = array();
-            $sql = "SELECT * ,b.nome bairro, c.nome cidade,c.id id_cidade, es.nome estado, es.id id_estado, t.nome via FROM enderecos e "
+            $sql = "SELECT * ,b.nome bairro, c.nome cidade,c.id id_cidade, es.nome estado, es.id id_estado, t.nome via, t.id id_via FROM enderecos e "
                     . "JOIN tipos_vias t ON e.id_tipo_via= t.id "
                     . "JOIN bairros b ON e.id_bairro=b.id "
                     . "JOIN cidades_bairros cb ON b.id=cb.id_bairro "
@@ -73,7 +73,7 @@ class endereco extends model {
                     . "WHERE e.id='$id_endereco' ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetch();
+                $array = $sql->fetch(PDO::FETCH_ASSOC);
             }
             return $array;
         } catch (Exception $ex) {

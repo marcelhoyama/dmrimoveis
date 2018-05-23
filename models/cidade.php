@@ -32,13 +32,13 @@ class cidade extends model {
         }
     }
 
-    public function updateCidade($id_cidade, $cidade) {
+    public function updateCidade($id_estado,$id_cidade, $cidade) {
         try {
 
           
-                $sql3 = "UPDATE cidades SET nome='$cidade' WHERE id_cidade='$id_cidade' ";
+                $sql3 = "UPDATE cidades SET nome='$cidade', id_estado='$id_estado' WHERE id='$id_cidade' ";
                 $sql3 = $this->db->query($sql3);
-                $id_cidade = $this->db->lastInsertId();
+                
                 if ($sql3->rowCount() > 0) {
 
                 }
