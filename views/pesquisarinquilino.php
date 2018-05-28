@@ -22,7 +22,7 @@
                 <th>Nome do Inquilino</th>
                 <th>Telefone</th>
                 <th>E-mail</th>
-                <th>Total de Imóvel</th>
+                <th>Total de Imóvel no Nome dele</th>
                 <th>Seu Fiador</th>
                  <th>Ações</th>
             </tr>
@@ -47,8 +47,8 @@
                     </td>
                 <td><?php echo $value['telefone'] ?> / <?php echo $value['telefone2'] ?></td>
                 <td><?php echo $value['email'] ?></td>
-                <td><span class="badge"><?php echo $value['total_imovel'] ?></span></td>
-                <td><span class="badge"><?php echo $value['seufiador'] ?></span></td>
+                <td><span class="badge"><?php $total=$viewData['total_imovel']; ?><?php echo $total['total']; ?></span></td>
+                <td><span class="badge"><?php echo $viewData['seufiador']; ?></span></td>
                 <td><a href="<?php BASE_URL;?>editarinquilino?id=<?php echo $value['id'];?> "><button class="btn btn-warning">Editar</button></a>
                     <a href="<?php BASE_URL; ?>menuprincipalinquilino?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Menu do Inquilino</button></a>
                <a href="<?php BASE_URL; ?>cadastrarimovel?id=<?php echo $value['id'];?>"><button class="btn btn-primary">+ Imóvel</button></a>

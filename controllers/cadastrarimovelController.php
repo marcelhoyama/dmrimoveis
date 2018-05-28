@@ -57,8 +57,9 @@ $id_imovel='';
             }
             if (isset($_POST['endereco']) && !empty($_POST['endereco'])) {
                 $endereco = addslashes($_POST['endereco']);
+                $proximidades= addslashes($_POST['proximidades']);
                 
-                $id_endereco = $e->verificarEndereco($id_cliente, $id_bairro, $endereco, $id_tipo_via);
+                $id_endereco = $e->verificarEndereco($id_cliente, $id_bairro, $endereco, $id_tipo_via, $proximidades);
             }
           
 
@@ -71,12 +72,13 @@ $id_imovel='';
                 $tipoimovel = addslashes($_POST['tipoimovel']);
                 $areaconstruida = addslashes($_POST['areaconstruida']);
                 $areatotal = addslashes($_POST['areatotal']);
-                $valorimovel = addslashes($_POST['valorimovel']);
-                $valoraluguel = addslashes($_POST['valoraluguel']);
+                 $venda= addslashes($_POST['valorimovel']);
+                $aluguel= addslashes($_POST['valoraluguel']);
                 $documentacao = addslashes($_POST['documentacaoimovel']);
-                $proximidades= addslashes($_POST['proximidades']);
+                
+              
 
-               $id_imovel = $i->cadastrarImovel($id_cliente, $tipoimovel, $id_endereco, $numero, $complemento, $areaconstruida, $areatotal, $documentacao,$proximidades);
+               $id_imovel = $i->cadastrarImovel($id_cliente, $tipoimovel, $id_endereco, $numero, $complemento, $areaconstruida, $areatotal, $documentacao, $venda, $aluguel);
          
          
                 }
@@ -132,9 +134,9 @@ $id_imovel='';
         if (isset($_FILES['arquivo1']) && !empty($_FILES['arquivo1'])) {
            $foto = $_FILES['arquivo1'];
         } else {
-            $foto = array();
+              $foto = array();
         }
-      
+   
         
         $f->enviarUrlPrincipalImagem($id_imovel, $foto);
         

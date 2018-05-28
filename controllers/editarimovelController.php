@@ -18,6 +18,7 @@ class editarimovelController extends controller {
         $b = new bairro();
         $tv = new tipovia();
         $d = new descricao();
+     
         $dados = array('ok'=>'');
 
  
@@ -29,6 +30,8 @@ class editarimovelController extends controller {
 
             $value = $dados['listimovel'];
             $id_cliente = $value['cliente'];
+            $venda=$value['venda'];
+            $aluguel=$value['aluguel'];
             $dados['listcliente'] = $c->getDados($id_cliente);
 
             $id_endereco = $value['id_endereco'];
@@ -134,13 +137,13 @@ if(!empty($_POST['tipovia'])){
             $tipoimovel = addslashes($_POST['tipoimovel']);
             $areaconstruida = addslashes($_POST['areaconstruida']);
             $areatotal = addslashes($_POST['areatotal']);
-            //  $valorimovel = addslashes($_POST['valorimovel']);
-            //  $valoraluguel = addslashes($_POST['valoraluguel']);
+              $venda = addslashes($_POST['valorimovel']);
+              $aluguel = addslashes($_POST['valoraluguel']);
             $documentacao = addslashes($_POST['documentacaoimovel']);
 
 
 
-            $i->updateImovel($id_imovel, $tipoimovel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao);
+            $i->updateImovel($id_imovel, $tipoimovel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao, $venda, $aluguel);
 //fim update imovel=============================================================
         }
 

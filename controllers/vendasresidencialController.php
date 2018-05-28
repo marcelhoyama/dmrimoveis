@@ -14,7 +14,7 @@ class vendasresidencialController extends controller{
         
         
          $f = new foto();
-        $dados['listfotoprincipal'] = $f->listFotosPrincipalVendas();
+      //  $dados['listfotoprincipal'] = $f->listFotosPrincipalVendas();
 
        
         $this->loadTemplate('vendasresidencial', $dados);

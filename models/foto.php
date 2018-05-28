@@ -36,7 +36,7 @@ class foto extends model {
             $sql = "SELECT url_foto_principal FROM imoveis WHERE id='$id_imovel' ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetch();
+                $array = $sql->fetch(PDO::FETCH_ASSOC);
             }
             return $array;
         } catch (Exception $e) {
@@ -114,9 +114,6 @@ class foto extends model {
             //se contagem as fotos for maior de 0 faça que o nome do arquivo seja mudado com o tempo(relogio) crie criptografia randomica
             // e salve no diretorio upload   com o comando especifico do PHP
 
-
-
-
             if (!empty($foto['tmp_name'][0])) {
                
 
@@ -129,7 +126,7 @@ class foto extends model {
                        $diretorio = "upload/fotos_principais/";
                      
                         move_uploaded_file($foto['tmp_name'], $diretorio . $tmpname);
-                        $sql = "UPDATE imoveis SET id='$id_imovel', url_foto_principal='$tmpname'";
+                        $sql = "UPDATE imoveis SET url_foto_principal='$tmpname' WHERE id='$id_imovel',";
 
                         $sql = $this->db->query($sql);
                         if ($sql->rowCount() > 0) {

@@ -22,22 +22,12 @@ class homeController extends controller {
             'valoraluguel'=>''
         );
         $i = new imovel();
-        if (isset($_GET['filtros'])) {
-          $filtros= $_GET['filtros'];
-          
-         
-
-          //  $dados['buscaimovel']=$i->buscarImovel($filtros);
-        }
-       
-
+     
         $c = new cidade();
         $dados['listCidade'] = $c->listCidade();
 
         $b = new bairro();
         $dados['listBairro'] = $b->listBairro();
-
-
 
         $dados['listDormitorio'] = $i->listDormitorio();
         $dados['listSuite'] = $i->listSuite();
@@ -45,29 +35,21 @@ class homeController extends controller {
         $dados['listGaragem'] = $i->listGaragem();
         $dados['listAreaConstruida'] = $i->listAreaconstruida();
         $dados['listTotal'] = $i->listTotal();
-        $dados['listAluguel'] = $i->listAluguel();
-        $dados['listValorimovel'] = $i->listValorimovel();
-
-$dados['listdadosimovel']=$i->ListDadosImovel();
-        $f = new foto();
-        $dados['listfotoprincipal'] = $f->listFotosImovel();
-
-
+        $dados['listVenda']= $i->listVenda();
+        $dados['listAluguel']=$i->listAluguel();
+       
+$dados['listimovelvenda']=$i->listImovelVenda();
+$dados['listimovelaluguel']=$i->listImovelAluguel();
+      $dados['listimovelcomercial']=$i->listImovelComercial();
         
+    if (isset($_GET['filtros'])) {
+         $filtros= $_GET['filtros'];
+          
+         
 
-
-        $value = $dados['listfotoprincipal'];
-
-        for ($x = 0; $x < sizeof($value); $x++) {
-
-           print_r($dados['listImovel'] = $i->getDadosImovel($value[$x]['id_imovel']));
+           $dados['buscaimovel']=$i->buscarImovel($filtros);
         }
 
-if(isset($_POST['nome'])){
-    echo $nome= addslashes($_POST['nome']);
-exit;
-    
-}
 
 
 

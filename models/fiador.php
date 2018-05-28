@@ -3,7 +3,7 @@
 class fiador extends model {
 
 /*public function cadastroFiador( $rg, $cpf, $nome, $email, $telefone, $telefone2){
-$sql = "INSERT INTO fiadores SET nome='".$nome."', email='".$email."',telefone='".$telefone."',telefone2='".$telefone2."',cpf='".$cpf."',rg='$rg' ";
+$sql = "INSERT INTO fiadores SET nome='".$nome."', email='".$email."',telefone='".$telefone."',telefone2='".$telefone2."',cpf='".$cpf."',rg='$rg',data=NOW() ";
 
 $sql = $this->db->query($sql);
 $_SESSION['id'] = $this->db->lastInsertId();

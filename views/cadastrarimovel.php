@@ -176,6 +176,8 @@
                     <option value="Terreno">Terreno</option>
                     <option value="Chacara">Chacara</option>
                     <option value="Sitio">Sitio</option>
+                     <option value="Condominio">Condominio</option>
+                     <option value="Comercial">Comercial</option>
 
                 </select> 
             </div>

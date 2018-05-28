@@ -2,7 +2,7 @@
 
 class endereco extends model {
 
-    public function verificarEndereco($id_cliente, $id_bairro, $endereco, $id_tipo_via) {
+    public function verificarEndereco($id_cliente, $id_bairro, $endereco, $id_tipo_via, $proximidades) {
         try {
 
             $sql = "SELECT c.nome, e.* FROM enderecos e "
@@ -18,7 +18,8 @@ class endereco extends model {
 
                 return $sql['id'];
             } else {
-                $sql1 = "INSERT INTO enderecos SET endereco='" . $endereco . "', id_bairro='" . $id_bairro . "', id_cliente='" . $id_cliente . "', id_tipo_via='$id_tipo_via' ";
+                $sql1 = "INSERT INTO enderecos SET endereco='" . $endereco . "', id_bairro='" . $id_bairro . "', id_cliente='" . $id_cliente . "', id_tipo_via='$id_tipo_via',"
+                        . "proximidades='$proximidades' ";
                 $sql1 = $this->db->query($sql1);
                 $id = $this->db->lastInsertId();
 

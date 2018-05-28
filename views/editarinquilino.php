@@ -36,8 +36,8 @@
             <input name="email" type="email" class="form-control" id="email" value="<?php echo $value['email']; ?>">
         </div>
 
-                   
-
+     
+    
 
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Alterar">

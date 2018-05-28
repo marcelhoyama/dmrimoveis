@@ -3,7 +3,7 @@
 class cliente extends model {
 
     public function cadastroCliente($nome, $email, $telefone, $telefone2, $cpf) {
-        $sql = "INSERT INTO clientes SET nome='" . $nome . "', email='" . $email . "',telefone='" . $telefone . "', telefone2='" . $telefone2 . "', cpf='" . $cpf . "' ";
+        $sql = "INSERT INTO clientes SET nome='" . $nome . "', email='" . $email . "',telefone='" . $telefone . "', telefone2='" . $telefone2 . "', cpf='" . $cpf . "',data=NOW() ";
 
         $sql = $this->db->query($sql);
         $_SESSION['id'] = $this->db->lastInsertId();
@@ -29,9 +29,7 @@ class cliente extends model {
             if ($sql->rowCount() > 0) {
 
                 header("Location:" . BASE_URL . "pesquisarclientes");
-            } else {
-                return "Preencha todos os campos!";
-            }
+            } 
         } catch (Exception $ex) {
             echo "Falhou" . $ex->getMessage();
         }

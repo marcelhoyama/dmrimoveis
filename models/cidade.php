@@ -19,12 +19,7 @@ class cidade extends model {
                 $id_cidade = $this->db->lastInsertId();
                 if ($sql3->rowCount() > 0) {
 
-                 $sql4 = "INSERT INTO cidades_bairros SET id_cidade='" . $id_cidade . "'";
-                    $sql4 = $this->db->query($sql4);
-                    $id = $this->db->lastInsertId();
-                    if ($sql4->rowCount() > 0) {
-                        return $id;
-                    }
+               return $id_cidade;
                 }
             }
         } catch (Exception $ex) {

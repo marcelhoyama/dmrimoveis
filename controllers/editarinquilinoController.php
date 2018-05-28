@@ -18,11 +18,22 @@ $id = 0;
           $id = addslashes($_GET['id']);
          
                        
-        }
+       
          
         $dados['dadosInquilino'] = $i->getDados($id);
+        $dados['estanoimovel']=$i->inquilinoEstanoImovel($id);
+     $estanoimovel=$dados['estanoimovel'];
+      
+      for ($x = 0; $x < sizeof($estanoimovel); $x++) {
+
+           $dados['listImovelInquilino'] = $i->listImovelInquilino($estanoimovel[$x]['id_imovel']);
+        }
+     
+       
+         
         
-        if (isset($_POST['nome']) && !empty($_POST['nome'])|| isset($_POST['telefone']) && !empty($_POST['telefone'])) {
+        
+        if (isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])) {
 
                
                 $rg= addslashes($_POST['rg']);             
@@ -31,20 +42,16 @@ $id = 0;
                 $telefone2 = addslashes($_POST['telefone2']);
                 $email = addslashes($_POST['email']);
 
-                $dados['erro'] = $i->editarInquilino($rg, $nome, $telefone, $telefone2, $email, $id);
+                $i->editarInquilino($rg, $nome, $telefone, $telefone2, $email, $id );
            
         } 
-        if (empty($_POST['nome'])|| empty($_POST['telefone'])) {
-            
-      
-            $dados['erro']="Prencher Todos os campos obrigatórios! Por favor!";
-        }else{
-            $dados['erro']='';
-        }
         
-     
+        } 
+         if(isset($_POST['nome']) && empty($_POST['nome']) || isset($_POST['telefone']) && empty($_POST['telefone'])){
         
-        
+        $dados['erro']="Deixou campo obrigatorio em branco! ";
+      }
+       
         
         $this->loadTemplate('editarinquilino', $dados);
     

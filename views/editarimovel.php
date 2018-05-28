@@ -96,25 +96,25 @@
                     </div>
                     
             <div class="row">
-                    <div class="col-sm-3">
+                    
+ 
+<?php if(!empty($viewData['fotoprincipal'])): ?>
+
+                            <?php $valuefoto=$viewData['fotoprincipal']; ?>  
+                        <div class="col-sm-3">
                         <div class="form-group">
-
-
-<?php if(!$viewData['fotoprincipal']): ?>
-
-                            <?php foreach ($viewData['fotoprincipal'] as $valuefoto ):  ?>  
-                                <div class="thumbnail" >   
-                                   
-                                   
+      
+                            <div class="thumbnail" >   
+                                                                      
                                     <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $valuefoto['url_foto_principal']; ?>" >
                                     
-                                    
-                                    
-                                    
+                                                                                                           
 
                                 </div>
-                            <?php
-                            endforeach;?>  
+                                  </div>
+                    </div>
+                            
+                              
                            <?php else: ?>
                             <div class="thumbnail">
                                  
@@ -126,8 +126,7 @@
 ?>
 
 
-                        </div>
-                    </div>
+                  
                 </div>
                 
 
@@ -215,6 +214,9 @@
                     <div class="checkbox-inline">
                         <label><input type="checkbox" name="internet" value="Internet"  <?php echo($value1['internet'] == 'Internet') ? 'checked="checked"' : ''; ?>>Internet</label>
                     </div>
+                      <div class="checkbox-inline">
+                        <label><input type="checkbox" name="gas" value="Gás"  <?php echo($value1['gas'] == 'Gás') ? 'checked="checked"' : ''; ?>>Gás</label>
+                    </div>
                 </div>
             </div>
 
@@ -232,6 +234,7 @@
                         <option value="Terreno">Terreno</option>
                         <option value="Sitio">Sitio</option>
                         <option value="Condominio">Condominio</option>
+                         <option value="Comercial">Comercial</option>
 
                     </select> 
                 </div>
@@ -250,6 +253,7 @@
                 <div class="form-group col-sm-4 input-group">
 
                     <span class="input-group-addon">R$</span>
+                   
                     <input name="valorimovel" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value1['venda']; ?>">
                 </div>
 
@@ -275,7 +279,7 @@
                 <div class="form-group col-sm-4 input-group">
 
                     <span class="input-group-addon">R$</span>
-                    <input name="valoraluguel" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value1['aluguel']; ?>">
+                 <input name="valoraluguel" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value1['aluguel']; ?>">
                 </div>
 
 
@@ -287,7 +291,7 @@
                     <div class="checkbox">
                         <label><input type="checkbox" value="2" disabled="">Pessoalmente</label>
                     </div>
-
+                   
                 </div>
             </div>
             <div class="panel panel-info">
