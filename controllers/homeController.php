@@ -21,6 +21,8 @@ class homeController extends controller {
             'areatotal'=>'',
             'valoraluguel'=>''
         );
+        
+        $dados['buscaimovel']='';
         $i = new imovel();
      
         $c = new cidade();
@@ -47,10 +49,14 @@ $dados['listimovelaluguel']=$i->listImovelAluguel();
           
          
 
-           $dados['buscaimovel']=$i->buscarImovel($filtros);
+          if($dados['buscaimovel']=$i->buscarImovel($filtros) ==0){
+                 $dados['buscaimovel']='' ;
+                 $dados['erro']='Nada Encontrado!';
+        }else{
+            $dados['buscaimovel']=$i->buscarImovel($filtros);
         }
 
-
+    }
 
 
         $this->loadTemplate('home', $dados);

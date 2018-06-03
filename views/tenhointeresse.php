@@ -1,32 +1,60 @@
-<title>DMR Imóveis em Cabreúva - Tenho Interesse</title>
-<div class="container-fluid">
-    <h2><p class="text-danger text-center">Deixe que entraremos em Contatos</p></h2>
 
-<hr/>
+ 
  <form method="POST">
   
-                
+                <div class="row">
+          <div class="col-sm-3">
+          <?php $imovel= $viewData['dadosImovel'];?>
                
                
                       <div class="form-group">
-                        Assunto:  <input class="form-control" type="text" name="assunto" />
+                          <label for="assunto">  Assunto: </label>
+                          <input class="form-control" type="text" name="assunto" value=" <?php if ($imovel['aluguel'] == 0) {
+                                                    echo 'Venda';
+                                                } elseif (!$imovel['venda'] == 0 && !imovel['aluguel'] == 0) {
+                                                    echo 'Venda/Aluga ';
+                                                } elseif ($imovel['venda'] == '' && $imovel['aluguel'] == '') {
+                                                    echo ' ';
+                                                } else {
+                                                    echo 'Aluga';
+                                                }
+                                                ?>" disabled="" />
                     </div>
+          </div>
+         <div class="col-sm-4">
+     <div class="form-group">
+         <label for="id_imovel">Codigo do imovel :</label>
+         <input class="form-control" type="text" name="id_imovel" value=" <?php echo $imovel['id_imovel']?>" disabled=""/>
+     </div>
+             </div>
+         <div class="col-sm-3">
+     <div class="form-group">
+         <label for="tipo_imovel">Tipo do imovel :</label>
+     <input class="form-control" type="text" name="tipo_imovel" value=" <?php echo $imovel['tipo_imovel']?>" disabled=""/>
+     </div>
+         </div>
+         </div>
+     
                     <div class="form-group">
-                        Nome Completo:  <input class="form-control" type="text" name="nome" />
+                        <label class="" for="nome"> Nome Completo:</label><label class="text-danger">*Obrigatório</label>  <input class="form-control" type="text" name="nome" value="" placeholder="seu nome completo" required="" />
                     </div>
+     <div class="row">
+         <div class="col-sm-4">
                     <div class="form-group">
-                        Telefone:  <input class="form-control" type="tel" name="telefone" />
+                        Telefone:  <input class="form-control" type="tel" name="telefone" value="" placeholder="seu telefone" />
                     </div>
+         </div>
+         <div class="col-sm-4">
                     <div class="form-group">
-                        Celular: <input class="form-control" type="tel" name="telefone2"/>
+                        <label for="celular">Celular:</label><label class="text-danger">*Obrigatório</label> <input class="form-control" type="tel" name="celular" value="" placeholder=" seu celular" required=""/>
                     </div>
+         </div>
+     </div>
                     <div class="form-group">
-                        Email: <input class="form-control" type="email" name="email"/>
+                        <label for="email">Email:</label> <input class="form-control" type="email" name="email" value="" placeholder="seu e-mail"/>
                     </div>
-             
-                <p>Codigo do imovel : <?php echo $value['id']?>/ <?php echo $value['tipo_imovel'] ?></p>
-              
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Enviar</button>
+    
+     <input type="submit" value="enviar" class="btn btn-success"/>
 
                
                 

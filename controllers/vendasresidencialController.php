@@ -11,7 +11,8 @@ class vendasresidencialController extends controller{
     public function index() {
         $dados = array('erro'=>'');
 
-        
+        $i =new imovel();
+        $i->listarImoveis($tipo);
         
          $f = new foto();
       //  $dados['listfotoprincipal'] = $f->listFotosPrincipalVendas();

@@ -11,11 +11,8 @@
 <?php foreach ($viewData['listfotoprincipal'] as $value): { ?>
 
 
-
-
-    <div class="row">
-         
-                                <div class="col-sm-3">
+<table class="table table-hover">
+  
                                     <div class="thumbnail ">
                                         <a href="javascript:;" onclick="ver(<?php echo $value['id_imovel'] ?>)">
 
@@ -47,15 +44,20 @@
                                         </div>
 
                                     </div>
-                                </div>
+                               
         <?php } endforeach;
 //} ?>
 
                 
-            </div>
 
 
-        </div>
+
+      
+</table>
+
+      
+         
+                                
 
 
 

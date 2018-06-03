@@ -10,11 +10,19 @@ class tenhointeresseController extends controller{
     
     public function index() {
         $dados = array('erro'=>'');
- 
-        if (isset($_GET['id'])){
-            echo $id_imovel= addslashes($_GET['id']);
+ $i=new imovel();
+        if (isset($_POST['id'])){
+             $id_imovel= addslashes($_POST['id']);
+             
+             $dados['dadosImovel']=$i->getDadosImovel($id_imovel);
         }
-        $this->loadTemplate('tenhointeresse', $dados);
+        
+        
+        
+       
+    
+
+        $this->loadView('tenhointeresse', $dados);
     }
     
     

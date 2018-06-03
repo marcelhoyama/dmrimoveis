@@ -1,20 +1,37 @@
 <title>DMR Imóveis em Cabreúva - Sobre</title>
 <div class="container-fluid">
-    <h2>Sobre Nós</h2>
 
-<hr/>
-    <article >
 
-        Conte uma história de voces , como surgiu !  a visao, a missao de voces!! 
-          <img  src="<?php BASE_URL; ?>assets/images/sem-imagem.gif " width="200" height="270" alt="DMR Imóveis em Cabreúva" title="Danilo"/>
-      <h3> <p><u>Danilo</u></p>
-         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam urna quam, elementum nec urna at, dignissim aliquam nulla. Proin tempor egestas leo, id porta leo maximus et. Mauris semper, mauris nec ultrices posuere, diam ante tincidunt elit, sed tempus eros arcu ut odio. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Phasellus rhoncus sit amet ligula dictum consectetur. Donec congue varius nibh. Donec ac lorem elit. Etiam orci risus, tempus id dictum vitae, porta sed quam. In dolor sem, volutpat sit amet augue in, euismod faucibus felis. Nunc mi urna, consequat vitae magna vel, hendrerit feugiat arcu.</p>
-  <img  src="<?php BASE_URL; ?>assets/images/sem-imagem.gif " width="200" height="270" alt="DMR Imóveis em Cabreúva title="Marcel"/>
-       <p><u>Marcel</u></p>
-            <p>  Pellentesque hendrerit eros euismod euismod accumsan. Ut sed convallis leo, at pharetra augue. Nullam rhoncus tortor non vestibulum dignissim. Aliquam erat volutpat. Sed consequat mollis tempor. Integer mattis aliquam ex ac pretium. Fusce eleifend id dolor vitae scelerisque. Fusce eros dolor, varius et nibh nec, dignissim sagittis enim. Fusce finibus dui vitae tincidunt eleifend. Sed interdum ipsum a nisl lacinia suscipit. Nulla commodo ante ac est feugiat commodo. Mauris sem felis, suscipit nec volutpat at, dignissim sit amet diam. Proin in arcu id lorem blandit venenatis et sed quam. Etiam facilisis nec tortor non fermentum.</p>
-  <img  src="<?php BASE_URL; ?>assets/images/sem-imagem.gif " width="200" height="270" alt="DMR Imóveis em Cabreúva" title="Rony"/>
-       <p><u>Rony</u></p>
-<p>Sed justo nisi, ullamcorper et laoreet non, laoreet non sapien. Mauris aliquam varius leo nec tempus. Duis in tortor id magna facilisis finibus eget non dui. Ut sit amet tristique ex. Curabitur sed diam ac dolor interdum iaculis in in turpis. Suspendisse non volutpat est, vel pharetra est. Ut in leo diam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Ut eget neque ultricies, porttitor enim vel, elementum augue. Vivamus a leo vitae nulla placerat efficitur sit amet vitae leo. Suspendisse congue elit vel nulla fringilla consectetur.</p></h3></br>
+
+<article>
+<div class="media">
+<div class="media-left">
+<a href="#">
+<img class="media-object"src="<?php BASE_URL; ?>assets/images/logo.jpeg " width="370" height="370" alt="DMR Imóveis em Cabreúva" title="DMR imoveis cabreuva"/>
+        
+</a>
+</div>
+<div class="media-body">
+    <hr>
+<h4 class="media-heading">Sobre Nós</h4>
+<p>Em meados de Janeiro de 2018, a partir da necessidade da Cidade de Cabreúva em ter uma referência no ramo imobiliário, 
+              somado a muita vontade por parte dos profissionais envolvidos onde o principal requisito para fazer parte dessa equipe era a IDONEIDADE, 
+              ÉTICA e TRANSPARÊNCIA, iniciaram-se as conversas para a criação de uma imobiliária diferente, que trabalha numa linha, visão, 
+              foco e atendimento diferente de tudo o que a população de Cabreúva e região já conheceu.
+Prezamos por, além da questão ética e moral, oferecer serviços da mais alta qualidade, prestatividade e total abrangência na área de comercialização de 
+imóveis e toda a parte jurídica envolvida aos nossos clientes.
+A equipe formada pelo conceituado advogado há mais de 13 anos na Cidade de Cabreúva, o Dr. Danilo Salgado que possui vasta experiência no 
+ramo de regularização e documentação de imóveis na cidade e região, além de exercer com excelência a função de administração de bens imóveis.
+Traz essa experiência e todo o aparato jurídico para somar ao profissional do ramo imobiliário Marcel Simões, corretor de imóveis há mais de 10 anos em 
+Cabreúva, com especialidade em vendas em condomínios e atuando (num mercado mais recente) na área de locação residencial e comercial. 
+Toda essa experiência jurídica, técnica e comercial precisava de ideias, fôlego e aquele ‘gás inovador’ de um profissional recentemente ingressado à área,
+porém, que fosse experiente no ramo comercial e que tivesse habilidade em vendas, e o empresário Rony Vieira veio para trazer esse diferencial à parceria e,
+finalmente em 04 de Fevereiro de 2018 surge a DMR Negócios Imobiliários.</p>
+<hr>
+</div>
+</div>
+        
+           
 
     </article>
     

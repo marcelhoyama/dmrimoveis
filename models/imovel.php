@@ -173,7 +173,8 @@ class imovel extends model {
     public function listImovelVenda() {
         try {
             $array = array();
-            $sql = "SELECT * FROM imoveis WHERE venda > 0  ";
+            $sql = "SELECT * FROM imoveis i JOIN imoveis_descricoes ide ON i.id=ide.id_imovel "
+                    . "JOIN descricoes d ON ide.id_descricao=d.id WHERE venda > 0  ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
@@ -248,67 +249,71 @@ class imovel extends model {
     public function buscarImovel($filtros) {
         try {
             $array = array();
-$q=1;
+
 if(empty($filtros['cidade']) && empty($filtros['bairro']) && empty($filtros['dormitorio']) && empty($filtros['suite']) && empty($filtros['tipoimovel']) && empty($filtros['banheiro']) && 
         empty($filtros['garagem']) && empty($filtros['areaconstruida']) && empty($filtros['areatotal']) && empty($filtros['valoraluguel']) && empty($filtros['valorimovel'])) {
            
-    $filtrostring = array("1='".$q."");
-}else{
+    
        $filtrostring = array("1=1");
-}
+
             if (!empty($filtros['cidade'])) {
-                $filtrostring[] = "c.nome='".$filtros['cidade']."";
+                $filtrostring[] = "c.nome='".$filtros['cidade']."'";
             }
             if (!empty($filtros['bairro'])) {
-                $filtrostring[] = "b.nome='".$filtros['bairro']."";
+                $filtrostring[] = "b.nome='".$filtros['bairro']."'";
             }
             if (!empty($filtros['dormitorio'])) {
-                $filtrostring[] = "d.dormitorio='".$filtros['dormitorio']."";
+                $filtrostring[] = "d.dormitorio='".$filtros['dormitorio']."'";
             }
             if (!empty($filtros['suite'])) {
-                $filtrostring[] = "d.suite='".$filtros['suite']."";
+                $filtrostring[] = "d.suite='".$filtros['suite']."'";
             }
             if (!empty($filtros['tipoimovel'])) {
-                $filtrostring[] = "i.tipo_imovel='".$filtros['tipoimovel']."";
+                $filtrostring[] = "i.tipo_imovel='".$filtros['tipoimovel']."'";
             }
             if (!empty($filtros['banheiro'])) {
-                $filtrostring[] = "d.banheiro='".$filtros['banheiro']."";
+                $filtrostring[] = "d.banheiro='".$filtros['banheiro']."'";
             }
             if (!empty($filtros['garagem'])) {
-                $filtrostring[] = "d.garagem='".$filtros['garagem']."";
+                $filtrostring[] = "d.garagem='".$filtros['garagem']."'";
             }
             if (!empty($filtros['areaconstruida'])) {
-                $filtrostring[] = "i.area_construida='".$filtros['areaconstruida']."";
+                $filtrostring[] = "i.area_construida='".$filtros['areaconstruida']."'";
             }
             if (!empty($filtros['areatotal'])) {
-                $filtrostring[] = "i.area_total='".$filtros['areatotal']."";
+                $filtrostring[] = "i.area_total='".$filtros['areatotal']."'";
             }
             if (!empty($filtros['valoraluguel'])) {
-                $filtrostring[] = "i.aluguel='".$filtros['valoraluguel']."";
+                $filtrostring[] = "i.aluguel='".$filtros['valoraluguel']."'";
             }
             if (!empty($filtros['valorimovel'])) {
-                $filtrostring[] = "i.venda='".$filtros['valorimovel']."";
+                $filtrostring[] = "i.venda='".$filtros['valorimovel']."'";
             }
             
-           $sql = "SELECT * FROM imoveis i "
+         $sql = "SELECT *,b.nome as bairro, c.nome as cidade FROM imoveis i "
                     . "JOIN enderecos e ON i.id_endereco=e.id "
                     . "JOIN bairros b ON b.id=e.id_bairro "
                     . "JOIN cidades_bairros cb ON b.id=cb.id_bairro "
                     . "JOIN cidades c ON c.id=cb.id_cidade "
                     . "JOIN estados es ON es.id=c.id_estado "
                     . "JOIN imoveis_descricoes id ON id.id_imovel=i.id "
-                    . "JOIN descricoes d ON d.id=id.id_descricao WHERE " . implode(' AND ', $filtrostring)."'";
-            $sql = $this->db->query($sql);
+                    . "JOIN descricoes d ON d.id=id.id_descricao WHERE " . implode(' AND ', $filtrostring)."";
+       
+        $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll(PDO::FETCH_ASSOC);
             } else {
                 return "Nada encontrado!";
             }
             return $array;
+        }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
     }
+
+
+        
 
     public function listDormitorio() {
         try {

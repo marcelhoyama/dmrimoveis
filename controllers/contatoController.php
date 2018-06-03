@@ -17,6 +17,7 @@ class contatoController extends controller{
            $dados['telefone']=$t->fixo();
            $dados['celular']=$t->celular();
            $dados['email']=$t->email();
+           $dados['endereco']=$t->endereco();
           
   if(isset($_POST['email']) && !empty($_POST['email'])){
               $nome= addslashes($_POST['nome']);

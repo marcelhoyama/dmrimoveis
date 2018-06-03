@@ -40,7 +40,7 @@
     <div class="form-group">
         <address class="text-info address">
             <h2>Onde nos encontrar?</h2>    
-            Endereço: Rua Minas Gerais, nº52 - Sala - Bairro Jacaré - Distrito Jacaré - Cabreúva/SP.</br>
+            Endereço: <?php echo $value=$viewData['endereco']; ?></br>
             Telefone fixo:   <?php echo $value = $viewData['telefone']; ?></br>
             Celular: <?php echo $value = $viewData['celular']; ?></br>
             Email: <?php echo $value = $viewData['email']; ?></br>

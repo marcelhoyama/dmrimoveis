@@ -63,7 +63,7 @@
                                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">Venda<span class="caret"></span></a>
 
                                     <ul class="dropdown-submenu-right" role="menu" >    
-                                        <li><a href="<?php BASE_URL; ?>vendasresidencial">Casas</a></li>
+                                        <li><a href="<?php BASE_URL; ?>vendasresidencial?tipoimovel=residencia">Casas</a></li>
                                         <li class="disabled"><a href="<?php BASE_URL; ?>">Apartamentos</a></li>
                                         <li><a href="<?php BASE_URL; ?>vendascomercial">Comerciais</a></li>
                                         <li class="disabled"><a href="<?php BASE_URL; ?>">Rurais</a></li>
@@ -115,6 +115,7 @@
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/validarcampos.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/verificarendereco.js"></script>
 
 
