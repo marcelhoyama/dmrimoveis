@@ -45,7 +45,7 @@ $dados['listimovelaluguel']=$i->listImovelAluguel();
       $dados['listimovelcomercial']=$i->listImovelComercial();
         
     if (isset($_GET['filtros'])) {
-         $filtros= $_GET['filtros'];
+        $filtros= $_GET['filtros'];
           
          
 

@@ -20,12 +20,16 @@ class contatoController extends controller{
            $dados['endereco']=$t->endereco();
           
   if(isset($_POST['email']) && !empty($_POST['email'])){
-              $nome= addslashes($_POST['nome']);
-             $telefone= addslashes($_POST['telefone']);
+             $nome= addslashes($_POST['nome']);
             $email= addslashes($_POST['email']);
-          
-       $c = new cliente();
-     $dados['ok']=  $c->cadastroCliente($nome, $telefone ,$email);
+            $telefone= addslashes($_POST['telefone']);
+            $celular= addslashes($_POST['celular']);
+           // $id_imovel= addslashes($_POST['id_imovel']);
+            $assunto= 'Noticias';
+            $tipoimovel= addslashes($_POST['tipoimovel']);
+  
+    $dados['erro']=$t->cadastrarInteresse($tipoimovel, $nome,$telefone,$celular, $email, $id_imovel, $assunto);
+    
        
   }
    

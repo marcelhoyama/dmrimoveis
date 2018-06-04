@@ -1,6 +1,6 @@
 <?php
 
-class pesquisarinquilinoController extends controller {
+class pesquisarinteressadosController extends controller {
 
     public function __construct() {
         parent::__construct();
@@ -13,8 +13,10 @@ class pesquisarinquilinoController extends controller {
 //$c->setLogado();
 //$dados['usuario_nome']=$u->getNome($_SESSION['dmrlogin']);
         $dados = array('erro' => '');
-        $i = new inquilino();
-         $dados['lista'] ="";
+        $i = new interesse();
+         $dados['pesquisarInteressados'] ="";
+         
+         $dados['listInteressados']=$i->getListInteressados();
         if (isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])) {
 
 
@@ -22,12 +24,9 @@ class pesquisarinquilinoController extends controller {
             $pesquisa = addslashes($_GET['pesquisar']);
 
 
-            $dados['lista'] = $i->getListInquilino($pesquisa);
-            foreach ($dados['lista'] as $value) {
-                $id_inquilino = $value['id'];
-            }
-            $dados['total_imovel'] = $i->estanoImovel($id_inquilino);
-            $dados['seufiador'] = $i->getFiador($id_inquilino);
+            print_r($dados['pesquisarInteressados'] = $i->pesquisarInteressados($pesquisa));
+            
+   
         }
 
 
@@ -44,7 +43,7 @@ class pesquisarinquilinoController extends controller {
 
 
 
-        $this->loadTemplate('pesquisarinquilino', $dados);
+        $this->loadTemplate('pesquisarinteressados', $dados);
     }
 
 }

@@ -10,7 +10,7 @@ class imoveldetalhadoController extends controller{
     
     public function index() {
         $dados = array('erro'=>'');
-
+$t=new telefone();
        $f =new foto();
        $i=new imovel();
        $offset='';
@@ -19,6 +19,10 @@ class imoveldetalhadoController extends controller{
        if(isset($_GET['id'])){
           $id_imovel= addslashes($_GET['id']);
        
+          
+          $dados['telefone']=$t->fixo();
+          $dados['endereco']=$t->endereco();
+          
          $dados['listfotoimovel']=$f->listFotosImovel($id_imovel);
          $dados['listimovel']=$i->listTipoImovel($id_imovel);
          $dados['listfotos']=$f->listFotos($id_imovel);

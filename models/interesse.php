@@ -28,6 +28,42 @@ class interesse extends model {
             }
         
     }
+    
+    public function pesquisarInteressados($pesquisa){
+       try{
+            $array = array();
+
+        if (!empty($pesquisa)) {
+            $sql = "SELECT * FROM interesses WHERE assunto LIKE'$pesquisa%'";
+
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                $array = $sql->fetchAll();
+            }
+
+            return $array;
+        } else {
+            return "nada encontrado!";
+        }
+       } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+       }
+       
+    }
+    
+    public function getListInteressados() {  
+        try{
+            $array=Array();
+            $sql="SELECT DISTINCT assunto FROM interesses";
+            $sql= $this->db->query($sql);
+            if($sql->rowCount() >0){
+              $array=$sql->fetchAll();
+            }
+            return $array;  
+        } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+        }
+    }
 
    
 

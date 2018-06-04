@@ -4,10 +4,14 @@ class editarclientesController extends controller {
 
     public function __construct() {
         parent::__construct();
+        $c=new corretor();
+      //  $c->verificarLogin();
     }
 
     public function index() {
-
+$c=new corretor();
+//$c->setLogado();
+//$dados['usuario_nome']=$u->getNome($_SESSION['dmrlogin']);
 
         $dados = array('erro' => '', 'ok' => '');
         $id = 0;

@@ -123,7 +123,7 @@
     <br>
     <footer>
         <div class="rodape">
-            IMOVEISEMCABREUVA © <?php echo date('Y'); ?> Todos Direitos Reservados. Desenvolvido por Marcel Hoyama
+            DMRIMOVEISCABREUVA © <?php echo date('Y'); ?> Todos Direitos Reservados. Desenvolvido por Marcel Hoyama
         </div>
     </footer>
 

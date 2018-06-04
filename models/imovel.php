@@ -155,11 +155,14 @@ class imovel extends model {
        public function getDadosImovel($id_imovel) {
         try {
             $array = array();
-            $sql = "SELECT *,i.id_cliente cliente  FROM imoveis i "
-                    . "LEFT JOIN enderecos e ON e.id_cliente=i.id_endereco "
-                    . "left join imoveis_descricoes b on b.id_imovel=i.id "
-                    . "left join descricoes d on d.id=b.id_descricao "
-                    . "WHERE i.id='$id_imovel' ";
+            $sql = "SELECT *,i.id_cliente as cliente ,b.nome as bairro, c.nome as cidade FROM imoveis i "
+                    ."JOIN enderecos e ON i.id_endereco=e.id "
+                    ."JOIN bairros b ON b.id=e.id_bairro "
+                    ."JOIN cidades_bairros cb ON b.id=cb.id_bairro " 
+                    ."JOIN cidades c ON c.id=cb.id_cidade "
+                    ."JOIN estados es ON es.id=c.id_estado "
+                    ."JOIN imoveis_descricoes id ON id.id_imovel=i.id " 
+                    ."JOIN descricoes d ON d.id=id.id_descricao WHERE i.id='$id_imovel' ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetch(PDO::FETCH_ASSOC);
@@ -250,10 +253,7 @@ class imovel extends model {
         try {
             $array = array();
 
-if(empty($filtros['cidade']) && empty($filtros['bairro']) && empty($filtros['dormitorio']) && empty($filtros['suite']) && empty($filtros['tipoimovel']) && empty($filtros['banheiro']) && 
-        empty($filtros['garagem']) && empty($filtros['areaconstruida']) && empty($filtros['areatotal']) && empty($filtros['valoraluguel']) && empty($filtros['valorimovel'])) {
-           
-    
+
        $filtrostring = array("1=1");
 
             if (!empty($filtros['cidade'])) {
@@ -290,7 +290,7 @@ if(empty($filtros['cidade']) && empty($filtros['bairro']) && empty($filtros['dor
                 $filtrostring[] = "i.venda='".$filtros['valorimovel']."'";
             }
             
-         $sql = "SELECT *,b.nome as bairro, c.nome as cidade FROM imoveis i "
+        $sql = "SELECT *,b.nome as bairro, c.nome as cidade FROM imoveis i "
                     . "JOIN enderecos e ON i.id_endereco=e.id "
                     . "JOIN bairros b ON b.id=e.id_bairro "
                     . "JOIN cidades_bairros cb ON b.id=cb.id_bairro "
@@ -306,7 +306,7 @@ if(empty($filtros['cidade']) && empty($filtros['bairro']) && empty($filtros['dor
                 return "Nada encontrado!";
             }
             return $array;
-        }
+        
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
@@ -432,7 +432,8 @@ if(empty($filtros['cidade']) && empty($filtros['bairro']) && empty($filtros['dor
     public function listTipoImovel($id_imovel) {
         try {
             $array = array();
-            $sql = "SELECT * FROM imoveis WHERE id = '$id_imovel'";
+            $sql = "SELECT * FROM imoveis i JOIN imoveis_descricoes ide ON i.id=ide.id_imovel "
+                    . "JOIN descricoes d ON ide.id_descricao=d.id WHERE i.id = '$id_imovel'";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 return $array = $sql->fetch();
