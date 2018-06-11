@@ -408,8 +408,6 @@ foreach ($viewData['listimovelaluguel'] as $key => $value): {
                                                         echo 'Venda';
                                                     } elseif (!$value['venda'] == 0 && !$value['aluguel'] == 0) {
                                                         echo 'Venda/Aluga ';
-                                                    } elseif ($value['venda'] == '' && $value['aluguel'] == '') {
-                                                        echo ' ';
                                                     } else {
                                                         echo 'Aluga';
                                                     }

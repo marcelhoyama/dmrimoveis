@@ -9,7 +9,7 @@
         <?php echo $cliente['nome'];
         ?></h2></br>
 
-    <form  method="POST" enctype="multipart/form-data">
+        <form id="editarimovel" method="POST" enctype="multipart/form-data">
 
 
 
@@ -17,7 +17,7 @@
             <div class="form-group col-sm-4">
                 <label for="endereco">Tipo de Via:(Exemplo: Rua,Avenida)</label> <label class="text-danger">campo obrigatorio*</label>
 
-                <select name="tipovia" class="form-control" required="">
+                <select name="tipovia" id="tipovia" class="form-control" required="">
 
                     <?php
                     $via = $viewData['listendereco'];
@@ -36,7 +36,7 @@
                 <?php $value = $viewData['listendereco']; ?>
                 <label for="endereco">Endereço do Imóvel*:</label>  <label class="text-danger">campo obrigatorio*</label>
 
-                <input name="endereco" class="form-control" type="text" value="<?php echo $value['endereco'] ?>" required="">
+                <input name="endereco" class="form-control" id="endereco" type="text" value="<?php echo $value['endereco'] ?>" required="">
             </div>
 
 
@@ -49,33 +49,33 @@
             <div class="form-group col-sm-3">
                 <?php $value1 = $viewData['listimovel']; ?>
                 <label for="numero">Numero:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="numero" type="number" class="form-control" id="endereco" placeholder="" value="<?php echo $value1['numero'] ?>" required="">
+                <input name="numero" type="text" class="form-control" id="numero" placeholder="" value="<?php echo $value1['numero'] ?>" required="">
             </div>
             <div class="form-group col-sm-6">
                 <label for="complemento">Complemento:</label>
-                <input name="complemento" type="text" class="form-control" id="endereco" value="<?php echo $value1['complemento'] ?>" placeholder="">
+                <input name="complemento" type="text" class="form-control" id="complemento" value="<?php echo $value1['complemento'] ?>" placeholder="">
             </div>
         </div>
 
         <div class="row">
             <div class="form-group col-sm-6">
                 <label for="bairro">Bairro:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="bairro" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value['bairro'] ?>" required="">
+                <input name="bairro" type="text" class="form-control" id="bairro" placeholder="" value="<?php echo $value['bairro'] ?>" required="">
             </div>
 
         </div>
         <div class="row">
             <div class="form-group col-sm-3">
                 <label for="cidade">Cidade:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="cidade" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value['cidade'] ?>" required="">
+                <input name="cidade" type="text" class="form-control" id="cidade" placeholder="" value="<?php echo $value['cidade'] ?>" required="">
             </div>
             <div class="form-group col-sm-3">
                 <label for="estado">Estado: (Exemplo: SP)</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="estado" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value['estado'] ?>" required="">
+                <input name="estado" type="text" class="form-control" id="estado" placeholder="" value="<?php echo $value['estado'] ?>" required="">
             </div>
             <div class="form-group col-sm-3">
                 <label for="cep">CEP:</label>
-                <input name="cep" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value['cep'] ?>">
+                <input name="cep" type="text" class="form-control" id="cep" placeholder="" value="<?php echo $value['cep'] ?>">
             </div>
 
         </div>
@@ -223,7 +223,7 @@
             <div class="row">
                 <div class="form-group col-sm-4">
                     <label for="tipoimovel">Tipo de Imóvel:</label>  <label class="text-danger">campo obrigatorio*</label>
-                    <select name="tipoimovel" class="form-control" required="">
+                    <select name="tipoimovel" id="tipoimovel" class="form-control" required="">
                         <option value="<?php echo $value1['tipo_imovel'] ?>" selected=""><?php echo $value1['tipo_imovel'] ?></option>
                         <option value="Casa">Casa</option>
                         <option value="Apartamento">Apartamento</option>
@@ -240,11 +240,11 @@
                 </div>
                 <div class="form-group col-sm-4">
                     <label for="areaconstruida">Area Construida:</label>
-                    <input name="areaconstruida" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value1['area_construida'] ?>">
+                    <input name="areaconstruida" type="text" class="form-control" id="metro" placeholder="" value="<?php echo $value1['area_construida'] ?>">
                 </div>
                 <div class="form-group col-sm-4">
                     <label for="areatotal">Area Total:</label>
-                    <input name="areatotal" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value1['area_total'] ?>">
+                    <input name="areatotal" type="text" class="form-control" id="metro2" placeholder="" value="<?php echo $value1['area_total'] ?>">
                 </div>
             </div>
 
@@ -254,9 +254,9 @@
 
                     <span class="input-group-addon">R$</span>
                    
-                    <input name="valorimovel" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value1['venda']; ?>">
+                    <input name="valorimovel" type="text" class="form-control" id="valor" placeholder="" value="<?php echo number_format($value1['venda'],2, ',', '.'); ?>">
                 </div>
-
+              
 
                 <div class="control-group">
                     <label class="control-label" for="formapgto">Forma de Pagamento:</label>
@@ -279,7 +279,7 @@
                 <div class="form-group col-sm-4 input-group">
 
                     <span class="input-group-addon">R$</span>
-                 <input name="valoraluguel" type="text" class="form-control" id="endereco" placeholder="" value="<?php echo $value1['aluguel']; ?>">
+                    <input name="valoraluguel" type="text" class="form-control" id="valor2" placeholder="" value="<?php echo number_format($value1['aluguel'],2, ',', '.'); ?>">
                 </div>
 
 

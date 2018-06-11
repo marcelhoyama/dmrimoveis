@@ -35,18 +35,33 @@ class imovel extends model {
     }
 
     public function updateImovel($id_imovel, $tipo_imovel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao, $venda, $aluguel) {
+             
+       $verificaPonto = ".";
+       if(strpos("[".$venda."]", "$verificaPonto")):
+           $venda = str_replace('.','', $venda);
+           $venda = str_replace(',','.', $venda);
+           else:
+             $venda = str_replace(',','.', $venda);   
+       endif;
+
+      
+       if(strpos("[".$aluguel."]", "$verificaPonto")):
+           $aluguel = str_replace('.','', $aluguel);
+           $aluguel = str_replace(',','.', $aluguel);
+           else:
+             $aluguel = str_replace(',','.', $aluguel);   
+       endif;
 
 
 
-
-        $sql = "UPDATE imoveis SET tipo_imovel='$tipo_imovel',"
+      echo  $sql = "UPDATE imoveis SET tipo_imovel='$tipo_imovel',"
                 . "numero='$numero',"
                 . "complemento='$complemento',"
                 . "area_construida='$areaconstruida',"
                 . "area_total='$areatotal',"
                 . "documentacao='$documentacao',"
                 . "venda='$venda', "
-                . "aluguel='$aluguel', "
+                . "aluguel='$aluguel' "
                 . "WHERE id ='$id_imovel'";
 
         $sql = $this->db->query($sql);

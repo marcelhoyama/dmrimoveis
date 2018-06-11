@@ -39,7 +39,7 @@ $id = 0;
         if(isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])){
             $dados['pesquisa'] = $_GET['pesquisar'];
         }
-        $dados['dadosFiador'] = $c->getDados($id);
+        $dados['dadosFiador'] = $i->getDados($id);
         $this->loadTemplate('editarfiador', $dados);
     
 

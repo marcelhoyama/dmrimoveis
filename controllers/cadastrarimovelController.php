@@ -23,6 +23,7 @@ $c=new corretor();
          $d = new descricao();
         $dados = array('erro' => '', 'ok' => '');
 $id_imovel='';
+$dados['listvia']=$tp->listTipovia();
         $dados['enderecos'] = $e->listEndereco();
 
         // recebe o valor do campo e verifica se valor existe no banco de dados : se sim retorna o id do valoe existente se nao cadastra no banco e retorna o ultimo id
@@ -164,7 +165,7 @@ $id_imovel='';
 
 
 
-$dados['listvia']=$tp->listTipovia();
+
 
 
         $this->loadTemplate('cadastrarimovel', $dados);

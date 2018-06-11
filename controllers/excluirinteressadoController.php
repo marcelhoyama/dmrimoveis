@@ -1,6 +1,6 @@
 <?php
 
-class pesquisarinteressadosController extends controller {
+class excluirinteressadoController extends controller {
 
     public function __construct() {
         parent::__construct();
@@ -12,19 +12,20 @@ class pesquisarinteressadosController extends controller {
         $c=new corretor();
 //$c->setLogado();
 //$dados['usuario_nome']=$u->getNome($_SESSION['dmrlogin']);
-        $dados = array('erro' => '');
+        
         $i = new interesse();
-         $dados['pesquisarInteressados'] ="";
+        
          
-         $dados['listInteressados']=$i->getListInteressados();
-        if (isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])) {
+        
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
+  $id_interessado = addslashes($_GET['id']);
+ $dados['erro']=$i->excluirInteressado($id_interessado);
+ header("Location:".BASE_URL."pesquisarinteressados");
+
+          
 
 
-
-            $pesquisa = addslashes($_GET['pesquisar']);
-
-
-            $dados['pesquisarInteressados'] = $i->pesquisarInteressados($pesquisa);
+            
             
    
         }

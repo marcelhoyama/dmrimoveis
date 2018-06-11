@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name= "viewport" content= "width=device-width, user-scalable=no" />
         <!-- As 3 meta tags acima *devem* vir em primeiro lugar dentro do `head`; qualquer outro conteúdo deve vir *após* essas tags -->
-        <link rel="canonical" href="http://dmrimoveisemcabreuva.com.br/" />
+        <link rel="canonical" href="http://dmrimoveiscabreuva.com.br/" />
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/bootstrap.css"/>
@@ -114,9 +114,13 @@
 
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
+          <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.validate.min.js"></script>
+                    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/additional-methods.js"></script>
+                    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/localization/messages_pt_BR.js"></script>
+                    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/validarcampos.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
-   <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/verificarendereco.js"></script>
+ 
 
 
     </body>

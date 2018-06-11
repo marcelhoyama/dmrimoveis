@@ -3,7 +3,7 @@
 <div class="container-fluid">
     <h2 class="text-center">Faça o seu cadastro e recebe as nossas noticias</h2></br>
 
-    <form class="form-group-sm" method="POST">
+    <form id="cadastrarcontato" class="form-group-sm" method="POST">
         <div class="form-group">
             <label for="assunto">Assunto:</label>
             <input name="assunto" type="text" class="form-control" id="assunto" >
@@ -19,8 +19,8 @@
         <div class="row">
         <div class="col-lg-5">
         <div class="form-group">
-            <label for="fone">Telefone:</label>
-            <input name="telefone" type="text" class="form-control" id="fone" placeholder="digite seu telefone de contato">
+            <label for="fonefixo">Telefone:</label>
+            <input name="telefone" type="text" class="form-control" id="fonefixo" placeholder="digite seu telefone de contato">
         </div>
         </div>
             

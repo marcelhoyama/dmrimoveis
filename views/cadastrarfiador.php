@@ -4,14 +4,14 @@
     <a class="btn btn-default" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
     <h2 class="text-center">Cadastro de Fiador</h2></br>
     
-    <form class="form-group-sm" method="POST">
+    <form id="cadastrarfiador" class="form-group-sm" method="POST">
           <div class="form-group">
               <label for="cpf">CPF*: </label><label class="text-danger"> (campo obrigatório!)</label>
-            <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros" max="11">
+            <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros">
         </div>
         <div class="form-group">
-            <label for="nome">RG:</label>
-            <input name="rg" type="text" class="form-control" id="nome" placeholder="digite seu RG">
+            <label for="rg">RG:</label>
+            <input name="rg" type="text" class="form-control" id="rg" placeholder="digite seu RG">
         </div>
         <div class="form-group">
             <label for="nome">Nome*: </label><label class="text-danger "> (campo obrigatório!)</label>
@@ -21,12 +21,12 @@
         <div class="row" > 
         <div class="form-group col-sm-6">
             
-            <label for="fone">Telefone1*: </label><label class="text-danger"> (campo obrigatório!)</label>
+            <label for="fone">Telefone Celular*: </label><label class="text-danger"> (campo obrigatório!)</label>
             <input name="telefone" type="tel" class="form-control" id="fone" placeholder="telefone de contato 1">
         </div>
           <div class="form-group col-sm-6">
-            <label for="fone">Telefone2:</label>
-            <input name="telefone2" type="tel" class="form-control" id="fone" placeholder="telefone de contato 2">
+            <label for="fone">Telefone Fixo:</label>
+            <input name="telefone2" type="tel" class="form-control" id="fonefixo" placeholder="telefone de contato 2">
         </div>
         </div>
 

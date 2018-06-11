@@ -29,14 +29,14 @@
            
     </div>
         </div>
-    <div class="col-sm-2">
+ <!--   <div class="col-sm-2">
         <div class="thumbnail ">
        <a href="<?php BASE_URL;?>cadastrarcomprador">
         <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/cadastrarcomprador.png" alt="cadastrar comprador" width="128" height="128">
     </a>  
            
     </div>
-        </div>
+        </div>-->
     </div>
     <hr>
     <div class="row">
@@ -62,13 +62,13 @@
         </div>
     </div>
          
-         <div class="col-sm-2">
+       <!--  <div class="col-sm-2">
         <div class="thumbnail">
            <a href="<?php BASE_URL; ?>pesquisarcomprador">
         <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/pesquisarcomprador.png" alt="pesquisar comprador" width="128" height="128" >
     </a>
         </div>
-    </div>
+    </div>-->
     <div class="col-sm-2">
         <div class="thumbnail">
        <a href="<?php BASE_URL;?>pesquisarimoveis">

@@ -3,25 +3,28 @@
 <div class="container-fluid">
     <a class="btn btn-default" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
     <h2 class="text-center">Cadastro de Clientes</h2></br>
+    <script type="text/javascript">
 
-    <form class="form-group-sm" method="POST">
+    </script>
+        
+    <form name="cadastrarclientes" id="cadastrarclientes" class="form-group-sm" method="POST" autocomplete="off" >
           <div class="form-group">
               <label for="cpf">CPF*: </label> <label class="text-danger"> campo obrigatorio!</label>
-            <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros" required="">
+              <input name="cpf" type="text" class="form-control" id="cpf" placeholder="somente numeros" >
         </div>
         <div class="form-group">
             <label for="nome">Nome*:</label> <label class="text-danger"> campo obrigatorio!</label>
-            <input name="nome" type="text" class="form-control" id="nome" placeholder="digite seu nome completo" required="">
+            <input name="nome" type="text" class="form-control" id="nome" placeholder="digite seu nome completo">
         </div>
         <div class="row" > 
         <div class="form-group col-sm-6">
             
-            <label for="fone">Telefone1* (Formato XX-XXXXX-XXXX):</label> <label class="text-danger"> campo obrigatorio!</label>
-            <input name="telefone" pattern="^\d{2}-\d{5}-\d{4}$"  type="tel" class="form-control" id="fone" placeholder="telefone de contato 1" required="">
+            <label for="fone">Telefone Celular:</label> <label class="text-danger"> campo obrigatorio!</label>
+            <input name="telefone"  type="tel" class="form-control" id="fone" placeholder="">
         </div>
           <div class="form-group col-sm-6">
-            <label for="fone">Telefone2:</label>
-            <input name="telefone2" pattern="^\d{2}-\d{5}-\d{4}$" type="tel" class="form-control" id="fone" placeholder="telefone de contato 2">
+            <label for="fone">Telefone Fixo:</label>
+            <input name="telefone2" type="tel" class="form-control" id="fonefixo" placeholder="telefone ">
         </div>
         </div>
 
@@ -47,6 +50,7 @@
                 <div class="alert alert-success"><?php echo $ok; ?></div> 
             <?php endif; ?>
         </div>
-    </form>
+
+                </form>
 
 </div>
