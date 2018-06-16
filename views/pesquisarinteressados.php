@@ -1,7 +1,7 @@
 <title> Pesquisar Interessados </title>
 <div class="container-fluid">
     <a class="btn btn-default" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
-    <center><h2>Pesquisar Interessados para suas Ações:</h2></center>
+    <center><h2>Pesquisar por Assunto dos Interessados para suas Ações:</h2></center>
     
     <form method="GET" >
          <div class="row">
@@ -13,7 +13,7 @@
             <?php foreach ($viewData['listInteressados'] as $value) :{
                 
              ?>
-            <option value="<?php echo $value['assunto']; ?>" ><?php echo $value['assunto']; ?></option>
+            <option value="<?php echo $value['id_assunto']; ?>" ><?php echo $value['nomeassunto']; ?></option>
                          
                                <?php     }endforeach; ?>
         </select>
@@ -61,11 +61,11 @@
                     </td>
                 <td><?php echo $value['telefone']; ?> / <?php echo $value['celular']; ?></td>
                 <td><?php echo $value['email']; ?></td>
-                <td><span class="badge"><?php echo $value['assunto'];?></span></td>
+                <td><span class="badge"><?php echo $value['nomeassunto'];?></span></td>
                 <td><span class="badge"><?php echo $value['data_interesse']; ?></span></td>
                 <td><?php echo $value['nomestatus'];?></td>
                 <td><button href="javascript:;" class="btn btn-warning" onclick="tenhointeresseeditar(<?php echo $value['id_interessado']; ?>) ">Editar Status</button>
-                    <a href="<?php BASE_URL; ?>excluirinteressado?id=<?php echo $value['id'];?>"><button class="btn btn-danger">Excluir</button></a>
+                    <a href="<?php BASE_URL; ?>excluirinteressado?id=<?php echo $value['id_interessado'];?>" ><button class="btn btn-danger disabled">Excluir</button></a>
                 
               
                 </td>

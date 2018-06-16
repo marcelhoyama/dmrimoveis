@@ -5,7 +5,7 @@ class telefone extends model{
     
     public function fixo (){
         
-        return $fixo = "(11)4529-4364";
+        return $fixo = "(11) 4529-4364";
     }
       public function celular (){
         
@@ -13,7 +13,7 @@ class telefone extends model{
     }
      public function email (){
         
-        return $email = "contato.dmrimoveiscabreuva@gmail.com";
+        return $email = "contato@dmrimoveiscabeuva.com.br";
     }
     
     public function endereco() {

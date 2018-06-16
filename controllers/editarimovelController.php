@@ -5,13 +5,13 @@ class editarimovelController extends controller {
     public function __construct() {
         parent::__construct();
         $c=new corretor();
-      //  $c->verificarLogin();
+        $c->verificarLogin();
     }
 
     public function index() {
 $c=new corretor();
-//$c->setLogado();
-//$dados['usuario_nome']=$u->getNome($_SESSION['dmrlogin']);
+$c->setLogado();
+$dados['usuario_nome']=$c->getNome($_SESSION['dmrlogin']);
 
         $i = new imovel();
         $e = new endereco();
@@ -53,6 +53,7 @@ $c=new corretor();
 
             $dados['listvia'] = $tv->listTipovia();
         $dados['fotoprincipal']=$f->listFotoPrincipal($id_imovel);
+   
              $dados['paginas'] ='';
         $dados['paginaAtual'] = 1;
             $offset = 0; //pagina começa

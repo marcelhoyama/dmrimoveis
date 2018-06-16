@@ -27,7 +27,7 @@
             <thead>
 
                 <tr>
-                    <th>Dono do Imóvel</th>
+                  
                     <th>Tipo do Imóvel</th>
                     <th> Principais Descrição</th>
                     <th> </th>
@@ -43,9 +43,7 @@
 
 
                             <tr>
-                                <td>
-                                    <?php echo $value['nome']; ?>
-                                </td>
+                               
                                 <td>
             <?php echo $value['tipo_imovel']; ?>
                                 </td>

@@ -23,6 +23,10 @@ public function __construct() {
 	public function loadTemplate($viewName, $viewData = array()) {
 		include 'views/template.php';
 	}
+        
+        public function loadTemplate_1($viewName, $viewData = array()) {
+		include 'views/template_1.php';
+	}
 
 	public function loadViewInTemplate($viewName, $viewData) {
 		extract($viewData);

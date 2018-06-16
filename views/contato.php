@@ -1,12 +1,18 @@
 
 <title>Contato - DMR Imóveis - Negócios Imobiliários em Cabreúva</title>
 <div class="container-fluid">
-    <h2 class="text-center">Faça o seu cadastro e recebe as nossas noticias</h2></br>
+    <h2 class="text-center">Ficou com Duvidas? Faça seu Cadastro, logo entraremos em contato...</h2></br>
 
     <form id="cadastrarcontato" class="form-group-sm" method="POST">
         <div class="form-group">
             <label for="assunto">Assunto:</label>
-            <input name="assunto" type="text" class="form-control" id="assunto" >
+            <select class="form-control" id="assunto"name="assunto">
+            <option></option>
+            <?php foreach ($viewData['listassunto'] as $assunto): { ?>
+            <option value="<?php echo $assunto['id']; ?>"><?php echo $assunto['nome'];?></option>    
+            <?php } endforeach; ?>
+            </select>
+            
         </div>
          <div class="form-group">
             <label for="tipoimovel">Tipo de Imovel:</label>

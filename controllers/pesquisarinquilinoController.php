@@ -5,13 +5,13 @@ class pesquisarinquilinoController extends controller {
     public function __construct() {
         parent::__construct();
         $c=new corretor();
-      //  $c->verificarLogin();
+        $c->verificarLogin();
     }
 
     public function index() {
         $c=new corretor();
-//$c->setLogado();
-//$dados['usuario_nome']=$u->getNome($_SESSION['dmrlogin']);
+$c->setLogado();
+$dados['usuario_nome']=$c->getNome($_SESSION['dmrlogin']);
         $dados = array('erro' => '');
         $i = new inquilino();
          $dados['lista'] ="";

@@ -12,6 +12,18 @@ class corretor extends model {
             exit;
         }
     }
+       public function getNome($id) {
+
+        $sql = "SELECT nome FROM corretores WHERE id = '" . $id . "'";
+        $sql = $this->db->query($sql);
+
+        if ($sql->rowCount() > 0) {
+            $sql = $sql->fetch();
+            return $sql['nome'];
+        } else {
+            return '';
+        }
+    }
     
       //metodo para saber nome de quem esta logado
     public function setlogado() {

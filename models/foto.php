@@ -2,10 +2,74 @@
 
 class foto extends model {
 
+    public function excluirFoto($id){
+        $id_imovel=0;
+        $url_imagem=0;
+    try{
+         $sql = "SELECT * FROM fotos WHERE id='$id'";
+        $sql = $this->db->query($sql);
+                        if ($sql->rowCount() > 0) {
+                     $row=$sql->fetch();
+                     $id_imovel=$row['id_imovel'];
+                     $url_imagem=$row['url_imagem'];
+                        
+                        }
+
+        
+           $sql = "DELETE FROM fotos WHERE id='$id'";
+
+                        $sql = $this->db->query($sql);
+                        if ($sql->rowCount() > 0) {
+                       
+                        }
+                          if(is_file("upload/".$url_imagem)){
+                      
+                            unlink("upload/".$url_imagem);
+                        }
+                        
+                        return $id_imovel;
+    } catch (Exception $ex) {
+     echo "Falhou:" . $ex->getMessage();
+    }
+       
+    }
+    
+        public function excluirFotoPrincipal($id){
+        $id_imovel=0;
+        $url_imagem=0;
+    try{
+         $sql = "SELECT * FROM imoveis WHERE id='$id'";
+        $sql = $this->db->query($sql);
+                        if ($sql->rowCount() > 0) {
+                     $row=$sql->fetch();
+                     $id_imovel=$row['id'];
+                     $url_principal=$row['url_principal'];
+                        
+                        }
+
+        
+           $sql = "UPDATE imoveis SET url_foto_principal=NULL WHERE id='$id'";
+
+                        $sql = $this->db->query($sql);
+                        if ($sql->rowCount() > 0) {
+                       
+                        }
+                          if(is_file("upload/fotos_principais/".$url_principal)){
+                      
+                            unlink("upload/fotos_principais/".$url_principal);
+                        }
+                        
+                        return $id_imovel;
+    } catch (Exception $ex) {
+     echo "Falhou:" . $ex->getMessage();
+    }
+       
+    }
+    
     public function listFotos($id_imovel) {
         try {
             $array = array();
-            $sql = "SELECT url_imagem FROM fotos WHERE id_imovel='$id_imovel'";
+            $sql = "SELECT * FROM fotos WHERE id_imovel='$id_imovel'";
 
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
@@ -30,10 +94,11 @@ class foto extends model {
             echo "Falhou:" . $e->getMessage();
         }
     }
-  public function listFotoPrincipal($id_imovel) {
+
+    public function listFotoPrincipal($id_imovel) {
         try {
             $array = array();
-            $sql = "SELECT url_foto_principal FROM imoveis WHERE id='$id_imovel' ";
+            $sql = "SELECT id,url_foto_principal FROM imoveis WHERE id='$id_imovel' ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetch(PDO::FETCH_ASSOC);
@@ -43,13 +108,12 @@ class foto extends model {
             echo "Falhou:" . $e->getMessage();
         }
     }
-      
-    
-     public function listFotosPrincipalVendas() {
+
+    public function listFotosPrincipalVendas() {
         try {
             $array = array();
             $sql = "SELECT f.id_imovel,f.url_principal,i.id_venda,i.id_aluguel,i.tipo_imovel,i.area_total FROM fotos f "
-                ."join imoveis i ON i.id=f.id_imovel  WHERE url_principal AND id_venda IS NOT NULL  ";
+                    . "join imoveis i ON i.id=f.id_imovel  WHERE url_principal AND id_venda IS NOT NULL  ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
@@ -59,6 +123,7 @@ class foto extends model {
             echo "Falhou:" . $e->getMessage();
         }
     }
+
     public function getTotal($id_imovel) {
         try {
 
@@ -76,17 +141,39 @@ class foto extends model {
 
     public function enviarUrlImagem($id_imovel, $fotos) {
         try {
-          
-        
+
+
             if (!empty($fotos['tmp_name'][0])) {
-               
-                
-                  for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
-            $tipo = $fotos['type'][$q];
+
+
+                for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
+                    $tipo = $fotos['type'][$q];
                     if (in_array($tipo, array('image/jpeg', 'image/png'))) {
                         $tmpname = md5(time() . rand(0, 999)) . '.jpg';
                         $diretorio = "upload/";
                         move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
+                         
+                            list($width_orig, $height_orig)= getimagesize($diretorio. $tmpname);
+                            $ratio=$width_orig/$height_orig;
+                           //limite permitido proporcional
+                            $width=960;
+                            $height=720;
+                            if($width/$height>$ratio){
+                                $width=$height+$ratio;
+                            }else{
+                                $height=$width/$ratio;
+                            }
+                            
+                            $img= imagecreatetruecolor($width, $height);
+                            if($tipo=='image/jpeg'){
+                                $origi= imagecreatefromjpeg($diretorio.$tmpname);
+                                
+                            }elseif($tipo=='image/png'){
+                                $origi= imagecreatefrompng($diretorio.$tmpname);
+                            }
+                            
+                            imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                            imagejpeg($img,$diretorio.$tmpname,80);
                         $sql = "INSERT INTO fotos SET id_imovel='$id_imovel', url_imagem='$tmpname'";
 
                         $sql = $this->db->query($sql);
@@ -98,14 +185,11 @@ class foto extends model {
                         }
                     }
                 }
-             }
-         
-        }
-         catch (Exception $ex) {
+            }
+        } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
-}
-
+    }
 
     public function enviarUrlPrincipalImagem($id_imovel, $foto) {
         try {
@@ -115,29 +199,51 @@ class foto extends model {
             // e salve no diretorio upload   com o comando especifico do PHP
 
             if (!empty($foto['tmp_name'][0])) {
-               
 
-                {
-               
-                    $tipo = $foto['type'];
-                   
-                    if (in_array($tipo, array('image/jpeg', 'image/png'))) {
-                       $tmpname = md5(time() . rand(0, 999)) . '.jpg';
-                       $diretorio = "upload/fotos_principais/";
-                     
-                        move_uploaded_file($foto['tmp_name'], $diretorio . $tmpname);
-                        $sql = "UPDATE imoveis SET url_foto_principal='$tmpname' WHERE id='$id_imovel',";
 
-                        $sql = $this->db->query($sql);
-                        if ($sql->rowCount() > 0) {
-                            return "Enviado com Sucesso!";
-                        } else {
 
-                            return false;
+                        $tipo = $foto['type'];
+
+                        if (in_array($tipo, array('image/jpeg', 'image/png'))) {
+                            $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                            $diretorio = "upload/fotos_principais/";
+
+                            move_uploaded_file($foto['tmp_name'], $diretorio . $tmpname);
+                            
+                            
+                            list($width_orig, $height_orig)= getimagesize($diretorio. $tmpname);
+                            $ratio=$width_orig/$height_orig;
+                            $width=500;
+                            $height=500;
+                            if($width/$height>$ratio){
+                                $width=$height+$ratio;
+                            }else{
+                                $height=$width/$ratio;
+                            }
+                            
+                            $img= imagecreatetruecolor($width, $height);
+                            if($tipo=='image/jpeg'){
+                                $origi= imagecreatefromjpeg($diretorio.$tmpname);
+                                
+                            }elseif($tipo=='image/png'){
+                                $origi= imagecreatefrompng($diretorio.$tmpname);
+                            }
+                            
+                            imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                            imagejpeg($img,$diretorio.$tmpname,80);
+                            $sql = "UPDATE imoveis SET url_foto_principal='$tmpname' WHERE id='$id_imovel'";
+
+                            $sql = $this->db->query($sql);
+                            if ($sql->rowCount() > 0) {
+                                return "Enviado com Sucesso!";
+                            } else {
+
+                                return false;
+                            }
                         }
-                    }
-                }
+                    
             }
+            
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }

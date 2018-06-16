@@ -65,7 +65,7 @@ function tenhointeresseeditar(id) {
 
                 var celular = $(this).find('input[name=celular]').val();
 
-                var assunto = $(this).find('input[name=assunto]').val();
+                var id_assunto = $(this).find('select[name=id_assunto]').val();
 
                 var codigo_imovel = $(this).find('input[name=codigo_imovel]').val();
 
@@ -78,7 +78,7 @@ function tenhointeresseeditar(id) {
                 $.ajax({
                     url: 'editartenhointeressado',
                     type: 'POST',
-                    data: {nome: nome, email: email, telefone: telefone, celular: celular, assunto: assunto, codigo_imovel: codigo_imovel, tipoimovel: tipoimovel, id_status: id_status, id: id},
+                    data: {nome: nome, email: email, telefone: telefone, celular: celular, id_assunto: id_assunto, codigo_imovel: codigo_imovel, tipoimovel: tipoimovel, id_status: id_status, id: id},
                     success: function () {
                         alert('Alterado com sucesso!');
                         $('#Modalvenda').modal('hide');

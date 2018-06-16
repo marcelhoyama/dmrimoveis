@@ -97,10 +97,10 @@
                     
             <div class="row">
                     
+  <?php $valuefoto=$viewData['fotoprincipal']; ?> 
+<?php if(!empty($valuefoto['url_foto_principal'])): ?>
  
-<?php if(!empty($viewData['fotoprincipal'])): ?>
-
-                            <?php $valuefoto=$viewData['fotoprincipal']; ?>  
+                            
                         <div class="col-sm-3">
                         <div class="form-group">
       
@@ -109,7 +109,7 @@
                                     <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $valuefoto['url_foto_principal']; ?>" >
                                     
                                                                                                            
-
+<a  href="<?php BASE_URL; ?>deletarfotoprincipal?id=<?php echo $valuefoto['id'];?>" class="btn btn-default">Excluir Imagem</a>
                                 </div>
                                   </div>
                     </div>
@@ -320,9 +320,10 @@
 
                                 <div class="thumbnail" >     
                                     <a  href="<?php BASE_URL; ?>todos">    <img src="<?php BASE_URL; ?>upload/<?php echo $value['url_imagem']; ?>" ></a>
+<a  href="<?php BASE_URL; ?>deletarfoto?id=<?php echo $value['id'];?>" class="btn btn-default">Excluir Imagem</a>
 
                                 </div>
-
+                                
                             </div>
 
         <?php } endforeach; 

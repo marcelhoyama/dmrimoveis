@@ -12,13 +12,13 @@ class contatoController extends controller{
       
            
           $dados = array('erro'=> '','ok'=>'');
-         
+         $i=new interesse();
            $t=new telefone();
            $dados['telefone']=$t->fixo();
            $dados['celular']=$t->celular();
            $dados['email']=$t->email();
            $dados['endereco']=$t->endereco();
-          
+          $dados['listassunto']=$i->getListAssunto();
   if(isset($_POST['email']) && !empty($_POST['email'])){
              $nome= addslashes($_POST['nome']);
             $email= addslashes($_POST['email']);

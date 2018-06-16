@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name= "viewport" content= "width=device-width, user-scalable=no" />
         <!-- As 3 meta tags acima *devem* vir em primeiro lugar dentro do `head`; qualquer outro conteúdo deve vir *após* essas tags -->
-        <link rel="canonical" href="http://dmrimoveiscabreuva.com.br/" />
+        <link rel="canonical" href="https://dmrimoveiscabreuva.com.br/" />
 
         <!-- Bootstrap -->
         <link rel="stylesheet" href="<?php echo BASE_URL; ?>assets/css/bootstrap.css"/>
@@ -49,9 +49,9 @@
                             <li><a href="<?php BASE_URL; ?>nossosservicos">SERVIÇOS</a></li>
                              
 
-                       <li class="dropdown" >
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false" >IMÓVEIS<span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
+                       <li class="dropdown disabled" >
+                            <a href="#" class="dropdown-toggle disabled" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false" >IMÓVEIS<span class="caret"></span></a>
+                            <ul class="dropdown-menu disabled" role="menu">
                          <!--       <li class="disabled"><a href="<?php BASE_URL; ?>">Todas Casas</a></li>
                                 <li class="disabled"><a href="<?php BASE_URL; ?>">Todos Comercial</a></li>
                                 <li class="disabled"><a href="<?php BASE_URL; ?>">Todos Apartamentos</a></li>
@@ -95,7 +95,7 @@
                         </li>
 
                         <li><a href="<?php BASE_URL; ?>contato">CONTATO</a></li>
-<li><a href="<?php BASE_URL; ?>menuprincipal">LOGIN</a></li>
+<li><a href="<?php BASE_URL; ?>login">LOGIN</a></li>
 
                     </ul>
 

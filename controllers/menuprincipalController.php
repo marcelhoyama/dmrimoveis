@@ -6,7 +6,7 @@ class menuprincipalController extends controller{
  public function __construct(){
  	parent::__construct();
 $c=new corretor();
-      //  $c->verificarLogin();
+        $c->verificarLogin();
  }
  
      	
@@ -15,13 +15,13 @@ $c=new corretor();
     public function index() {
         $dados = array('erro'=>'');
 $c=new corretor();
-//$c->setLogado();
-//$dados['usuario_nome']=$u->getNome($_SESSION['dmrlogin']);
+$c->setLogado();
+$dados['usuario_nome']=$c->getNome($_SESSION['dmrlogin']);
        
          
          
            
-        $this->loadTemplate('menuprincipal', $dados);
+        $this->loadTemplate_1('menuprincipal', $dados);
     }
     
     

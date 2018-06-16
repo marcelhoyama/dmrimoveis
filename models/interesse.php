@@ -6,7 +6,7 @@ class interesse extends model {
 
 
 
-       echo  $sql = "INSERT INTO interesses SET tipoimovel='$tipoimovel',"
+        $sql = "INSERT INTO interesses SET tipoimovel='$tipoimovel',"
                     . "nome='$nome',"
                     . "telefone='$telefone', "
                     . "celular='$celular', "
@@ -33,7 +33,10 @@ class interesse extends model {
             $array = array();
 
         if (!empty($pesquisa)) {
-            $sql = "SELECT *,i.id as id_interessado,i.nome as nomeinteressado,s.nome as nomestatus,i.id as id_interessado, s.id as id_status FROM interesses i JOIN tipos_status s ON s.id=i.id_status WHERE assunto ='$pesquisa'";
+            $sql = "SELECT *,a.id as id_assunto ,a.nome as nomeassunto,i.nome as nomeinteressado,s.nome as nomestatus,i.id as id_interessado, s.id as id_status FROM interesses i "
+                    . "JOIN tipos_status s ON s.id=i.id_status "
+                    . "JOIN tipos_assuntos a ON i.id_assunto=a.id "
+                    . "WHERE i.id_assunto ='$pesquisa'";
 
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
@@ -53,7 +56,7 @@ echo "Falhou:".$ex->getMessage();
     public function getListInteressados() {  
         try{
             $array=Array();
-            $sql="SELECT DISTINCT assunto FROM interesses";
+            $sql="SELECT i.id_assunto as id_assunto, max(a.nome) as nomeassunto from interesses i JOIN tipos_assuntos a ON i.id_assunto=a.id group by id_assunto ";
             $sql= $this->db->query($sql);
             if($sql->rowCount() >0){
               $array=$sql->fetchAll();
@@ -81,7 +84,11 @@ echo"Falhou:".$ex->getMessage();
      public function getInteressados($id_interessado) {  
         try{
             $array=Array();
-            $sql="SELECT *,i.id as id_interessado ,i.nome as nomeinteressado,s.nome as nomestatus,i.id as id_interessado, s.id as id_status FROM interesses i JOIN tipos_status s ON s.id=i.id_status  WHERE i.id='$id_interessado'";
+           $sql="SELECT *,a.id as id_assunto,a.nome as nomeassunto ,i.nome as nomeinteressado,s.nome as nomestatus,i.id as id_interessado, s.id as id_status "
+                    . "FROM interesses i "
+                    . "JOIN tipos_status s ON s.id=i.id_status  "
+                    . "JOIN tipos_assuntos a ON i.id_assunto=a.id "
+                    . "WHERE i.id='$id_interessado'";
             $sql= $this->db->query($sql);
             if($sql->rowCount() >0){
               $array=$sql->fetch();
@@ -104,11 +111,25 @@ echo "Falhou:".$ex->getMessage();
 echo "Falhou:".$ex->getMessage();
         }
     }
-    public function editarInteressado($id_interessado,$nome,$id_imovel,$assunto,$telefone,$celular,$email,$tipo_imovel,$id_status) {
+    
+     public function getListAssunto() {  
+        try{
+            $array=Array();
+            $sql="SELECT * FROM tipos_assuntos";
+            $sql= $this->db->query($sql);
+            if($sql->rowCount() >0){
+              $array=$sql->fetchAll();
+            }
+            return $array;  
+        } catch (Exception $ex) {
+echo "Falhou:".$ex->getMessage();
+        }
+    }
+    public function editarInteressado($id_interessado,$nome,$id_imovel,$id_assunto,$telefone,$celular,$email,$tipo_imovel,$id_status) {
         try{
          $sql="UPDATE interesses SET nome='$nome', "
                   . "codigo_imovel='$id_imovel', "
-                  . "assunto='$assunto', "
+                  . "id_assunto='$id_assunto', "
                   . "telefone='$telefone', "
                   . "celular='$celular', "
                   . "email='$email', "
