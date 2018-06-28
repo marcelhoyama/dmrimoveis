@@ -26,10 +26,12 @@ $dados['usuario_nome']=$c->getNome($_SESSION['dmrlogin']);
             $telefone= addslashes($_POST['telefone']);
             $celular= addslashes($_POST['celular']);
             $id_imovel= addslashes($_POST['id_imovel']);
-            $assunto= addslashes($_POST['assunto']);
-            $tipoimovel= addslashes($_POST['tipoimovel']);
+            
+            $id_tipo_imovel= addslashes($_POST['id_tipo_imovel']);
+            $id_tipo_assunto= addslashes($_POST['id_tipo_assunto']);
+           
   
-    $dados['erro']=$t->cadastrarInteresse($tipoimovel, $nome,$telefone,$celular, $email, $id_imovel, $assunto);
+    $dados['erro']=$t->cadastrarInteresse($id_tipo_imovel, $nome,$telefone,$celular, $email, $id_imovel, $id_tipo_assunto);
     
 }
         $this->loadView('cadastrartenhointeresse', $dados);

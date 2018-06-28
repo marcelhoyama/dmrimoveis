@@ -14,6 +14,16 @@
 
         <div class="row">
             <div class="form-group col-sm-3">
+                <label for="id_tipo_assunto">Tipo de Assunto:</label><label class="text-danger">Campo Obrigatorio*</label>
+                <select name="id_tipo_assunto" class="form-control" id="tipoassunto">
+                    <option></option>
+                    <?php foreach ($viewData['listtiposassuntos'] as $value) :{ ?>
+                    <option value="<?php echo $value['id']; ?>"><?php echo $value['nome'];?></option>
+                                
+                           <?php } endforeach; ?>
+                </select>
+            </div>
+            <div class="form-group col-sm-3">
                 <label for="endereco">Tipo de Via:</label> <label class="text-danger">campo obrigatorio*</label>
 
                 <select name="tipovia" class="form-control" id="tipovia" >
@@ -61,7 +71,16 @@
             </div>
             <div class="form-group col-sm-3">
                 <label for="estado">Estado: (Exemplo: SP)</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="estado" type="text" class="form-control" id="estado" placeholder="" />
+                      
+
+                <select name="estado" class="form-control" id="estado" >
+                    <option></option>
+                    <?php foreach ($viewData['listestados'] as $value): { ?>
+                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></option>        
+                        <?php }endforeach; ?>
+
+                </select>
+                
             </div>
             <div class="form-group col-sm-3">
                 <label for="cep">CEP:</label>
@@ -166,18 +185,12 @@
             <div class="form-group col-sm-4">
                 <label for="tipoimovel">Tipo de Imóvel:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <select name="tipoimovel" class="form-control" id="tipoimovel">
+                    
                     <option></option>
-                    <option value="Casa">Casa</option>
-                    <option value="Apartamento">Apartamento</option>
-                    <option value="Germinada">Germinada</option>
-                    <option value="Kitnet">Kitnet</option>
-                    <option value="Chacara">Chacara</option>
-                    <option value="Galpão">Galpão</option>
-                    <option value="Terreno">Terreno</option>
-                    <option value="Chacara">Chacara</option>
-                    <option value="Sitio">Sitio</option>
-                    <option value="Condominio">Condominio</option>
-                    <option value="Comercial">Comercial</option>
+                    <?php foreach ($viewData['listtiposimoveis'] as $value): { ?>
+                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></option>        
+                        <?php }endforeach; ?>
+
 
                 </select> 
             </div>

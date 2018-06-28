@@ -4,20 +4,20 @@ class cadastrarclientesController extends controller {
 
     public function __construct() {
         parent::__construct();
-        $c=new corretor();
-        $c->verificarLogin();
+        $co = new corretor();
+        $co->verificarLogin();
     }
 
     public function index() {
-
-$c=new corretor();
-$c->setLogado();
-$dados['usuario_nome']=$c->getNome($_SESSION['dmrlogin']);
         $dados = array('erro' => '', 'ok' => '');
+        $co = new corretor();
+        $co->setLogado();
+        $dados['usuario_nome'] = $co->getNome($_SESSION['dmrlogin']);
+
 
         $c = new cliente();
 
-        if (isset($_POST['cpf']) && !empty($_POST['cpf']) ) {
+        if (isset($_POST['cpf']) && !empty($_POST['cpf'])) {
 
             $cpf = addslashes($_POST['cpf']);
 
@@ -39,7 +39,7 @@ $dados['usuario_nome']=$c->getNome($_SESSION['dmrlogin']);
 
 
 
-        $this->loadTemplate('cadastrarclientes', $dados);
+        $this->loadTemplate_1('cadastrarclientes', $dados);
     }
 
 }

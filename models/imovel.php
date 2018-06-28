@@ -2,7 +2,7 @@
 
 class imovel extends model {
 
-    public function cadastrarImovel($id_cliente, $tipoimovel, $id_endereco,$venda,$aluguel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao) {
+    public function cadastrarImovel($id_cliente, $id_tipoimovel, $id_endereco,$venda,$aluguel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao) {
 
 
         $sql = "SELECT * FROM clientes WHERE id='" . $id_cliente . "'";
@@ -10,7 +10,7 @@ class imovel extends model {
         if ($sql->rowCount() > 0) {
 
 
-            $sql = "INSERT INTO imoveis SET tipo_imovel='" . $tipo_imovel . "',"
+            $sql = "INSERT INTO imoveis SET id_tipo_imovel='" . $id_tipoimovel . "',"
                     . "id_cliente='$id_cliente',"
                     . "id_endereco='" . $id_endereco . "',"
                     . "venda='$venda', "
@@ -34,7 +34,7 @@ class imovel extends model {
         }
     }
 
-    public function updateImovel($id_imovel, $tipo_imovel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao, $venda, $aluguel) {
+    public function updateImovel($id_imovel, $id_tipo_imovel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao, $venda, $aluguel,$status) {
              
        $verificaPonto = ".";
        if(strpos("[".$venda."]", "$verificaPonto")):
@@ -54,14 +54,15 @@ class imovel extends model {
 
 
 
-      echo  $sql = "UPDATE imoveis SET tipo_imovel='$tipo_imovel',"
-                . "numero='$numero',"
-                . "complemento='$complemento',"
-                . "area_construida='$areaconstruida',"
-                . "area_total='$areatotal',"
-                . "documentacao='$documentacao',"
+        $sql = "UPDATE imoveis SET id_tipo_imovel='$id_tipo_imovel', "
+                . "numero='$numero', "
+                . "complemento='$complemento', "
+                . "area_construida='$areaconstruida', "
+                . "area_total='$areatotal', "
+                . "documentacao='$documentacao', "
                 . "venda='$venda', "
-                . "aluguel='$aluguel' "
+                . "aluguel='$aluguel', "
+                . "status='$status' "
                 . "WHERE id ='$id_imovel'";
 
         $sql = $this->db->query($sql);
@@ -85,13 +86,15 @@ class imovel extends model {
         try {
             $array = array();
             if (isset($id)) {
-                $sql = " SELECT c.nome,c.id,c.telefone,c.telefone2,i.tipo_imovel,i.id as id_imovel,d.id as id_descricao, d.* FROM imoveis i"
+                $sql = " SELECT i.status as status_imoveis,c.nome,c.id,c.telefone,c.telefone2,ti.nome as tipo_imovel,i.id as id_imovel,d.id as id_descricao, d.* FROM imoveis i"
                         . " JOIN clientes c "
                         . "ON c.id = i.id_cliente "
                         . "JOIN imoveis_descricoes im "
                         . "ON im.id_imovel= i.id "
                         . "JOIN descricoes d "
-                        . "ON d.id = im.id_descricao WHERE c.id='$id' ";
+                        . "ON d.id = im.id_descricao "
+                        . "JOIN tipos_imoveis ti "
+			. "ON ti.id=i.id_tipo_imovel WHERE c.id='$id' ";
                 $sql = $this->db->query($sql);
                 if ($sql->rowCount() > 0) {
                     $array = $sql->fetchAll();
@@ -170,13 +173,15 @@ class imovel extends model {
        public function getDadosImovel($id_imovel) {
         try {
             $array = array();
-            $sql = "SELECT *,i.id_cliente as cliente ,b.nome as bairro, c.nome as cidade FROM imoveis i "
+            $sql = "SELECT *,d.id as id_desccricao,id.id as id_imovel_descricao,ta.id as id_tipo_assunto,ti.id as id_tipo_imovel,es.id as id_estado,c.id as id_cidade,b.id as id_bairro,e.id as id_endereco,i.id_cliente as id_cliente ,b.nome as bairro, c.nome as cidade, ti.nome as tipo_imovel, i.id as id_imovel, ta.nome as assunto  FROM imoveis i "
                     ."JOIN enderecos e ON i.id_endereco=e.id "
                     ."JOIN bairros b ON b.id=e.id_bairro "
                     ."JOIN cidades_bairros cb ON b.id=cb.id_bairro " 
                     ."JOIN cidades c ON c.id=cb.id_cidade "
                     ."JOIN estados es ON es.id=c.id_estado "
-                    ."JOIN imoveis_descricoes id ON id.id_imovel=i.id " 
+                    ."LEFT JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel "
+                    ."LEFT JOIN tipos_assuntos ta ON ta.id=i.id_tipo_assunto "
+                    ."JOIN imoveis_descricoes id ON id.id_imovel=i.id "
                     ."JOIN descricoes d ON d.id=id.id_descricao WHERE i.id='$id_imovel' ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
@@ -191,8 +196,10 @@ class imovel extends model {
     public function listImovelVenda() {
         try {
             $array = array();
-            $sql = "SELECT * FROM imoveis i JOIN imoveis_descricoes ide ON i.id=ide.id_imovel "
-                    . "JOIN descricoes d ON ide.id_descricao=d.id WHERE venda > 0  ";
+            $sql = "SELECT *,i.id as id_imovel,ti.nome as tipo_imovel FROM imoveis i "
+                    . "JOIN imoveis_descricoes ide ON i.id=ide.id_imovel "
+                    . "JOIN descricoes d ON ide.id_descricao=d.id "
+                    . "JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel WHERE i.venda > 0 and i.status = 'Livre'  ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
@@ -206,8 +213,9 @@ class imovel extends model {
     public function listImovelaluguel() {
         try {
             $array = array();
-            $sql = "SELECT * FROM imoveis i JOIN imoveis_descricoes ide ON i.id=ide.id_imovel "
-                    . "JOIN descricoes d ON ide.id_descricao=d.id WHERE aluguel > 0   ";
+            $sql = "SELECT *,i.id as id_imovel,ti.nome as tipo_imovel FROM imoveis i JOIN imoveis_descricoes ide ON i.id=ide.id_imovel "
+                    . "JOIN descricoes d ON ide.id_descricao=d.id "
+                    . "JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel WHERE i.aluguel > 0 and i.status = 'Livre'  ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
@@ -221,7 +229,10 @@ class imovel extends model {
     public function listImovelComercial() {
         try {
             $array = array();
-            $sql = "SELECT * FROM imoveis WHERE tipo_imovel='comercial' ";
+           $sql = "SELECT *,i.id as id_imovel,ti.nome as tipo_imovel FROM imoveis i "
+                    . "JOIN tipos_imoveis ti "
+                    . "ON i.id_tipo_imovel=ti.id "
+                    . "WHERE i.id_tipo_imovel='2' and i.status = 'Livre' ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
@@ -231,6 +242,24 @@ class imovel extends model {
             echo "Falhou:" . $e->getMessage();
         }
     }
+        public function listImovelMisto() {
+        try {
+            $array = array();
+           $sql = "SELECT *,i.id as id_imovel, ti.id as id_tipo_imovel,ti.nome as tipo_imovel FROM imoveis i "
+                   . "JOIN imoveis_descricoes ide ON i.id=ide.id_imovel "
+                    . "JOIN descricoes d ON ide.id_descricao=d.id "
+                    . "JOIN tipos_imoveis ti "
+                    . "ON i.id_tipo_imovel=ti.id ";
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                $array = $sql->fetchAll();
+            }
+            return $array;
+        } catch (Exception $e) {
+            echo "Falhou:" . $e->getMessage();
+        }
+    }
+
 
 //fim busca interna.........................
     // busca externa (usuario)-------------------------
@@ -251,18 +280,55 @@ class imovel extends model {
         try {
             $array = array();
 
-            $sql = "SELECT * FROM imoveis WHERE tipo_imovel='" . $tipo . "'";
+            $sql = "SELECT *,es.nome as estado,d.id as id_desccricao,id.id as id_imovel_descricao,ta.id as id_tipo_assunto,ti.id as id_tipo_imovel,es.id as id_estado,c.id as id_cidade,b.id as id_bairro,e.id as id_endereco,i.id_cliente as id_cliente ,b.nome as bairro, c.nome as cidade, ti.nome as tipo_imovel, i.id as id_imovel, ta.nome as assunto  FROM imoveis i "
+                    ."JOIN enderecos e ON i.id_endereco=e.id "
+                    ."JOIN bairros b ON b.id=e.id_bairro "
+                    ."JOIN cidades_bairros cb ON b.id=cb.id_bairro " 
+                    ."JOIN cidades c ON c.id=cb.id_cidade "
+                    ."JOIN estados es ON es.id=c.id_estado "
+                    ."LEFT JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel "
+                    ."LEFT JOIN tipos_assuntos ta ON ta.id=i.id_tipo_assunto "
+                    ."JOIN imoveis_descricoes id ON id.id_imovel=i.id " 
+                    ."JOIN descricoes d ON d.id=id.id_descricao WHERE ti.nome='$tipo' and i.status = 'Livre' ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
-            } else {
-                return $array = 'Deu errado pesquisa imovel';
-            }
+            } 
+            return $array;
+        } catch (Exception $ex) {
+            echo 'Falhou:' . $ex->getMessage();
+        }
+    }
+       public function listTiposImoveis($id_imovel) {
+        try {
+            $array = array();
+
+           $sql = "SELECT i.id_tipo_imovel as id_tipo_imovel,ti.nome as tipo_imovel FROM tipos_imoveis ti JOIN imoveis i ON i.id_tipo_imovel=ti.id "
+                    . "WHERE i.id='$id_imovel'  ";
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                $array = $sql->fetch();
+            } 
+            return $array;
         } catch (Exception $ex) {
             echo 'Falhou:' . $ex->getMessage();
         }
     }
 
+       public function listTiposImoveisCadastrar() {
+        try {
+            $array = array();
+
+            $sql = "SELECT * FROM tipos_imoveis ";
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                $array = $sql->fetchAll();
+            } 
+            return $array;
+        } catch (Exception $ex) {
+            echo 'Falhou:' . $ex->getMessage();
+        }
+    }
     // busca publica do site-----------------
     public function buscarImovel($filtros) {
         try {
@@ -284,7 +350,7 @@ class imovel extends model {
                 $filtrostring[] = "d.suite='".$filtros['suite']."'";
             }
             if (!empty($filtros['tipoimovel'])) {
-                $filtrostring[] = "i.tipo_imovel='".$filtros['tipoimovel']."'";
+                $filtrostring[] = "i.id_tipo_imovel='".$filtros['tipoimovel']."'";
             }
             if (!empty($filtros['banheiro'])) {
                 $filtrostring[] = "d.banheiro='".$filtros['banheiro']."'";
@@ -305,14 +371,15 @@ class imovel extends model {
                 $filtrostring[] = "i.venda='".$filtros['valorimovel']."'";
             }
             
-        $sql = "SELECT *,b.nome as bairro, c.nome as cidade FROM imoveis i "
+       $sql = "SELECT *,b.nome as bairro, c.nome as cidade FROM imoveis i "
                     . "JOIN enderecos e ON i.id_endereco=e.id "
                     . "JOIN bairros b ON b.id=e.id_bairro "
                     . "JOIN cidades_bairros cb ON b.id=cb.id_bairro "
                     . "JOIN cidades c ON c.id=cb.id_cidade "
                     . "JOIN estados es ON es.id=c.id_estado "
                     . "JOIN imoveis_descricoes id ON id.id_imovel=i.id "
-                    . "JOIN descricoes d ON d.id=id.id_descricao WHERE " . implode(' AND ', $filtrostring)."";
+                    . "JOIN descricoes d ON d.id=id.id_descricao "
+                . "JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel WHERE " . implode(' AND ', $filtrostring)."";
        
         $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
@@ -447,7 +514,9 @@ class imovel extends model {
     public function listTipoImovel($id_imovel) {
         try {
             $array = array();
-            $sql = "SELECT * FROM imoveis i JOIN imoveis_descricoes ide ON i.id=ide.id_imovel "
+            $sql = "SELECT *,i.id as id_imovel,ti.nome as tipo_imovel FROM imoveis i "
+                    . "JOIN imoveis_descricoes ide ON i.id=ide.id_imovel "
+                    . "JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel "
                     . "JOIN descricoes d ON ide.id_descricao=d.id WHERE i.id = '$id_imovel'";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {

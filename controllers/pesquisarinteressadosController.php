@@ -4,19 +4,20 @@ class pesquisarinteressadosController extends controller {
 
     public function __construct() {
         parent::__construct();
-        $c=new corretor();
-        $c->verificarLogin();
+        $co = new corretor();
+        $co->verificarLogin();
     }
 
     public function index() {
-        $c=new corretor();
-$c->setLogado();
-$dados['usuario_nome']=$c->getNome($_SESSION['dmrlogin']);
         $dados = array('erro' => '');
+        $co = new corretor();
+        $co->setLogado();
+        $dados['usuario_nome'] = $co->getNome($_SESSION['dmrlogin']);
+
         $i = new interesse();
-         $dados['pesquisarInteressados'] ="";
-         
-         $dados['listInteressados']=$i->getListInteressados();
+        $dados['pesquisarInteressados'] = "";
+
+        $dados['listInteressados'] = $i->getListInteressados();
         if (isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])) {
 
 
@@ -25,25 +26,10 @@ $dados['usuario_nome']=$c->getNome($_SESSION['dmrlogin']);
 
 
             $dados['pesquisarInteressados'] = $i->pesquisarInteressados($pesquisa);
-            
-   
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        $this->loadTemplate('pesquisarinteressados', $dados);
+        $this->loadTemplate_1('pesquisarinteressados', $dados);
     }
 
 }

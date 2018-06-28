@@ -9,6 +9,8 @@ $(function () {
     $('#valor2').mask('000.000.000.000.000,00', {reverse: true});
     $('#metro').mask('000.000,00', {reverse: true});
      $('#metro2').mask('000.000,00', {reverse: true});
+     $('#celular').mask('(00) 00000-0000');
+    $('#telefone').mask('(00) 0000-0000');
     
     
    
@@ -59,7 +61,8 @@ $(document).ready(function (){
             bairro:"required",
             cidade:"required",
             estado:"required",
-            tipoimovel:"required"
+            tipoimovel:"required",
+            tipoassunto:"required"
                 
             
         },
@@ -106,6 +109,24 @@ $(document).ready(function (){
             
         }
     }); 
+     $('#tenhointeresse').validate({
+        
+        rules:{
+            nome:{required:true,isString:true},
+            email:true,
+            fone:"required",
+            telefone:"required",
+            celular:{required:true}
+            
+                
+            
+        },
+        messages:{
+          
+                
+            
+        }
+    });
     
      $('#editarcliente').validate({
         
@@ -148,8 +169,9 @@ $(document).ready(function (){
             numero:"required",
             bairro:{required:true,isString:true},
             cidade:{required:true,isString:true},
-            estado:{required:true,isString:true},
-            tipoimovel:"required"
+            estado:{required:true},
+            id_tipo_imovel:"required",
+            tipoassunto:"required"
                 
             
         },
@@ -160,5 +182,21 @@ $(document).ready(function (){
         }
     });
     
-      
+          $('#tenhointeressado').validate({
+        
+        rules:{
+            nome:{required:true,isString:true},
+            email:true,
+            fonefixo:"required",
+            celular:"required"
+            
+                
+            
+        },
+        messages:{
+          
+                
+            
+        }
+    });
 });

@@ -68,14 +68,14 @@
         <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/pesquisarcomprador.png" alt="pesquisar comprador" width="128" height="128" >
     </a>
         </div>
-    </div>-->
+    </div>
     <div class="col-sm-2">
-        <div class="thumbnail">
-       <a href="<?php BASE_URL;?>pesquisarimoveis">
+        <div class="thumbnail" >
+       <a href="<?php BASE_URL;?>pesquisarimoveis"  >
         <img class="img-responsive" src="<?php BASE_URL; ?>assets/images/pesquisarimovel.png" alt="pesquisar imoveis" width="128" height="128">
     </a>
         </div>
-        </div>
+        </div>-->
            <div class="col-sm-2">
         <div class="thumbnail">
        <a href="<?php BASE_URL;?>pesquisarinteressados">

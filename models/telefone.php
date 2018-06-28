@@ -13,7 +13,7 @@ class telefone extends model{
     }
      public function email (){
         
-        return $email = "contato@dmrimoveiscabeuva.com.br";
+        return $email = "contato@dmrimoveiscabreuva.com.br";
     }
     
     public function endereco() {

@@ -16,9 +16,9 @@
     </head>
 
     <body>
+        <form id="template" name="template" method="GET">
+            <nav class="navbar navbar-inverse ">
 
-        <nav class="navbar navbar-inverse ">
-            
 
 
                 <div class="navbar-header">
@@ -33,12 +33,12 @@
                     <a href="./" class="navbar-brand"> Imóveis em Cabreúva aqui </a>
                     <a href="https://www.facebook.com/negociosemcabreuva/" class="navbar-nav"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="32" height="32" style="margin-top: 8px"/></a>
 
-                 <!--   <form class="navbar-form navbar-right" role="search" id="buscanavbar">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="casa,apto,galpão">
-                        </div>
-                        <button type="submit" class="btn btn-default">Procurar</button>
-                    </form>-->
+                    <!--   <form class="navbar-form navbar-right" role="search" id="buscanavbar">
+                           <div class="form-group">
+                               <input type="text" class="form-control" placeholder="casa,apto,galpão">
+                           </div>
+                           <button type="submit" class="btn btn-default">Procurar</button>
+                       </form>-->
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -46,84 +46,89 @@
 
                         <li><a href="<?php BASE_URL; ?>home">HOME</a></li>
                         <li><a href="<?php BASE_URL; ?>sobre">SOBRE</a></li>
-                            <li><a href="<?php BASE_URL; ?>nossosservicos">SERVIÇOS</a></li>
-                             
-
-                       <li class="dropdown disabled" >
-                            <a href="#" class="dropdown-toggle disabled" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false" >IMÓVEIS<span class="caret"></span></a>
-                            <ul class="dropdown-menu disabled" role="menu">
-                         <!--       <li class="disabled"><a href="<?php BASE_URL; ?>">Todas Casas</a></li>
-                                <li class="disabled"><a href="<?php BASE_URL; ?>">Todos Comercial</a></li>
-                                <li class="disabled"><a href="<?php BASE_URL; ?>">Todos Apartamentos</a></li>
-                                <li class="disabled"><a href="<?php BASE_URL; ?>">Todos Terrenos</a></li>
-                                <li class="disabled"><a href="<?php BASE_URL; ?>">Todos Rurais</a></li>
+                        <li><a href="<?php BASE_URL; ?>nossosservicos">SERVIÇOS</a></li>
 
 
-<!--vendas-->
-                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">Venda<span class="caret"></span></a>
-
-                                    <ul class="dropdown-submenu-right" role="menu" >    
-                                        <li><a href="<?php BASE_URL; ?>vendasresidencial?tipoimovel=residencia">Casas</a></li>
-                                        <li class="disabled"><a href="<?php BASE_URL; ?>">Apartamentos</a></li>
-                                        <li><a href="<?php BASE_URL; ?>vendascomercial">Comerciais</a></li>
-                                        <li class="disabled"><a href="<?php BASE_URL; ?>">Rurais</a></li>
-                                        <li class="disabled"><a href="<?php BASE_URL; ?>">Terrenos</a></li>
-                                        <li><a href="<?php BASE_URL; ?>vendasgalpao">Galpões</a></li>
-                                    </ul>
-
-                                </li>
+                        <li class="dropdown" >
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false" >IMÓVEIS<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="<?php BASE_URL; ?>paginaanuncio?tipoimovel=Residencial">Residencial</a></li>
+                                <li class=""><a href="<?php BASE_URL; ?>paginaanuncio?tipoimovel=Comercial">Comercial</a></li>
+                                <li class=""><a href="<?php BASE_URL; ?>paginaanuncio?tipoimovel=Galpão">Galpão</a></li>
+                                <li class=""><a href="<?php BASE_URL; ?>paginaanuncio?tipoimovel=Apartamento">Apartamentos</a></li>
+                                <li class=""><a href="<?php BASE_URL; ?>paginaanuncio?tipoimovel=Terreno">Terrenos</a></li>
+                                <li class=""><a href="<?php BASE_URL; ?>paginaanuncio?tipoimovel=Sitio">Sitio</a></li>
+                                <li class=""><a href="<?php BASE_URL; ?>paginaanuncio?tipoimovel=Chacara">Chacara</a></li>
+                                <li class=""><a href="<?php BASE_URL; ?>paginaanuncio?tipoimovel=Fazenda">Fazenda</a></li>
 
 
-                                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">Locação<span class="caret"></span></a>
-
-                                 <ul class="dropdown-submenu-right" role="menu" >    
-                                        <li><a href="#">Casas</a></li>
-                                        <li><a href="#">Apartamentos</a></li>
-                                        <li><a href="#">Comerciais</a></li>
-                                        <li><a href="#">Rurais</a></li>
-                                        <li><a href="#">Terrenos</a></li>
-                                        <li class="disabled"><a href="<?php BASE_URL; ?>">Galpões</a></li>
-                                    </ul>
-                                      </li>
-
-
-
-
+                                <!--vendas-->
+                                <!--
+                                                                 <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">Venda<span class="caret"></span></a>
+                                
+                                                                    <ul class="dropdown-submenu-right" role="menu" >    
+                                                                        <li><a href="<?php BASE_URL; ?>paginaanuncio?tipoimovel=residencial">Casas</a></li>
+                                                                        <li class="disabled"><a href="<?php BASE_URL; ?>">Apartamentos</a></li>
+                                                                        <li><a href="<?php BASE_URL; ?>vendascomercial">Comerciais</a></li>
+                                                                        <li class="disabled"><a href="<?php BASE_URL; ?>">Rurais</a></li>
+                                                                        <li class="disabled"><a href="<?php BASE_URL; ?>">Terrenos</a></li>
+                                                                        <li><a href="<?php BASE_URL; ?>vendasgalpao">Galpões</a></li>
+                                                                    </ul>
+                                
+                                                                </li>
+                                
+                                
+                                                                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="menu" aria-haspopup="true" aria-expanded="false">Locação<span class="caret"></span></a>
+                                
+                                                                 <ul class="dropdown-submenu-right" role="menu" >    
+                                                                        <li><a href="#">Casas</a></li>
+                                                                        <li><a href="#">Apartamentos</a></li>
+                                                                        <li><a href="#">Comerciais</a></li>
+                                                                        <li><a href="#">Rurais</a></li>
+                                                                        <li><a href="#">Terrenos</a></li>
+                                                                        <li class="disabled"><a href="<?php BASE_URL; ?>">Galpões</a></li>
+                                                                    </ul>
+                                                                      </li>
+                                
+                                
+                                
+                                -->
 
 
                             </ul>
                         </li>
 
                         <li><a href="<?php BASE_URL; ?>contato">CONTATO</a></li>
-<li><a href="<?php BASE_URL; ?>login">LOGIN</a></li>
+                        <li><a href="<?php BASE_URL; ?>login">LOGIN</a></li>
 
                     </ul>
 
 
 
                 </div>
-            
-        </nav>
-       
 
+            </nav>
+
+        </form>
         <!--  aqui onde vai o corpo das paginas do sistema -->
         <?php $this->loadViewInTemplate($viewName, $viewData); ?>
 
 
 
-
+ </body>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
-          <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.validate.min.js"></script>
-                    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/additional-methods.js"></script>
-                    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/localization/messages_pt_BR.js"></script>
-                    <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.js"></script>
-        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/validarcampos.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/additional-methods.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/localization/messages_pt_BR.js"></script>
         <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/script.js"></script>
- 
+        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.mask.js"></script>
+        <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/validarcampos.js"></script>
+        
 
 
-    </body>
+
+   
     <br>
     <footer>
         <div class="rodape">

@@ -41,7 +41,7 @@ class endereco extends model {
 
 
             if ($sql->rowCount() > 0) {
-                
+               
             }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
@@ -66,7 +66,7 @@ class endereco extends model {
         try {
             $array = array();
             $sql = "SELECT * ,b.nome bairro, c.nome cidade,c.id id_cidade, es.nome estado, es.id id_estado, t.nome via, t.id id_via FROM enderecos e "
-                    . "JOIN tipos_vias t ON e.id_tipo_via= t.id "
+                    . "LEFT JOIN tipos_vias t ON e.id_tipo_via= t.id "
                     . "JOIN bairros b ON e.id_bairro=b.id "
                     . "JOIN cidades_bairros cb ON b.id=cb.id_bairro "
                     . "JOIN cidades c ON cb.id_cidade=c.id "

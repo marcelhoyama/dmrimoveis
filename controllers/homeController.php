@@ -42,7 +42,8 @@ class homeController extends controller {
        
 $dados['listimovelvenda']=$i->listImovelVenda();
 $dados['listimovelaluguel']=$i->listImovelAluguel();
-      $dados['listimovelcomercial']=$i->listImovelComercial();
+      $dados['listimovelmisto']=$i->listImovelMisto();
+      //$dados['listtiposimoveis']=listTiposImoveis();
         
     if (isset($_GET['filtros'])) {
         $filtros= $_GET['filtros'];

@@ -1,6 +1,6 @@
 
 <title>Imóveis em Cabreúva</title>
-<meta property="og:url" content="http://www.dmrimoveiscabreuva.com.br" />
+<meta property="og:url" content="https://www.dmrimoveiscabreuva.com.br" />
 <meta property="og:type" content="website"/>
 <meta property="og:title" content="DMR Imoveis em Cabreúva"/>
 <meta property="og:description" content="Corretores de Imóveis ! Venda, Compra, Troca e Administra!  Nas Regiões de: Cabreúva, Jacaré, Salto, Itu, Jundiaí"/>
@@ -13,7 +13,7 @@
 <meta name="description" content="Imóveis em Cabreúva - Procurando por um imóvel em Cabreúva? Encontre ótimas oportunidades de imóveis para venda ou locação em nosso site. Clique e confira!">
 <meta name="keywords" content="Imóveis, Imobiliária, Cabreúva, Compra, Venda, Aluguel, Locacao, Apartamento, Casas, Casas em Condomínio, Terrenos, Comerciais, Chácara, Sítios, Fazendas, galpão, area industrial, areas, terreno, areas">
 <meta name="author" content="Marcel Hoyama">
-<meta name="google-site-verification" content="http://www.dmrimoveiscabreuva.com.br" />
+<meta name="google-site-verification" content="https://www.dmrimoveiscabreuva.com.br" />
 
 
 <meta property="og:description" content="Imóveis em Cabreúva - Procurando por um imóvel em Cabreúva? Encontre ótimas oportunidades de imóveis para venda ou Locação em nosso site. Confira!" />
@@ -84,22 +84,12 @@
                         <label for="tipoimovel" class='label label-info'>Tipo de Imóvel</label>
                         <select id="tipoimovel" class="form-control" name="filtros[tipoimovel]">
                             <option></option>
-                            <option value="Casa">Casa</option>
-                            <option value="Apartamento">Apartamento</option>
-                            <option value="Germinada">Germinada</option>
-                            <option value="Kitnet">Kitnet</option>
-                            <option value="Chacara">Chacara</option>
-                            <option value="Galpão">Galpão</option>
-                            <option value="Terreno">Terreno</option>
-                            <option value="Chacara">Chacara</option>
-                            <option value="Sitio">Sitio</option>
-                            <option value="Condominio">Condominio</option>
-                            <option value="Comercial">Comercial</option>
-                            <!--  
-                            <?php //foreach ($viewData['listTipoImovel'] as $value):  ?>
-                                   <option value="<?php //echo $value['tipo_imovel'];   ?>" <?php // echo ($value['tipo_imovel'] == $filtros['tipoimovel']) ? 'selected="selected"' : '';  ?>> <?php // echo $value['tipo_imovel'];    ?></option>
+                           
+                             
+                            <?php foreach ($viewData['listtiposimoveis'] as $value):  ?>
+                                   <option value="<?php echo $value['id_tipo_imovel'];   ?>" <?php  echo ($value['tipo_imovel'] == $filtros['tipoimovel']) ? 'selected="selected"' : '';  ?>> <?php  echo $value['tipo_imovel'];    ?></option>
                               
-                            <?php // endforeach;?>-->
+                            <?php  endforeach;?>
                         </select>
                     </div>
 
@@ -279,7 +269,7 @@
 
 
                                     <div class="thumbnail ">
-                                        <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id'] ?>" >
+                                        <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >
 
                                             <?php if (!empty($value['url_foto_principal'])): { ?>
                                                     <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class=" img-rounded img-fluid">
@@ -309,7 +299,7 @@
                                             <h4><p>Suite :<?php echo $value['suite']; ?> - Dormitorio :<?php echo $value['dormitorio']; ?></p></h4>
 
 
-                                            <button  type="button" class=" btn btn-default btn-lg btn-block" href="javascript;:" onclick="tenhointeresse('<?php echo $value['id'] ?>')">Tenho Interesse</button>
+                                            <button  type="button" class=" btn btn-default btn-lg btn-block" href="javascript;:" onclick="tenhointeresse('<?php echo $value['id_imovel'] ?>')">Tenho Interesse</button>
 
                                         </div>
 
@@ -348,15 +338,21 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title" id="myModalLabel"><p class="text-danger text-center">Deixe que entraremos em Contato com Você</p></h4>
                     </div>
+                     
                     <div class="modal-body">
-
+                     
+                            
+                     
+                        
                     </div>
+              
 
                     <div class="modal-footer">
 
 
                     </div>
                 </div>
+             
             </div>
 
 
@@ -393,7 +389,7 @@ foreach ($viewData['listimovelaluguel'] as $key => $value): {
 
 
                                     <div class="thumbnail ">
-                                        <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id'] ?>" >
+                                        <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >
 
                                             <?php if (!empty($value['url_foto_principal'])): { ?>
                                                     <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class=" img-rounded img-fluid">
@@ -418,7 +414,7 @@ foreach ($viewData['listimovelaluguel'] as $key => $value): {
 
 
 
-                                            <button  type="button" class=" btn btn-default btn-lg btn-block" href="javascript:;" onclick="tenhointeresse(<?php echo $value['id'] ?>)">Tenho Interesse</button>
+                                            <button  type="button" class=" btn btn-default btn-lg btn-block" href="javascript:;" onclick="tenhointeresse(<?php echo $value['id_imovel'] ?>)">Tenho Interesse</button>
                                         </div>
 
                                     </div>
@@ -457,7 +453,7 @@ foreach ($viewData['listimovelaluguel'] as $key => $value): {
 
 <?php
 //if (!$viewData['buscaimovel'] == '') {
-foreach ($viewData['listimovelcomercial'] as $key => $value): {
+foreach ($viewData['listimovelmisto'] as $key => $value): {
         ?>
 
                                 <div class="item <?php echo ($key == '0') ? 'active' : ''; ?>">
@@ -468,7 +464,7 @@ foreach ($viewData['listimovelcomercial'] as $key => $value): {
 
 
                                     <div class="thumbnail ">
-                                        <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id'] ?>" >
+                                        <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >
 
         <?php if (!empty($value['url_foto_principal'])): { ?>
                                                     <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class=" img-rounded img-fluid">
@@ -478,10 +474,10 @@ foreach ($viewData['listimovelcomercial'] as $key => $value): {
 
                                         </a>
                                         <div class="caption">
-                                            <h3><?php echo $value['tipo_imovel']; ?></h3>
-                                            <h3>Area Total :<?php echo $value['area_total']; ?></h3>
-
-                                            <h3><?php
+                                            <h3><?php echo $value['tipo_imovel']; ?> -
+                  
+                                           
+                                               <?php
                                                 if ($value['aluguel'] == 0) {
                                                     echo 'Venda';
                                                 } elseif (!$value['venda'] == 0 && !$value['aluguel'] == 0) {
@@ -491,12 +487,14 @@ foreach ($viewData['listimovelcomercial'] as $key => $value): {
                                                 } else {
                                                     echo 'Aluga';
                                                 }
-                                                ?></h3> 
-                                                <h4><p>Area Total :<?php echo $value['area_total']; ?> </p></h4>
+                                                ?></h3>
+                                            
+                                            <h4><p>Area Total :<?php echo $value['area_total']; ?> </p></h4>
                                             <h4><p>Banheiro :<?php echo $value['banheiro']; ?> - Garagem :<?php echo $value['garagem']; ?></p></h4>
+                                            <h4><p>Suite :<?php echo $value['suite']; ?> - Dormitorio :<?php echo $value['dormitorio']; ?></p></h4>
                                           
 
-                                        <button  type="button" class=" btn btn-default btn-lg btn-block" href="javascript:;" onclick="tenhointeresse(<?php echo $value['id'] ?>)">Tenho Interesse</button>
+                                        <button  type="button" class=" btn btn-default btn-lg btn-block" href="javascript:;" onclick="tenhointeresse(<?php echo $value['id_imovel'] ?>)">Tenho Interesse</button>
                                         </div>
 
                                     </div>

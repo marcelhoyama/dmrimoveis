@@ -57,7 +57,7 @@ class estado extends model {
         public function listEstado(){
             try{
                 $array=array();
-                 $sql = "SELECT * FROM estados ";
+                 $sql = "SELECT * FROM estados ORDER BY nome ";
             $sql = $this->db->query($sql);
             if($sql->rowCount() > 0){
                 $array = $sql->fetchAll();

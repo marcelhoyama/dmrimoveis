@@ -73,7 +73,7 @@
             De Segunda á Sexta das 08:30 às 18:30 
         </address>
         <hr/>
-        <img src="<?php BASE_URL ?>assets/images/logo.jpeg" width="400" height="400" class="img-rounded img-responsive">
+        <img src="<?php BASE_URL ?>assets/images/escritorio_frontal.jpeg" width="400" height="400" class="img-rounded img-responsive">
 
 
         <div class="mapa">

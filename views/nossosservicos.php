@@ -38,7 +38,7 @@
    
     
     <h2>Maiores Informações:</h2>
-    <h3>Entre em contato conosco pelo telefone <?php echo $value=$viewData['telefone']; ?> ou venha nos fazer uma visita e 
+    <h3>Entre em contato conosco pelo telefone <?php echo $value=$viewData['telefone']; ?> / <?php echo $value=$viewData['celular']; ?> / Email:<?php echo $value=$viewData['email']; ?> ou venha nos fazer uma visita e 
         conhecer nosso escritório na  <?php echo $value=$viewData['endereco']; ?></h3>
    
 </div>

@@ -45,9 +45,7 @@ class cliente extends model {
                 $_SESSION['id'] = $dados['id'];
                 $_SESSION['nome'] = $dados['nome'];
                 return "Cliente " . $_SESSION['nome'] . " Já existe!!";
-            } else {
-                return "Preencha todos os campos!";
-            }
+            } 
 
             exit;
         } catch (Exception $ex) {
@@ -71,6 +69,21 @@ class cliente extends model {
         }
     }
 
+    public function listClientes(){
+        try{
+            $array=array();
+            $sql="SELECT nome FROM clientes";
+            $sql= $this->db->query($sql);
+            if($sql->rowCount()>0){
+                $array=$sql->fetchAll();
+            }
+            return $array;
+        } catch (Exception $ex) {
+
+        }
+    }
+    
+
     public function getListCliente($pesquisa) {
         $array = array();
 
@@ -78,17 +91,18 @@ class cliente extends model {
             $sql = "SELECT c.nome,c.id,c.email,c.telefone,c.telefone2,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel FROM clientes c "
                     . "LEFT JOIN imoveis i "
                     . "ON c.id = i.id_cliente "
-                    . "WHERE nome LIKE '$pesquisa%'";
+                    . "WHERE c.nome LIKE '$pesquisa%'";
 
             $sql = $this->db->query($sql);
-            if ($sql->rowCount() > 0) {
-                $array = $sql->fetchAll();
-            }else{
-                return "nada encontrado!";
+            if ($sql->rowCount() > 0 ) {
+                 $array = $sql->fetchAll();
+                 
             }
                 
 
-            return $array;
+ return $array;
+
+           
         }
     }
 

@@ -34,12 +34,16 @@
                     <th>Ações</th>
                 </tr>
             </thead>
+            
             <tbody>
 
 <?php {
 
     foreach ($viewData['imoveis'] as $value): {
-            ?>
+        if($value['status_imoveis']== "Bloqueado"){
+            
+        }  else{ 
+        ?>
 
 
                             <tr>
@@ -107,13 +111,25 @@
                                 </td>
                             </tr>
 
-        <?php } endforeach;
+        <?php 
+        }
+                                    } endforeach;
 }
 ?>
-
+ 
 
             </tbody>
         </table>
+         <div class="danger">
+            <?php if (isset($erro) && !empty($erro)): ?>
+                <div class="alert alert-danger"><?php echo $erro; ?></div> 
+            <?php endif; ?>
+        </div>
+        <div class="danger">
+            <?php if (isset($ok) && !empty($ok)): ?>
+                <div class="alert alert-success"><?php echo $ok; ?></div> 
+            <?php endif; ?>
+        </div>
     </div>
 
 </div>

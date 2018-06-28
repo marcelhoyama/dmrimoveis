@@ -46,7 +46,7 @@ class cidade extends model {
     public function listCidade() {
         try {
             $array = array();
-            $sql = "SELECT * FROM cidades ";
+            $sql = "SELECT * FROM cidades OrDER by nome";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();

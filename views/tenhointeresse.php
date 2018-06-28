@@ -1,6 +1,6 @@
 
- 
-<form  method="POST">
+<form id="tenhointeresse" method="POST" >
+
   
                 <div class="row">
           <div class="col-sm-3">
@@ -8,46 +8,46 @@
                
                
                       <div class="form-group">
-                          <label for="assunto">  Assunto: </label>
-                          <input class="form-control" type="text" name="assunto" value="<?php if ($imovel['aluguel'] == 0) {
-                                                    echo 'Venda';
-                                                } elseif ($imovel['venda'] > 0 && $imovel['aluguel'] > 0) {
-                                                    echo "Venda/Aluga";
-                                                } elseif ($imovel['venda'] == 0) {
-                                                    echo 'Aluga';
-                                                }
-                                                ?>" disabled />
+                          
+                         <?php foreach ($viewData['listtiposassuntos'] as $value) {
+                              if($value['id']==$imovel['id_tipo_assunto']){?>
+                         <label for="assunto">  Assunto: </label><?php echo $value['nome'];?>
+                          <input type="hidden" value="<?php echo $value['id']?>" name="id_tipo_assunto" class="form-control" disabled=""/>
+                          <?php    }
+                          }?>
+                          
                     </div>
           </div>
          <div class="col-sm-4">
      <div class="form-group">
-         <label for="id_imovel">Codigo do imovel :</label>
-         <input class="form-control" type="text" name="id_imovel" value="<?php echo $imovel['id_imovel']?>" disabled=""/>
+         <label for="id_imovel">Codigo do imovel :</label><?php echo $imovel['id_imovel']?>
+         <input class="form-control" type="hidden" name="id_imovel" value="<?php echo $imovel['id_imovel']?>" disabled=""/>
      </div>
              </div>
-         <div class="col-sm-3">
+         <div class="col-sm-4">
      <div class="form-group">
-         <label for="tipo_imovel">Tipo do imovel :</label>
-     <input class="form-control" type="text" name="tipo_imovel" value="<?php echo $imovel['tipo_imovel']?>" disabled=""/>
+         <label for="tipo_imovel">Tipo do imovel :</label><?php echo $imovel['tipo_imovel']?>
+     
+     <input class="form-control" type="hidden" name="id_tipo_imovel" value="<?php echo $imovel['id_tipo_imovel']?>" disabled=""/>
      </div>
          </div>
          </div>
      
                     <div class="form-group">
                         <label class="" for="nome"> Nome Completo:</label><label class="text-danger">*Obrigatório</label> 
-                        <input class="form-control" type="text" name="nome" id="nome" value="" placeholder="seu nome completo" required=""/>
+                        <input class="form-control" type="text" name="nome" id="nome" value="" placeholder="somente letras" required="true" pattern="[A-Za-zÀ-ú\s]+$" title="O campo nome não pode conter numeros e/ou caracteres especiais!"/>
                     </div>
      <div class="row">
          <div class="col-sm-4">
                     <div class="form-group">
                          <label for="telefone">Telefone Fixo:</label> 
-                         <input class="form-control" type="tel" name="telefone" id="fonefixo" value="" placeholder="seu telefone" />
+                         <input class="form-control" type="text" name="fonefixo" id="fonefixo" value="" placeholder="seu telefone" />
                     </div>
          </div>
          <div class="col-sm-4">
                     <div class="form-group">
                         <label for="fone">Celular:</label><label class="text-danger">*Obrigatório</label> 
-                        <input class="form-control" type="tel" name="fone" id="fone" value="" placeholder=" seu celular" required="" />
+                        <input class="form-control" type="text" name="fone" id="fone" value="" placeholder=" seu celular" required="true" />
                     </div>
          </div>
      </div>
@@ -59,5 +59,18 @@
      <input type="submit" value="enviar" class="btn btn-success"/>
     
   
+      <script> 
+                    $(function () {
+    
+    $('#fone').mask('(00) 00000-0000');
+    $('#fonefixo').mask('(00) 0000-0000');
    
-   </form>
+    
+   
+});
+
+                </script>
+ 
+
+</form>
+ 

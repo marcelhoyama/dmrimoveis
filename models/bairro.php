@@ -11,16 +11,15 @@ class bairro extends model {
             if ($sql->rowCount() > 0) {
 
                 $sql = $sql->fetch();
-                $id_bairro= $sql['id'];
-                
-                  $sql7 = "INSERT INTO cidades_bairros SET id_bairro='" . $id_bairro . "',id_cidade='$id_cidade' ";
-                    $sql7 = $this->db->query($sql7);
+                $id_bairro = $sql['id'];
 
-                    if ($sql7->rowCount() > 0) {
-                        
-                    }
-                    return $id_bairro;
-                
+                $sql7 = "INSERT INTO cidades_bairros SET id_bairro='" . $id_bairro . "',id_cidade='$id_cidade' ";
+                $sql7 = $this->db->query($sql7);
+
+                if ($sql7->rowCount() > 0) {
+                    
+                }
+                return $id_bairro;
             } else {
                 $sql6 = "INSERT INTO bairros SET nome='" . $nome . "' ";
                 $sql6 = $this->db->query($sql6);
@@ -41,23 +40,22 @@ class bairro extends model {
         }
     }
 
-      public function updateBairro($id_bairro, $nome) {
+    public function updateBairro($id_bairro, $nome) {
         try {
 
-        
-                $sql = "UPDATE bairros SET nome='" . $nome . "' WHERE id='$id_bairro' ";
-                $sql = $this->db->query($sql);
+
+             $sql = "UPDATE bairros SET nome='" . $nome . "' WHERE id='$id_bairro' ";
+            $sql = $this->db->query($sql);
+
+            if ($sql->rowCount() > 0) {
                 
-                if ($sql->rowCount() > 0) {
-//$sql=$sql->fetch();
-//return $sql['id'];
-                }
-            
+            }
+           
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
     }
-    
+
     public function listBairro() {
         try {
             $array = array();

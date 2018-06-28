@@ -5,8 +5,8 @@ class menuprincipalController extends controller{
 
  public function __construct(){
  	parent::__construct();
-$c=new corretor();
-        $c->verificarLogin();
+$co=new corretor();
+        $co->verificarLogin();
  }
  
      	
@@ -14,9 +14,9 @@ $c=new corretor();
     
     public function index() {
         $dados = array('erro'=>'');
-$c=new corretor();
-$c->setLogado();
-$dados['usuario_nome']=$c->getNome($_SESSION['dmrlogin']);
+$co=new corretor();
+$co->setLogado();
+$dados['usuario_nome']=$co->getNome($_SESSION['dmrlogin']);
        
          
          

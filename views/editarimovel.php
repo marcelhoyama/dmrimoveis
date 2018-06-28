@@ -11,9 +11,31 @@
 
         <form id="editarimovel" method="POST" enctype="multipart/form-data">
 
+            <div class="well">
+                     <div class="control-group">
+                         <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
+                <div class="checkbox-inline">
+                        <label><input type="checkbox" name="status" value="Livre" <?php echo($status = $viewData['status']== 'Livre') ? 'checked="checked"' : ''; ?> >Livre</label> 
+                    </div>
 
+                    <div class="checkbox-inline">
+                        <label><input type="checkbox" name="status" value="Bloquear"  <?php echo($status = $viewData['status'] == 'Bloquear') ? 'checked="checked"' : ''; ?>>Bloquear</label>
+                    </div>
+              </div>
+            </div>
 
         <div class="row">
+              <div class="form-group col-sm-3">
+                <label for="id_tipo_assunto">Tipo de Assunto:</label><label class="text-danger">Campo Obrigatorio*</label>
+                <select name="id_tipo_assunto" class="form-control" id="tipoassunto">
+                    <?php $value1 = $viewData['listimovel']; ?>
+                    <?php foreach ($viewData['listtiposassuntos'] as $value) :{ ?>
+                    <option value="<?php echo $value['id']; ?>" <?php echo ($value['id']==$value1['id_tipo_assunto'])? 'selected="selected"':''; ?>><?php echo $value['nome'];?></option>
+                                
+                           <?php } endforeach; ?>
+                </select>
+            </div>
+         
             <div class="form-group col-sm-4">
                 <label for="endereco">Tipo de Via:(Exemplo: Rua,Avenida)</label> <label class="text-danger">campo obrigatorio*</label>
 
@@ -47,7 +69,7 @@
 
         <div class="row">
             <div class="form-group col-sm-3">
-                <?php $value1 = $viewData['listimovel']; ?>
+                
                 <label for="numero">Numero:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="numero" type="text" class="form-control" id="numero" placeholder="" value="<?php echo $value1['numero'] ?>" required="">
             </div>
@@ -71,7 +93,20 @@
             </div>
             <div class="form-group col-sm-3">
                 <label for="estado">Estado: (Exemplo: SP)</label>  <label class="text-danger">campo obrigatorio*</label>
-                <input name="estado" type="text" class="form-control" id="estado" placeholder="" value="<?php echo $value['estado'] ?>" required="">
+                <select name="estado" id="estado" class="form-control" required="">
+
+                    <?php
+                    $estado = $viewData['listendereco'];
+                    ?>
+                    <?php foreach ($viewData['listestados'] as $value): { ?>
+
+                            <option value="<?php echo $value['id']; ?>" 
+                                    <?php echo( $value['id'] == $estado['id_estado']) ? 'selected="selected"' : ' '; ?>><?php echo $value['nome']; ?></option> 
+
+                        <?php }endforeach;
+                    ?>
+
+                </select>
             </div>
             <div class="form-group col-sm-3">
                 <label for="cep">CEP:</label>
@@ -222,19 +257,20 @@
 
             <div class="row">
                 <div class="form-group col-sm-4">
-                    <label for="tipoimovel">Tipo de Imóvel:</label>  <label class="text-danger">campo obrigatorio*</label>
-                    <select name="tipoimovel" id="tipoimovel" class="form-control" required="">
-                        <option value="<?php echo $value1['tipo_imovel'] ?>" selected=""><?php echo $value1['tipo_imovel'] ?></option>
-                        <option value="Casa">Casa</option>
-                        <option value="Apartamento">Apartamento</option>
-                        <option value="Germinada">Germinada</option>
-                        <option value="Kitnet">Kitnet</option>
-                        <option value="Chacara">Chacara</option>
-                        <option value="Galpão">Galpão</option>
-                        <option value="Terreno">Terreno</option>
-                        <option value="Sitio">Sitio</option>
-                        <option value="Condominio">Condominio</option>
-                         <option value="Comercial">Comercial</option>
+                    <label for="id_tipo_imovel">Tipo de Imóvel:</label>  <label class="text-danger">campo obrigatorio*</label>
+                    <select name="id_tipo_imovel" id="id_tipo_imovel" class="form-control" required="">
+                     
+                        <?php
+                    $tipoimovel = $viewData['listtiposimoveiscadastrados'];
+                    ?>
+                    <?php foreach ($viewData['listtiposimoveis'] as $value): { ?>
+
+                               <option value="<?php echo $value['id']; ?>" 
+                                    <?php echo( $value['id'] == $tipoimovel['id_tipo_imovel']) ? 'selected="selected"' : ' '; ?>><?php echo $value['nome']; ?></option> 
+
+                          <?php }endforeach;
+                    ?>
+
 
                     </select> 
                 </div>

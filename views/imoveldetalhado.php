@@ -66,7 +66,7 @@
                     <li><?php echo $listimovel['energia solar']; ?> </li>
                 </ul>
 
-                <button href="javascript;:" onclick="tenhointeresse('<?php echo $listimovel['id']; ?>')" type="button" class="btn btn-primary">Tenho Interesse</button>
+                <button href="javascript;:" onclick="tenhointeresse('<?php echo $listimovel['id_imovel']; ?>')" type="button" class="btn btn-primary">Tenho Interesse</button>
 
             </div>
         </div>

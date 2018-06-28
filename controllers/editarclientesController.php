@@ -4,24 +4,25 @@ class editarclientesController extends controller {
 
     public function __construct() {
         parent::__construct();
-        $c=new corretor();
-        $c->verificarLogin();
+        $co = new corretor();
+        $co->verificarLogin();
     }
 
     public function index() {
-$c=new corretor();
-$c->setLogado();
-$dados['usuario_nome']=$c->getNome($_SESSION['dmrlogin']);
-
         $dados = array('erro' => '', 'ok' => '');
+        $co = new corretor();
+        $co->setLogado();
+        $dados['usuario_nome'] = $co->getNome($_SESSION['dmrlogin']);
+
+
         $id = 0;
-  $c = new cliente();
+        $c = new cliente();
 
 
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             $id = addslashes($_GET['id']);
-          
-$dados['dadosCliente'] = $c->getDados($id);
+
+            $dados['dadosCliente'] = $c->getDados($id);
 
             if (isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])) {
 
@@ -40,9 +41,9 @@ $dados['dadosCliente'] = $c->getDados($id);
         if (isset($_GET['pesquisar']) && !empty($_GET['pesquisar'])) {
             $dados['pesquisa'] = $_GET['pesquisar'];
         }
-        
 
-        $this->loadTemplate('editarclientes', $dados);
+
+        $this->loadTemplate_1('editarclientes', $dados);
     }
 
 }

@@ -13,14 +13,17 @@
             <?php foreach ($viewData['listInteressados'] as $value) :{
                 
              ?>
-            <option value="<?php echo $value['id_assunto']; ?>" ><?php echo $value['nomeassunto']; ?></option>
+            <option value="<?php echo $value['id']; ?>" ><?php echo $value['nome']; ?></option>
                          
                                <?php     }endforeach; ?>
         </select>
       </div>
         <div class="form-group col-md-4">
-        <button class="btn btn-default" type="submit">Pesquisar</button>
-        </div>
+       <span class="input-group-btn">
+            <button class="btn btn-primary" type="submit">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>Pesquisar
+            </button>
+        </span>  </div>
     
         </div>
          
@@ -38,6 +41,7 @@
                 <th>Assunto</th>
                 <th>Data do Interesse</th>
                 <th>Status</th>
+                <th>Situação</th>
                  <th>Ações</th>
             </tr>
         </thead>
@@ -63,9 +67,10 @@
                 <td><?php echo $value['email']; ?></td>
                 <td><span class="badge"><?php echo $value['nomeassunto'];?></span></td>
                 <td><span class="badge"><?php echo $value['data_interesse']; ?></span></td>
-                <td><?php echo $value['nomestatus'];?></td>
-                <td><button href="javascript:;" class="btn btn-warning" onclick="tenhointeresseeditar(<?php echo $value['id_interessado']; ?>) ">Editar Status</button>
-                    <a href="<?php BASE_URL; ?>excluirinteressado?id=<?php echo $value['id_interessado'];?>" ><button class="btn btn-danger disabled">Excluir</button></a>
+                <td><?php echo $value['status'];?></td>
+                <td><?php echo $value['nome_tipo_negociacao'];?></td>
+                <td><button href="javascript:;" class="btn btn-warning" onclick="tenhointeresseeditar(<?php echo $value['id_interessado']; ?>)">Editar Status</button>
+                    <a href="javascript:;" ><button class="btn btn-danger" onclick="excluir(<?php echo $value['id_interessado'] ?>)">Excluir</button></a>
                 
               
                 </td>
