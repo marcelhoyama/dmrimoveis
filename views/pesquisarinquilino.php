@@ -51,8 +51,8 @@
                 <td><span class="badge"><?php echo $viewData['seufiador']; ?></span></td>
                 <td><a href="<?php BASE_URL;?>editarinquilino?id=<?php echo $value['id'];?> "><button class="btn btn-warning">Editar</button></a>
                     <a href="<?php BASE_URL; ?>menuprincipalinquilino?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Menu do Inquilino</button></a>
-               <a href="<?php BASE_URL; ?>cadastrarimovel?id=<?php echo $value['id'];?>"><button class="btn btn-primary">+ Imóvel</button></a>
-              
+            <!--   <a href="<?php BASE_URL; ?>cadastrarimovel?id=<?php echo $value['id'];?>"><button class="btn btn-primary">+ Imóvel</button></a>
+              -->
                 </td>
             </tr>
          

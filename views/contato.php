@@ -2,38 +2,53 @@
 <title>Contato - DMR Imóveis - Negócios Imobiliários em Cabreúva</title>
 <div class="container-fluid">
     <h2 class="text-center">Ficou com Duvidas? Faça seu Cadastro, logo entraremos em contato...</h2></br>
-
+    <div class="danger">
+            <?php if (isset($erro) && !empty($erro)): ?>
+                <div class="alert alert-danger"><?php echo $erro; ?></div> 
+            <?php endif; ?>
+        </div>
+        <div class="danger">
+            <?php if (isset($ok) && !empty($ok)): ?>
+                <div class="alert alert-success"><?php echo $ok; ?></div> 
+            <?php endif; ?>
+        </div>
     <form id="cadastrarcontato" class="form-group-sm" method="POST">
         <div class="form-group">
-            <label for="assunto">Assunto:</label>
+            <label for="assunto">Assunto:*</label>
             <select class="form-control" id="assunto"name="assunto">
             <option></option>
             <?php foreach ($viewData['listassunto'] as $assunto): { ?>
-            <option value="<?php echo $assunto['id']; ?>"><?php echo $assunto['nome'];?></option>    
+            <option value="<?php echo $assunto['nome']; ?>"><?php echo $assunto['nome'];?></option>    
             <?php } endforeach; ?>
             </select>
             
         </div>
          <div class="form-group">
-            <label for="tipoimovel">Tipo de Imovel:</label>
-            <input name="tipoimovel" type="text" class="form-control" id="tipoimovel">
+            <label for="tipoimovel">Tipo de Imovel:*</label>
+          
+            <select class="form-control" id="tipoimovel" name="tipoimovel">
+            <option></option>
+            <?php foreach ($viewData['listatipoimovel'] as $tipoimovel): { ?>
+            <option value="<?php echo $tipoimovel['nome']; ?>"><?php echo $tipoimovel['nome'];?></option>    
+            <?php } endforeach; ?>
+            </select>
         </div>
         <div class="form-group">
-            <label for="nome">Nome:</label>
+            <label for="nome">Nome:*</label>
             <input name="nome" type="text" class="form-control" id="nome" placeholder="digite seu nome completo">
         </div>
         <div class="row">
         <div class="col-lg-5">
         <div class="form-group">
-            <label for="fonefixo">Telefone:</label>
-            <input name="telefone" type="text" class="form-control" id="fonefixo" placeholder="digite seu telefone de contato">
+            <label for="celular">Celular:*</label>
+            <input name="celular" type="text" class="form-control" id="fone" placeholder="digite seu celular de contato">
         </div>
         </div>
             
         <div class="col-lg-5">
            <div class="form-group">
-            <label for="fone">Celular:</label>
-            <input name="celular" type="text" class="form-control" id="fone" placeholder="digite seu celular de contato">
+            <label for="telefone">Telefone:</label>
+            <input name="telefone" type="text" class="form-control" id="fonefixo" placeholder="digite seu telefone de contato">
         </div>
         </div>
         </div>

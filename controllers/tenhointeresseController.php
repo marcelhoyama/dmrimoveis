@@ -18,9 +18,10 @@ class tenhointeresseController extends controller{
              $id_imovel= addslashes($_POST['id']);
              
              $dados['dadosImovel']=$i->getDadosImovel($id_imovel);
-        }
-       
-    
+      
+             
+             }
+                  
 
         $this->loadView('tenhointeresse', $dados);
     }

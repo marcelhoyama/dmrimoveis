@@ -129,6 +129,48 @@ class corretor extends model {
         }
     }
 
+     public function editarUsuario (  $id,$nome, $email) {
+      //verificar comando sql principalmente now data 
+        $sql = "UPDATE corretores SET nome='" . $nome . "', email='" . $email . "',celular='" . $celular . "' WHERE id ='".$id."' ";
+        $sql = $this->db->query($sql);
+        $id = $this->db->lastInsertId();
+        $_SESSION['nutricaolg'] = $id;
+
+        if ($sql->rowCount() > 0) {
+           
+            
+            return true;
+        }
+    }
+    
+     public function getDados($id) {
+
+        $array = array();
+        $sql = "SELECT * FROM corretores WHERE id = '" . $id . "'";
+        $sql = $this->db->query($sql);
+
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetch(PDO::FETCH_ASSOC);
+
+        }
+         return $array;
+          
+    }
+
+    public function updatePerfil($nome,$email,$telefone,$creci) {
+        
+
+         echo   $sql = "UPDATE corretores SET nome='$nome', email='$email', telefone='$telefone', creci='$creci' WHERE id = '". ($_SESSION['dmrlogin']) . "'";
+
+            $sql = $this->db->query($sql);
+            if($sql->rowCount()>0){
+                
+            return true;
+        }else{
+            return false;
+            
+        }
+    }
     }
 
 

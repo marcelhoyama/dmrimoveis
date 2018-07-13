@@ -35,17 +35,17 @@ class editarimovelController extends controller {
             $dados['listimovel'] = $i->getDadosImovel($id_imovel);
 
             $valueimovel = $dados['listimovel'];
-            
+            // $tiponivel=$valueimovel['nivel'];
             $id_cliente = $valueimovel['id_cliente'];
             $venda = $valueimovel['venda'];
             $aluguel = $valueimovel['aluguel'];
-            $dados['status']=$valueimovel['status'];
-             $id_endereco = $valueimovel['id_endereco'];
-             
+            $dados['status'] = $valueimovel['status'];
+            $id_endereco = $valueimovel['id_endereco'];
+
             $dados['listcliente'] = $c->getDados($id_cliente);
 
-           
-$dados['listtiposassuntos']=$ta->listTiposAssuntos();
+
+            $dados['listtiposassuntos'] = $ta->listTiposAssuntos();
 
 
             ($dados['listendereco'] = $e->getEndereco($id_endereco));
@@ -57,7 +57,7 @@ $dados['listtiposassuntos']=$ta->listTiposAssuntos();
             $id_tipovia = $value['id_tipo_via'];
             $dados['listestados'] = $es->listEstado();
             $dados['listtiposimoveiscadastrados'] = $i->listTiposImoveis($id_imovel);
-            $dados['listtiposimoveis'] = $i->listTiposImoveisCadastrar();
+              $dados['listtiposimoveis'] = $i->listTiposImoveisCadastrar();
             $dados['listvia'] = $tv->listTipovia();
             $dados['fotoprincipal'] = $f->listFotoPrincipal($id_imovel);
 
@@ -98,7 +98,7 @@ $dados['listtiposassuntos']=$ta->listTiposAssuntos();
             if (isset($_POST['bairro']) && !empty($_POST['bairro'])) {
 
                 $bairro = addslashes($_POST['bairro']);
-                 $b->updateBairro($id_bairro, $bairro);
+                $b->updateBairro($id_bairro, $bairro);
             }
 //update endereco...................
             if (isset($_POST['cep']) && !empty($_POST['cep']) || isset($_POST['endereco']) && !empty($_POST['endereco']) || isset($_POST['proximidades']) && !empty($_POST['proximidades']) || isset($_POST['tipovia']) && !empty($_POST['tipovia'])) {
@@ -125,25 +125,24 @@ $dados['listtiposassuntos']=$ta->listTiposAssuntos();
             //aqui eh tratar o nome das fotos enviados
             //se contagem as fotos for maior de 0 faça que o nome do arquivo seja mudado com o tempo(relogio) crie criptografia randomica
             // e salve no diretorio upload   com o comando especifico do PHP
-          // $fotos = array();
-       
+            // $fotos = array();
+
             if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo'])) {
-           
-            
+
+
                 $fotos = $_FILES['arquivo'];
-                
             } else {
 
                 $fotos = array();
             }
 
- 
+
             $f->enviarUrlImagem($id_imovel, $fotos);
 
 // fim do envio de imagem;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 // 
 // 
-  echo $id= addslashes($_POST['id_tipo_imovel']);
+            echo $id = addslashes($_POST['id_tipo_imovel']);
             //update imovel==============================================
             if (isset($_POST['id_tipo_imovel']) && !empty($_POST['id_tipo_imovel']) || isset($_POST['numero']) && !empty($_POST['numero']) || isset($_POST['complemento']) && !empty($_POST['complemento'])) {
 
@@ -157,11 +156,16 @@ $dados['listtiposassuntos']=$ta->listTiposAssuntos();
 
                 $aluguel = addslashes($_POST['valoraluguel']);
                 $documentacao = addslashes($_POST['documentacaoimovel']);
-                $status= addslashes($_POST['status']);
+                $status = addslashes($_POST['status']);
+                $id_tipo_assunto = addslashes($_POST['id_tipo_assunto']);
+                $brevedescricao = addslashes($_POST['brevedescricao']);
+                $sobreimovel = addslashes($_POST['sobreimovel']);
+                $nivel = addslashes($_POST['nivel']);
+                $formapgtovenda = addslashes($_POST['formapagamentovenda']);
+                $formapgtoaluguel = addslashes($_POST['formapagamentoaluguel']);
 
 
-
-                $i->updateImovel($id_imovel, $id_tipo_imovel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao, $venda, $aluguel,$status);
+                $i->updateImovel($id_imovel, $id_tipo_imovel, $numero, $complemento, $areaconstruida, $areatotal, $documentacao, $venda, $aluguel, $status, $id_tipo_assunto, $brevedescricao, $sobreimovel, $nivel, $formapgtovenda, $formapgtoaluguel);
 //fim update imovel=============================================================
             }
 
@@ -176,40 +180,44 @@ $dados['listtiposassuntos']=$ta->listTiposAssuntos();
                 if (isset($_POST['piscina']) && !empty($_POST['piscina'])) {
                     $piscina = addslashes($_POST['piscina']);
                 } else {
-                    $piscina = ' ';
+                    $piscina = '';
                 }
                 if (isset($_POST['churrasqueira']) && !empty($_POST['churrasqueira'])) {
                     $churrasqueira = addslashes($_POST['churrasqueira']);
                 } else {
-                    $churrasqueira = ' ';
+                    $churrasqueira = '';
                 }
                 if (isset($_POST['agua']) && !empty($_POST['agua'])) {
                     $agua = addslashes($_POST['agua']);
                 } else {
-                    $agua = ' ';
+                    $agua = '';
                 }
                 if (isset($_POST['luz']) && !empty($_POST['luz'])) {
                     $luz = addslashes($_POST['luz']);
                 } else {
-                    $luz = ' ';
+                    $luz = '';
                 }
                 if (isset($_POST['internet']) && !empty($_POST['internet'])) {
                     $internet = addslashes($_POST['internet']);
                 } else {
-                    $internet = ' ';
+                    $internet = '';
                 }
                 if (isset($_POST['gas']) && !empty($_POST['gas'])) {
                     $gas = addslashes($_POST['gas']);
                 } else {
-                    $gas = ' ';
+                    $gas = '';
                 }
                 if (isset($_POST['energiasolar']) && !empty($_POST['energiasolar'])) {
                     $energiasolar = addslashes($_POST['energiasolar']);
                 } else {
-                    $energiasolar = ' ';
+                    $energiasolar = '';
                 }
-
-                $dados['ok'] = $d->updateDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro, $piscina, $churrasqueira, $agua, $luz, $internet, $gas);
+                if (isset($_POST['lavanderia']) && !empty($_POST['lavandeira'])) {
+                    $lavanderia = addslashes($_POST['lavandeira']);
+                } else {
+                    $lavanderia = '';
+                }
+                $dados['ok'] = $d->updateDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro, $piscina, $churrasqueira, $agua, $luz, $internet, $gas, $lavanderia);
             }
             $dados['ok'] = 'Alterado com Sucesso';
             header("Location:" . BASE_URL . "editarimovel?id=" . $id_imovel);

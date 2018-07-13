@@ -17,14 +17,9 @@ class cadastrarclientesController extends controller {
 
         $c = new cliente();
 
-        if (isset($_POST['cpf']) && !empty($_POST['cpf'])) {
+       
 
-            $cpf = addslashes($_POST['cpf']);
-
-
-            $dados['erro'] = $c->verificarExistente($cpf);
-        }
-
+         
         if (isset($_POST['cpf']) && !empty($_POST['cpf']) && isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])) {
             $nome = addslashes($_POST['nome']);
             $telefone = addslashes($_POST['telefone']);
@@ -34,7 +29,7 @@ class cadastrarclientesController extends controller {
             $dados['erro'] = $c->cadastroCliente($nome, $email, $telefone, $telefone2, $cpf);
         }
 
-
+        
 
 
 

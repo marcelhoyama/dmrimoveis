@@ -12,14 +12,9 @@ class homeController extends controller {
             'valorimovel'=>'',
             'cidade'=>'',
             'bairro'=>'',
-            'areaconstruida'=>'',
-            'dormitorio'=>'',
-            'suite'=>'',
+            'assunto'=>'',
             'tipoimovel'=>'',
-            'banheiro'=>'',
-            'garagem'=>'',
-            'areatotal'=>'',
-            'valoraluguel'=>''
+         
         );
         
         $dados['buscaimovel']='';
@@ -31,17 +26,12 @@ class homeController extends controller {
         $b = new bairro();
         $dados['listBairro'] = $b->listBairro();
 
-        $dados['listDormitorio'] = $i->listDormitorio();
-        $dados['listSuite'] = $i->listSuite();
-        $dados['listBanheiro'] = $i->listBanheiro();
-        $dados['listGaragem'] = $i->listGaragem();
-        $dados['listAreaConstruida'] = $i->listAreaconstruida();
-        $dados['listTotal'] = $i->listTotal();
+     
         $dados['listVenda']= $i->listVenda();
         $dados['listAluguel']=$i->listAluguel();
        
 $dados['listimovelvenda']=$i->listImovelVenda();
-$dados['listimovelaluguel']=$i->listImovelAluguel();
+$dados['listimovelaluguel']=$i->listImovelaluguel();
       $dados['listimovelmisto']=$i->listImovelMisto();
       //$dados['listtiposimoveis']=listTiposImoveis();
         

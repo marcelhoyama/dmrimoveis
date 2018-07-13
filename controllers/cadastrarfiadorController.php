@@ -19,7 +19,7 @@ class cadastrarfiadorController extends controller {
         $f = new fiador();
 
 
-        if (isset($_POST['cpf']) && !empty($_POST['cpf']) && isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])&& isset($_POST['telefone2']) && !empty($_POST['telefone2'])) {
+        if (isset($_POST['cpf']) && !empty($_POST['cpf']) && isset($_POST['nome']) && !empty($_POST['nome']) && isset($_POST['telefone']) && !empty($_POST['telefone'])|| isset($_POST['telefone2']) && !empty($_POST['telefone2'])) {
             $rg = addslashes($_POST['rg']);
             $nome = addslashes($_POST['nome']);
             $telefone = addslashes($_POST['telefone']);

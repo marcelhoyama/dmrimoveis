@@ -46,12 +46,12 @@
                     </td>
                 <td><?php echo $value['telefone'] ?> / <?php echo $value['telefone2'] ?></td>
                 <td><?php echo $value['email'] ?></td>
-                <td><span class="badge"><?php echo $value['seuinquilino'] ?></span></td>
+                <td><span class="badge"><?php echo $value['nome_inquilino'] ?></span></td>
                 <td><a href="<?php BASE_URL;?>editarfiador?id=<?php echo $value['id'];?> "><button class="btn btn-warning">Editar</button></a>
-                    <a href="<?php BASE_URL; ?>menuprincipallogado?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Menu do Inquilino</button></a>
+           <!--         <a href="<?php BASE_URL; ?>menuprincipallogado?id=<?php echo $value['id'];?>"><button class="btn btn-primary">Menu do Inquilino</button></a>
                <a href="<?php BASE_URL; ?>cadastrarimovel?id=<?php echo $value['id'];?>"><button class="btn btn-primary">+ Inquilino</button></a>
                <a href="<?php BASE_URL; ?>cadastrarimovel?id=<?php echo $value['id'];?>"><button class="btn btn-primary">+ com Comprador</button></a>
-              
+             --> 
                 </td>
             </tr>
          

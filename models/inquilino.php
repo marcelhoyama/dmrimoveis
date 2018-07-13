@@ -3,21 +3,44 @@
 class inquilino extends model {
 
     public function cadastroInquilino($nome, $telefone, $telefone2, $email, $cpf, $rg) {
-        $sql = "INSERT INTO inquilinos SET nome='" . $nome . "', email='" . $email . "',telefone='" . $telefone . "',telefone2='" . $telefone2 . "',cpf='" . $cpf . "',rg='$rg',data=NOW() ";
+        try {
+            $sql = "SELECT * FROM inquilinos WHERE cpf = '" . $cpf . "' ";
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
 
-        $sql = $this->db->query($sql);
-        $_SESSION['id'] = $this->db->lastInsertId();
+                $dados = $sql->fetch();
+                $_SESSION['id'] = $dados['id'];
+                $_SESSION['nome'] = $dados['nome'];
+                return "Inquilino " . $_SESSION['nome'] . " Já existe!!";
+                exit;
+            } else {
+                $sql = "INSERT INTO inquilinos SET nome='" . $nome . "', email='" . $email . "',telefone='" . $telefone . "',telefone2='" . $telefone2 . "',cpf='" . $cpf . "',rg='$rg',status='Ativo',data=NOW() ";
 
-        if ($sql->rowCount() > 0) {
+                $sql = $this->db->query($sql);
+                $_SESSION['id'] = $this->db->lastInsertId();
+                $id_inquilino = $_SESSION['id'];
+                if ($sql->rowCount() > 0) {
+
+                    $sql = "INSERT INTO inquilino_fiadores SET id_inquilino='$id_inquilino' ";
+
+                    $sql = $this->db->query($sql);
 
 
-            header("Location:" . BASE_URL . "menuprincipalinquilino?id=" . $_SESSION['id']);
+                    if ($sql->rowCount() > 0) {
+                        
+                    }
+
+                    header("Location:" . BASE_URL . "menuprincipalinquilino?id=" . $id_inquilino);
 //return "Cadastrado com sucesso!";
-        } else {
-            return "Não foi possivel fazer o cadastro! Veja se todos os campos estão Preenchidos corretamente!";
-        }
+                } else {
+                    return "Não foi possivel fazer o cadastro! Veja se todos os campos estão Preenchidos corretamente!";
+                }
 
-        exit;
+                exit;
+            }
+        } catch (Exception $ex) {
+            echo "Falhou" . $e->getMessage();
+        }
     }
 
     public function editarInquilino($rg, $nome, $telefone, $telefone2, $email, $id) {
@@ -28,12 +51,10 @@ class inquilino extends model {
 
 
             if ($sql->rowCount() > 0) {
-              
-                
+
+
                 header("Location:" . BASE_URL . "menuprincipalinquilino?id=" . $id);
             }
-            
-            
         } catch (Exception $e) {
             echo "Falhou" . $e->getMessage();
         }
@@ -68,11 +89,12 @@ class inquilino extends model {
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $row = $sql->fetchAll();
-            } 
+            }
 
             return $row;
         }
     }
+
     public function estanoImovel($id) {
 
         $row = array();
@@ -147,50 +169,42 @@ class inquilino extends model {
             return $array;
         }
     }
-    
-    public function listImovelInquilino($id_inquilino){
-        try{
-             $array=array();
-             if(!empty($id_inquilino)){
-                 $sql="SELECT * FROM inquilinos_imoveis WHERE id_inquilino='$id_inquilino' ";
-                        
-                 $sql=$this->db->query($sql);
-                 if($sql->rowCount()>0){
-                     $array=$sql->fetch();
-                     $id_imovel=$array['id_imovel'];
-                     
-                 }else{
-                     return 'nada encontrado';
-                 }
-                 return $id_imovel;
-             }
-            
-        } catch (Exception $ex) {
-echo "Falhou:".$ex->getMessage();
-        }
-       
-        
-    }
-    
-    public function listCodigo() {
-              try{
-             $array=array();
-             
-                 $sql="SELECT * FROM imoveis WHERE codigo is not null";
-                 $sql=$this->db->query($sql);
-                 if($sql->rowCount()>0){
-                     $array=$sql->fetchAll();
-                 }else{
-                     return 'nada encontrado';
-                 }
-                 return $array;
-             
-            
-        } catch (Exception $ex) {
 
+    public function listImovelInquilino($id_inquilino) {
+        try {
+            $array = array();
+            if (!empty($id_inquilino)) {
+                $sql = "SELECT * FROM inquilinos_imoveis WHERE id_inquilino='$id_inquilino' ";
+
+                $sql = $this->db->query($sql);
+                if ($sql->rowCount() > 0) {
+                    $array = $sql->fetch();
+                    $id_imovel = $array['id_imovel'];
+                } else {
+                    return 'nada encontrado';
+                }
+                return $id_imovel;
+            }
+        } catch (Exception $ex) {
+            echo "Falhou:" . $ex->getMessage();
         }
     }
-    
-    
+
+    public function listCodigo() {
+        try {
+            $array = array();
+
+            $sql = "SELECT * FROM imoveis WHERE codigo is not null";
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+                $array = $sql->fetchAll();
+            } else {
+                return 'nada encontrado';
+            }
+            return $array;
+        } catch (Exception $ex) {
+            
+        }
+    }
 
 }

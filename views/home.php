@@ -32,9 +32,43 @@
 
             <div id="busca">
                 <div class="row">
-                    <div class="col-sm-3">
+                    
+                       <div class="col-sm-4">
+                        <label for="assunto" class="label label-info">O que Procura?</label>
+                        <select id="assunto" class="form-control" name="filtros[assunto]">
+                            <option></option>
+                            <option value="Aluga">Para Alugar</option>
+                            <option value="Venda" >Para Comprar</option>
+                        </select>
+                    </div>
+                      
 
-                        <label for="cidade" class="label label-info">Cidade</label>
+                    <div class="col-sm-4">
+                        <label for="tipoimovel" class='label label-info'>Modelo que prefere?</label>
+                        <select id="tipoimovel" class="form-control" name="filtros[tipoimovel]">
+                            <option></option>
+                            <option value="Residencial-Simples"> Residencial Simples</option>
+                           <option value="Residencial-Intermediário">Residencial Intermediário</option>
+                            <option value="Residencial-Alto">Residencial Alto Padrão</option>
+              
+                            <option value="Comercial-Simples"> Comercial Simples</option>
+                           <option value="Comercial-Intermediário">Comercial Intermediário</option>
+                            <option value="Comercial-Alto">Comercial Alto Padrão</option>
+                        </select>
+                    </div>
+                </div>
+                   
+
+                 
+
+
+                <br>
+
+                <div class="row">
+                  
+ <div class="col-sm-4">
+
+                        <label for="cidade" class="label label-info">Em qual Cidade?</label>
                         <select id="cidade" class="form-control" name="filtros[cidade]">
                             <option></option>
                             <?php $filtros = $viewData['filtros']; ?>
@@ -47,8 +81,8 @@
 
 
 
-                    <div class="col-sm-3">
-                        <label for="bairro" class = "label label-info">Bairro</label>
+                    <div class="col-sm-4">
+                        <label for="bairro" class = "label label-info">Em qual Bairro?</label>
                         <select  id="bairro" class="form-control" name="filtros[bairro]">
                             <option></option>
                             <?php foreach ($viewData['listBairro'] as $value): ?>
@@ -58,128 +92,33 @@
                     </div>
 
 
-                    <div class="col-sm-3">
-                        <label for="dormitorio" class="label label-info">Dormitório</label>
-                        <select id="dormitorio" class="form-control" name="filtros[dormitorio]">
-                            <option></option>
-                            <?php foreach ($viewData['listDormitorio'] as $value): ?>
-                                <option value="<?php echo $value['dormitorio']; ?>" <?php echo ($value['dormitorio'] == $filtros['dormitorio']) ? 'selected="selected"' : ''; ?>> <?php echo $value['dormitorio']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
 
-
-                    <div class="col-sm-3">
-                        <label for="suite" class='label label-info'>Suite</label>
-                        <select id="suite" class="form-control" name="filtros[suite]">
-                            <option></option>
-                            <?php foreach ($viewData['listSuite'] as $value): ?>
-                                <option value="<?php echo $value['suite']; ?>" <?php echo ($value['suite'] == $filtros['suite']) ? 'selected="selected"' : ''; ?>> <?php echo $value['suite']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                    </div>
-
-
-                    <div class="col-sm-3">
-                        <label for="tipoimovel" class='label label-info'>Tipo de Imóvel</label>
-                        <select id="tipoimovel" class="form-control" name="filtros[tipoimovel]">
-                            <option></option>
-                           
-                             
-                            <?php foreach ($viewData['listtiposimoveis'] as $value):  ?>
-                                   <option value="<?php echo $value['id_tipo_imovel'];   ?>" <?php  echo ($value['tipo_imovel'] == $filtros['tipoimovel']) ? 'selected="selected"' : '';  ?>> <?php  echo $value['tipo_imovel'];    ?></option>
-                              
-                            <?php  endforeach;?>
-                        </select>
-                    </div>
+                   
 
 
 
-                    <div class="col-sm-3">
-                        <label for="banheiro" class='label label-info'>Banheiro</label>
-                        <select id="banheiro" class="form-control" name="filtros[banheiro]">
-                            <option></option>
-                            <?php foreach ($viewData['listBanheiro'] as $value): ?>
-                                <option value="<?php echo $value['banheiro']; ?>" <?php echo ($value['banheiro'] == $filtros['banheiro']) ? 'selected="selected"' : ''; ?>> <?php echo $value['banheiro']; ?></option>
-                            <?php endforeach; ?>   </select>
-                    </div>
-                </div>
-                <br>
-
-                <div class="row">
-                    <div class="col-sm-3">
-
-                        <label for="garagem" class="label label-info">Garagem</label>
-                        <select id="garagem" class="form-control" name="filtros[garagem]">
-                            <option></option>
-                            <?php foreach ($viewData['listGaragem'] as $value): ?>
-                                <option value="<?php echo $value['garagem']; ?>" <?php echo ($value['garagem'] == $filtros['garagem']) ? 'selected="selected"' : ''; ?>> <?php echo $value['garagem']; ?></option>
-                            <?php endforeach; ?> 
-                        </select>
-                    </div>
-
-
-
-                    <div class="col-sm-3">
-
-                        <label for="areaconstruida" class="label label-info">Area Construida</label>
-                        <select id="areaconstruida" class="form-control" name="filtros[areaconstruida]">
-                            <option></option>
-                            <?php foreach ($viewData['listAreaConstruida'] as $value): ?>
-                                <option value="<?php echo $value['area_construida']; ?>" <?php echo ($value['area_construida'] == $filtros['areaconstruida']) ? 'selected="selected"' : ''; ?>> <?php echo $value['area_construida']; ?></option>
-                            <?php endforeach; ?> 
-                        </select>
-                    </div>
-
-
-
-                    <div class="col-sm-3">
-                        <label for="areatotal" class="label label-info" >
-                            Area Total
-                        </label>
-                        <select id="areatotal" class="form-control" name="filtros[areatotal]">
-                            <option ></option>
-                            <?php foreach ($viewData['listTotal'] as $value): ?>
-                                <option value="<?php echo $value['area_total']; ?>" <?php echo ($value['area_total'] == $filtros['areatotal']) ? 'selected="selected"' : ''; ?>> <?php echo $value['area_total']; ?></option>
-                            <?php endforeach; ?> 
-                        </select>
-                    </div>
-
-
-                    <div class="col-sm-3">
-                        <label class="label label-info" >
-                            Valor de Aluguel
-                        </label>
-                        <select class="form-control" name="filtros[valoraluguel]">
-                            <option> </option>
-                            <?php foreach ($viewData['listAluguel'] as $value): ?>
-                                <option value="<?php echo $value['aluguel']; ?>" <?php echo ($value['aluguel'] == $filtros['valoraluguel']) ? 'selected="selected"' : ''; ?>> <?php echo $value['aluguel']; ?></option>
-                            <?php endforeach; ?> 
-                        </select>
-                    </div>
-
-
-
-                    <div class="col-sm-3">
+                    <div class="col-sm-4">
                         <label for="valorimovel" class="label label-info" >
-                            Valor do Imovel
+                            Qual Valor do Imovel?
                         </label>
                         <select id="valorimovel" class="form-control" name="filtros[valorimovel]">
                             <option> </option>
-                            <?php foreach ($viewData['listVenda'] as $valorimovel):
-                                ?>
-                                <option value="<?php echo $valorimovel['venda']; ?>" <?php echo ($valorimovel['venda'] == $filtros['valorimovel']) ? 'selected="selected"' : ''; ?>> <?php echo 'R$' . $valorimovel['venda']; ?></option>
-                            <?php endforeach; ?> 
+                            <option value="0-1000">até R$1.000,00</option>
+                            <option value="10001-1500">R$ 1.001,00 - 1.500,00</option>
+                            <option value="1501-2000">R$ 1.501,00 - 2.000,00</option>
+                            <option value="2001">acima R$ 2.001,00</option>
                         </select>
                     </div>
-                    <br> 
-                    <br>
-
-
-                    <div class="col-sm-3">
-                        <input type="submit" class="btn btn-primary" value="Buscar">
-                    </div>
+                   </div>
+                    <div class="row">
+                        <br>
+                        
+                  
+                        
+                        <input type="submit" class="btn btn-primary form-control" value="Buscar">
+                   
                 </div>
+               
             </div>
 
         </form>

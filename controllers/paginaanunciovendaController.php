@@ -1,6 +1,6 @@
 <?php
 
-class paginaanuncioController extends controller{
+class paginaanunciovendaController extends controller{
 
 
  public function __construct(){
@@ -23,18 +23,19 @@ $t=new telefone();
          
          if(isset($_GET['tipoimovel']) && !empty($_GET['tipoimovel'])){
              $tipoimovel= addslashes($_GET['tipoimovel']);
-        if(empty( $dados['listimovel']=$i->listarImoveis($tipoimovel))){
+        if(empty( $dados['listimovel']=$i->listarImoveisVenda($tipoimovel))){
         
             $dados['erro']="Ainda não temos! Desculpem...Deixe seu contato Aqui ->";
         }else{
         
-            $dados['listimovel']=$i->listarImoveis($tipoimovel);
+            $dados['listimovel']=$i->listarImoveisVenda($tipoimovel);
+      
         }
          }
     
 
        
-        $this->loadTemplate('paginaanuncio', $dados);
+        $this->loadTemplate('paginaanunciovenda', $dados);
     }
     
     

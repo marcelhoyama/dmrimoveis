@@ -25,14 +25,16 @@ function tenhointeresse(id) {
                 var telefone = $(this).find('input[name=fonefixo]').val();
                 var celular = $(this).find('input[name=fone]').val();
                 var id_tipo_assunto = $(this).find('input[name=id_tipo_assunto]').val();
+                 var tipo_assunto = $(this).find('input[name=tipo_assunto]').val();
                 var id_imovel = $(this).find('input[name=id_imovel]').val();
                 var id_tipo_imovel = $(this).find('input[name=id_tipo_imovel]').val();
+                 var tipo_imovel = $(this).find('input[name=tipo_imovel]').val();
                 
                     
                 $.ajax({
                     url: 'cadastrartenhointeresse',
                     type: 'POST',
-                    data: {nome: nome, email: email, telefone: telefone, celular: celular, id_tipo_assunto: id_tipo_assunto, id_imovel: id_imovel, id_tipo_imovel: id_tipo_imovel},
+                    data: {nome: nome, email: email, telefone: telefone, celular: celular, id_tipo_assunto: id_tipo_assunto,tipo_assunto: tipo_assunto, id_imovel: id_imovel, id_tipo_imovel: id_tipo_imovel, tipo_imovel:tipo_imovel},
                     success: function () {
                         
                        alert('Cadastrado com Sucesso!');

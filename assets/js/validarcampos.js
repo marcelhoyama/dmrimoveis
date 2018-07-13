@@ -90,25 +90,7 @@ $(document).ready(function (){
         }
     });
     
-       $('#cadastrarcontato').validate({
-        
-        rules:{
-             celular:{required:true},
-            nome:{required:true,isString:true},
-            telefone:"required",
-            assunto:"required",
-            tipoimovel:"required",
-            
-            email:{email:true,required:true}
-                
-            
-        },
-        messages:{
-          
-                
-            
-        }
-    }); 
+   
      $('#tenhointeresse').validate({
         
         rules:{
@@ -199,4 +181,42 @@ $(document).ready(function (){
             
         }
     });
+    
+        $('#perfil').validate({
+        
+        rules:{
+            nome:{required:true,isString:true},
+            email:true,
+            telefone:"required",
+            creci:"required",
+            
+            resenha:{equalTo:"#senha"}
+            
+                
+            
+        },
+        messages:{
+          
+                
+            
+        }
+    });
+    
+      $('#cadastrarcontato').validate({
+        
+        rules:{
+             celular:{required:true},
+            nome:{required:true,isString:true},
+            assunto:"required",
+            tipoimovel:"required",
+            email:{email:true}
+                
+            
+        },
+        messages:{
+          
+                
+            
+        }
+});
 });

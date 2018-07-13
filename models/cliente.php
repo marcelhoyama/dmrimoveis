@@ -3,7 +3,18 @@
 class cliente extends model {
 
     public function cadastroCliente($nome, $email, $telefone, $telefone2, $cpf) {
-        $sql = "INSERT INTO clientes SET nome='" . $nome . "', email='" . $email . "',telefone='" . $telefone . "', telefone2='" . $telefone2 . "', cpf='" . $cpf . "',data=NOW() ";
+       try{
+            $sql = "SELECT * FROM clientes WHERE cpf = '" . $cpf . "' ";
+            $sql = $this->db->query($sql);
+            if ($sql->rowCount() > 0) {
+
+                $dados = $sql->fetch();
+                $_SESSION['id'] = $dados['id'];
+                $_SESSION['nome'] = $dados['nome'];
+                return "Cliente " . $_SESSION['nome'] . " Já existe!!";
+                exit;
+            } else{
+                  $sql = "INSERT INTO clientes SET nome='" . $nome . "', email='" . $email . "',telefone='" . $telefone . "', telefone2='" . $telefone2 . "', cpf='" . $cpf . "',status='Ativo',data=NOW() ";
 
         $sql = $this->db->query($sql);
         $_SESSION['id'] = $this->db->lastInsertId();
@@ -17,6 +28,14 @@ class cliente extends model {
         }
 
         exit;
+            }
+
+            
+       } catch (Exception $ex) {
+echo "Falhou" . $ex->getMessage();
+       }
+        
+      
     }
 
     public function editarCliente($nome, $telefone, $telefone2, $email, $id) {

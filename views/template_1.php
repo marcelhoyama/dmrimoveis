@@ -84,7 +84,7 @@
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <?php echo $viewData['usuario_nome']; ?>
                     <span class="caret"></span> </a>
                 <ul class="dropdown-menu">
-                  <!-- <li><a href="<?php echo BASE_URL; ?>perfil">Editar Perfil </a></li> -->
+                   <li><a href="<?php echo BASE_URL; ?>perfil">Editar Perfil </a></li> 
                     <li><a href="<?php echo BASE_URL; ?>login/sair">Sair </a></li>
                 </ul>
             </li>

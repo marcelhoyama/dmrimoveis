@@ -22,14 +22,14 @@ class cadastrarimovelController extends controller {
         $es = new estado();
         $f = new foto();
         $d = new descricao();
-        $ta=new tipoassuntos();
-
+        $ta = new tipoassuntos();
+        $fotos = array();
         $id_imovel = '';
         $dados['listvia'] = $tp->listTipovia();
         $dados['enderecos'] = $e->listEndereco();
         $dados['listestados'] = $es->listEstado();
         $dados['listtiposimoveis'] = $i->listTiposImoveisCadastrar();
-        $dados['listtiposassuntos']=$ta->listTiposAssuntos();
+        $dados['listtiposassuntos'] = $ta->listTiposAssuntos();
 
         // recebe o valor do campo e verifica se valor existe no banco de dados : se sim retorna o id do valoe existente se nao cadastra no banco e retorna o ultimo id
         $id = 0;
@@ -65,14 +65,13 @@ class cadastrarimovelController extends controller {
                 $id_tipo_via = addslashes($_POST['tipovia']);
                 //$id_tipo_via = $tp->verificarTipovia($tipovia);
             }
+
             if (isset($_POST['endereco']) && !empty($_POST['endereco'])) {
                 $endereco = addslashes($_POST['endereco']);
                 $proximidades = addslashes($_POST['proximidades']);
 
-                if (!empty($id_endereco = $e->verificarEndereco($id_cliente, $id_bairro, $endereco, $id_tipo_via, $proximidades))) {
 
-                    $dados['ok'] = "Cadastrado com sucesso!";
-                }
+                $id_endereco = $e->verificarEndereco($id_cliente, $id_bairro, $endereco, $id_tipo_via, $proximidades);
             }
 
 
@@ -83,15 +82,41 @@ class cadastrarimovelController extends controller {
                 $complemento = addslashes($_POST['complemento']);
                 $cep = addslashes($_POST['cep']);
                 $id_tipoimovel = addslashes($_POST['tipoimovel']);
-                $areaconstruida = addslashes($_POST['areaconstruida']);
-                $areatotal = addslashes($_POST['areatotal']);
-                $venda = addslashes($_POST['valorimovel']);
-                $aluguel = addslashes($_POST['valoraluguel']);
+                if (isset($_POST['areaconstruida'])) {
+                    $areaconstruida = addslashes($_POST['areaconstruida']);
+                    $areaconstruida = str_replace(",", ".", $areaconstruida);
+                } else {
+                    $areaconstruida = 0;
+                }
+                if (isset($_POST['areatotal'])) {
+                    $areatotal = addslashes($_POST['areatotal']);
+                    $areatotal = str_replace(",", ".", $areatotal);
+                } else {
+                    $areatotal = 0;
+                }
+                if (isset($_POST['valorimovel'])) {
+                    $venda = addslashes($_POST['valorimovel']);
+                    $venda = str_replace(".", "", $venda);
+                    $venda = str_replace(",", ".", $venda);
+                } else {
+                    $venda = 0;
+                }
+                if (isset($_POST['valoraluguel'])) {
+                    $aluguel = addslashes($_POST['valoraluguel']);
+                    $aluguel = str_replace(".", "", $aluguel);
+                    $aluguel = str_replace(",", ".", $aluguel);
+                } else {
+                    $aluguel = 0;
+                }
                 $documentacao = addslashes($_POST['documentacaoimovel']);
+                $id_tipo_assunto = addslashes($_POST['id_tipo_assunto']);
+                $brevedescricao = addslashes($_POST['brevedescricao']);
+                $sobreimovel = addslashes($_POST['sobreimovel']);
+                $nivel = addslashes($_POST['nivel']);
+                $formapgtovenda = addslashes($_POST['formapagamentovenda']);
+                $formapgtoaluguel = addslashes($_POST['formapagamentoaluguel']);
 
-
-
-                $id_imovel = $i->cadastrarImovel($id_cliente, $id_tipoimovel, $id_endereco, $numero, $complemento, $areaconstruida, $areatotal, $documentacao, $venda, $aluguel);
+                $id_imovel = $i->cadastrarImovel($id_cliente, $id_tipoimovel, $id_endereco, $numero, $complemento, $areaconstruida, $areatotal, $documentacao, $venda, $aluguel, $id_tipo_assunto, $brevedescricao, $sobreimovel, $nivel, $formapgtovenda, $formapgtoaluguel);
             }
 
             //insert de descricoes---------------------------------------------
@@ -103,41 +128,46 @@ class cadastrarimovelController extends controller {
                 if (isset($_POST['piscina']) && !empty($_POST['piscina'])) {
                     $piscina = addslashes($_POST['piscina']);
                 } else {
-                    $piscina = ' ';
+                    $piscina = '';
                 }
                 if (isset($_POST['churrasqueira']) && !empty($_POST['churrasqueira'])) {
                     $churrasqueira = addslashes($_POST['churrasqueira']);
                 } else {
-                    $churrasqueira = ' ';
+                    $churrasqueira = '';
                 }
                 if (isset($_POST['agua']) && !empty($_POST['agua'])) {
                     $agua = addslashes($_POST['agua']);
                 } else {
-                    $agua = ' ';
+                    $agua = '';
                 }
                 if (isset($_POST['luz']) && !empty($_POST['luz'])) {
                     $luz = addslashes($_POST['luz']);
                 } else {
-                    $luz = ' ';
+                    $luz = '';
                 }
                 if (isset($_POST['internet']) && !empty($_POST['internet'])) {
                     $internet = addslashes($_POST['internet']);
                 } else {
-                    $internet = ' ';
+                    $internet = '';
                 }
                 if (isset($_POST['gas']) && !empty($_POST['gas'])) {
                     $gas = addslashes($_POST['gas']);
                 } else {
-                    $gas = ' ';
+                    $gas = '';
                 }
                 if (isset($_POST['energiasolar']) && !empty($_POST['energiasolar'])) {
                     $energiasolar = addslashes($_POST['energiasolar']);
                 } else {
-                    $energiasolar = ' ';
+                    $energiasolar = '';
+                }
+                   if (isset($_POST['lavanderia']) && !empty($_POST['lavandeira'])) {
+                    $lavanderia = addslashes($_POST['lavandeira']);
+                } else {
+                    $lavanderia = '';
                 }
 
 
-                $dados['ok'] = $d->cadastrarDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro, $piscina, $churrasqueira, $agua, $luz, $internet, $gas);
+                echo $dados['ok'] = $d->cadastrarDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro, $piscina, $churrasqueira, $agua, $luz, $internet, $gas,$lavanderia);
             }
 
             //envio de imagem ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -155,21 +185,22 @@ class cadastrarimovelController extends controller {
             //aqui eh tratar o nome das fotos enviados
             //se contagem as fotos for maior de 0 faça que o nome do arquivo seja mudado com o tempo(relogio) crie criptografia randomica
             // e salve no diretorio upload   com o comando especifico do PHP
-            if (isset($_FILES['arquivo']) && !empty($_FILES['arquivo']['tmp_name'])) {
-                $fotos = $_FILES['arquivo'];
+            if (isset($_FILES['arquivos']) && !empty($_FILES['arquivos'])) {
+                $fotos = $_FILES['arquivos'];
+                $f->enviarUrlImagem($id_imovel, $fotos);
             } else {
 
                 $fotos = array();
             }
 
-            $f->enviarUrlImagem($id_imovel, $fotos);
+
 
 
 // fim do envio de imagem;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-        }else{
-            if(empty($_GET['id'])){
-                header("Location:". BASE_URL ."cadastrarclientes");
-                
+        } else {
+            if (empty($_GET['id'])) {
+                header("Location:" . BASE_URL . "cadastrarclientes");
+
                 exit;
             }
         }

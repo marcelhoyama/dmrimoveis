@@ -163,5 +163,22 @@ class interesse extends model {
             echo "Falhou:" . $ex->getMessage();
         }
     }
+    
+    public function cadastrarContato($tipoimovel, $nome,$telefone,$celular, $email, $assunto){
+        
+       echo $sql = "INSERT INTO contatos SET id_tipo_imovel='$id_tipo_imovel',"
+                . "nome='$nome', "
+                . "telefone='$telefone', "
+                . "celular='$celular', "
+                . "email='$email', "
+                . "id_tipo_assunto='$id_tipo_assunto', "
+                . "data_interesse=NOW()";
+
+        $sql = $this->db->query($sql);
+        
+        if ($sql->rowCount() > 0) {
+            
+        }
+    }
 
 }

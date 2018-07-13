@@ -15,7 +15,7 @@
                      <div class="control-group">
                          <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
                 <div class="checkbox-inline">
-                        <label><input type="checkbox" name="status" value="Livre" <?php echo($status = $viewData['status']== 'Livre') ? 'checked="checked"' : ''; ?> >Livre</label> 
+                        <label><input type="checkbox" name="status" value="Livre" <?php echo($status = $viewData['status']== 'Livre') ? 'checked="checked"' : ''; ?> >Liberar</label> 
                     </div>
 
                     <div class="checkbox-inline">
@@ -36,8 +36,48 @@
                 </select>
             </div>
          
-            <div class="form-group col-sm-4">
-                <label for="endereco">Tipo de Via:(Exemplo: Rua,Avenida)</label> <label class="text-danger">campo obrigatorio*</label>
+                 <div class="form-group col-sm-3">
+                    <label for="id_tipo_imovel">Tipo de Imóvel:</label>  <label class="text-danger">campo obrigatorio*</label>
+                    <select name="id_tipo_imovel" id="id_tipo_imovel" class="form-control" required="">
+                     
+                        <?php
+                    $tipoimovel = $viewData['listtiposimoveiscadastrados'];
+                    ?>
+                    <?php foreach ($viewData['listtiposimoveis'] as $value): { ?>
+
+                               <option value="<?php echo $value['id']; ?>" 
+                                    <?php echo( $value['id'] == $tipoimovel['id_tipo_imovel']) ? 'selected="selected"' : ' '; ?>><?php echo $value['nome']; ?></option> 
+
+                          <?php }endforeach;
+                    ?>
+
+
+                    </select> 
+                </div>
+               <div class="form-group col-sm-3">
+                <label for="nivel">Classificação do Nivel:</label><label class="text-danger">Campo Obrigatorio*</label>
+                <select name="nivel" class="form-control" id="tipoassunto">
+                   
+                      <option value="Simples" 
+                                    <?php echo( "Simples" == $value1['nivel']) ? 'selected="selected"' : ' '; ?>>Simples</option> 
+   <option value="Intermediário" 
+                                    <?php echo( "Intermediário" == $value1['nivel']) ? 'selected="selected"' : ' '; ?>>Intermediário</option> 
+   <option value="Alto Padrão"
+                                    <?php echo( "Alto Padrão" == $value1['nivel']) ? 'selected="selected"' : ' '; ?>>Alto Padrão</option> 
+
+                  
+                </select>
+            </div>
+        </div>     
+          
+        <div class="form-group col-md">
+            <label for="brevedescricao">Breve descrição do imovel:</label> 
+
+            <textarea class="form-control" name="brevedescricao" type="text" id="brevedescricao" ><?php echo $value1['breve_descricao'];?></textarea>
+        </div>
+  <div class="row">
+            <div class="form-group col-sm-3">
+                <label for="endereco">Tipo de Via:</label> <label class="text-danger">campo obrigatorio*</label>
 
                 <select name="tipovia" id="tipovia" class="form-control" required="">
 
@@ -54,7 +94,7 @@
 
                 </select>
             </div>
-            <div class="form-group col-lg-8" >
+            <div class="form-group col-sm-8" >
                 <?php $value = $viewData['listendereco']; ?>
                 <label for="endereco">Endereço do Imóvel*:</label>  <label class="text-danger">campo obrigatorio*</label>
 
@@ -73,7 +113,7 @@
                 <label for="numero">Numero:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="numero" type="text" class="form-control" id="numero" placeholder="" value="<?php echo $value1['numero'] ?>" required="">
             </div>
-            <div class="form-group col-sm-6">
+            <div class="form-group col-sm-8">
                 <label for="complemento">Complemento:</label>
                 <input name="complemento" type="text" class="form-control" id="complemento" value="<?php echo $value1['complemento'] ?>" placeholder="">
             </div>
@@ -85,14 +125,13 @@
                 <input name="bairro" type="text" class="form-control" id="bairro" placeholder="" value="<?php echo $value['bairro'] ?>" required="">
             </div>
 
-        </div>
-        <div class="row">
+     
             <div class="form-group col-sm-3">
                 <label for="cidade">Cidade:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="cidade" type="text" class="form-control" id="cidade" placeholder="" value="<?php echo $value['cidade'] ?>" required="">
             </div>
             <div class="form-group col-sm-3">
-                <label for="estado">Estado: (Exemplo: SP)</label>  <label class="text-danger">campo obrigatorio*</label>
+                <label for="estado">Estado:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <select name="estado" id="estado" class="form-control" required="">
 
                     <?php
@@ -115,9 +154,12 @@
 
         </div>
 
-        <div class="form-group">
-            <label for="proximidades">Proximidades do Imóvel</label>
-            <textarea name="proximidades" type="text" id="proximidades" class="form-control" placeholder="" value="<?php echo $value['proximidades'] ?>"></textarea>
+     
+
+
+    <div class="form-group">
+            <label for="sobreimovel">Sobre o Imóvel</label>
+            <textarea name="sobreimovel" type="text" id="sobreimovel" class="form-control" placeholder="" ><?php echo $value1['sobre_imovel']; ?></textarea>
         </div>
         <div class="well">
 
@@ -252,35 +294,26 @@
                       <div class="checkbox-inline">
                         <label><input type="checkbox" name="gas" value="Gás"  <?php echo($value1['gas'] == 'Gás') ? 'checked="checked"' : ''; ?>>Gás</label>
                     </div>
+                         <div class="checkbox-inline">
+                        <label><input type="checkbox" name="lavanderia" value="Lavanderia"  <?php echo($value1['lavanderia'] == 'Lavanderia') ? 'checked="checked"' : ''; ?>>Lavanderia</label>
+                    </div>
                 </div>
             </div>
 
+   <div class="form-group">
+            <label for="proximidades">Proximidades do Imóvel</label>
+            <textarea name="proximidades" type="text" id="proximidades" class="form-control" placeholder="" ><?php echo $value1['proximidades'] ?></textarea>
+        </div>
+
             <div class="row">
-                <div class="form-group col-sm-4">
-                    <label for="id_tipo_imovel">Tipo de Imóvel:</label>  <label class="text-danger">campo obrigatorio*</label>
-                    <select name="id_tipo_imovel" id="id_tipo_imovel" class="form-control" required="">
-                     
-                        <?php
-                    $tipoimovel = $viewData['listtiposimoveiscadastrados'];
-                    ?>
-                    <?php foreach ($viewData['listtiposimoveis'] as $value): { ?>
-
-                               <option value="<?php echo $value['id']; ?>" 
-                                    <?php echo( $value['id'] == $tipoimovel['id_tipo_imovel']) ? 'selected="selected"' : ' '; ?>><?php echo $value['nome']; ?></option> 
-
-                          <?php }endforeach;
-                    ?>
-
-
-                    </select> 
-                </div>
+           
                 <div class="form-group col-sm-4">
                     <label for="areaconstruida">Area Construida:</label>
-                    <input name="areaconstruida" type="text" class="form-control" id="metro" placeholder="" value="<?php echo $value1['area_construida'] ?>">
+                    <input name="areaconstruida" type="text" class="form-control" id="metro" placeholder="" value="<?php echo number_format($value1['area_construida'],2,',','.'); ?>">
                 </div>
                 <div class="form-group col-sm-4">
                     <label for="areatotal">Area Total:</label>
-                    <input name="areatotal" type="text" class="form-control" id="metro2" placeholder="" value="<?php echo $value1['area_total'] ?>">
+                    <input name="areatotal" type="text" class="form-control" id="metro2" placeholder="" value="<?php echo  number_format($value1['area_total'],2,',','.'); ?>">
                 </div>
             </div>
 
@@ -288,15 +321,15 @@
                 <label class=""for="valorimovel">Valor do Imóvel:</label>
                 <div class="form-group col-sm-4 input-group">
 
-                    <span class="input-group-addon">R$</span>
+                    <span class="input-group-addon">R$ <?php echo $value1['venda'];?></span>
                    
-                    <input name="valorimovel" type="text" class="form-control" id="valor" placeholder="" value="<?php echo number_format($value1['venda'],2, ',', '.'); ?>">
+                    <input name="valorimovel" type="text" class="form-control" id="valor" placeholder="" value="<?php echo number_format($value1['venda'],2, '.', ','); ?>">
                 </div>
               
 
                 <div class="control-group">
                     <label class="control-label" for="formapgto">Forma de Pagamento:</label>
-                    <div class="checkbox">
+                 <!--   <div class="checkbox">
                         <label><input type="checkbox" value="1" disabled="">À vista</label>
                     </div>
                     <div class="checkbox">
@@ -306,7 +339,8 @@
                         <label><input type="checkbox" value="3" disabled="">Financiamento Particular</label>
                     </div>
 
-                </div>
+                </div> -->
+                  <textarea class="form-control" type="text" name="formapagamentovenda" value="<?php echo $value1['formapgtovenda'];?>"></textarea>
             </div>
 
 
@@ -321,20 +355,21 @@
 
                 <div class="control-group">
                     <label class="control-label" for="formapgto">Forma de Pagamento:</label>
-                    <div class="checkbox">
+                   <!-- <div class="checkbox">
                         <label><input type="checkbox" value="1" disabled="">Deposito</label>
                     </div>
                     <div class="checkbox">
                         <label><input type="checkbox" value="2" disabled="">Pessoalmente</label>
                     </div>
                    
-                </div>
+                </div>-->
+                   <textarea class="form-control" type="text" name="formapagamentoaluguel" ><?php echo $value1['formapgtoaluguel']; ?></textarea>
             </div>
             <div class="panel panel-info">
                 <div class="panel-heading"> <h1 class="panel-title text-center">Documentação do Imóvel</h1></div>
 
                 <div class="panel-body">
-                    <textarea class="form-control" type="text" name="documentacaoimovel" value="<?php echo $value1['documentacao'] ?>"></textarea>
+                    <textarea class="form-control" type="text" name="documentacaoimovel"><?php echo $value1['documentacao'] ?></textarea>
                 </div>
             </div>
     

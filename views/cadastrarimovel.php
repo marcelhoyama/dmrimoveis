@@ -8,7 +8,7 @@
         <?php echo $value['nome'];
         ?></h2></br>
 
-        <form id="cadastrarimovel" method="POST" enctype="multipart/form-data">
+    <form id="cadastrarimovel" method="POST" enctype="multipart/form-data">
 
 
 
@@ -17,12 +17,42 @@
                 <label for="id_tipo_assunto">Tipo de Assunto:</label><label class="text-danger">Campo Obrigatorio*</label>
                 <select name="id_tipo_assunto" class="form-control" id="tipoassunto">
                     <option></option>
-                    <?php foreach ($viewData['listtiposassuntos'] as $value) :{ ?>
-                    <option value="<?php echo $value['id']; ?>"><?php echo $value['nome'];?></option>
-                                
-                           <?php } endforeach; ?>
+                    <?php foreach ($viewData['listtiposassuntos'] as $value) : { ?>
+                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></option>
+
+                        <?php } endforeach; ?>
                 </select>
             </div>
+
+            <div class="form-group col-sm-3">
+                <label for="tipoimovel">Tipo de Imóvel:</label>  <label class="text-danger">campo obrigatorio*</label>
+                <select name="tipoimovel" class="form-control" id="tipoimovel">
+
+                    <option></option>
+                    <?php foreach ($viewData['listtiposimoveis'] as $value): { ?>
+                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></option>        
+                        <?php }endforeach; ?>
+
+
+                </select> 
+            </div>
+            <div class="form-group col-sm-3">
+                <label for="nivel">Classificação do Nivel:</label><label class="text-danger">Campo Obrigatorio*</label>
+                <select name="nivel" class="form-control" id="tipoassunto">
+                    <option value="Simples">Simples</option> 
+                    <option value="Intermediário">Intermediário</option>
+                  <option value="Alto Padrão">Alto Padrão</option>
+                </select>
+            </div>
+        </div>     
+
+        <div class="form-group">
+            <label for="brevedescricao">Breve descrição do imovel:</label> 
+
+            <textarea class="form-control" name="brevedescricao" type="text" id="brevedescricao"></textarea>
+        </div>
+
+        <div class="row">
             <div class="form-group col-sm-3">
                 <label for="endereco">Tipo de Via:</label> <label class="text-danger">campo obrigatorio*</label>
 
@@ -34,8 +64,7 @@
 
                 </select>
             </div>
-            <div class="form-group col-lg-8" >
-
+            <div class="form-group col-md-8">
                 <label for="endereco">Endereço do Imóvel*:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="endereco" class="form-control" type="text" value="" id="endereco"/>
             </div>
@@ -70,17 +99,17 @@
                 <input name="cidade" type="text" class="form-control" id="cidade" placeholder=""/>
             </div>
             <div class="form-group col-sm-3">
-                <label for="estado">Estado: (Exemplo: SP)</label>  <label class="text-danger">campo obrigatorio*</label>
-                      
+                <label for="estado">Estado:</label>  <label class="text-danger">campo obrigatorio*</label>
+
 
                 <select name="estado" class="form-control" id="estado" >
-                    <option></option>
+
                     <?php foreach ($viewData['listestados'] as $value): { ?>
                             <option value="<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></option>        
                         <?php }endforeach; ?>
 
                 </select>
-                
+
             </div>
             <div class="form-group col-sm-3">
                 <label for="cep">CEP:</label>
@@ -90,8 +119,8 @@
         </div>
 
         <div class="form-group">
-            <label for="proximidades">Proximidades do Imóvel</label>
-            <textarea name="proximidades" type="text" id="proximidades" class="form-control" placeholder="" ></textarea>
+            <label for="sobreimovel">Sobre o Imóvel</label>
+            <textarea name="sobreimovel" type="text" id="sobreimovel" class="form-control" placeholder="" ></textarea>
         </div>
         <div class="well">
             <div class="form-group">
@@ -105,7 +134,7 @@
 
                 <label for="nome">Quantidade de Dormitórios:</label>
                 <select name="dormitorio" id="dormitorio" class="form-control">
-                    <option></option>
+                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -117,7 +146,7 @@
             <div class="form-group col-sm-3">
                 <label for="fone">Quantidade de Suites:</label>
                 <select name="suite" id="suite" class="form-control">
-                    <option></option>
+                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -129,7 +158,7 @@
             <div class="form-group col-sm-3">
                 <label for="email">Quantidade de Garagem:</label>
                 <select name="garagem" id="garagem" class="form-control">
-                    <option></option>
+                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -140,7 +169,7 @@
             <div class="form-group col-sm-3">
                 <label for="email">Quantidade de Banheiros:</label>
                 <select name="banheiro" id="banheiro" class="form-control">
-                    <option></option>
+                    <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -178,22 +207,17 @@
                 <div class="checkbox-inline">
                     <label><input type="checkbox" name="gas "value="Gás" />Gás</label>
                 </div>
+                    <div class="checkbox-inline">
+                    <label><input type="checkbox" name="lavanderia "value="Lavanderia" />Lavanderia</label>
+                </div>
             </div>
         </div>
-
+        <div class="form-group">
+            <label for="proximidades">Proximidades do Imóvel</label>
+            <textarea name="proximidades" type="text" id="proximidades" class="form-control" placeholder="" ></textarea>
+        </div>
         <div class="row">
-            <div class="form-group col-sm-4">
-                <label for="tipoimovel">Tipo de Imóvel:</label>  <label class="text-danger">campo obrigatorio*</label>
-                <select name="tipoimovel" class="form-control" id="tipoimovel">
-                    
-                    <option></option>
-                    <?php foreach ($viewData['listtiposimoveis'] as $value): { ?>
-                            <option value="<?php echo $value['id']; ?>"><?php echo $value['nome']; ?></option>        
-                        <?php }endforeach; ?>
 
-
-                </select> 
-            </div>
             <div class="form-group col-sm-4">
                 <label for="areaconstruida">Area Construida:</label>
                 <input name="areaconstruida" type="text" class="form-control" id="metro" placeholder=""/>
@@ -215,16 +239,18 @@
 
             <div class="control-group">
                 <label class="control-label" for="formapgto">Forma de Pagamento:</label>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="1" disabled=""/>À vista</label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="2" disabled=""/>Financiamento Banco</label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="3" disabled=""/>Financiamento Particular</label>
-                </div>
-
+                <!--
+                 <div class="checkbox">
+                     <label><input type="checkbox" value="1" disabled=""/>À vista</label>
+                 </div>
+                 <div class="checkbox">
+                     <label><input type="checkbox" value="2" disabled=""/>Financiamento Banco</label>
+                 </div>
+                 <div class="checkbox">
+                     <label><input type="checkbox" value="3" disabled=""/>Financiamento Particular</label>
+                 </div>
+                -->
+                <textarea class="form-control" type="text" name="formapagamentovenda"></textarea>
             </div>
         </div>
 
@@ -240,13 +266,14 @@
 
             <div class="control-group">
                 <label class="control-label" for="formapgto">Forma de Pagamento:</label>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="1" disabled=""/>Deposito</label>
-                </div>
-                <div class="checkbox">
-                    <label><input type="checkbox" value="2" disabled=""/>Pessoalmente</label>
-                </div>
-
+                <!-- <div class="checkbox">
+                     <label><input type="checkbox" value="1" disabled=""/>Deposito</label>
+                 </div>
+                 <div class="checkbox">
+                     <label><input type="checkbox" value="2" disabled=""/>Pessoalmente</label>
+                 </div>
+                -->
+                <textarea class="form-control" type="text" name="formapagamentoaluguel"></textarea>
             </div>
         </div>
         <div class="panel panel-info">
@@ -259,8 +286,8 @@
 
 
         <div class="form-group">
-            <label for="arquivo">OPCIONAL - Adicionar Fotos do Imóvel:</label>
-            <input name="arquivo[]" type="file"  multiple=""/>
+            <label for="arquivos">OPCIONAL - Adicionar Fotos do Imóvel:</label>
+            <input name="arquivos[]" type="file"  multiple=""/>
 
         </div>
 
