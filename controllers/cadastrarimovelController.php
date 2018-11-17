@@ -98,3 +98,5 @@ class cadastrarimovelController extends controller {
     }
 
 }
+
+

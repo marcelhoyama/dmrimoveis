@@ -14,6 +14,7 @@ class corretor extends model {
     }
        public function getNome($id) {
 
+
         $sql = "SELECT nome FROM corretores WHERE id = :id ";
          $sql=$this->db->prepare($sql);
              $sql->bindValue(':id',$id);
@@ -205,6 +206,7 @@ class corretor extends model {
           
              
              $sql->execute();
+
             if($sql->rowCount()>0){
                 
             return true;

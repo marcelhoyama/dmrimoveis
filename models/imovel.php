@@ -952,10 +952,12 @@ exit;
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
                 return $array;
-            }
-        } catch (Exception $ex) {
-            echo "Falhou:" . $ex->getMessage();
-        }
-    }
 
 }
+        } catch(Exception $e){
+            
+            echo "Falhou:".$e->getMessage();
+        }
+        }
+}
+        

@@ -2,6 +2,7 @@
 
 class foto extends model {
 
+
    public function corrigeOrientacao($url)
 {
       $sql = "SELECT * FROM fotos WHERE url_imagem='$url'";

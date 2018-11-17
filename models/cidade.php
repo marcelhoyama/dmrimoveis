@@ -5,6 +5,7 @@ class cidade extends model {
     public function verificarCidade($id_estado, $cidade) {
         try {
 
+
             $sql2 = "SELECT c.id as id FROM cidades c JOIN estados e ON c.id_estado = e.id WHERE c.nome= :cidade AND c.id_estado= :id_estado";
 
             $sql2=$this->db->prepare($sql2);
@@ -43,6 +44,8 @@ class cidade extends model {
              $sql3->bindValue(':id_estado',$id_estado);
              $sql3->bindValue(':id_cidade',$id_cidade);
              $sql3->execute();
+
+           
                 
                 if ($sql3->rowCount() > 0) {
 

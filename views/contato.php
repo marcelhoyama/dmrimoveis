@@ -96,6 +96,8 @@
         <img src="<?php BASE_URL ?>assets/images/escritorio_frontal.jpeg" width="300" height="300" class="img-rounded img-responsive">
         <br>
 
+
+
         <div class="mapa">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5184.473857684476!2d-47.06143004449243!3d-23.243937779958838!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaf6a25cc5e3df5fd!2sDMR+Im%C3%B3veis+Cabre%C3%BAva!5e0!3m2!1spt-BR!2sbr!4v1527996900206" width="100%" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>

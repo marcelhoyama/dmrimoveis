@@ -1,3 +1,4 @@
+
 <?php
 class model
 {
@@ -16,6 +17,7 @@ protected $db;
 
 		
 	}
+
 
 
 }

@@ -14,6 +14,7 @@
 <div class="media-body">
     
 <h2 class="media-heading text-center" >Sobre Nós</h2>
+
 <p>Em meados de Janeiro de 2018, a partir da necessidade da Cidade de Cabreúva em ter uma referência no ramo imobiliário, 
               somado a muita vontade por parte dos profissionais envolvidos onde o principal requisito para fazer parte dessa equipe era a IDONEIDADE, 
               ÉTICA e TRANSPARÊNCIA, iniciaram-se as conversas para a criação de uma imobiliária diferente, que trabalha numa linha, visão, 

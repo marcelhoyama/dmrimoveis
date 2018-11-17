@@ -157,6 +157,7 @@ $(document).ready(function (){
             estado:{required:true},
             id_tipo_imovel:"required",
             id_tipo_assunto:"required"
+        
                 
             
         },
@@ -166,6 +167,7 @@ $(document).ready(function (){
             
         }
     });
+    
     
           $('#tenhointeressado').validate({
         

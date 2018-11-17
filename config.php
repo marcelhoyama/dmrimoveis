@@ -7,8 +7,10 @@ $config = array();
 
 
 if (ENVIRONMENT == 'development') {
+
 	define("BASE_URL", "http://localhost/ronyImoveis_1/");
 	$config['dbname']='dmrimoveis_db4';
+
 	$config['host']='localhost';
 	$config['dbuser']='root';
 	$config['dbpass']='';

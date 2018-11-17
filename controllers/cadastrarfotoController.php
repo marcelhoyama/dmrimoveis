@@ -41,3 +41,4 @@ class cadastrarfotoController extends controller {
     }
 
 }
+

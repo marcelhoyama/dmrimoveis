@@ -42,7 +42,9 @@
 
     <div class="form-group">
         <label class="" for="nome"> Nome Completo:</label><label class="text-danger">*Obrigatório</label> 
+<<<<<<< HEAD
         <input class="form-control" type="text" name="nome" id="nome" value="" placeholder="seu nome completo" required="true" pattern="[A-Za-zÀ-ú\s]+$" title="O campo nome não pode conter numeros e/ou caracteres especiais!"/>
+
     </div>
     <div class="row">
         <div class="col-sm-4">
