@@ -21,7 +21,7 @@ class contatoController extends controller {
         $dados['listassunto'] = $i->getListAssunto();
         $dados['listatipoimovel'] = $im->listTiposImoveis2();
 
-        if (isset($_POST['email']) && !empty($_POST['email'])) {
+        if (isset($_POST['nome']) && !empty($_POST['nome'])) {
             $nome = trim(addslashes($_POST['nome']));
             $email = trim(addslashes($_POST['email']));
             $telefone = addslashes($_POST['telefone']);
@@ -45,6 +45,8 @@ class contatoController extends controller {
             mail($para, $assunto, $corpo, $cabecalho);
             //$i->cadastrarInteresse($tipoimovel, $nome,$telefone,$celular, $email, $assunto);
             $dados['ok'] = "Enviado com sucesso";
+        }else{
+            $dados['erro']="Conferir os campos se estão preenchidos corretos, por favor! E tente novamente!";
         }
 
 
