@@ -20,7 +20,7 @@
 <meta property="og:image" content="" />
 
 
-<img src="<?php BASE_URL; ?>assets/images/banner5.png" width="100%" alt="dmr-imoveis-em-cabreuva " height="100%" id="banner"/>
+<img src="<?php BASE_URL; ?>assets/images/banner8.png" width="100%" alt="dmr-imoveis-em-cabreuva " height="100%" id="banner"/>
 
 <div class="container">
     <!-- <figcaption id="texto1">Imóveis em Cabreúva com :Danilo-Marcel-Rony </figcaption> -->
@@ -131,9 +131,8 @@
             <div class="alert alert-danger"><?php echo $erro; ?></div> 
         <?php endif; ?>
     </div>
-    <div class="row">
-        <?php
-    
+    <div class='row'>
+    <?php
     if ($viewData['buscaimovel'] == '') {
         
     } else {
@@ -143,7 +142,7 @@
     
         <div class="col-sm-3">
 
-        <div class="thumbnail ">
+        <div class="" align="center">
             <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $buscaimovel['id_imovel'] ?>">
 
                 <?php if (!empty($buscaimovel['url_foto_principal'])): { ?>
@@ -154,26 +153,26 @@
 
             </a>
             <div class="caption">
-                <div class="texto-card">
+<div class="texto-card">
                      <h5><p>
-                         <?php echo mb_strcut($buscaimovel['breve_descricao'],0,200)?>... 
+                         <?php echo mb_strcut($buscaimovel['breve_descricao'],0,100)?>... 
                              <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $buscaimovel['id_imovel']; ?>">
                                  Veja mais... 
                              </a></p></h5>
                                            
 
                 <p><h6>
-                 
+                 Valor R$ <?php echo $buscaimovel['venda']; ?>
                     Localização: <?php echo $buscaimovel['estado'];?>/<?php echo $buscaimovel['cidade'];?>/<?php echo $buscaimovel['bairro'];?>
 
 
                 </h6> </p>
                 </div>
-                <button  type="button" class=" btn btn-default btn-lg btn-block" href="javascript:;"  onclick="tenhointeresse(<?php echo $buscaimovel['id_imovel']; ?>)">Tenho Interesse</button>
+                <button  type="button" class=" btn btn-primary btn-lg " href="javascript:;"  onclick="tenhointeresse(<?php echo $buscaimovel['id_imovel']; ?>)">Tenho Interesse</button>
             </div>
 
         </div>
-            <br>
+        <br>
  </div>
              
        
@@ -181,8 +180,9 @@
         endforeach;
     }
     ?>
-        </div>
     <br>
+    </div>
+    
     <div class="row">
         <div id="linha" class="h3 text-center bg-primary"> Destaques dos Imóveis</div> 
     </div>
@@ -208,45 +208,39 @@
 
 
                                     <picture>
+                                        <div align="center">
                                         <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >  
 
                                             <?php if (!empty($value['url_foto_principal'])): { ?>
-                                            <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class=" img-rounded img-fluid" >
+                                                    <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class="img-fluid">
                                                 <?php } else: ?>
-                                            <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid">
+                                                <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-fluid">
         <?php endif; ?>
+        
                                         </a>
-
+</div>
 
                                         <div class="caption">
+                                            <div class="texto-card">
                                             <h3><?php echo $value['tipo_imovel']; ?> -
 
 
                                                 <?php
-                                                if ($value['aluguel'] == 0) {
-                                                    echo 'Venda  ' .$value['venda'];
-                                                } elseif (!$value['venda'] == 0 && !$value['aluguel'] == 0) {
-                                                    echo 'Venda  ' . $value['venda'] . '/Aluga ' . $value['aluguel'];
-                                                } elseif ($value['venda'] == '' && $value['aluguel'] == '') {
-                                                    echo ' ';
-                                                } else {
-                                                    echo 'Aluga  ' . $value['aluguel'];
-                                                }
+                                           echo $value['assunto_nome'];
                                                 ?> </h3>
-                                            <div class="texto-card">
-                                            <h5><p><?php echo mb_strcut($value['breve_descricao'],0,200)."...Veja mais...clique no botão."; ?> </p></h5>
+
+                                            <h5><p><?php echo mb_strcut($value['breve_descricao'],0,100)."...Veja mais...clique no botão."; ?> </p></h5>
                                            
-                                            </div>
+Valor R$ <?php echo $value['venda']; ?>
 
-
-                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-default btn-lg btn-block" >Tenho Interesse</button>  </a>
+</div>
+                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg btn-block" >Tenho Interesse</button>  </a>
 
                                         </div>
 
-                                    
-                                </picture>
-                                    </div>
+                                    </picture>
 
+                                </div>
                                 <?php
                             } endforeach;
                         //   } else {
@@ -330,34 +324,28 @@
 
 
                                     <picture>
+                                         <div align="center">
                                         <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >
 
                                             <?php if (!empty($value['url_foto_principal'])): { ?>
-                                            <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class=" img-rounded img-fluid">
+                                                    <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class=" img-rounded img-fluid">
                                                 <?php } else: ?>
-                                            <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid">
+                                                <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid">
         <?php endif; ?>
 
                                         </a>
+                                        </div>
                                         <div class="caption">
-
+<div class="texto-card">
                                             <h3><?php echo $value['tipo_imovel']; ?> -  <?php
-                                                if ($value['aluguel'] == 0) {
-                                                    echo 'Venda  ' . $value['venda'];
-                                                } elseif (!$value['venda'] == 0 && !$value['aluguel'] == 0) {
-                                                    echo 'Venda  ' . $value['venda'] . '/Aluga ' . $value['aluguel'];
-                                                } elseif ($value['venda'] == '' && $value['aluguel'] == '') {
-                                                    echo ' ';
-                                                } else {
-                                                    echo 'Aluga  ' . $value['aluguel'];
-                                                }
+                                              echo $value['assunto_nome'];
                                                 ?> </h3>
-                                            <div class="texto-card">
+
                                             <h5><p><?php echo mb_strcut($value['breve_descricao'],0,200)."...Veja mais...clique no botão."; ?> </p></h5>
                                           
-                                            </div>
 
 
+</div>
                                             <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-default btn-lg btn-block" >Tenho Interesse</button>  </a>
 
                                         </div>
@@ -409,34 +397,29 @@
 
 
                                     <picture>
+                                         <div align="center">
                                         <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >
 
                                             <?php if (!empty($value['url_foto_principal'])): { ?>
-                                            <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class=" img-rounded img-fluid">
+                                                    <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class=" img-rounded img-fluid">
                                                 <?php } else: ?>
-                                            <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid">
+                                                <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid">
         <?php endif; ?>
 
                                         </a>
+                                        </div>
                                         <div class="caption">
+                                            <div class="texto-card">
                                             <h3><?php echo $value['tipo_imovel']; ?> -
                                                 <?php
-                                                if ($value['aluguel'] == 0) {
-                                                    echo 'Venda  ' . $value['venda'];
-                                                } elseif (!$value['venda'] == 0 && !$value['aluguel'] == 0) {
-                                                    echo 'Venda  ' . $value['venda'] . '/Aluga ' . $value['aluguel'];
-                                                } elseif ($value['venda'] == '' && $value['aluguel'] == '') {
-                                                    echo ' ';
-                                                } else {
-                                                    echo 'Aluga  ' . $value['aluguel'];
-                                                }
+                                              echo $value['assunto_nome'];
                                                 ?> </h3>
-                                            <div class="texto-card">
+
                                             <h5><p><?php echo mb_strcut($value['breve_descricao'],0,200)."...Veja mais...clique no botão."; ?> </p></h5>
                                            
-                                            </div>
 
 
+</div>
                                             <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-default btn-lg btn-block" >Tenho Interesse</button>  </a>
 
                                         </div>
@@ -468,7 +451,5 @@
 
         </div>
     </div>
-
-
 
 </div>

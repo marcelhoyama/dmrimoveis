@@ -24,7 +24,8 @@ class cadastrarimovelController extends controller {
         $ta = new tipoassuntos();
 
         $fotos = array();
-        $id_imovel = '';
+        $valorimovel = '';
+        $valoraluguel='';
 
         $dados['listestados'] = $es->listEstado();
         $dados['listtiposimoveis'] = $i->listTiposImoveisCadastrar();
@@ -47,17 +48,24 @@ class cadastrarimovelController extends controller {
         }
 
 
-
-
-        if (isset($_POST['tipoimovel']) && !empty($_POST['tipoimovel']) && (isset($_POST['id_tipo_assunto']) && !empty($_POST['id_tipo_assunto'])) && (isset($_POST['nivel']) && !empty($_POST['nivel']))) {
+//if(isset($_POST['valorimovel']) && !empty($_POST['valorimovel'])){
+//    $valorimovel=trim(addslashes($_POST['valorimovel']));
+//    
+//}
+//
+//if(isset($_POST['valoraluguel']) && !empty($_POST['valoraluguel'])){
+//    $valoraluguel=trim(addslashes($_POST['valoraluguel']));
+//    
+//}
+       if (isset($_POST['tipoimovel']) && !empty($_POST['tipoimovel']) && (isset($_POST['id_tipo_assunto']) && !empty($_POST['id_tipo_assunto'])) && (isset($_POST['nivel']) && !empty($_POST['nivel']))) {
 
 
             $id_tipoimovel = addslashes($_POST['tipoimovel']);
             $id_tipo_assunto = addslashes($_POST['id_tipo_assunto']);
             $brevedescricao = trim(addslashes($_POST['brevedescricao']));
             $nivel = trim(addslashes($_POST['nivel']));
-            //$venda = addslashes($_POST['valorimovel']);
-            //$aluguel = addslashes($_POST['valoraluguel']);
+           $venda = addslashes($_POST['valorimovel']);
+            $aluguel = addslashes($_POST['valoraluguel']);
             $status = trim(addslashes($_POST['status']));
    //envio de imagem foto principal do imovel;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -79,9 +87,10 @@ class cadastrarimovelController extends controller {
             }
 // fim do envio de imagem;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-           if($i->cadastrarImovel($id_bairro, $id_tipoimovel, $id_tipo_assunto, $brevedescricao, $nivel, $foto, $fotos,$status)== true){
+           if($i->cadastrarImovel($id_bairro, $id_tipoimovel, $id_tipo_assunto,$venda, $aluguel, $brevedescricao, $nivel, $foto, $fotos,$status)== true){
                  
-                 header("Location:".BASE_URL."pesquisarimoveis");
+                  $dados['ok'] ="Cadastrado com Sucesso! Pode cadastrar mais um novo.";
+               //  header("Location:".BASE_URL."pesquisarimoveis");
            }else{
                $dados['erro'] ="Confira todos os campos!";
            }
@@ -98,5 +107,3 @@ class cadastrarimovelController extends controller {
     }
 
 }
-
-

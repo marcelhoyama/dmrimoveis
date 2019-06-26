@@ -4,35 +4,36 @@
 
 
 <div class="container-fluid">
-
+    <a class="btn btn-default" href="<?php BASE_URL?>menuprincipal"> Voltar p/Menu Principal</a>
+  
     <h2 class="text-center label-info">Editar Imóvel </h2></br>
 
     <form id="editarimovel" method="POST" enctype="multipart/form-data">
-
+ 
 
         <div class="danger">
-            <?php if (isset($erro) && !empty($erro)): ?>
-                <div class="alert alert-danger"><?php echo $erro; ?></div> 
-            <?php endif; ?>
+            <?php if (isset($erro) &&!empty($erro)): ?>
+            <div class="alert alert-danger"><?php echo $erro; ?></div> 
+<?php endif; ?>
         </div>
         <div class="danger">
-            <?php if (isset($ok) && !empty($ok)): ?>
-                <div class="alert alert-success"><?php echo $ok; ?></div> 
-            <?php endif; ?>
+<?php if (isset($ok) &&!empty($ok)): ?>
+            <div class="alert alert-success"><?php echo $ok; ?></div> 
+<?php endif; ?>
         </div>
         <div class="well">
             <div class="control-group">
                 <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
                 <div class="checkbox-inline">
-
+                    
                     <label><input type="radio" name="status" value="Liberado" <?php echo($status = $viewData['status'] == 'Liberado') ? 'checked="checked"' : ''; ?> >Liberar</label> 
                 </div>
-
+             
                 <div class="checkbox-inline">
                     <label><input type="radio" name="status" value="Bloqueado"  <?php echo($status = $viewData['status'] == 'Bloqueado') ? 'checked="checked"' : ''; ?>>Bloquear</label>
                 </div>
-
-
+                
+                    
             </div>
         </div>
 
@@ -40,12 +41,11 @@
             <div class="form-group col-sm-3">
                 <label for="id_tipo_assunto">Tipo de Assunto:</label><label class="text-danger">Campo Obrigatorio*</label>
                 <select name="id_tipo_assunto" class="form-control" id="tipoassunto">
-
                     <?php $value1 = $viewData['listimovel']; ?>
                     <?php foreach ($viewData['listtiposassuntos'] as $value) : ?>
-                        <option value="<?php echo $value['id']; ?>" <?php echo ($value['id'] == $value1['id_tipo_assunto']) ? 'selected="selected"' : ''; ?>><?php echo $value['nome']; ?></option>
+                    <option value="<?php echo $value['id']; ?>" <?php echo ($value['id'] == $value1['id_tipo_assunto'])? 'selected="selected"':''; ?>><?php echo $value['nome']; ?></option>
 
-                    <?php endforeach; ?>
+                    <?php  endforeach; ?>
                 </select>
             </div>
 
@@ -56,10 +56,10 @@
                     <?php
                     $tipoimovel = $viewData['listtiposimoveiscadastrados'];
                     ?>
-                    <?php foreach ($viewData['listtiposimoveis'] as $value): ?>
+                    <?php foreach ($viewData['listtiposimoveis'] as $value):  ?>
 
-                        <option value="<?php echo $value['id']; ?>" 
-                                <?php echo( $value['id'] == $tipoimovel['id_tipo_imovel']) ? 'selected="selected"' : ' '; ?>><?php echo $value['nome']; ?></option> 
+                    <option value="<?php echo $value['id']; ?>" 
+                            <?php echo( $value['id'] == $tipoimovel['id_tipo_imovel']) ? 'selected="selected"' : ' '; ?>><?php echo $value['nome']; ?></option> 
 
                     <?php endforeach;
                     ?>
@@ -98,14 +98,14 @@
                  <select name="estado" id="estado" class="form-control" required="">
  
             <?php
-            //  $estado = $viewData['listendereco'];
+          //  $estado = $viewData['listendereco'];
             ?>
-            <?php // foreach ($viewData['listestados'] as $value):  ?>
+            <?php   // foreach ($viewData['listestados'] as $value):  ?>
  
-                             <option value="<?php //echo $value['id'];   ?>" 
+                             <option value="<?php //echo $value['id']; ?>" 
             <?php //echo( $value['id'] == $estado['id_estado']) ? 'selected="selected"' : ' '; ?>><?php //echo $value['nome']; ?></option> 
  
-            <?php // endforeach;
+            <?php  // endforeach;
             ?>
  
                  </select>
@@ -124,36 +124,34 @@
             <div class="form-group">
                 <label for="arquivo1">Adicionar uma Foto PRINCIPAL do Imóvel:</label>
                 <input name="arquivo1" type="file" >
-                
+
             </div>
 
             <div class="row">
 
                 <?php $valuefoto = $viewData['fotoprincipal']; ?> 
-                <?php if (!empty($valuefoto['url_foto_principal'])): ?>
+                <?php if(!empty($valuefoto['url_foto_principal'])): ?>
 
 
-                    <div class="col-sm-3">
-                        <div class="form-group">
+                <div class="col-sm-3">
+                    <div class="form-group">
 
-                            <div class="thumbnail"  >   
+                        <div class="thumbnail" >   
 
-                                <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $valuefoto['url_foto_principal']; ?>" >
-<div class="btn-group">                                                                                                           
-                                    <a  href="<?php BASE_URL; ?>rotate?url=<?php echo $valuefoto['url_foto_principal']; ?>" class="btn btn-danger">Virar</a>
-                                </div>
-                                <div class="btn-group">                                                                                                           
-                                    <a  href="<?php BASE_URL; ?>deletarfotoprincipal?id=<?php echo $valuefoto['id']; ?>" class="btn btn-danger">Excluir Imagem</a>
-                                </div>
+                            <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $valuefoto['url_foto_principal']; ?>" >
+
+                            <div class="btn-group">                                                                                                           
+                                <a  href="<?php BASE_URL; ?>deletarfotoprincipal?id=<?php echo $valuefoto['id']; ?>" class="btn btn-danger">Excluir Imagem</a>
                             </div>
                         </div>
                     </div>
+                </div>
 
                 <?php else: ?>
-                    <div class="thumbnail">
+                <div class="thumbnail">
 
-                        <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" >
-                    </div>
+                    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" >
+                </div>
                 <?php
                 endif;
                 ?>
@@ -163,116 +161,68 @@
 
         <div class="form-group row">
             <div class="col-md-6">
-                <label for="arquivos">Adicionar no MAXIMO 35 Fotos do Imóvel, sendo que, redimencionamento 920x720 e tamanho total de imagens 128 MB :</label>
-                <input name="arquivos[]" type="file"  multiple="">
-            </div>
+            <label for="arquivos">Adicionar no MAXIMO 35 Fotos do Imóvel, sendo que, redimensionamento IDEAL 960x720 e tamanho total de imagens não ultrapassar 128 MB :</label>
+         
+            <input name="arquivos[]" type="file"  multiple="">
+        </div>
             <div class="col-md-6">
-
+                
                 <label for="totalfotos">Total de fotos: </label> <span class="badge"> <?php echo $viewData['totalfotos']; ?></span>
             </div>
-            <div class="col-md-6">
-                <a href="<?php BASE_URL; ?>deletartodosfoto?id=<?php echo $value1['id_imovel']; ?>" class="btn btn-danger">Excluir Todos as Fotos</a>
-
-            </div>
-
         </div>
-
+            
         <hr>
         <div class="row">
 
             <?php if (!empty($viewData['listfotos'])): ?>
 
-                <?php foreach ($viewData['listfotos'] as $fotos): ?>
+            <?php foreach ($viewData['listfotos'] as $fotos): ?>
 
-                    <div class="col-xs-7 col-md-3">
+            <div class="col-xs-6 col-md-3">
 
-                        <div class="thumbnail" id="imagem-editar" >     
-                            <img src="<?php BASE_URL; ?>upload/<?php echo $fotos['url_imagem']; ?>" id="imagem-editar">
-                            
-                            
-                                <a href="<?php BASE_URL; ?>deletarfoto?id=<?php echo $fotos['id']; ?>" class="btn btn-danger">Excluir Imagem</a>
-                        
-                                <div class="col-sm-5">
-                                    <input name="id_foto" hidden="hidden" type="text" value="<?php echo $fotos['id']; ?>">
-                                    <input name="url_imagem" hidden="hidden" type="text" value="<?php echo $fotos['url_imagem'];?>">
-                                <input name="numeracao[]" class="form-control" type="text" value="<?php echo $fotos['numeracao']; ?>">
-                                </div>
-                               
-                        </div>
+                <div class="thumbnail" id="imagem-editar" >     
+                    <img src="<?php BASE_URL; ?>upload/<?php echo $fotos['url_imagem']; ?>" id="imagem-editar">
+                    <a href="<?php BASE_URL; ?>deletarfoto?id=<?php echo $fotos['id']; ?>" class="btn btn-danger">Excluir Imagem</a>
 
-                    </div>
+                </div>
 
-                    <?php
-                endforeach;
+            </div>
+
+            <?php
+            endforeach;
             endif;
             ?>
 
 
             <?php for ($q = 1; $q <= $paginas = $viewData['paginas']; $q++) { ?> 
-                <div class="pagination">
-                    <ul>
-                        <li><a href="<?php BASE_URL ?>?p=<?php echo $q - 1 ?>">voltar</a></li>
-                        <li><a href="<?php BASE_URL ?>?p=<?php echo $q ?>"><?php echo($q) ?></a></li>
-                        <li><a href="<?php BASE_URL ?>?p=<?php echo $q + 1 ?>">avançar</a></li>
-                    </ul>
-                </div>
+            <div class="pagination">
+                <ul>
+                    <li><a href="<?php BASE_URL ?>?p=<?php echo $q - 1 ?>">voltar</a></li>
+                    <li><a href="<?php BASE_URL ?>?p=<?php echo $q ?>"><?php echo($q) ?></a></li>
+                    <li><a href="<?php BASE_URL ?>?p=<?php echo $q + 1 ?>">avançar</a></li>
+                </ul>
+            </div>
 
-            <?php } ?>
+<?php } ?>
 
         </div> 
-        <div class="progress progress-striped active">
-            <div class="progress-bar" style="width: 0%">
-
-            </div>
-        </div>
         <hr>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary upload" value="Salvar">
+            <input type="submit" class="btn btn-primary" value="Salvar">
         </div>
 
         <div class="danger">
-            <?php if (isset($erro) && !empty($erro)): ?>
-                <div class="alert alert-danger"><?php echo $erro; ?></div> 
-            <?php endif; ?>
+            <?php if (isset($erro) &&!empty($erro)): ?>
+            <div class="alert alert-danger"><?php echo $erro; ?></div> 
+<?php endif; ?>
         </div>
         <div class="danger">
-            <?php if (isset($ok) && !empty($ok)): ?>
-                <div class="alert alert-success"><?php echo $ok; ?></div> 
-            <?php endif; ?>
+<?php if (isset($ok) &&!empty($ok)): ?>
+            <div class="alert alert-success"><?php echo $ok; ?></div> 
+<?php endif; ?>
         </div>
 
 
     </form>
-    
-    <!-- barra de progresso em construçaõ -->
-    <script>
-        $(document).on('submit', 'form', function (e) {
-            e.preventDefault();
-            //recebe dados
-            $form = $(this);
-            //criar conexao com servidor
-            var formdata = new XMLHttpRequest();
-
-            //progresso do upload
-            request.upload.addEventListener('progress', function (e) {
-                var percent = Math.round(e.loaded / e.total * 100);
-                $form.find('.progress-bar').width(percent + '%').html(percent + '%');
-            });
-
-            //upload completo limpar barra progresso
-            request.addEventListener('load', function (e) {
-
-                $form.find('.progress-bar').addClass('progress-bar-sucess').html('upload completo...');
-
-                //atualizar a página apos upload completo
-                setTimeout("windows.open(self.location, '_self');", 1000);
-            });
-
-            //arquivo responsavel em fazer upload
-            request.open('post', 'editarimovelController.php');
-            request.send(formdata);
-        });
-    </script>
-<
 
 </div>

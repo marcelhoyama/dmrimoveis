@@ -59,7 +59,8 @@ $(document).ready(function (){
             tipovia:{required:true},
             endereco:{required:true,isString:true},
             numero:"required",
-           bairro:{required:true,isString:true},
+           bairro:{required:true},
+              //bairro:{required:true,isString:true},
             cidade:{required:true,isString:true},
             estado:"required",
             tipoimovel:"required",
@@ -157,7 +158,6 @@ $(document).ready(function (){
             estado:{required:true},
             id_tipo_imovel:"required",
             id_tipo_assunto:"required"
-        
                 
             
         },
@@ -167,7 +167,6 @@ $(document).ready(function (){
             
         }
     });
-    
     
           $('#tenhointeressado').validate({
         

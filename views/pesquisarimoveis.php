@@ -166,7 +166,6 @@
                         <tr>
                             <td>
                                 <?php echo $value['codigo']; ?>
-                                
                             </td>
                             <td>
 
@@ -195,6 +194,7 @@
                                 <a href="<?php BASE_URL; ?>editarimovel?id=<?php echo $value['id_imovel']; ?>"><button class="btn btn-primary">Editar</button></a>
                                 <button href="javascript;:" onclick="excluiranuncio('<?php echo $value['id_imovel'] ?>','<?php echo $value['url_foto_principal']; ?>','<?php echo $value['codigo']; ?>')" type="button" class="btn btn-danger">Excluir</button>
 
+                   
                             </td>
                         </tr>
 
@@ -265,13 +265,14 @@
 
                             <td><a href="<?php BASE_URL; ?>meuanuncio?id=<?php echo $value1['id_imovel']; ?> "><button class="btn btn-warning">Ver anúncio</button></a>
                                 <a href="<?php BASE_URL; ?>editarimovel?id=<?php echo $value1['id_imovel']; ?>"><button class="btn btn-primary">Editar</button></a>
-                                <button href="javascript;:" onclick="excluiranuncio('<?php echo $value1['id_imovel'] ?>','<?php echo $value1['url_foto_principal']?>','<?php echo $value1['codigo']; ?>');" type="button" class="btn btn-danger">Excluir</button>
+                                           <button href="javascript;:" onclick="excluiranuncio('<?php echo $value1['id_imovel'] ?>','<?php echo $value1['url_foto_principal']?>','<?php echo $value1['codigo']; ?>');" type="button" class="btn btn-danger">Excluir</button>
+
 
                             </td>
                     
                         </tr>
 
-
+ 
 
 
                     </tbody>
@@ -281,22 +282,19 @@
         }
         ?>
 
-
-
-
-    </div>
-        </div>
-    
- <!-- Modal  excluir -->
+<!-- Modal  excluir-->
         <div class="modal fade" id="Modalexcluir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel"><p class="text-danger text-center">Deseja excluir?</p></h4>
+                        <h4 class="modal-title" id="myModalLabel"><p class="text-danger text-center">Tem certeza que deseja excluir?</p></h4>
                     </div>
 
                     <div class="modal-body">
+
+
+
 
                     </div>
 
@@ -313,3 +311,9 @@
 
         </div>  <!--  fim modal excluir--> 
 
+
+    </div>
+    
+    
+
+    </div>

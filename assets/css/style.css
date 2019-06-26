@@ -13,26 +13,28 @@ and open the template in the editor.
 .container-fluid{
     background-color: #efece3;
 }
+
 .texto-card{
-    height: 100px;
+    height:150px;
 }
+
 picture img{
-    height: 265px;
-    
+height:265px;
     
 }
+
 #anunciovenda{
-    
-    height: 200px;
+    height:200px;
 }
+
 #imagem-editar{
-    height: 305px;
-    width: 265px;
+    height:305px;
+    width:265px;
 }
 
 .thumbnail #imagem-editar{
-      height: 255px;
-      width: 265px;
+    height:255px;
+    width:265px;
 }
 .container-fluid #texto1{
     position: absolute;
@@ -68,11 +70,6 @@ picture img{
 
 
 }
-#linha{
-    padding: 5px;
-    margin-top: 5px;
-    
-}
 #botao-pesquisa-imovel{
     margin-top: 30px;
 }
@@ -86,7 +83,10 @@ picture img{
     padding:0px;
     top:0px;
 }
-
+   #button_excluir{
+    margin-left: 220px;
+    padding-bottom: 5px;
+}
 img #servico{
     float: right;
     width: 320px;
@@ -100,10 +100,6 @@ img #servico{
     position: absolute;
     padding: 0px;
 
-}
-#button_excluir{
-    margin-left: 220px;
-    padding-bottom: 5px;
 }
 
 .rodape{
@@ -243,6 +239,7 @@ top:auto;
 
 
     }
+ 
     
     .row .col-xs-12{
         

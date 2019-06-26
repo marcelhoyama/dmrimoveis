@@ -43,10 +43,10 @@ class contatoController extends controller {
                     "Reply-To:" . $email . "\r\n" .
                     "X-Mailer: PHP/" . phpversion();
             mail($para, $assunto, $corpo, $cabecalho);
+            
+           
             //$i->cadastrarInteresse($tipoimovel, $nome,$telefone,$celular, $email, $assunto);
             $dados['ok'] = "Enviado com sucesso";
-        }else{
-            $dados['erro']="Conferir os campos se estão preenchidos corretos, por favor! E tente novamente!";
         }
 
 
@@ -55,4 +55,3 @@ class contatoController extends controller {
     }
 
 }
-

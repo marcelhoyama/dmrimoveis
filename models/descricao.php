@@ -17,7 +17,6 @@ class descricao extends model {
         }
     }
 
-
     public function cadastrarDescricao($id_imovel, $dormitorio, $suite, $garagem, $banheiro) {
 
         try {
@@ -29,7 +28,6 @@ class descricao extends model {
                $sql1 = "INSERT INTO imoveis_descricoes SET id_imovel='$id_imovel', id_descricao='$id_descricoes'";
               $sql1= $this->db->query($sql1);
                 if ($sql1->rowCount() > 0) {
-
                     
                 }
             }else{

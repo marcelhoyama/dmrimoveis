@@ -1,4 +1,3 @@
-
 <?php
 
 class telefone extends model{
@@ -27,4 +26,3 @@ class telefone extends model{
         return "De Segunda á Sexta das 09:00 às 18:00";
     }
 }
-

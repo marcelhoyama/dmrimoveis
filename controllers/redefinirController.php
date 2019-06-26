@@ -6,10 +6,12 @@ class redefinirController extends controller {
         $dados = array();
 
 
-        if (!empty($_GET['token']) && (!empty($_POST['senha']))) {
+        if (!empty($_GET['token'])) {
 
             $token = $_GET['token'];
 
+}
+if(!empty($_POST['senha'])){
             $senha = md5($_POST['senha']);
 
 

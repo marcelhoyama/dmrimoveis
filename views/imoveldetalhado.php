@@ -19,7 +19,7 @@
     <div class="row">
 
         <div class="col-sm-4">
-            <div class="thumbnail ">
+            <div class="thumbnail" data-toggle="modal" data-target="#Modalslidefotos">
 
                 <div class="carousel slide" data-ride="carousel" id='meuCarousel'>
                     <div class="carousel-inner" role='listbox'>
@@ -50,7 +50,7 @@
                 <?php endif; ?>
             </div>
         </div>
-             <div class="col-sm">
+             <div class="col-sm-8">
            <a href="<?php BASE_URL; ?>contato">  <div class="btn btn-primary">
                    Entre em contato conosco pelo telefone <?php echo $value = $viewData['telefone']; ?></br>
                    WhatsApp <?php echo $value =$viewData['celular']; ?> <br>
@@ -65,19 +65,17 @@
 
 
               
-                <div class="form-group">
-                    <div class="form-control-plaintex">
-                    <?php echo "<pre>".$listimovel['breve_descricao']."</pre>"?>
+                <div class="form-group" style="resize:horizontal;">
+                    <?php echo "<pre>".$listimovel['breve_descricao']."</pre>" ?>
                 </div>
-                </div>
+              
                 <ul>
 
                    
                </ul>
 
                 <button href="javascript;:" onclick="tenhointeresse('<?php echo $listimovel['id_imovel']; ?>')" type="button" class="btn btn-primary">Tenho Interesse</button>
-                 
-            </div>
+         </div>
         </div>
 
     </div>
@@ -117,7 +115,46 @@
 
 
     </div>  <!--  fim modal venda-->
-</div>
+    
+     <!-- Modal  slidefotos-->
+    <div class="modal fade" id="Modalslidefotos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    
+                <div class="modal-body">
+<div class="col-lg">
+             <div class="carousel slide" data-ride="carousel" id='meuCarousel2'>
+                    <div class="carousel-inner" role='listbox'>
+                        <?php foreach ($viewData['listfotos'] as $key => $foto): ?>
+                            <div class="item <?php echo ($key == '0') ? 'active' : ''; ?>">
+                                <?php if (!empty($foto['url_imagem'])): { ?>
+                                 <div class="thumbnail" align="center">
+                                        <img src="<?php BASE_URL; ?>upload/<?php echo $foto['url_imagem']; ?>" class=" img-rounded img-fluid">
+                                        </div>
+                                    <?php } else: ?>
+                                    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid">
+                                <?php endif; ?>
 
+                            </div>
+
+                        <?php endforeach; ?>
+                    </div>
+                    <a class="left carousel-control" href="#meuCarousel2" role="button" data-slide="prev"><span>Voltar</span></a>
+                    <a class="right carousel-control" href="#meuCarousel2" role="button" data-slide="next"><span>Proximo</span></a>
+
+                </div>
+            </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>  <!--  fim modal slidefotos-->
+</div>
 
 

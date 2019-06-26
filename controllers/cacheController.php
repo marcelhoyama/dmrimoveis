@@ -17,5 +17,4 @@ class cacheController extends controller{
         
      $this->loadTemplate('contato', $dados);
 }
-
 }

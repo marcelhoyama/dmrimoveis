@@ -16,7 +16,7 @@
                 <div class="text-center">
                   <h3><i class="fa fa-lock fa-4x"></i></h3>
                   <h2 class="text-center">Esqueceu a senha?</h2>
-                  
+                  <p>Voce pode redefinir a senha aqui.</p>
                   <div class="panel-body">
     
                     <form id="register-form" role="form" autocomplete="off" class="form" method="post">
@@ -53,5 +53,4 @@
      <div class="warning"><?php echo $erro; ?></div> 
        <?php endif; ?>
  
-
 

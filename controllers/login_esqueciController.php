@@ -15,7 +15,11 @@ class login_esqueciController extends controller
 
                   $email = trim(addslashes($_POST['email'])); //proteger de sql injection
           $c = new corretor();
-          $c->esquecisenha($email);
+          if($c->esquecisenha($email)==true){
+           $dados['erro']="Enviado no seu email com sucesso! Verifique na pasta SPAM. ";   
+          }else{
+              $dados['erro']="Não possivel enviar no seu email! Verifique seu email.";
+          }
         }
         $this->loadView('login_esqueci',$dados);
     }

@@ -12,8 +12,33 @@ class corretor extends model {
             exit;
         }
     }
+    
+     public function verificarLogin2() {
+       
+        if (isset($_SESSION['dmrlogin']) && !empty($_SESSION['dmrlogin'])) {
+        
+        $id=$_SESSION['dmrlogin'];
+        $ip=$_SERVER['REMOTE_ADDR'];
+        
+        $sql= "SELECT * FROM corretores WHERE id=:id AND ip=:ip";
+        $sql=$this->db->prepare($sql);
+        $sql->bindValue(":id",$id);
+        $sql->bindValue(":ip",$ip);
+        $sql->execute();
+        
+        if($sql->rowCount() >0){
+        
+         header("Location:" . BASE_URL . "menuprincipal");
+            exit;    
+        
+        }else{
+              header("Location:" . BASE_URL . "login");
+            exit;
+        }
+          
+        }
+    }
        public function getNome($id) {
-
 
         $sql = "SELECT nome FROM corretores WHERE id = :id ";
          $sql=$this->db->prepare($sql);
@@ -58,12 +83,20 @@ class corretor extends model {
                 $_SESSION['dmrlogin'] = $dado['id'];
                 $_SESSION['nome_usuario'] = $dado['nome'];
                 $status=$dado['status'];
+                $ip=$_SERVER['REMOTE_ADDR'];
+                
+                $sql="UPDATE corretores SET ip=:ip WHERE id=:id";
+                $sql=$this->db->prepare($sql);
+                $sql->bindValue(":ip",$ip);
+                $sql->bindValue(":id",$_SESSION['dmrlogin']);
+                $sql->execute();
+                
                  if(!empty($status)){
                     if($status=='Ativo'){
                          header("Location:" . BASE_URL . "menuprincipal");
                           exit;
                     }else{
-                        return "Bloqueado! Verificar com a Administração!";
+                        return "Usuário".$_SESSION['nome_usuario']." Bloqueado! Verificar com a Administração!";
                     }
                 }
                
@@ -83,7 +116,7 @@ class corretor extends model {
 
         $sql = "SELECT * FROM corretores WHERE email = :email ";
          $sql=$this->db->prepare($sql);
-             $sql->bindValue(':email',$email);
+             $sql->bindValue(":email",$email);
                       $sql->execute();
 
         if ($sql->rowCount() > 0) {
@@ -91,33 +124,33 @@ class corretor extends model {
             $id = $sql['id'];
             $token = md5(time() . rand(0, 9999) . rand(0, 9999));
             $expirado = date('Y-m-d H:i', strtotime('+1 months'));
-            $sql = "INSERT INTO usuarios_token (id_usuario, hash, expirado_em) VALUES (:id_usuario,:hash, :expirado_em)";
+            $sql = "INSERT INTO usuario_token (id_usuario, hash, expirado_em) VALUES (:id_usuario, :hash, :expirado_em)";
+
             $sql= $this->db->prepare($sql);
             $sql->bindValue(":id_usuario",$id);
             $sql->bindValue(":hash",$token);
-            $sql->bindValue(":expirado_em", $expirado);
-
-            $sql->execute();
-
+            $sql->bindValue(":expirado_em", $expirado);;
+             $sql->execute();
 
             $link = BASE_URL . "redefinir?token=" . $token;
-            $mensagem = "Clique no link para redefinir a senha:<br>" . $link;
+            $mensagem = "Clique no link para redefinir a senha:" . $link;
             $assunto = "Redefinição de Senha";
-        
             $headers = "From: marecrisbr@gmail.com" . "\r\n" .
-                    "Reply-To:marecrisbr@gmail.com \r\n".
+                    "Reply-To:".$email."\r\n".
                     "X-Mailer: PHP/" . phpversion();
 
             mail($email, $assunto, $mensagem, $headers);
-            echo $mensagem;
-            exit;
+           // echo $mensagem;
+           return true;
+        }else{
+            return false;
         }
     }
 
     public function redefinirSenha($token, $senha) {
 
 
-        $sql = "SELECT * FROM usuarios_token WHERE hash = :hash AND used = 0 AND expirado_em > NOW()";
+        $sql = "SELECT * FROM usuario_token WHERE hash = :hash AND used = 0 AND expirado_em > NOW()";
 
          $sql=$this->db->prepare($sql);
              $sql->bindValue(":hash",$token);
@@ -131,7 +164,7 @@ class corretor extends model {
             $sql = $sql->fetch();
             $id = $sql['id_usuario'];
 
-            $sql = "UPDATE corretores SET senha = :senha WHERE id = :id ";
+        $sql = "UPDATE corretores SET senha = :senha WHERE id = :id ";
 
              $sql=$this->db->prepare($sql);
              $sql->bindValue(":id",$id);
@@ -139,14 +172,14 @@ class corretor extends model {
              $sql->execute();
             if ($sql->rowCount() > 0) {
 
-                $sql = "UPDATE usuarios_token SET used = 1  WHERE hash = :hash ";
+                $sql = "UPDATE usuario_token SET used = 1  WHERE hash = :hash ";
 
                  $sql=$this->db->prepare($sql);
              
              $sql->bindValue(":hash",$token);
              $sql->execute();
                 if ($sql->rowCount() > 0) {
-                    echo "Senha Alterado com sucesso!";
+                    echo "Senha Alterado com sucesso! Volte a logar com a nova senha redefinida. ";
                     exit;
                 }
             }
@@ -206,7 +239,6 @@ class corretor extends model {
           
              
              $sql->execute();
-
             if($sql->rowCount()>0){
                 
             return true;

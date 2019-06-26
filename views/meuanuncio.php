@@ -10,8 +10,9 @@
     <div class="jumbotron">
         <a href="<?php BASE_URL; ?>pesquisarimoveis" ><button class="btn btn-primary"  >Voltar Pesquisa</button></a>
          <a href="<?php BASE_URL; ?>editarimovel?id=<?php echo $listimovel['id_imovel']; ?>"><button class="btn btn-primary">Editar</button></a>
-         <button href="javascript;:" onclick="excluiranuncio('<?php echo $listimovel['id_imovel'] ?>','<?php echo $listimovel['url_foto_principal']?>','<?php echo $listimovel['codigo']; ?>');" type="button" class="btn btn-danger">Excluir</button>
+       <button href="javascript;:" onclick="excluiranuncio('<?php echo $listimovel['id_imovel'] ?>','<?php echo $listimovel['url_foto_principal']?>','<?php echo $listimovel['codigo']; ?>');" type="button" class="btn btn-danger">Excluir</button>
                      
+      
         <h2 class="text-info">Detalhes do Imóvel <?php echo $listimovel['tipo_imovel']; ?>-[<?php
                     echo strtoupper($listimovel['tipo_assunto']);
                     ?>] - Codigo: <?php echo $listimovel['codigo']; ?></h2>
@@ -31,7 +32,6 @@
                                 <?php if (!empty($foto['url_imagem'])): { ?>
                                         <img src="<?php BASE_URL; ?>upload/<?php echo $foto['url_imagem']; ?>" class=" img-rounded img-fluid">
                                     <?php } else: ?>
-                                        
                                     <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid">
                                 <?php endif; ?>
 
@@ -55,21 +55,21 @@
             </div>
         </div>
              <div class="col-sm-8">
-           <a href="<?php BASE_URL; ?>contato" class="btn btn-primary">  
-               <p> Entre em contato conosco pelo telefone <?php echo $value = $viewData['telefone']; ?></br>
+           <a href="<?php BASE_URL; ?>contato">  <div class="btn btn-primary">
+                   Entre em contato conosco pelo telefone <?php echo $value = $viewData['telefone']; ?></br>
                    WhatsApp <?php echo $value =$viewData['celular']; ?> <br>
-                   Ou Clique Aqui!</p>
-            </a>
+                   Ou Clique Aqui!
+            </div></a>
         </div>
         </div>
-        <br>
+
         <div class="col-sm-8">
             <div class="caption">
 
 
 
               
-                <div class="form-group" >
+                <div class="form-group" style="resize:horizontal;">
                     <?php echo "<pre>".$listimovel['breve_descricao']."</pre>" ?>
                 </div>
               
@@ -85,25 +85,14 @@
     </div>
 
 
-   <!-- Modal  excluir-->
-    <div class="modal fade" id="Modalexcluir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel"><p class="text-danger text-center">Tem certeza que deseja excluir?</p></h4>
-                </div>
-                <div class="modal-body">
-
-                </div>
-
-              
+   <!-- <div class="row">
+        <div class="col-sm-2">
+            <div class="thumbnail">
+             
             </div>
         </div>
 
-
-
-    </div>  <!--  fim modal excluir-->
+    </div> row --> 
     <h2>Maiores Informações:</h2>
     <h3>Entre em contato conosco pelo telefone <?php echo $value = $viewData['telefone']; ?> ou venha nos fazer uma visita e 
         conhecer nosso escritório na  <?php echo $value = $viewData['endereco']; ?></h3>
@@ -131,7 +120,27 @@
 
     </div>  <!--  fim modal venda-->
     
-      <!-- Modal  slidefotos-->
+     <!-- Modal  excluir-->
+    <div class="modal fade" id="Modalexcluir" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"><p class="text-danger text-center">Tem certeza que deseja excluir?</p></h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+
+              
+            </div>
+        </div>
+
+
+
+    </div>  <!--  fim modal excluir-->
+    
+     <!-- Modal  slidefotos-->
     <div class="modal fade" id="Modalslidefotos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">

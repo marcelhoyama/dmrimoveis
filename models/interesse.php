@@ -6,7 +6,6 @@ class interesse extends model {
 
 
 
-
         echo $sql = "INSERT INTO interesses SET id_tipo_imovel='$id_tipo_imovel',"
         . "nome= :nome, "
         . "telefone= :telefone, "
@@ -227,9 +226,6 @@ class interesse extends model {
         $sql->bindValue(':mensagem', $mensagem);
 
         $sql->execute();
-
-        
-
         if ($sql->rowCount() > 0) {
             
         }

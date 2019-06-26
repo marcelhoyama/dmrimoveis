@@ -40,7 +40,7 @@ $dados['listimovelaluguel']=$i->listImovelaluguel();
           
          
 
-          if($i->buscarImovel($filtros) ==0){
+          if($dados['buscaimovel']=$i->buscarImovel($filtros) ==0){
                  $dados['buscaimovel']='' ;
                  $dados['erro']='Nada Encontrado!';
         }else{

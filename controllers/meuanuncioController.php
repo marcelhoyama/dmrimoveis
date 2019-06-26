@@ -11,9 +11,8 @@ class meuanuncioController extends controller {
     public function index() {
         $dados = array('erro' => '');
         $co=new corretor();
-        $co->setlogado();
-        $dados['usuario_nome']= $co->getNome($_SESSION['dmrlogin']);
-        
+        $co->setLogado();
+        $dados['usuario_nome']=$co->getNome($_SESSION['dmrlogin']);
         $t = new telefone();
         $f = new foto();
         $i = new imovel();

@@ -1,4 +1,3 @@
-
 <?php
 
 class controller{
@@ -34,4 +33,3 @@ public function __construct() {
 		include 'views/'.$viewName.'.php';
 	}
 }
-

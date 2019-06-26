@@ -17,17 +17,22 @@ class deletarimovelController extends controller {
         $i = new imovel();
 
 
-        if (isset($_POST['id']) && !empty($_POST['id'])) {
+        if (isset($_GET['id']) && !empty($_GET['id'])) {
 
-        echo  $id_imovel = addslashes($_POST['id']);
+            $id_imovel = addslashes($_GET['id']);
 
-exit;
-            $dados['erro'] = $i->excluirImovel($id_imovel);
+
+            if($i->excluirImovel($id_imovel)==true){
+                
+                header("Location:".BASE_URL."pesquisarimoveis");
             
+        }else{
+            $dados['erro']="Algo deu errado!";
         }
 
 
         $this->loadView('deletarimovel', $dados);
     }
 
+}
 }

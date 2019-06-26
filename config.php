@@ -7,21 +7,19 @@ $config = array();
 
 
 if (ENVIRONMENT == 'development') {
-
-	define("BASE_URL", "http://localhost/ronyImoveis_1/");
+	define("BASE_URL", "http://localhost/dmrimoveis/");
 	$config['dbname']='dmrimoveis_db4';
-
 	$config['host']='localhost';
 	$config['dbuser']='root';
 	$config['dbpass']='';
 }
 else{
 
-		define("BASE_URL", "http://devmg.pe.hu/ronyImoveis/");
-        $config['dbname']='u708362941_dmr';
-	$config['host']='localhost';
-	$config['dbuser']='u708362941_dmr';
-	$config['dbpass']='dmrimoveis';
+		define("BASE_URL", "https://www.dmrimoveiscabreuva.com.br/");
+        $config['dbname']='u265720882_dmr';
+	$config['host']='mysql.hostinger.com.br';
+	$config['dbuser']='u265720882_dmr';
+	$config['dbpass']='rgvs@2018';
 }
 
 

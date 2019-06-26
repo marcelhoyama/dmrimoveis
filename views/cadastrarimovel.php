@@ -36,10 +36,11 @@
         <div class="row">
             <div class="form-group col-sm-3">
                 <label for="id_tipo_assunto">Tipo de Assunto:</label><label class="text-danger">Campo Obrigatorio*</label>
-                <select name="id_tipo_assunto" class="form-control" id="id_tipo_assunto">
+                <select name="id_tipo_assunto" class="form-control" id="id_tipo_assunto" onchange="mudouAssunto(this)">
                     <option></option>
                     <option value="1">Venda</option>
                     <option value="2">Aluga</option>
+                     <option value="3">Venda/Aluga</option>
                  <!--   <?php //foreach ($viewData['listtiposassuntos'] as $value) : { ?>
                             <option value="<?php //echo $value['id']; ?>"><?php //echo $value['nome']; ?></option>
 
@@ -133,23 +134,25 @@
                     <option value="4">4</option>
                 </select> </div>
 
-        </div>
+        </div>-->
           <div class="well">
+              <div id="valorImovel">
             <label for="valorimovel">Valor do Imóvel:</label>
             <div class="form-group col-sm-4 input-group">
 
                 <span class="input-group-addon">R$</span>
                 <input name="valorimovel" type="text" class="form-control" id="valor" placeholder=""/>
             </div>
-
-
+              </div>
+              <div id="valorAluguel">
             <label for="valoraluguel">Valor do Aluguel:</label>
             <div class="form-group col-sm-4 input-group">
 
                 <span class="input-group-addon">R$</span>
                 <input name="valoraluguel" type="text" class="form-control" id="valor2" placeholder=""/> 
             </div>
-         </div> -->
+         </div> 
+          </div>
           <div class="form-group">
             <label for="brevedescricao">Breve descrição do imovel:</label> 
 
@@ -170,55 +173,17 @@
 <div class="well">
 
         <div class="form-group">
-            <label for="arquivos">Adicionar no MAXIMO 35 Fotos do Imóvel:</label>
-            <input id="fotos" name="arquivos[]" type="file"  multiple=""/>
+            <label for="arquivos">Adicionar no MAXIMO 35 Fotos do Imóvel, sendo que, redimensionamento IDEAL 960x720 e tamanho total de imagens não ultrapassar 128 MB :</label>
+            <input name="arquivos[]" type="file"  multiple=""/>
 
         </div>
 </div>
-     <div class="progress progress-striped active">
-         <div class="progress-bar"  style="width: 0%">
-             
-         
-         </div>
-        
-             
-     </div>
+
         <div class="form-group">
-            <button type="submit" class="btn btn-primary upload" >Cadastrar</button> 
+            <input type="submit" class="btn btn-primary" value="Cadastrar"/>
 
 
         </div>
-     <script type="text/javascript">
-          $(function(){
-              
-          
-            $('.cadastrarimovel').on('submit',function(e){
-                 e.preventDefault();
-                 var form =$('.cadastrarimovel')[0];
-                 var data = new FormData(form);
-                 
-                 
-                 
-                 
-                     $.ajax({
-                        type:'POST',
-                        url:'cadastrarimovelController',
-                        data:data,
-                        contentType:false,
-                        processData:false,
-                        success:function(msg){
-                            alert(msg);
-                        }
-                        
-                     });
-              
-                 
-           
-                  
-             });
-             });
-             </script>
-
         <div class="danger">
             <?php if (isset($erro) && !empty($erro)): ?>
                 <div class="alert alert-danger"><?php echo $erro; ?></div> 

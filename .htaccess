@@ -1,16 +1,12 @@
-# para nao acessarem pastas do diretorio 
-Options All -Indexes 
-
+#Options All -Indexes
 RewriteEngine On
-# para funcionar site seguro com ssl 
 #RewriteCond %{HTTPS} !=on
 #RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-#para funcionar MVC as estrutura do site
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-#qunado for usar na hospedagem usar esse codigo abaixo
-#RewriteRule ^(.*)$ /index.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ /dmrimoveis/index.php?url=$1 [QSA,L]
 
-#esse é para localhost
-RewriteRule ^(.*)$ /ronyImoveis_1/index.php?url=$1 [QSA,L]
+
+
+

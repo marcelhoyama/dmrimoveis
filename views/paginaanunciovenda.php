@@ -7,7 +7,7 @@
         <center><h2 class="text-info"><?php echo $viewData['tipoassunto']; ?> - <?php echo $viewData['tipoimovel']; ?></h2></center>
         
         <hr>
-        <h3>Maiores Informações:<?php echo $fixo = $viewData['fixo']; ?> / <?php echo $celular = $viewData['celular']; ?><span><img src="<?php BASE_URL; ?>assets/images/whatsapp.png" height="27" width="27" id="icone-whatsapp" /></span> / <?php echo $email = $viewData['email']; ?></h3>
+        <h3>Maiores Informações:<?php echo $fixo = $viewData['fixo']; ?> / <?php echo $celular = $viewData['celular']; ?><span><img src="<?php BASE_URL; ?>assets/images/whatsapp.png" height="27" width="27" /></span> / <?php echo $email = $viewData['email']; ?></h3>
     </div> 
   
 <?php foreach ($viewData['listimovel'] as $value): { ?>
@@ -25,7 +25,7 @@
 
             </a>
             <div class="caption">
-                <div class="texto-card">
+<div class="texto-card">
                      <h5><p><?php echo mb_strcut($value['breve_descricao'],0,200)?>... 
                              <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel']; ?>">
                                  Veja mais... 
@@ -86,4 +86,3 @@
 
 
 </div>
-

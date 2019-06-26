@@ -2,18 +2,6 @@
 
 class foto extends model {
 
-
-   public function corrigeOrientacao($url)
-{
-      $sql = "SELECT * FROM fotos WHERE url_imagem='$url'";
-            $sql = $this->db->query($sql);
-            if ($sql->rowCount() > 0) {
-                $row = $sql->fetch();
-          return $row;
-                
-            }
-    
-}
     public function excluirFoto($id) {
         $id_imovel = 0;
         $url_imagem = 0;
@@ -77,13 +65,11 @@ class foto extends model {
     public function listFotos($id_imovel) {
         try {
             $array = array();
-           $sql = "SELECT * FROM fotos WHERE id_imovel='$id_imovel' ORDER BY id ASC";
+            $sql = "SELECT * FROM fotos WHERE id_imovel='$id_imovel' ORDER BY id ASC";
 
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
-            }else{
-                
             }
             return $array;
         } catch (Exception $ex) {
@@ -149,6 +135,8 @@ class foto extends model {
         }
     }
 
+
+
     public function enviarUrlPrincipalImagem($id_imovel, $foto) {
         try {
 
@@ -204,64 +192,4 @@ class foto extends model {
         }
     }
 
-    public function excluirtodosFoto($id) {
-        
-        $array = array();
-      
-        try {
-            $sql = "SELECT id FROM imoveis WHERE codigo='$id'";
-
-            $sql = $this->db->query($sql);
-            if ($sql->rowCount() > 0) {
-                $row = $sql->fetch();
-                $id_imovel = $row['id'];
-                $sql = "SELECT url_imagem FROM fotos WHERE id_imovel='$id_imovel'";
-                $sql = $this->db->query($sql);
-                if ($sql->rowCount() > 0) {
-               
-                       $array = $sql->fetchAll();
-                        
-                }       
-                    
-                    foreach ( $array as $url) {
-
-                
-    
-                   if (is_file("upload/" . $url['url_imagem'])) {
-
-                       unlink("upload/" . $url['url_imagem']);
-                  }
-                }
-                
-            }
-
-            $sql = "DELETE FROM fotos WHERE id_imovel='$id_imovel'";
-
-           $sql = $this->db->query($sql);
-            if ($sql->rowCount() > 0) {
-               
-            }
-
-            return $id_imovel;
-        } catch (Exception $ex) {
-            echo "Falhou:" . $ex->getMessage();
-        }
-    }
-
-    public function updatefoto($id_foto,$contador,$url_imagem) {
-        
-         $sql = "UPDATE fotos SET contador= :contador WHERE id=:id";
-$sql->$this->db->prepare($sql);
-$sql->bindValue(":contator",$contador);
-$sql->bindValue(":id",$id_foto);
-$sql->execute();
-        
-       
-            if ($sql->rowCount() > 0) {
-               
-            }else{
-                return "nao deu certo";
-            }
-
-    }
 }

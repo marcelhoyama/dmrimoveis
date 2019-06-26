@@ -26,6 +26,6 @@
 
   </div>
   <div class="atencao">
-  <h3> Em manutenção, sem hospedagem de servidor de email, caso precise envio o link para  esse email: marecrisbr@gmail.com com Assunto redefinir senha o prazo de retorno 24 horas </h3>
+  
   </div>
 </form>

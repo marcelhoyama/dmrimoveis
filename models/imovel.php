@@ -2,11 +2,14 @@
 
 class imovel extends model {
 
-    public function cadastrarImovel($id_bairro, $id_tipoimovel, $id_tipo_assunto, $brevedescricao, $nivel, $foto, $fotos, $status) {
+    public function cadastrarImovel($id_bairro, $id_tipoimovel, $id_tipo_assunto,$valorimovel,$valoraluguel, $brevedescricao, $nivel, $foto, $fotos, $status) {
 
-        try {
+          try {
             $nome = '';
             $ultimoid = '';
+            $id_venda='0';
+            $tmpname='';
+            $id_aluga='0';
             $sql = "SELECT nome FROM tipos_imoveis WHERE id='$id_tipoimovel'";
             $sql = $this->db->query($sql);
 
@@ -29,52 +32,73 @@ class imovel extends model {
                     $codigo = $nome . '1';
                 }
 
-                if (!empty($foto['tmp_name'][0])) {
-
-                    $tipo = $foto['type'];
-$foto_original=$foto['tmp_name'];
-                    if (in_array($tipo, array('image/jpeg', 'image/png'))) {
-                        $tmpname = md5(time() . rand(0, 999)) . '.jpg';
-                        $diretorio = "upload/fotos_principais/";
-
-
-                        move_uploaded_file($foto_original, $diretorio . $tmpname);
-
-
-                        list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
-                        $ratio = $width_orig / $height_orig;
-                        $width = 500;
-                        $height = 500;
-                        if ($width / $height > $ratio) {
-                            $width = $height + $ratio;
-                        } else {
-                            $height = $width / $ratio;
-                        }
-
-                        $img = imagecreatetruecolor($width, $height);
-                        if ($tipo == 'image/jpeg') {
-                            $origi = imagecreatefromjpeg($diretorio . $tmpname);
-                        } elseif ($tipo == 'image/png') {
-                            $origi = imagecreatefrompng($diretorio . $tmpname);
-                        }
-
-                        imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
-                        imagejpeg($img, $diretorio . $tmpname, 80);
+                
+                if (!empty($valorimovel)) {
+                    $sql = "INSERT INTO vendas SET valor='$valorimovel' ";
+                   $sql = $this->db->query($sql);
+               
+                    if ($sql->rowCount() > 0) {
+                          $id_venda = $this->db->lastInsertId();
                     }
+                   
                 }
-                $sql = "INSERT INTO imoveis SET id_bairro='$id_bairro' ,"
+            
+            if (!empty($valoraluguel)) {
+                $sql = "INSERT INTO alugamse SET valor='$valoraluguel' ";
+                $sql = $this->db->query($sql);
+               
+
+                if ($sql->rowCount() > 0) {
+                    $id_aluga = $this->db->lastInsertId();
+                }
+            }
+                  if (!empty($foto['tmp_name'][0])) {
+
+                $tipo = $foto['type'];
+
+                if (in_array($tipo, array('image/jpeg', 'image/png'))) {
+                    $tmpname = md5(time() . rand(0, 999)) . '.jpg';
+                    $diretorio = "upload/fotos_principais/";
+
+                    move_uploaded_file($foto['tmp_name'], $diretorio . $tmpname);
+
+
+                    list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
+                    $ratio = $width_orig / $height_orig;
+                    $width = 500;
+                    $height = 500;
+                    if ($width / $height > $ratio) {
+                        $width = $height + $ratio;
+                    } else {
+                        $height = $width / $ratio;
+                    }
+
+                    $img = imagecreatetruecolor($width, $height);
+                    if ($tipo == 'image/jpeg') {
+                        $origi = imagecreatefromjpeg($diretorio . $tmpname);
+                    } elseif ($tipo == 'image/png') {
+                        $origi = imagecreatefrompng($diretorio . $tmpname);
+                    }
+
+                    imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
+                    imagejpeg($img, $diretorio . $tmpname, 80);
+                }
+                  }
+               print_r($sql = "INSERT INTO imoveis SET id_bairro='$id_bairro' ,"
                         . "id_tipo_imovel='$id_tipoimovel' ,"
                         . "id_tipo_assunto='$id_tipo_assunto' ,"
+                        . "id_venda='$id_venda',"
+                        . "id_aluga='$id_aluga',"
                         . "breve_descricao='$brevedescricao' ,"
                         . "url_foto_principal='$tmpname' ,"
                         . "nivel='$nivel' ,"
                         . "status='$status' ,"
                         . "codigo='$codigo' ,"
-                        . "data=curdate() ";
+                        . "data_cadastro=curdate() ");
 
                 $sql = $this->db->query($sql);
                 $id = $this->db->lastInsertId();
-
+                
                 if ($sql->rowCount() > 0) {
                     if (count($fotos) > 0) {
 
@@ -88,8 +112,6 @@ $foto_original=$foto['tmp_name'];
                                 $tmpname = md5(time() . rand(0, 999)) . '.jpg';
                                 $diretorio = "upload/";
 
-                                
-                                
                                 move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
 
                                 list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
@@ -126,7 +148,7 @@ $foto_original=$foto['tmp_name'];
                     }
                     return true;
                 } else {
-                    return false;
+                    return  false;
                 }
             }
         } catch (Exception $ex) {
@@ -134,41 +156,17 @@ $foto_original=$foto['tmp_name'];
         }
     }
 
-    public function corrigeOrientacao($url)
-{
- $filename=$url;   
-    $rotation = 0;
-
-   for($i=0;$i<$rotation;$i++){
-       
-      echo $rotation=90+$rotation;
-   }
-exit;
-    if ($rotation !== null) {
-        $target = imagecreatefromjpeg($filename);
-        $target = imagerotate($target, $rotation, 0);
-
-        //Salva por cima da imagem original
-        imagejpeg($target, $filename);
-
-        //libera da memória
-        imagedestroy($target);
-        $target = null;
-    }
-}
-    public function updateImovel($id_imovel, $id_tipo_imovel, $status, $id_tipo_assunto, $brevedescricao, $foto, $fotos, $nivel, $id_bairro) {
+    public function updateImovel($id_imovel, $id_tipo_imovel, $status, $id_tipo_assunto, $brevedescricao,$foto, $fotos, $nivel, $id_bairro) {
         try {
-            $array = array();
-            if (!empty($foto['tmp_name'][0])) {
+          $array=array();
+  if (!empty($foto['tmp_name'][0])) {
 
-                
                 $tipo = $foto['type'];
 
                 if (in_array($tipo, array('image/jpeg', 'image/png'))) {
                     $tmpname = md5(time() . rand(0, 999)) . '.jpg';
                     $diretorio = "upload/fotos_principais/";
 
-                    
                     move_uploaded_file($foto['tmp_name'], $diretorio . $tmpname);
 
 
@@ -192,31 +190,31 @@ exit;
                     imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
                     imagejpeg($img, $diretorio . $tmpname, 80);
                 }
-                $sql = "UPDATE imoveis SET id_tipo_imovel='$id_tipo_imovel', "
-                        . "id_tipo_assunto='" . $id_tipo_assunto . "', "
-                        . "breve_descricao='$brevedescricao' ,"
-                        . "url_foto_principal='$tmpname' ,"
-                        . "nivel='$nivel' ,"
-                        . "status='$status' ,"
-                        . "id_bairro='$id_bairro'"
-                        . "WHERE id ='$id_imovel'";
-            } else {
-                $sql = "UPDATE imoveis SET id_tipo_imovel='$id_tipo_imovel', "
-                        . "id_tipo_assunto='" . $id_tipo_assunto . "', "
-                        . "breve_descricao='$brevedescricao' ,"
-                        . "nivel='$nivel' ,"
-                        . "status='$status' ,"
-                        . "id_bairro='$id_bairro'"
-                        . "WHERE id ='$id_imovel'";
-            }
-
+                   $sql = "UPDATE imoveis SET id_tipo_imovel='$id_tipo_imovel', "
+                    . "id_tipo_assunto='" . $id_tipo_assunto . "', "
+                    . "breve_descricao='$brevedescricao' ,"
+                    . "url_foto_principal='$tmpname' ,"
+                    . "nivel='$nivel' ,"
+                    . "status='$status' ,"
+                    . "id_bairro='$id_bairro'"
+                    . "WHERE id ='$id_imovel'";
+                  }else{
+                        $sql = "UPDATE imoveis SET id_tipo_imovel='$id_tipo_imovel', "
+                    . "id_tipo_assunto='" . $id_tipo_assunto . "', "
+                    . "breve_descricao='$brevedescricao' ,"
+                    . "nivel='$nivel' ,"
+                    . "status='$status' ,"
+                    . "id_bairro='$id_bairro'"
+                    . "WHERE id ='$id_imovel'"; 
+                  }
+    
 
             $sql = $this->db->query($sql);
 
 
 
             if ($sql->rowCount() >= 0) {
-
+                
                 if (count($fotos) > 0) {
 
                     for ($q = 0; $q < count($fotos['tmp_name']); $q++) {
@@ -229,8 +227,7 @@ exit;
                             $tmpname = md5(time() . rand(0, 999)) . '.jpg';
                             $diretorio = "upload/";
 
-                         
-                            move_uploaded_file(corrigeOrientacao($fotos['tmp_name'][$q], $diretorio . $tmpname));
+                            move_uploaded_file($fotos['tmp_name'][$q], $diretorio . $tmpname);
 
                             list($width_orig, $height_orig) = getimagesize($diretorio . $tmpname);
                             $ratio = $width_orig / $height_orig;
@@ -253,10 +250,11 @@ exit;
                             imagecopyresampled($img, $origi, 0, 0, 0, 0, $width, $height, $width_orig, $height_orig);
                             imagejpeg($img, $diretorio . $tmpname, 80);
 
-                            $sql1 = "INSERT INTO fotos SET id_imovel='$id_imovel', url_imagem='$tmpname'";
+                           $sql1 = "INSERT INTO fotos SET id_imovel='$id_imovel', url_imagem='$tmpname'";
 
                             $sql1 = $this->db->query($sql1);
                             if ($sql1->rowCount() > 0) {
+
                                 
                             } else {
                                 
@@ -264,17 +262,19 @@ exit;
                         }
                     }
                 }
-
-                $array = $sql->fetch();
+                
+                $array=$sql->fetch();
                 return $array;
-            } else {
+            }else{
                 
             }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
     }
-
+   
+    
+    
     public function pesquisarImovelClienteNome($cliente) {
         $array = array();
         $sql = " SELECT c.nome,c.id,c.telefone,c.telefone2,i.tipo_imovel,i.id as id_imovel, COUNT(i.id_cliente) as totalimovel,d.item FROM imoveis i "
@@ -313,10 +313,10 @@ exit;
     public function listImovelVenda() {
         try {
             $array = array();
-            $sql = "SELECT *,i.id as id_imovel,ti.nome as tipo_imovel FROM imoveis i "
+            $sql = "SELECT *,ta.nome as assunto_nome,i.id as id_imovel,ti.nome as tipo_imovel FROM imoveis i "
                     . "JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel "
                     . "JOIN tipos_assuntos ta ON ta.id=i.id_tipo_assunto "
-                    . "WHERE ta.nome ='Venda' AND ti.nome='Residencial' AND i.status = 'Liberado'  ";
+                    . "WHERE ta.nome ='Venda' AND i.status = 'Liberado'  ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
@@ -330,7 +330,7 @@ exit;
     public function listImovelaluguel() {
         try {
             $array = array();
-            $sql = "SELECT *,i.id as id_imovel,ti.nome as tipo_imovel FROM imoveis i "
+            $sql = "SELECT *,ta.nome as assunto_nome,i.id as id_imovel,ti.nome as tipo_imovel FROM imoveis i "
                     . "JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel "
                     . "JOIN tipos_assuntos ta ON ta.id=i.id_tipo_assunto "
                     . "WHERE ta.nome ='Aluga' AND i.status = 'Liberado'  ";
@@ -364,11 +364,11 @@ exit;
     public function listImovelMisto() {
         try {
             $array = array();
-            $sql = "SELECT *,i.id as id_imovel, ti.id as id_tipo_imovel,ti.nome as tipo_imovel FROM imoveis i "
+            $sql = "SELECT *,ta.nome as assunto_nome,i.id as id_imovel, ti.id as id_tipo_imovel,ti.nome as tipo_imovel FROM imoveis i "
                     . "JOIN tipos_imoveis ti "
                     . "ON i.id_tipo_imovel=ti.id "
                     . "JOIN tipos_assuntos ta ON ta.id=i.id_tipo_assunto "
-                    . "WHERE i.status='Liberado' ";
+                    . "  WHERE i.status='Liberado' ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
@@ -531,11 +531,11 @@ exit;
                     $filtrostring[] = "i.venda BETWEEN '$preco1' AND '$preco2'";
                 }
             }
-            if (!empty($filtros['todos'])) {
-                $filtrostring[] = "";
+            if(!empty($filtros['todos'])){
+                $filtrostring[]="";
             }
 
-            $sql = "SELECT *,i.id as id_imovel,i.codigo as codigo,i.id as id_imovel,ti.nome as tipoimovel,b.nome as bairro, c.nome as cidade,es.nome as estado FROM imoveis i "
+          $sql = "SELECT *,i.id as id_imovel,i.codigo as codigo,i.id as id_imovel,ti.nome as tipoimovel,b.nome as bairro, c.nome as cidade,es.nome as estado FROM imoveis i "
                     . "JOIN bairros b ON b.id=i.id_bairro "
                     . "JOIN cidades_bairros cb ON b.id=cb.id_bairro "
                     . "JOIN cidades c ON c.id=cb.id_cidade "
@@ -554,8 +554,7 @@ exit;
             echo "Falhou:" . $ex->getMessage();
         }
     }
-
-    public function buscarImovelfull($filtros) {
+ public function buscarImovelfull($filtros) {
         try {
             $array = array();
 
@@ -580,35 +579,35 @@ exit;
             }
 
             if (!empty($filtros['assunto'])) {
-                if ($filtros['assunto'] == 'Todos') {
-                    $filtrostring[] = "1=1";
-                } else {
-                    $filtrostring[] = "ta.nome='" . $filtros['assunto'] . "'";
+                          if($filtros['assunto']== 'Todos'){
+                              $filtrostring[] = "1=1";
+                 }else{
+                $filtrostring[] = "ta.nome='" . $filtros['assunto'] . "'";
+                     }
                 }
-            }
-            /*   if (!empty($filtros['valorimovel'])) {
-              $preco = explode("-", $filtros['valorimovel']);
-              $preco1 = $preco[0];
-              $preco2 = $preco[1];
-              if ($preco2 == '2001') {
-              $filtrostring[] = "i.venda > '$preco1'";
-              } else {
-              $filtrostring[] = "i.venda BETWEEN '$preco1' AND '$preco2'";
-              }
-              } */
-            if (!empty($filtros['data'])) {
-                // $data = explode("-", $filtros['datas']);
-
-                $filtrostring[] = "i.data = '" . $filtros['data'] . "'";
-            }
-
-            if (!empty($filtros['status'])) {
-                // $data = explode("-", $filtros['datas']);
-
-                $filtrostring[] = "i.status = '" . $filtros['status'] . "'";
-            }
-
-
+         /*   if (!empty($filtros['valorimovel'])) {
+                $preco = explode("-", $filtros['valorimovel']);
+                $preco1 = $preco[0];
+                $preco2 = $preco[1];
+                if ($preco2 == '2001') {
+                    $filtrostring[] = "i.venda > '$preco1'";
+                } else {
+                    $filtrostring[] = "i.venda BETWEEN '$preco1' AND '$preco2'";
+                }
+            } */
+             if (!empty($filtros['data'])) {
+               // $data = explode("-", $filtros['datas']);
+               
+                    $filtrostring[] = "i.data = '".$filtros['data']."'";
+                }
+                
+                 if (!empty($filtros['status'])) {
+               // $data = explode("-", $filtros['datas']);
+               
+                    $filtrostring[] = "i.status = '".$filtros['status']."'";
+                }
+            
+         
 
             $sql = "SELECT *,i.id as id_imovel,i.codigo as codigo,i.id as id_imovel,ti.nome as tipoimovel,b.nome as bairro, c.nome as cidade FROM imoveis i "
                     . "JOIN bairros b ON b.id=i.id_bairro "
@@ -629,7 +628,6 @@ exit;
             echo "Falhou:" . $ex->getMessage();
         }
     }
-
     public function listDormitorio() {
         try {
             $array = array();
@@ -706,6 +704,8 @@ exit;
         }
     }
 
+ 
+
     public function listAluguel() {
         try {
             $array = array();
@@ -769,98 +769,93 @@ exit;
 
     public function totalImovel() {
         try {
-            $array = array();
+            $array=array();
             $sql = "SELECT COUNT(id)as total FROM imoveis ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetch();
-
+               $array = $sql->fetch();
+            
                 return $array;
             }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
     }
-
-    public function totalvenda() {
+     public function totalvenda() {
         try {
-            $array = array();
+            $array=array();
             $sql = "SELECT COUNT(id_tipo_assunto)as total FROM imoveis where id_tipo_assunto=1";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetch();
-
+               $array = $sql->fetch();
+            
                 return $array;
             }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
     }
-
     public function totalaluga() {
         try {
-            $array = array();
+            $array=array();
             $sql = "SELECT COUNT(id_tipo_assunto)as total FROM imoveis where id_tipo_assunto=2";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetch();
-
+               $array = $sql->fetch();
+            
                 return $array;
             }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
     }
-
     public function totalstatuslivre() {
         try {
-            $array = array();
+            $array=array();
             $sql = "SELECT COUNT(status)as total FROM imoveis where status='Liberado'";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetch();
-
+               $array = $sql->fetch();
+            
                 return $array;
             }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
     }
-
     public function totalstatusbloqueado() {
         try {
-            $array = array();
+            $array=array();
             $sql = "SELECT COUNT(status)as total FROM imoveis where status='Bloqueado'";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetch();
-
+               $array = $sql->fetch();
+            
                 return $array;
             }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }
     }
-
-    public function listTiposImoveis2() {
+    
+    public function listTiposImoveis2(){
         try {
-            $array = array();
+            $array=array();
             $sql = "SELECT * FROM tipos_imoveis";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetchAll();
-
+               $array = $sql->fetchAll();
+            
                 return $array;
             }
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
-        }
+        } 
     }
-
     
-    public function excluirImovel($id_imovel) {
-
-       try {
+    
+    public function excluirImovel($id_imovel){
+    try {
             $row = array();
             $sql = "SELECT * FROM fotos WHERE id_imovel='$id_imovel'";
             $sql = $this->db->query($sql);
@@ -929,8 +924,8 @@ exit;
             echo "Falhou:" . $ex->getMessage();
         }
     }
-
-    public function datas() {
+    
+      public function datas() {
         try {
             $array = array();
             $sql = "SELECT * FROM imoveis WHERE data IS NOT NULL GROUP BY data";
@@ -943,21 +938,19 @@ exit;
             echo "Falhou:" . $ex->getMessage();
         }
     }
-
-    public function listStatus() {
-        try {
-            $array = array();
-            $sql = "SELECT status FROM imoveis GROUP BY status";
-            $sql = $this->db->query($sql);
+      public function listStatus(){
+        try{
+            $array=array();
+            $sql="SELECT status FROM imoveis GROUP BY status";
+             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
-                $array = $sql->fetchAll();
-                return $array;
+                $array=$sql->fetchAll();
+                return $array; 
+            }
+        } catch (Exception $ex) {
+  echo "Falhou:" . $ex->getMessage();
+        }
+        
+    }
 
 }
-        } catch(Exception $e){
-            
-            echo "Falhou:".$e->getMessage();
-        }
-        }
-}
-        

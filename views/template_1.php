@@ -97,5 +97,4 @@
     <script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/validarcampos.js"></script>
 <div class="rodape">
     DMRIMOVEISCABREUVA © <?php echo date('Y'); ?> Todos Direitos Reservados. Desenvolvido por <a style="" href="http://www.devmg.pe.hu">Marcel Hoyama</a>
-
 </div>

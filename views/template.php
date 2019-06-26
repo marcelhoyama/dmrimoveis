@@ -9,7 +9,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://dmrimoveiscabreuva.com.br">
 <meta property="og:title" content="Imoveis em Cabreúva e Região você encontra aqui... ">
-<meta property="og:site_name" content="Imoveis em Cabreúva e Região você encontra aqui...">
+<meta property="og:site_name" content="Casas, chacará, Terrenos, Galpão em Cabreúva e Região | DMR Imoveis">
 <meta property="og:description" content="Quer ter segurança ao comprar ou Alugar um imóvel e ainda oferecer o melhor serviço e  atendimento,entender a sua necessidade e a partir daí apresentar o melhor negócio para o seu perfil?  Agente uma visita conosco!">
 <meta property="og:image" content="https://dmrimoveiscabreuva.com.br/assets/images/logo.jpeg">
             <meta property="og:image:type" content="image/jpeg">
@@ -57,7 +57,7 @@
                     </button>
 
                     <a href="./" id="navbar-titulo" class="navbar-brand"> Imóveis em Cabreúva aqui </a>
-                    <a href="https://www.facebook.com/negociosemcabreuva/" id="navbar-icone-facebook" class="navbar-nav"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="32" height="32" style="margin-top: 8px"/></a>
+                    <a href="https://www.facebook.com/dmrimoveiscabreuva/" id="navbar-icone-facebook" class="navbar-nav"><img src="<?php BASE_URL; ?>assets/images/facebookcolor.png" width="32" height="32" style="margin-top: 8px"/></a>
 
 
                 </div>

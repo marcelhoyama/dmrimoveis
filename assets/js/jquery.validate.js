@@ -1598,5 +1598,4 @@ if ( $.ajaxPrefilter ) {
 	};
 }
 return $;
-
 }));

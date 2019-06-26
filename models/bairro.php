@@ -5,7 +5,6 @@ class bairro extends model {
     public function verificarBairro($id_cidade, $nome) {
         try {
 
-
             $sql = "SELECT id FROM bairros WHERE nome= :nome";
 
             $sql = $this->db->prepare($sql);
@@ -67,9 +66,6 @@ class bairro extends model {
             if ($sql->rowCount() > 0) {
                 
             }
-
-           
-
         } catch (Exception $ex) {
             echo "Falhou:" . $ex->getMessage();
         }

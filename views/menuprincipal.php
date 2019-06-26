@@ -41,17 +41,14 @@
 </div>
     <hr class="divider">
     <div class="row">
-  
-        <ul class="list-group">
-            <li class="list-group-item">
+    <div class="col-sm-2">
    <?php $totalimovel=$viewData['totalimovel']; ?>
         <label>Total de Imovel: </label><span class="badge"> <?php echo $totalimovel['total'];?></span>
-        </li>
-     
-        <li class="list-group-item">
+        </div>
+        <div class="col-sm-2">
         <?php $totalimovel=$viewData['totalvenda']; ?>
             <label>Total de Venda: </label><span class="badge"> <?php echo $totalvenda['total'];?></span>
-        </li>
+        </div>
         <div class="col-sm-2">
  <?php $totalimovel=$viewData['totalaluga']; ?>
 
@@ -66,10 +63,7 @@
             <?php $totalstatusbloqueado=$viewData['totalbloqueado'];?> 
             <label>Total Bloqueado: </label><span class="badge"> <?php echo $totalstatusbloqueado['total'];?></span>
         </div>
-        </ul>
     </div>
 </div>
   
-
-
 

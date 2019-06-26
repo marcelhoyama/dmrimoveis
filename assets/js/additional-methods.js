@@ -29,7 +29,7 @@
         $.validator.addMethod("isString", function(value,element) {
               
 
-               return this.optional(element) || /[A-Za-z]+$/.test(value);
+               return this.optional(element) || /[A-Za-zÀ-ú0-9 ']+$/.test(value);
            }, "Por favor insira somente caracteres alfabeticos");
 
         $.validator.addMethod("maxWords", function (value, element, params) {
@@ -1160,5 +1160,4 @@
         return this.optional(element) || /^90[2-5]\d\{2\}-\d{4}$/.test(value);
     }, "Your ZIP-code must be in the range 902xx-xxxx to 905xx-xxxx");
     return $;
-
 }));

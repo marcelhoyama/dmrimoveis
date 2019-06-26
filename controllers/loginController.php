@@ -9,15 +9,16 @@ class loginController extends controller {
     public function index() {
         $dados = array('erro' => '');
        
-           
+               $c = new corretor();
+               $c->verificarLogin2();
  // Verifica se esta apontando e nao esta vazios
         if (isset($_POST['email']) &&  empty($_POST['email'])==false) {
           
 
-                  $email = trim(addslashes($_POST['email'])); //proteger de sql injection
-                  $senha = md5(trim(addslashes($_POST['senha'])));
+                 $email = trim(addslashes($_POST['email'])); //proteger de sql injection
+                 $senha = md5(trim(addslashes($_POST['senha'])));
 
-                  $c = new corretor();
+              
              $dados['erro']=$c->doLogin($email,$senha);
                          
                   }
