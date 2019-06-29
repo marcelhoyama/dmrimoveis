@@ -229,12 +229,12 @@
                                            echo $value['assunto_nome'];
                                                 ?> </h3>
 
-                                            <h5><p><?php echo mb_strcut($value['breve_descricao'],0,100)."...Veja mais...clique no botão."; ?> </p></h5>
+                                            <h5><p><?php echo mb_strcut($value['breve_descricao'],0,100); ?>...<a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >Veja mais</a> </p></h5>
                                            
 Valor R$ <?php echo $value['venda']; ?>
 
 </div>
-                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg btn-block" >Tenho Interesse</button>  </a>
+                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg " >Tenho Interesse</button>  </a>
 
                                         </div>
 
@@ -328,9 +328,9 @@ Valor R$ <?php echo $value['venda']; ?>
                                         <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >
 
                                             <?php if (!empty($value['url_foto_principal'])): { ?>
-                                                    <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class=" img-rounded img-fluid">
+                                                    <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class="img-fluid">
                                                 <?php } else: ?>
-                                                <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid">
+                                                <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-fluid">
         <?php endif; ?>
 
                                         </a>
@@ -341,12 +341,12 @@ Valor R$ <?php echo $value['venda']; ?>
                                               echo $value['assunto_nome'];
                                                 ?> </h3>
 
-                                            <h5><p><?php echo mb_strcut($value['breve_descricao'],0,200)."...Veja mais...clique no botão."; ?> </p></h5>
+                                            <h5><p><?php echo mb_strcut($value['breve_descricao'],0,100); ?>...<a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >Veja mais</a> </p></h5>
                                           
 
-
+ Valor R$ <?php $value['venda']; ?>
 </div>
-                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-default btn-lg btn-block" >Tenho Interesse</button>  </a>
+                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg" >Tenho Interesse</button>  </a>
 
                                         </div>
 
@@ -401,9 +401,9 @@ Valor R$ <?php echo $value['venda']; ?>
                                         <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >
 
                                             <?php if (!empty($value['url_foto_principal'])): { ?>
-                                                    <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class=" img-rounded img-fluid">
+                                                    <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class="img-fluid">
                                                 <?php } else: ?>
-                                                <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid">
+                                                <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class="img-fluid">
         <?php endif; ?>
 
                                         </a>
@@ -415,12 +415,12 @@ Valor R$ <?php echo $value['venda']; ?>
                                               echo $value['assunto_nome'];
                                                 ?> </h3>
 
-                                            <h5><p><?php echo mb_strcut($value['breve_descricao'],0,200)."...Veja mais...clique no botão."; ?> </p></h5>
+                                                <h5><p><?php echo mb_strcut($value['breve_descricao'],0,100); ?> "...<a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >Veja mais</a></p></h5>
                                            
 
-
+                                                <?php if(empty($value['aluguel'])){ ?>Valor R$<?php echo $value['venda'];} elseif(empty($value['venda'])){?>Valor R$<?php echo $value['aluguel'];} else{ ?>Venda R$ <?php echo $value['venda'];?> / Aluga R$<?php echo $value['aluguel'];} ?>
 </div>
-                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-default btn-lg btn-block" >Tenho Interesse</button>  </a>
+                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg " >Tenho Interesse</button>  </a>
 
                                         </div>
 

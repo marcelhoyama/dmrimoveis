@@ -75,7 +75,7 @@
                     <option></option>
                     <?php foreach ($viewData['datas'] as $value): ?>
                      
-                        <option value="<?php echo $value['data']; ?>" <?php echo ($value['data'] == $filtros['data']) ? 'selected="selected"' : ''; ?>> <?php  $nova_data= explode("-", $value['data']); 
+                        <option value="<?php echo $value['data_cadastro']; ?>" <?php echo ($value['data_cadastro'] == $filtros['data']) ? 'selected="selected"' : ''; ?>> <?php  $nova_data= explode("-", $value['data_cadastro']); 
         echo $nova_data[2]."/".$nova_data[1]."/".$nova_data[0];?></option>
                     <?php endforeach; ?>
                 </select>
@@ -184,7 +184,7 @@
                                 - <?php echo $value['cidade']; ?>
                             </td>
                             <td>
-                                   <?php  $nova_data= explode("-", $value['data']); 
+                                   <?php  $nova_data= explode("-", $value['data_cadastro']); 
         echo $nova_data[2]."/".$nova_data[1]."/".$nova_data[0];?>
 
                             </td>
@@ -254,7 +254,7 @@
                                 -<?php echo $value1['cidade']; ?>
                             </td>
                             <td>
-        <?php  $nova_data= explode("-", $value1['data']); 
+        <?php  $nova_data= explode("-", $value1['data_cadastro']); 
         echo $nova_data[2]."/".$nova_data[1]."/".$nova_data[0];?>
 
                             </td>

@@ -93,6 +93,7 @@
                 <label for="cidade">Cidade:</label>  <label class="text-danger">campo obrigatorio*</label>
                 <input name="cidade" type="text" class="form-control" id="cidade" placeholder="" value="<?php echo $value1['cidade'] ?>" required="">
             </div>
+           
             <!-- <div class="form-group col-sm-3">
                  <label for="estado">Estado:</label>  <label class="text-danger">campo obrigatorio*</label>
                  <select name="estado" id="estado" class="form-control" required="">
@@ -113,6 +114,24 @@
 
 
         </div>
+          <div class="well">
+              <div id="valorImovel">
+            <label for="valorimovel">Valor do Imóvel:</label>
+            <div class="form-group col-sm-4 input-group">
+
+                <span class="input-group-addon">R$</span>
+                <input name="valorimovel" type="text" class="form-control" id="valor" value="<?php echo $value1['venda'] ?>" />
+            </div>
+              </div>
+              <div id="valorAluguel">
+            <label for="valoraluguel">Valor do Aluguel:</label>
+            <div class="form-group col-sm-4 input-group">
+
+                <span class="input-group-addon">R$</span>
+                <input name="valoraluguel" type="text" class="form-control" id="valor2" value="<?php echo $value1['aluguel'] ?>" /> 
+            </div>
+         </div> 
+          </div>
         <div class="form-group col-md">
             <label for="brevedescricao">Breve descrição do imovel:</label> 
 

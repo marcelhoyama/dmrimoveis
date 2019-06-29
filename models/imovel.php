@@ -7,9 +7,9 @@ class imovel extends model {
           try {
             $nome = '';
             $ultimoid = '';
-            $id_venda='0';
+           // $id_venda='0';
             $tmpname='';
-            $id_aluga='0';
+           // $id_aluga='0';
             $sql = "SELECT nome FROM tipos_imoveis WHERE id='$id_tipoimovel'";
             $sql = $this->db->query($sql);
 
@@ -33,25 +33,25 @@ class imovel extends model {
                 }
 
                 
-                if (!empty($valorimovel)) {
-                    $sql = "INSERT INTO vendas SET valor='$valorimovel' ";
-                   $sql = $this->db->query($sql);
-               
-                    if ($sql->rowCount() > 0) {
-                          $id_venda = $this->db->lastInsertId();
-                    }
-                   
-                }
-            
-            if (!empty($valoraluguel)) {
-                $sql = "INSERT INTO alugamse SET valor='$valoraluguel' ";
-                $sql = $this->db->query($sql);
-               
-
-                if ($sql->rowCount() > 0) {
-                    $id_aluga = $this->db->lastInsertId();
-                }
-            }
+//                if (!empty($valorimovel)) {
+//                    $sql = "INSERT INTO vendas SET valor='$valorimovel' ";
+//                   $sql = $this->db->query($sql);
+//               
+//                    if ($sql->rowCount() > 0) {
+//                          $id_venda = $this->db->lastInsertId();
+//                    }
+//                   
+//                }
+//            
+//            if (!empty($valoraluguel)) {
+//                $sql = "INSERT INTO alugamse SET valor='$valoraluguel' ";
+//                $sql = $this->db->query($sql);
+//               
+//
+//                if ($sql->rowCount() > 0) {
+//                    $id_aluga = $this->db->lastInsertId();
+//                }
+//            }
                   if (!empty($foto['tmp_name'][0])) {
 
                 $tipo = $foto['type'];
@@ -84,17 +84,17 @@ class imovel extends model {
                     imagejpeg($img, $diretorio . $tmpname, 80);
                 }
                   }
-               print_r($sql = "INSERT INTO imoveis SET id_bairro='$id_bairro' ,"
+               $sql = "INSERT INTO imoveis SET id_bairro='$id_bairro' ,"
                         . "id_tipo_imovel='$id_tipoimovel' ,"
                         . "id_tipo_assunto='$id_tipo_assunto' ,"
-                        . "id_venda='$id_venda',"
-                        . "id_aluga='$id_aluga',"
+                        . "venda='$valorimovel',"
+                        . "aluguel='$valoraluguel',"
                         . "breve_descricao='$brevedescricao' ,"
                         . "url_foto_principal='$tmpname' ,"
                         . "nivel='$nivel' ,"
                         . "status='$status' ,"
                         . "codigo='$codigo' ,"
-                        . "data_cadastro=curdate() ");
+                        . "data_cadastro=curdate() ";
 
                 $sql = $this->db->query($sql);
                 $id = $this->db->lastInsertId();
@@ -156,7 +156,7 @@ class imovel extends model {
         }
     }
 
-    public function updateImovel($id_imovel, $id_tipo_imovel, $status, $id_tipo_assunto, $brevedescricao,$foto, $fotos, $nivel, $id_bairro) {
+    public function updateImovel($id_imovel, $id_tipo_imovel, $status, $id_tipo_assunto,$valorimovel, $valoraluguel, $brevedescricao,$foto, $fotos, $nivel, $id_bairro) {
         try {
           $array=array();
   if (!empty($foto['tmp_name'][0])) {
@@ -192,6 +192,8 @@ class imovel extends model {
                 }
                    $sql = "UPDATE imoveis SET id_tipo_imovel='$id_tipo_imovel', "
                     . "id_tipo_assunto='" . $id_tipo_assunto . "', "
+                    . "venda='$valorimovel',"
+                    . "aluguel='$valoraluguel',"
                     . "breve_descricao='$brevedescricao' ,"
                     . "url_foto_principal='$tmpname' ,"
                     . "nivel='$nivel' ,"
@@ -201,6 +203,8 @@ class imovel extends model {
                   }else{
                         $sql = "UPDATE imoveis SET id_tipo_imovel='$id_tipo_imovel', "
                     . "id_tipo_assunto='" . $id_tipo_assunto . "', "
+                    . "venda='$valorimovel',"
+                    . "aluguel='$valoraluguel',"
                     . "breve_descricao='$brevedescricao' ,"
                     . "nivel='$nivel' ,"
                     . "status='$status' ,"
@@ -316,7 +320,7 @@ class imovel extends model {
             $sql = "SELECT *,ta.nome as assunto_nome,i.id as id_imovel,ti.nome as tipo_imovel FROM imoveis i "
                     . "JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel "
                     . "JOIN tipos_assuntos ta ON ta.id=i.id_tipo_assunto "
-                    . "WHERE ta.nome ='Venda' AND i.status = 'Liberado'  ";
+                    . "WHERE ta.nome ='Venda' AND i.status = 'Liberado' ORDER BY data_cadastro DESC  ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
@@ -333,7 +337,7 @@ class imovel extends model {
             $sql = "SELECT *,ta.nome as assunto_nome,i.id as id_imovel,ti.nome as tipo_imovel FROM imoveis i "
                     . "JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel "
                     . "JOIN tipos_assuntos ta ON ta.id=i.id_tipo_assunto "
-                    . "WHERE ta.nome ='Aluga' AND i.status = 'Liberado'  ";
+                    . "WHERE ta.nome ='Aluga' AND i.status = 'Liberado' ORDER BY data_cadastro DESC ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
@@ -368,7 +372,7 @@ class imovel extends model {
                     . "JOIN tipos_imoveis ti "
                     . "ON i.id_tipo_imovel=ti.id "
                     . "JOIN tipos_assuntos ta ON ta.id=i.id_tipo_assunto "
-                    . "  WHERE i.status='Liberado' ";
+                    . "  WHERE i.status='Liberado'ORDER by RAND() ASC ";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();
@@ -598,7 +602,7 @@ class imovel extends model {
              if (!empty($filtros['data'])) {
                // $data = explode("-", $filtros['datas']);
                
-                    $filtrostring[] = "i.data = '".$filtros['data']."'";
+                    $filtrostring[] = "i.data_cadastro = '".$filtros['data']."'";
                 }
                 
                  if (!empty($filtros['status'])) {
@@ -608,15 +612,14 @@ class imovel extends model {
                 }
             
          
-
-            $sql = "SELECT *,i.id as id_imovel,i.codigo as codigo,i.id as id_imovel,ti.nome as tipoimovel,b.nome as bairro, c.nome as cidade FROM imoveis i "
+                $sql = "SELECT *,i.id as id_imovel,i.codigo as codigo,i.id as id_imovel,ti.nome as tipoimovel,b.nome as bairro, c.nome as cidade FROM imoveis i "
                     . "JOIN bairros b ON b.id=i.id_bairro "
                     . "JOIN cidades_bairros cb ON b.id=cb.id_bairro "
                     . "JOIN cidades c ON c.id=cb.id_cidade "
                     . "JOIN estados es ON es.id=c.id_estado "
                     . "JOIN tipos_assuntos ta ON ta.id=i.id_tipo_assunto "
                     . "JOIN tipos_imoveis ti ON ti.id=i.id_tipo_imovel WHERE " . implode(' AND ', $filtrostring) . " GROUP BY i.id ";
-
+            
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -928,7 +931,7 @@ class imovel extends model {
       public function datas() {
         try {
             $array = array();
-            $sql = "SELECT * FROM imoveis WHERE data IS NOT NULL GROUP BY data";
+            $sql = "SELECT * FROM imoveis WHERE data_cadastro IS NOT NULL GROUP BY data_cadastro";
             $sql = $this->db->query($sql);
             if ($sql->rowCount() > 0) {
                 $array = $sql->fetchAll();

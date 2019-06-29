@@ -63,7 +63,8 @@ class editarimovelController extends controller {
                 $brevedescricao = addslashes($_POST['brevedescricao']);
 
                 $nivel = addslashes($_POST['nivel']);
-
+$valorimovel= addslashes(trim($_POST['valorimovel']));
+$valoraluguel= addslashes(trim($_POST['valoraluguel']));
                 //aqui eh tratar o nome das fotos enviados
                 //se contagem as fotos for maior de 0 faça que o nome do arquivo seja mudado com o tempo(relogio) crie criptografia randomica
                 // e salve no diretorio upload   com o comando especifico do PHP
@@ -85,7 +86,7 @@ class editarimovelController extends controller {
 
 // fim do envio de imagem;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-                $dado=$i->updateImovel($_GET['id'], $id_tipo_imovel, $status, $id_tipo_assunto, $brevedescricao,$foto, $fotos, $nivel, $id_bairro);
+                $dados=$i->updateImovel($_GET['id'], $id_tipo_imovel, $status, $id_tipo_assunto,$valorimovel, $valoraluguel, $brevedescricao,$foto, $fotos, $nivel, $id_bairro);
 
           //     header("Location:".BASE_URL."editarimovel?id=".$dado['id']);
 $dados['ok'] = 'Alterado com Sucesso';
