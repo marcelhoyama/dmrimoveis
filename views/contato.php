@@ -1,7 +1,7 @@
 
-<title>Contato - DMR Imóveis - Negócios Imobiliários em Cabreúva</title>
-<div class="container-fluid">
-    <h2 class="text-center">Ficou com Duvidas? Faça seu Cadastro, logo entraremos em contato...</h2></br>
+
+<div class="container mt-5">
+    <h2 class="text-center pt-5">Ficou com Duvidas? Faça seu Cadastro, logo entraremos em contato...</h2>
     <div class="danger">
             <?php if (isset($erro) && !empty($erro)): ?>
                 <div class="alert alert-danger"><?php echo $erro; ?></div> 
@@ -12,6 +12,9 @@
                 <div class="alert alert-success"><?php echo $ok; ?></div> 
             <?php endif; ?>
         </div>
+    
+    
+    
     <form id="cadastrarcontato" class="form-group-sm" method="POST">
         <div class="form-group">
             <label for="assunto">Assunto:*</label>
@@ -60,7 +63,7 @@
 
 <div class="form-group">
             <label for="mensagem">Mensagem:</label>
-            <textarea name="mensagem" type="text" class="form-control" id="mensagem" placeholder="digite sua mensagem" rows="10"></textarea>
+            <textarea name="mensagem" type="text" class="form-control" id="mensagem" placeholder="digite sua mensagem" rows="7"></textarea>
         </div>
 
         <div class="form-group">
@@ -79,19 +82,20 @@
             <?php endif; ?>
         </div>
     </form>
+    
 
-    <div class="form-group">
-        <address class="text-info address">
-            <h2>Onde nos encontrar?</h2>    
+   
+        <address class=" address">
+            <h2 class="py-5">Onde nos encontrar?</h2>    
             Endereço: <?php echo $value=$viewData['endereco']; ?></br>
             Telefone fixo:   <?php echo $value = $viewData['telefone']; ?></br>
-            Celular: <?php echo $value = $viewData['celular']; ?><span><img src="<?php BASE_URL;?>assets/images/whatsapp.png " width="30" height="30"/></span></br>
+            Celular:<a href="https://api.whatsapp.com/send?phone=55971714356&text=Ola!%20Fiquei%20interessado%20no%20seu%20serviço!"> <?php echo $value = $viewData['celular']; ?><span><img src="<?php BASE_URL;?>assets/images/whatsapp.png " width="30" height="30"/></span></a></br>
             Email: <?php echo $value = $viewData['email']; ?></br>
             Horário de Funcionamento: 
             <?php echo $value = $viewData['horario']; ?></br>
         </address>
         <hr/>
-        <img src="<?php BASE_URL ?>assets/images/escritorio_frontal.jpeg" width="400" height="400" class="img-rounded img-responsive">
+        <img src="<?php BASE_URL ?>assets/images/escritorio_frontal.jpeg" width="400" height="400" class="img-rounded img-responsive pb-3">
         <br>
 
         <div class="mapa">
@@ -106,6 +110,6 @@
         <div class="mapamobile3">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5184.473857684476!2d-47.06143004449243!3d-23.243937779958838!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xaf6a25cc5e3df5fd!2sDMR+Im%C3%B3veis+Cabre%C3%BAva!5e0!3m2!1spt-BR!2sbr!4v1527996900206" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
-    </div>
+    
 
 </div>

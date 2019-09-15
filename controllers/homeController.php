@@ -16,7 +16,8 @@ class homeController extends controller {
             'tipoimovel'=>'',
          
         );
-        
+       
+        $dados['titulo']='DMR Imóveis em Cabreúva';
         $dados['buscaimovel']='';
         $i = new imovel();
      

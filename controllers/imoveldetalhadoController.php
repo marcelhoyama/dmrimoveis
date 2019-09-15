@@ -27,7 +27,7 @@ $t=new telefone();
          $dados['listfotoimovel']=$f->listFotosImovel($id_imovel);
         $dados['listimovel']=$i->listTipoImovel($id_imovel);
          $dados['listfotos']=$f->listFotos($id_imovel);
-       
+       $dados['titulo']="Detalhes do Imovel-";
        }
         $this->loadTemplate('imoveldetalhado', $dados);
     }

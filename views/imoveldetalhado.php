@@ -4,17 +4,19 @@
 
 
 <?php $listimovel = $viewData['listimovel']; ?>
-<title>Detalhes do Imovel-<?php echo $listimovel['tipo_imovel']; ?> </title>
-<div class="container-fluid">
 
-    <div class="jumbotron">
-        <a href="<?php BASE_URL; ?>home" ><button class="btn btn-primary"  >Voltar Home</button></a>
-        <h2 class="text-info">Detalhes do Imóvel <?php echo $listimovel['tipo_imovel']; ?>-[<?php
+<div class="container">
+    <br>
+    <div class="jumbotron mt-5">
+<!--        <a href="<?php BASE_URL; ?>home" ><button class="btn btn-primary"  >Voltar Home</button></a>-->
+        <h2 class="text-center text-info">Detalhes do Imóvel <?php echo $listimovel['tipo_imovel']; ?>-[<?php
                     echo strtoupper($listimovel['tipo_assunto']);
                     ?>]</h2>
 
     </div>
-
+ <div>
+                    <?php echo "<pre>".$listimovel['breve_descricao']."</pre>" ?>
+                </div>
 
     <div class="row">
 
@@ -65,14 +67,9 @@
 
 
               
-                <div class="form-group" style="resize:horizontal;">
-                    <?php echo "<pre>".$listimovel['breve_descricao']."</pre>" ?>
-                </div>
+               
               
-                <ul>
-
-                   
-               </ul>
+             
 
                 <button href="javascript;:" onclick="tenhointeresse('<?php echo $listimovel['id_imovel']; ?>')" type="button" class="btn btn-primary">Tenho Interesse</button>
          </div>

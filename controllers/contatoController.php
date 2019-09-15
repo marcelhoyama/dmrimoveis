@@ -20,6 +20,7 @@ class contatoController extends controller {
         $dados['horario'] = $t->horario();
         $dados['listassunto'] = $i->getListAssunto();
         $dados['listatipoimovel'] = $im->listTiposImoveis2();
+        $dados['titulo']="Contato";
 
         if (isset($_POST['nome']) && !empty($_POST['nome'])) {
             $nome = trim(addslashes($_POST['nome']));

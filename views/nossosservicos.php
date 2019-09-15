@@ -1,12 +1,11 @@
-<title>Nossos Serviços</title>
 
-<div class="container-fluid">
+<br>
+<div class="container mt-5">
     <div class="row">
-        <div class="col-lg-8">
-    <div class="form-inline">
+        <div class="col">
         
     
-    <h4>
+    <h5>
         Alguns de nossos serviços, são:
         <li>Vendas;</li>
         <li>Locação;</li>
@@ -25,20 +24,21 @@
         ao entrar em contato conosco a prioridade não é fechar o negócio, acreditamos que para isso devemos seguir a seguinte ordem: oferecer o melhor serviço e 
         atendimento, 
         entender a sua necessidade e a partir daí apresentar o melhor negócio para o seu perfil.</p>
-    </h4>
-    
+    </h5>
     </div>
-            </div>
+    
         </div>
     <div class="row">
-        <div class="col-md-8">
-        <img id="servico"  src="<?php BASE_URL;?>assets/images/servicos1.jpg"  alt="imoveis em cabreuva" width="420" height="420" class="img-fluid img-thumbnail"/> 
+        <div class="col">
+        <div class="text-center">
+        <img id="servico"  src="<?php BASE_URL;?>assets/images/equipe/equipe.jpg"  alt="imoveis em cabreuva" class="img-fluid"/> 
     </div>
         </div>
    
-    
+    </div>
     <h2>Maiores Informações:</h2>
-    <h3>Entre em contato conosco pelo telefone <?php echo $value=$viewData['telefone']; ?> / <?php echo $value=$viewData['celular']; ?> / Email:<?php echo $value=$viewData['email']; ?> ou venha nos fazer uma visita e 
-        conhecer nosso escritório na  <?php echo $value=$viewData['endereco']; ?></h3>
+    <h5>Entre em contato conosco pelo telefone <?php echo $value=$viewData['telefone']; ?> / <?php echo $value=$viewData['celular']; ?> </h5> <h5>Email: <?php echo $value=$viewData['email']; ?></h5>
+    <h5>Venha nos fazer uma visita e 
+        conhecer nosso escritório na  <?php echo $value=$viewData['endereco']; ?></h5>
    
 </div>

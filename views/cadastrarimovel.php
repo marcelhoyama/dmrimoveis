@@ -2,40 +2,44 @@
 <title>Cadastrar Imóvel</title>
 
 
-<div class="container-fluid">
-     <div class="form-group">
-    <a class="btn btn-default" href="<?php BASE_URL ?>menuprincipal"> Voltar p/Menu Principal</a>
-</div>
+<div class="container mt-5">
+    <br>
+    
     <div class="text-center h3">Cadastrar Imóvel</div>
    
     <form id="cadastrarimovel" method="POST" enctype="multipart/form-data">
 
           <div class="danger">
             <?php if (isset($erro) && !empty($erro)): ?>
-                <div class="alert alert-danger"><?php echo $erro; ?></div> 
+                <div class="alert alert-danger" role="alert"><?php echo $erro; ?></div> 
             <?php endif; ?>
         </div>
         <div class="danger">
             <?php if (isset($ok) && !empty($ok)): ?>
-                <div class="alert alert-success"><?php echo $ok; ?></div> 
+                <div class="alert alert-success" role="alert"><?php echo $ok; ?></div> 
             <?php endif; ?>
         </div>
-  <div class="well">
+  <div class="row">
                      <div class="control-group">
-                         <label for="status">Anunciar no site:</label> <label class="text-danger">obrigatorio*</label></br>
-                <div class="checkbox-inline">
-                    <label><input type="radio" name="status" id="status" value="Liberado"  >Liberar</label> 
-                    </div>
-
-                    <div class="checkbox-inline">
-                        <label><input type="radio" name="status" id="status" value="Bloqueado" checked="checked">Bloquear</label>
-                    </div>
+                      
+                         <div class="form-check form-check-inline">
+                             <label class="form-check-label m-3" >
+    Anunciar no site?
+  </label>
+  <input class="form-check-input" type="radio" name="status" id="status" value="Liberado">
+  <label class="form-check-label" for="status">Liberar</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="status" id="status" value="Bloqueado">
+  <label class="form-check-label" for="status">Bloquear</label>
+</div>
+               
               </div>
             </div>
 
         <div class="row">
             <div class="form-group col-sm-3">
-                <label for="id_tipo_assunto">Tipo de Assunto:</label><label class="text-danger">Campo Obrigatorio*</label>
+                <label for="id_tipo_assunto">Tipo de Assunto:</label><label class="text-danger">*</label>
                 <select name="id_tipo_assunto" class="form-control" id="id_tipo_assunto" onchange="mudouAssunto(this)">
                     <option></option>
                     <option value="1">Venda</option>
@@ -49,7 +53,7 @@
             </div>
 
             <div class="form-group col-sm-3">
-                <label for="tipoimovel">Tipo de Imóvel:</label>  <label class="text-danger">campo obrigatorio*</label>
+                <label for="tipoimovel">Tipo de Imóvel:</label>  <label class="text-danger">*</label>
                 <select name="tipoimovel" class="form-control" id="tipoimovel">
 
                     <option></option>
@@ -61,7 +65,7 @@
                 </select> 
             </div>
             <div class="form-group col-sm-5">
-                <label for="nivel">Classificação do Nivel:</label><label class="text-danger">Campo Obrigatorio*</label>
+                <label for="nivel">Classificação do Nivel:</label><label class="text-danger">*</label>
                 <select name="nivel" class="form-control" id="nivel">
                     <option></option>
                     <option value="Simples">Simples</option> 
@@ -76,13 +80,13 @@
       
         <div class="row">
             <div class="form-group col-sm-3">
-                <label for="bairro">Bairro:</label>  <label class="text-danger">campo obrigatorio*</label>
+                <label for="bairro">Bairro:</label>  <label class="text-danger">*</label>
                 <input name="bairro" type="text" class="form-control" id="bairro" placeholder="" />
             </div>
 
        
             <div class="form-group col-sm-3">
-                <label for="cidade">Cidade:</label>  <label class="text-danger">campo obrigatorio*</label>
+                <label for="cidade">Cidade:</label>  <label class="text-danger">*</label>
                 <input name="cidade" type="text" class="form-control" id="cidade" placeholder=""/>
             </div>
                   
@@ -135,32 +139,47 @@
                 </select> </div>
 
         </div>-->
-          <div class="well">
-              <div id="valorImovel">
-            <label for="valorimovel">Valor do Imóvel:</label>
-            <div class="form-group col-sm-4 input-group">
+          <div class="container row">
+              <div class="form-row align-items-center" id="valorImovel">
+                      <div class="form-group col-auto">
+            <label class="" for="valorimovel">Valor do Imóvel:</label>
+            <div class="input-group mb-2">
+        <div class="input-group-prepend">
 
-                <span class="input-group-addon">R$</span>
-                <input name="valorimovel" type="text" class="form-control" id="valor" placeholder=""/>
+                <div class="input-group-text">R$</div>
+               
             </div>
+                 <input name="valorimovel" type="text" class="form-control" id="valor" placeholder=""/>
               </div>
+                      </div>
+                  <div class="form-group col-auto">
               <div id="valorAluguel">
-            <label for="valoraluguel">Valor do Aluguel:</label>
-            <div class="form-group col-sm-4 input-group">
-
-                <span class="input-group-addon">R$</span>
+            <label class="" for="valoraluguel">Valor do Aluguel:</label>
+           <div class="input-group mb-2">
+<div class="input-group-prepend">
+    <div class="input-group-text">R$</div>
+</div>
                 <input name="valoraluguel" type="text" class="form-control" id="valor2" placeholder=""/> 
             </div>
          </div> 
           </div>
-          <div class="form-group">
+              </div>
+          </div>
+     <div class="row">
+          <div class="form-group col-md-8">
             <label for="brevedescricao">Breve descrição do imovel:</label> 
 
-            <textarea class="form-control" name="brevedescricao" type="text" id="brevedescricao" rows="30"></textarea>
+            <textarea class="form-control" name="brevedescricao" type="text" id="brevedescricao" wrap="on" cols="30" rows="30"></textarea>
         </div>
-
+         <div class="col-sm-4">
+             <div class=" text-danger">
+            Não ultrapasse dessa coluna, para facilitar a leitura do usuario vizualizar melhor!
+             </div>
+     </div>
+     </div>
+     <br>
        
-        <div class="well">
+        <div class="card card-body bg-light my-3">
             <div class="form-group">
                 <label for="arquivo1">Adicionar UMA Foto Principal do Imóvel:</label>
                 <input name="arquivo1" type="file" />
@@ -170,10 +189,10 @@
        
 
        
-<div class="well">
+<div class="card card-body bg-light my-3">
 
         <div class="form-group">
-            <label for="arquivos">Adicionar no MAXIMO 35 Fotos do Imóvel, sendo que, redimensionamento IDEAL 960x720 e tamanho total de imagens não ultrapassar 128 MB :</label>
+            <label class="text-danger"for="arquivos">Adicionar no MAXIMO 35 Fotos do Imóvel, sendo que, redimensionamento IDEAL 960x720 e tamanho total de imagens não ultrapassar 128 MB :</label>
             <input name="arquivos[]" type="file"  multiple=""/>
 
         </div>

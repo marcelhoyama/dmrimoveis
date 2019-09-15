@@ -14,7 +14,7 @@ class sobreController extends controller{
            $dados['telefone']=$t->fixo();
            $dados['celular']=$t->celular();
            $dados['email']=$t->email();
-       
+       $dados['titulo']="DMR Imóveis - Sobre";
         $this->loadTemplate('sobre', $dados);
     }
     

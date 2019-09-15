@@ -10,10 +10,21 @@ and open the template in the editor.
 
 
 */
-.container-fluid{
-    background-color: #efece3;
-}
 
+.team{
+    background-image: url("../images/equipe/equipe.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px 0px;
+    
+    
+}
+.name{
+    border-bottom: solid 1px;
+    padding-bottom: 5px;
+    margin-top: 30px;
+}
 .texto-card{
     height:150px;
 }
@@ -27,10 +38,7 @@ height:265px;
     height:200px;
 }
 
-#imagem-editar{
-    height:305px;
-    width:265px;
-}
+
 
 .thumbnail #imagem-editar{
     height:255px;
@@ -80,8 +88,9 @@ height:265px;
     padding: 5px;
 }
 #banner{
-    padding:0px;
-    top:0px;
+    margin: 0px;
+  
+    
 }
    #button_excluir{
     margin-left: 220px;
@@ -153,13 +162,9 @@ position:static;
 #celular{
     display: none;
 }
-#texto2{
-    text-align: center;
-}
 
-.thumbnail img{
-    margin-bottom: 3px;
-}
+
+
 
 /* Smartphones (portrait and landscape) ———– */
 @media only screen and (min-width:320px) and (max-width:520px) {

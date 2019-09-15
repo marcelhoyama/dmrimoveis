@@ -16,6 +16,7 @@ class nossosservicosController extends controller{
            $dados['celular']=$t->celular();
            $dados['email']=$t->email();
            $dados['endereco']=$t->endereco();
+           $dados['titulo']="Nossos Serviços";
         $this->loadTemplate('nossosservicos', $dados);
     }
     
