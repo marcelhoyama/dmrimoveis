@@ -9,7 +9,7 @@
     <div class="container-fluid mt-5">	
    
 <div class="row" >
-    <div class="col-sm-2">
+<!--    <div class="col-sm-2">
         <div class="thumbnail ">
        <a href="<?php BASE_URL;?>cadastrarimovel">
         <img class="m-3" src="<?php BASE_URL; ?>assets/images/cadastrarimovel.png" alt="cadastrar imoveis" width="110" height="110">
@@ -31,7 +31,7 @@
         <img class="m-3" src="<?php BASE_URL; ?>assets/images/pesquisarimovel.png" alt="pesquisar imoveis" width="110" height="110">
     </a>
         </div>
-        </div>
+        </div>-->
     <!--       <div class="col-sm-2">
         <div class="thumbnail">
        <a href="<?php BASE_URL;?>pesquisarinteressados">

@@ -26,6 +26,7 @@ class meuanuncioController extends controller {
             $dados['telefone'] = $t->fixo();
             $dados['endereco'] = $t->endereco();
             $dados['celular'] = $t->celular();
+            $dados['email']=$t->email();
 
             $dados['listfotoimovel'] = $f->listFotosImovel($id_imovel);
             $dados['listimovel'] = $i->listTipoImovel($id_imovel);
