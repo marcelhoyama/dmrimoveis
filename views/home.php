@@ -214,7 +214,7 @@
                                                 Valor R$ <?php echo $value['venda']; ?>
 
                                             </div>
-                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg " >Veja Mais</button>  </a>
+                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg mt-5" >Veja Mais</button>  </a>
 
                                         </div>
 
@@ -245,34 +245,7 @@
         </div>  <!-- fim slide um-->
 
 
-        <!-- Modal  venda-->
-        <div class="modal fade" id="Modalvenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel"><p class="text-danger text-center">Deixe que entraremos em Contato com Você</p></h4>
-                    </div>
-
-                    <div class="modal-body">
-
-
-
-
-                    </div>
-
-
-                    <div class="modal-footer">
-
-
-                    </div>
-                </div>
-
-            </div>
-
-
-
-        </div>  <!--  fim modal venda-->
+        
 
 
 
@@ -326,7 +299,7 @@
 
                                                 Valor R$ <?php $value['venda']; ?>
                                             </div>
-                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg" >Veja Mais</button>  </a>
+                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg mt-5" >Veja Mais</button>  </a>
 
                                         </div>
 
@@ -378,7 +351,7 @@
 
                                     <picture>
                                         <div align="center">
-                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >
+                                           
 
                                                 <?php if (!empty($value['url_foto_principal'])): { ?>
                                                         <img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $value['url_foto_principal']; ?>" class="d-block w-100">
@@ -403,7 +376,7 @@
                                     } else { ?>Venda R$ <?php echo $value['venda']; ?> / Aluga R$<?php echo $value['aluguel'];
                                     } ?>
                                             </div>
-                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg " >Veja Mais</button>  </a>
+                                            <a href="<?php BASE_URL; ?>imoveldetalhado?id=<?php echo $value['id_imovel'] ?>" >       <button  type="button" class=" btn btn-primary btn-lg mt-5" >Veja Mais</button>  </a>
 
                                         </div>
 
@@ -436,3 +409,28 @@
     </div>
 
 </div>
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="Modalvenda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Deixe que entraremos em Contato com Vocêl</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>
+  <!--  fim modal venda-->

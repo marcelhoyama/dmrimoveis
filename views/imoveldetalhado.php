@@ -31,7 +31,7 @@
                     <div class="carousel-inner" role='listbox'>
                         <div class="carousel-item active">
                          <?php if (!empty($listimovel['url_foto_principal'])): { ?>
-                            <a href="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $listimovel['url_foto_principal']; ?>"  data-lightbox="folheta" data-title="Imovel"><img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $listimovel['url_foto_principal']; ?>" style="width: 400px;height: 400px;" ></a>
+                            <a href="javascript:; " class="galeria" data-lightbox="folheta" data-title="Imovel"><img src="<?php BASE_URL; ?>upload/fotos_principais/<?php echo $listimovel['url_foto_principal']; ?>" style="width: 400px;height: 400px;" ></a>
                             
                     <?php } else: ?>
                     <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-rounded img-fluid">
@@ -40,7 +40,7 @@
                         <?php foreach ($viewData['listfotos'] as $key => $foto): ?>
                             <div class="carousel-item <?php echo ($key == '0') ? '' : ''; ?>">
                                 <?php if (!empty($foto['url_imagem'])): { ?>
-                                <a href="<?php BASE_URL; ?>upload/<?php echo $foto['url_imagem']; ?>" data-lightbox="folheta" data-title="Imovel">
+                                <a href="javascript:;" class="galeria" data-lightbox="folheta" data-title="Imovel">
                                     <img src="<?php BASE_URL; ?>upload/<?php echo $foto['url_imagem']; ?>" style="width: 400px;height: 400px;" ></a>
                                     <?php } else: ?>
                                     <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-fluid">
@@ -86,6 +86,53 @@
 
     </div>
 
+<div class="bgbox"> </div>
+<div class="divbox">
+<button> Fechar</button>
+    <div class="row">
+
+            <div class="col-lg">
+                
+
+                    <div class="carousel slide" data-ride="carousel" id='meuCarousel1'>
+                                        <div class="carousel-inner">
+                                        <?php if (empty($foto['url_imagem'])): { ?>
+                                            <div class="carousel-item active">
+                                           <a href="javascript:;"> <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-fluid"></a>
+                                        </div>
+                                            <?php } else: ?>
+                                                                <?php foreach ($viewData['listfotos'] as $key => $foto): ?>
+                                                            <div class="carousel-item <?php echo ($key == '0') ? 'active' : ''; ?>">
+                                                                <?php if (!empty($foto['url_imagem'])): { ?>
+                                                                <a href="javascript:;">
+                                                                    <img src="<?php BASE_URL; ?>upload/<?php echo $foto['url_imagem']; ?>" ></a>
+                                                                    <?php } else: ?>
+                                                                    <img src="<?php BASE_URL; ?>assets/images/sem-imagem.gif" class=" img-fluid">
+                                                                    <?php endif; ?>
+
+                                                            </div>
+                                                           
+                                                                   
+
+                                                                <?php endforeach; ?>
+                                                                <?php endif; ?>
+                                        </div>
+                                            <a class="carousel-control-prev" href="#meuCarousel1" role="button" data-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Anterior</span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#meuCarousel1" role="button" data-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="sr-only">Próximo</span>
+                                            </a>
+
+                    </div>
+            </div>
+    </div>    
+                   
+   
+   
+</div>
 
    
     <h2>Maiores Informações:</h2>
@@ -94,7 +141,7 @@
         conhecer nosso escritório na  <?php echo $value=$viewData['endereco']; ?></h5>
 
     <!-- Modal  venda-->
-    <div class="modal fade" id="Modalvenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal" id="Modalvenda" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -116,7 +163,7 @@
 
     </div>  <!--  fim modal venda-->
     
-     <!-- Modal  slidefotos-->
+    
    
 </div>
 

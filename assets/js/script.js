@@ -3,10 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+$(function(){
+$('a.galeria').bind('click', function(){
+    var img=$(this).find('img').attr('src');
+    // $('.divbox a .galeria img').attr('src',img);
 
+    $('.bgbox, .divbox').fadeIn('fast');
+});
+
+$('.bgbox, .divbox button').bind('click',function(){
+$('.bgbox, .divbox').fadeOut('fast');
+});
+});
 
 function tenhointeresse(id) {
-    $('#Modalvenda').modal('toggle');
+     $('#Modalvenda').modal('toggle');
     $.ajax({
         url: 'tenhointeresse',
         type: 'POST',
@@ -49,7 +60,10 @@ function tenhointeresse(id) {
            
 
         }
-    });
+    }); 
+   
+    
+    
 }
 
 function tenhointeresseeditar(id_interessado) {

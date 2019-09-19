@@ -6,7 +6,7 @@
 <div class="container-fluid mt-5">
     
 
-    <h2 class="text-center label-info">Editar Imóvel </h2></br>
+    <h2 class="text-center label-info mt-5">Editar Imóvel </h2></br>
 
     <form id="editarimovel" method="POST" enctype="multipart/form-data">
 
@@ -196,7 +196,7 @@
 
         <div class="form-group row">
             <div class="col-md-6">
-                <label for="arquivos">Adicionar no MAXIMO 35 Fotos do Imóvel, sendo que, redimensionamento IDEAL 960x720 e tamanho total de imagens não ultrapassar 128 MB :</label>
+                <label for="arquivos" class="text-danger">Adicionar no MAXIMO 35 Fotos do Imóvel, sendo que, redimensionamento IDEAL 960x720 e tamanho total de imagens não ultrapassar 128 MB :</label>
 
                 <input name="arquivos[]" type="file"  multiple="">
             </div>
@@ -217,9 +217,9 @@
 
                         <div class="thumbnail" id="imagem-editar" >     
                             <img src="<?php BASE_URL; ?>upload/<?php echo $fotos['url_imagem']; ?>" id="imagem-editar">
-                            <a href="<?php BASE_URL; ?>deletarfoto?id=<?php echo $fotos['id']; ?>" class="btn btn-danger">Excluir Imagem</a>
-
+                         
                         </div>
+                        <a href="<?php BASE_URL; ?>deletarfoto?id=<?php echo $fotos['id']; ?>" class="btn btn-danger mt-1 mb-3 ">Excluir Imagem</a>
 
                     </div>
 
@@ -228,6 +228,7 @@
             endif;
             ?>
 
+</div>
 
             <?php for ($q = 1; $q <= $paginas = $viewData['paginas']; $q++) { ?> 
                 <div class="pagination">
@@ -241,7 +242,7 @@
             <?php } ?>
 
      
-</div>
+
         <hr>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Salvar">

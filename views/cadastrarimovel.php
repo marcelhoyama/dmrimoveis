@@ -24,13 +24,13 @@
                       
                          <div class="form-check form-check-inline">
                              <label class="form-check-label m-3" >
-    Anunciar no site?
+    Publicar no site?
   </label>
   <input class="form-check-input" type="radio" name="status" id="status" value="Liberado">
   <label class="form-check-label" for="status">Liberar</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="status" id="status" value="Bloqueado">
+  <input class="form-check-input" type="radio" name="status" id="status" value="Bloqueado" checked>
   <label class="form-check-label" for="status">Bloquear</label>
 </div>
                
