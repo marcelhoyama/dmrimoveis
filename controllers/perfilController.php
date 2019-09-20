@@ -16,14 +16,14 @@ class perfilController extends controller {
 
     // PAGINA INDEX SEMPRE É O PRIMEIRO A SER LIDO E ENVIADO OS DADOS PELA BARRA DE ENDEREÇO
     public function index() {
-        $dados = array('usuario_nome' => '');
+        $dados = array('usuario_nome' => '','erro'=>'');
         $c = new corretor();
         $dados['usuario_nome'] = $c->getNome($_SESSION['dmrlogin']);
         $dados['listcorretor'] = $c->getDados($_SESSION['dmrlogin']);
 
 
         //SEMPRE VERIFCAR SE FOI SETADO,  SE EXISTE O DADO INFORMADO, ANTES DE CONTINUAR
-        if (isset($_POST['nome']) && !empty($_POST['nome']) || isset($_POST['email']) && !empty($_POST['email']) || isset($_POST['senha']) && !empty($_POST['senha'])) {
+        if (isset($_POST['nome']) && !empty($_POST['nome']) || isset($_POST['email']) && !empty($_POST['email']) ) {
             //SEMPRE PROTEGER O SISTEMA DAS INFORMAÇÕES QUE O USUARIO INFORMA (COM ADDSLASHES)
             $nome = trim(addslashes($_POST['nome']));
             $email = trim(addslashes($_POST['email']));
@@ -35,9 +35,11 @@ class perfilController extends controller {
             if ($c->updatePerfil($nome, $email, $telefone, $creci, $senha) == TRUE) {
 
                 header("Location:" . BASE_URL . "perfil");
+              
             } else {
                 $dados['erro'] = "Conferir se todos os campos estão preenchidos corretamente!";
             }
+              $dados['ok']="Alterado com Sucesso!";
         } 
 
         // $dados['usuario_nome']=$c->getNome($_SESSION['nutricaolug']);
